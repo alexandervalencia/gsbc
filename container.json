@@ -3,6 +3,6 @@
 		"DATABASE_USER": "test",
 		"DATABASE_NAME": "testdb"
 	},
-	"id": "hosting",
+	"id": "web",
 	"type": "wedeploy/hosting"
 }
