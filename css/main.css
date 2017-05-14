@@ -1,0 +1,13 @@
+body {
+  background-color: #FFF;
+  color: #333;
+  font-family: "Raleway", sans-serif; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", serif; }
+
+.header {
+  padding-top: 1rem; }
+
+.site-title {
+  color: #228390; }
