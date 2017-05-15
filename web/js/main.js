@@ -1,9 +1,38 @@
 WeDeploy
 	.auth('http://auth.gsbc.wedeploy.io')
 	.signInWithEmailAndPassword("user@domain.com", "password")
-	.then(function(user) {
-		// User is signed in.
-	})
-	.catch(function(err) {
-		// User is not signed in.
-	});
+	.then(
+		function(user) {
+			// User is signed in.
+		}
+	)
+	.catch(
+		function(err) {
+			// User is not signed in.
+		}
+	)
+;
+
+function submitForm() {
+	WeDeploy.auth('auth.boilerplate-auth.wedeploy.io')
+		.createUser(
+			{
+				email: signUp.email.value,
+				name: signUp.name.value,
+				password: signUp.password.value
+			}
+		)
+		.then(
+			function(user) {
+				alert('Sign-up successfully.');
+				location.href = '/';
+			}
+		)
+		.catch(
+			function() {
+				alert('Sign-up failed. Try another email.');
+				signUp.reset();
+			}
+		)
+	;
+}
