@@ -1,5 +1,7 @@
-{
-	"data": true,
-	"method": "GET",
-	"path": "/books/:bookId"
-}
+[
+	{
+		"data": true,
+		"method": "GET",
+		"path": "/books/:bookId"
+	}
+]

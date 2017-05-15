@@ -1,23 +1,25 @@
-{
-	"data": true,
-	"method": "POST",
-	"parameters": {
-		"author": {
-			"type": "string",
-			"required": true
+[
+	{
+		"data": true,
+		"method": "POST",
+		"parameters": {
+			"author": {
+				"type": "string",
+				"required": true
+			},
+			"datePicked": {
+				"type": "",
+				"required": true
+			},
+			"picker": {
+				"type": "string",
+				"required": true
+			},
+			"title": {
+				"type": "string",
+				"required": true
+			}
 		},
-		"datePicked": {
-			"type": "",
-			"required": true
-		},
-		"picker": {
-			"type": "string",
-			"required": true
-		},
-		"title": {
-			"type": "string",
-			"required": true
-		}
-	},
-	"path": "/books"
-}
+		"path": "/books"
+	}
+]
