@@ -1,6 +1,10 @@
 [
 	{
+		"auth": {
+            "validator": "$auth != null"
+        },
 		"data": true,
+		"description": "Creates a new book.",
 		"method": "POST",
 		"parameters": {
 			"author": {
@@ -11,7 +15,7 @@
 				"type": "string",
 				"required": true
 			},
-			"picker": {
+			"pickedBy": {
 				"type": "string",
 				"required": true
 			},
@@ -21,5 +25,10 @@
 			}
 		},
 		"path": "/books"
+	},
+	{
+		"data": true,
+		"method": "GET",
+		"path": "/books/:bookId"
 	}
 ]
