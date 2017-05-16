@@ -1,3 +1,6 @@
+var REGEX_MON = /\w{3}/g;
+var REGEX_YEAR = /\d{4}/g;
+
 function signIn() {
 	WeDeploy
 		.auth('http://auth.gsbc.wedeploy.io')
@@ -28,10 +31,39 @@ if (currentUser) {
 
 $(document).ready(
 	function() {
-		$("#book-list").tablesorter(
+		$.tablesorter.addParser(
 			{
+				id: 'mon-yyyy',
+				is: function() {
+					return false;
+				},
+				format: function(str) {
+					var mon = str.match(REGEX_MON);
+					var year = str.match(REGEX_YEAR);
+
+					mon = getMonthFromString(mon);
+
+					str = '01/' + mon + '/' + year
+					return Date.parse(str);
+				},
+				parsed: false,
+				type: 'numeric'
+			}
+		);
+
+		function getMonthFromString(mon){
+			return new Date(Date.parse(mon + " 1, 2017")).getMonth() + 1
+		}
+
+		$("table").tablesorter(
+			{
+				headers: {
+					2: {
+						sorter: 'mon-yyyy',
+						sortInitialOrder: "desc"
+					}
+				},
 				theme: 'bootstrap',
-				sortList: [[2,0]]
 			}
 		);
 	}
