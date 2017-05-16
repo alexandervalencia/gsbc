@@ -1,16 +1,35 @@
-function signIn(user) {
+function signIn() {
 	WeDeploy
 		.auth('http://auth.gsbc.wedeploy.io')
-		.signInWithEmailAndPassword(user.email.value, user.password.value)
+		.signInWithEmailAndPassword(signIn.email.value, signIn.password.value)
 		.then(
-			function(user) {
-				// User is signed in.
+			function(signIn) {
+				location.href = '/';
 			}
 		)
 		.catch(
 			function(err) {
-				// User is not signed in.
+				console.log('User could not signed in.');
 			}
 		)
 	;
 }
+
+var currentUser = WeDeploy.auth('http://auth.gsbc.wedeploy.io').currentUser;
+
+if (currentUser) {
+	$('#stuff').text('Shit')
+} else {
+	// No user is signed in.
+}
+
+$(document).ready(
+	function() {
+		$("#book-list").tablesorter(
+			{
+				theme: 'bootstrap',
+				sortList: [[2,0]]
+			}
+		);
+	}
+);

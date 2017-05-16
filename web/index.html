@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="Alex Valencia">
+
 	<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
@@ -24,9 +26,12 @@
 	<meta name="theme-color" content="#ffffff">
 
 	<title>gsbc.com</title>
+
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:900i|Raleway:400,700" rel="stylesheet">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/theme.bootstrap_4.min.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
+
 	<script src="http://cdn.wedeploy.com/api/latest/wedeploy.js"></script>
 	</head>
 
@@ -34,9 +39,9 @@
 		<header class="container header">
 			<div class="row">
 				<div class="col text-center">
-					<h1 class="site-title">Good Stuff Book Club</h1>
+					<h1 class="site-title">Good <span id="stuff">Stuff</span> Book Club</h1>
 					<hr class="my-4">
-					<p>Our book club. Carry your spoon.</p>
+					<p>Our book club. Carry your spoon.</button></p>
 				</div>
 			</div>
 			<div class="row">
@@ -46,7 +51,7 @@
 				</div>
 			</div>
 		</header>
-		<section class="container">
+		<section class="container main">
 			<div class="row">
 				<div class="col">
 					<table class="table table-hover" id="book-list">
@@ -82,9 +87,44 @@
 				</div>
 			</div>
 		</section>
+		<div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="signInModalLabel">Sign In to GSBC</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<form name="signIn" onsubmit="signIn(); return false;">
+						<div class="modal-body">
+							<div class="form-group">
+								<label for="email">Email address</label>
+								<input class="form-control" id="email" name="email" placeholder="you@example.com" required type="email">
+							</div>
+							<div class="form-group">
+								<label for="password">Password</label>
+								<input class="form-control" id="password" name="password" placeholder="password" required type="password">
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Sign In</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<footer class="container-fluid">
+			<div class="row">
+				<div class="col text-center">
+					<button class="btn btn-primary" data-target="#signInModal" data-toggle="modal" type="button">Sign In</button>
+				</div>
+			</div>
 
 		<script src="js/jquery-3.1.1.slim.min.js"></script>
-		<script src="js/jquery-tablesorter.min.js"></script>
+		<script src="js/jquery.tablesorter.min.js"></script>
+		<script src="js/jquery.tablesorter.widgets.min.js"></script>
 		<script src="js/tether.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/ie10-viewport-bug-workaround.js"></script>
