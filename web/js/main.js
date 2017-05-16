@@ -14,27 +14,3 @@ function signIn(user) {
 		)
 	;
 }
-
-function createNewUser() {
-	WeDeploy.auth('auth.boilerplate-auth.wedeploy.io')
-		.createUser(
-			{
-				email: signUp.email.value,
-				name: signUp.name.value,
-				password: signUp.password.value
-			}
-		)
-		.then(
-			function(user) {
-				alert('Sign-up successfully.');
-				location.href = '/';
-			}
-		)
-		.catch(
-			function() {
-				alert('Sign-up failed. Try another email.');
-				signUp.reset();
-			}
-		)
-	;
-}

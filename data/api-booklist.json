@@ -1,8 +1,8 @@
 [
 	{
 		"auth": {
-            "validator": "$auth != null"
-        },
+			"validator": "$auth != null"
+		},
 		"data": true,
 		"description": "Creates a new book.",
 		"method": "POST",

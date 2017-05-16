@@ -31,63 +31,51 @@
 	</head>
 
 	<body>
-		<header class="container header">
+		<header class="container">
 			<div class="row">
-				<div class="col text-center">
+				<div class="col header text-center">
 					<h1 class="site-title">Good Stuff Book Club</h1>
 					<hr class="my-4">
-					<p>Our book club. Carry your spoon.</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<h2>Available to Pick:</h2>
-					<p id="yetToPick">Dan</p>
+					<h2>Create a New Member</h2>
 				</div>
 			</div>
 		</header>
-		<section class="container">
+		<section>
 			<div class="row">
 				<div class="col">
-					<table class="table table-hover" id="book-list">
-						<thead class="thead">
-							<tr>
-								<th>Book</th>
-								<th>Author</th>
-								<th>Date Read</th>
-								<th>Picked By</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">The Casual Vacancy</th>
-								<td>J.K. Rowling</td>
-								<td>Jan 2013</td>
-								<td>Alex</td>
-							</tr>
-							<tr>
-								<th scope="row">The Last Unicorn</th>
-								<td>Peter S. Beagle</td>
-								<td>Feb 2013</td>
-								<td>Brian</td>
-							</tr>
-							<tr>
-								<th scope="row">The Man Who Mistook His Wife For A Hat</th>
-								<td>Oliver Sacks</td>
-								<td>Mar 2013</td>
-								<td>Leigh</td>
-							</tr>
-						</tbody>
-					</table>
+					<div class="card card-create-member">
+						<div class="card-block">
+							<form name="newMember" onsubmit="submitForm(); return false;">
+								<div class="form-group">
+									<label for="firstName">First Name</label>
+									<input class="form-control" id="firstName" name="firstName" placeholder="First Name" type="text">
+								</div>
+								<div class="form-group">
+									<label for="lastName">Last Name</label>
+									<input class="form-control" id="lastName" name="lastName" placeholder="Last Name" type="text">
+								</div>
+								<div class="form-group">
+									<label for="email">Email address</label>
+									<input class="form-control" id="email" name="email" placeholder="you@example.com" required type="email">
+								</div>
+								<div class="form-group">
+									<label for="password">Password</label>
+									<input class="form-control" id="password" name="password" placeholder="password" required type="password">
+								</div>
+								<div class="text-center">
+									<button class="btn btn-primary" type="submit">Register as a Member</button>
+								</div>
+							</form>
+						</div>
+					</div>
 				</div>
 			</div>
 		</section>
 
 		<script src="js/jquery-3.1.1.slim.min.js"></script>
-		<script src="js/jquery-tablesorter.min.js"></script>
 		<script src="js/tether.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/ie10-viewport-bug-workaround.js"></script>
-		<script src="js/main.js"></script>
+		<script src="js/newmember.js"></script>
 	</body>
 </html>

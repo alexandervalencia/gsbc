@@ -1,2 +1,3 @@
-web/.vscode
-web/gulpfile.js
+.vscode
+gulpfile.js
+assets/

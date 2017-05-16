@@ -1,0 +1,7 @@
+[
+	{
+		"data": true,
+		"method": "GET",
+		"path": "/members"
+	}
+]
