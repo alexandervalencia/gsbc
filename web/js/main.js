@@ -16,10 +16,12 @@ function signIn() {
 	;
 }
 
+$('#signedInOnly').text('Sign in to unlock me')
+
 var currentUser = WeDeploy.auth('http://auth.gsbc.wedeploy.io').currentUser;
 
 if (currentUser) {
-	$('#signedInOnly').text('Welcome ' + currentUser.name)
+	$('#signedInOnly').append('<button class="btn btn-primary" data-target="#addBook" data-toggle="modal" type="button">Add a Book</button>')
 } else {
 	// No user is signed in.
 }
