@@ -4,6 +4,7 @@ function signIn() {
 		.signInWithEmailAndPassword(signIn.email.value, signIn.password.value)
 		.then(
 			function(signIn) {
+				alert('You are signed-in');
 				location.href = '/';
 			}
 		)
