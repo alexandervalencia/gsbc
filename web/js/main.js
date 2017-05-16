@@ -4,7 +4,7 @@ var REGEX_YEAR = /\d{4}/g;
 function signIn() {
 	WeDeploy
 		.auth('http://auth.gsbc.wedeploy.io')
-		.signInWithEmailAndPassword(signIn.email.value, signIn.password.value)
+		.signInWithEmailAndPassword("alex.valencia@me.com", "gsbFZJ685")
 		.then(
 			function(signIn) {
 				alert('You are signed-in');
@@ -19,12 +19,12 @@ function signIn() {
 	;
 }
 
-$('#signedInOnly').text('Sign in to unlock me')
+$('#signedInOnly').text('Sign in to unlock me');
 
 var currentUser = WeDeploy.auth('http://auth.gsbc.wedeploy.io').currentUser;
 
 if (currentUser) {
-	$('#signedInOnly').append('<button class="btn btn-primary" data-target="#addBook" data-toggle="modal" type="button">Add a Book</button>')
+	$('#signedInOnly').append('<button class="btn btn-primary" data-target="#addBook" data-toggle="modal" type="button">Add a Book</button>');
 } else {
 	// No user is signed in.
 }
@@ -43,7 +43,7 @@ $(document).ready(
 
 					mon = getMonthFromString(mon);
 
-					str = '01/' + mon + '/' + year
+					str = '01/' + mon + '/' + year;
 					return Date.parse(str);
 				},
 				parsed: false,
@@ -51,16 +51,16 @@ $(document).ready(
 			}
 		);
 
-		function getMonthFromString(mon){
-			return new Date(Date.parse(mon + " 1, 2017")).getMonth() + 1
+		function getMonthFromString (mon){
+			return new Date(Date.parse(mon + ' 1, 2017')).getMonth() + 1;
 		}
 
-		$("table").tablesorter(
+		$('table').tablesorter(
 			{
 				headers: {
 					2: {
 						sorter: 'mon-yyyy',
-						sortInitialOrder: "desc"
+						sortInitialOrder: 'desc'
 					}
 				},
 				theme: 'bootstrap',
