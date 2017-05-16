@@ -1,5 +1,6 @@
 function createNewUser() {
-	WeDeploy.auth('auth.gsbc.wedeploy.io')
+	WeDeploy
+		.auth('auth.gsbc.wedeploy.io')
 		.createUser(
 			{
 				email: newMember.email.value,
