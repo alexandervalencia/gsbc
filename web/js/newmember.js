@@ -1,4 +1,4 @@
-function createNewUser() {
+function createNewMember() {
 	WeDeploy
 		.auth('auth.gsbc.wedeploy.io')
 		.createUser(
