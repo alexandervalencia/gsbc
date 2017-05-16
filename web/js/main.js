@@ -2,9 +2,8 @@ var REGEX_MON = /\w{3}/g;
 var REGEX_YEAR = /\d{4}/g;
 
 function signIn() {
-	WeDeploy
-		.auth('http://auth.gsbc.wedeploy.io')
-		.signInWithEmailAndPassword("alex.valencia@me.com", "gsbFZJ685")
+	WeDeploy.auth('http://auth.gsbc.wedeploy.io')
+		.signInWithEmailAndPassword(signIn.email.value, signIn.password.value)
 		.then(
 			function(signIn) {
 				alert('You are signed-in');
@@ -56,7 +55,7 @@ $(document).ready(
 		}
 
 		$('table').tablesorter(
-			{
+				{
 				headers: {
 					2: {
 						sorter: 'mon-yyyy',
@@ -66,5 +65,10 @@ $(document).ready(
 				theme: 'bootstrap',
 			}
 		);
+
+		$('table').trigger('update');
+
+		$('table').trigger('sorton', [[[2,1]]]);
+
 	}
 );
