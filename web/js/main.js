@@ -19,7 +19,7 @@ function signIn() {
 var currentUser = WeDeploy.auth('http://auth.gsbc.wedeploy.io').currentUser;
 
 if (currentUser) {
-	$('#stuff').text('Shit')
+	$('#signedInOnly').text('Welcome ' + currentUser.name)
 } else {
 	// No user is signed in.
 }
