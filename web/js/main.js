@@ -29,6 +29,23 @@ if (currentUser) {
 	// No user is signed in.
 }
 
+function addBook() {
+	WeDeploy
+		.data('http://data.gsbc.wedeploy.io')
+		.create(
+			'books',
+			 {
+				'author': addBook.author.value,
+				'book': addBook.title.value,
+				'datePicked': addBook.date.value,
+				'pickedBy': addBook.pickedBy.value
+			}
+		)
+		.then(function(book) {
+			console.log(book);
+		});
+}
+
 $(document).ready(
 	function() {
 		$.tablesorter.addParser(
@@ -69,7 +86,7 @@ $(document).ready(
 
 		$('table').trigger('update');
 
-		$('table').trigger('sorton', [[2, 1]]);
+		$('table').trigger('sorton', [[[2, 1]]]);
 
 	}
 );
