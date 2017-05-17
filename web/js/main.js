@@ -1,4 +1,5 @@
 var REGEX_MON = /\w{3}/g;
+
 var REGEX_YEAR = /\d{4}/g;
 
 function signIn() {
@@ -32,10 +33,6 @@ $(document).ready(
 	function() {
 		$.tablesorter.addParser(
 			{
-				id: 'mon-yyyy',
-				is: function() {
-					return false;
-				},
 				format: function(str) {
 					var mon = str.match(REGEX_MON);
 					var year = str.match(REGEX_YEAR);
@@ -45,12 +42,16 @@ $(document).ready(
 					str = '01/' + mon + '/' + year;
 					return Date.parse(str);
 				},
+				id: 'mon-yyyy',
+				is: function() {
+					return false;
+				},
 				parsed: false,
 				type: 'numeric'
 			}
 		);
 
-		function getMonthFromString (mon){
+		function getMonthFromString (mon) {
 			return new Date(Date.parse(mon + ' 1, 2017')).getMonth() + 1;
 		}
 
@@ -62,13 +63,13 @@ $(document).ready(
 						sortInitialOrder: 'desc'
 					}
 				},
-				theme: 'bootstrap',
+				theme: 'bootstrap'
 			}
 		);
 
 		$('table').trigger('update');
 
-		$('table').trigger('sorton', [[[2,1]]]);
+		$('table').trigger('sorton', [[2, 1]]);
 
 	}
 );
