@@ -1,27 +1,60 @@
+var auth = WeDeploy.auth('auth.gsbc.wedeploy.io')
+
 var REGEX_MON = /\w{3}/g;
 
 var REGEX_YEAR = /\d{4}/g;
 
+function createNewMember() {
+	auth.createUser(
+		{
+			email: newMember.email.value,
+			firstName: newMember.firstName.value,
+			lastName: newMember.lastName.value,
+			password: newMember.password.value
+		}
+	)
+	.then(
+		function(user) {
+			alert('Account sucessfully created!');
+			signIn();
+			newMember.reset();
+		}
+	)
+	.catch(
+		function() {
+			alert('Sign-up failed. Try again.');
+			newMember.reset();
+		}
+	);
+}
+
 function signIn() {
-	WeDeploy.auth('http://auth.gsbc.wedeploy.io')
+	auth
 		.signInWithEmailAndPassword(signIn.email.value, signIn.password.value)
 		.then(
 			function(signIn) {
 				alert('You are signed-in');
-				location.href = '/';
+				document.location.href = '/';
 			}
 		)
 		.catch(
 			function(err) {
-				console.log('User could not signed in.');
+				alert('Sign-in failed. Chcek your email/password and try again.');
 			}
 		)
 	;
 }
 
-$('#signedInOnly').text('Sign in to unlock me');
+function signOut() {
+	auth.signOut()
+	.then(() => {
+		location.href = '/';
+	});
+}
 
-var currentUser = WeDeploy.auth('http://auth.gsbc.wedeploy.io').currentUser;
+var currentUser = auth.currentUser;
+
+$('#signedInOnly').text('Welcome ' + currentUser.firstName);
 
 if (currentUser) {
 	$('#signedInOnly').append('<button class="btn btn-primary" data-target="#addBook" data-toggle="modal" type="button">Add a Book</button>');
