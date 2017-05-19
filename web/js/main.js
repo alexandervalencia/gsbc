@@ -31,7 +31,7 @@ function createNewMember() {
 function signIn() {
 	auth.signInWithEmailAndPassword(signIn.email.value, signIn.password.value)
 	.then(
-		function(signIn) {
+		function() {
 			alert('You are signed-in');
 			document.location.href = '/';
 		}
