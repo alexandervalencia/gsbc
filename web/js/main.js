@@ -29,20 +29,18 @@ function createNewMember() {
 }
 
 function signIn() {
-	auth
-		.signInWithEmailAndPassword(signIn.email.value, signIn.password.value)
-		.then(
-			function(signIn) {
-				alert('You are signed-in');
-				document.location.href = '/';
-			}
-		)
-		.catch(
-			function(err) {
-				alert('Sign-in failed. Chcek your email/password and try again.');
-			}
-		)
-	;
+	auth.signInWithEmailAndPassword(signIn.email.value, signIn.password.value)
+	.then(
+		function(signIn) {
+			alert('You are signed-in');
+			document.location.href = '/';
+		}
+	)
+	.catch(
+		function(err) {
+			alert('Sign-in failed. Chcek your email/password and try again.');
+		}
+	);
 }
 
 function signOut() {
