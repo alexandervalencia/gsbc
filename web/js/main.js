@@ -54,9 +54,8 @@ function signOut() {
 
 var currentUser = auth.currentUser;
 
-$('#signedInOnly').text('Welcome ' + currentUser.firstName);
-
 if (currentUser) {
+	$('#signedInOnly').text('Welcome ' + currentUser.firstName);
 	$('#signedInOnly').append('<button class="btn btn-primary" data-target="#addBook" data-toggle="modal" type="button">Add a Book</button>');
 } else {
 	// No user is signed in.
