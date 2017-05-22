@@ -1,46 +1,44 @@
-var auth = WeDeploy.auth('auth.gsbc.wedeploy.io')
+//@ts-check
+var auth = WeDeploy.auth('auth.gsbc.wedeploy.me')
 
 var REGEX_MON = /\w{3}/g;
 
 var REGEX_YEAR = /\d{4}/g;
 
-function createNewMember() {
+function newMember() {
 	auth.createUser(
 		{
-			email: newMember.email.value,
-			firstName: newMember.firstName.value,
-			lastName: newMember.lastName.value,
-			password: newMember.password.value
+			email: user.email.value,
+			firstName: user.firstName.value,
+			lastName: user.lastName.value,
+			password: user.password.value
 		}
 	)
 	.then(
-		function(user) {
+		function() {
 			alert('Account sucessfully created!');
 			signIn();
-			newMember.reset();
+			user.reset();
 		}
 	)
 	.catch(
 		function() {
 			alert('Sign-up failed. Try again.');
-			newMember.reset();
+			user.reset();
 		}
 	);
 }
 
 function signIn() {
-	auth.signInWithEmailAndPassword(signIn.email.value, signIn.password.value)
-	.then(
-		function() {
-			alert('You are signed-in');
-			document.location.href = '/';
-		}
-	)
-	.catch(
-		function(err) {
-			alert('Sign-in failed. Chcek your email/password and try again.');
-		}
-	);
+	auth.signInWithEmailAndPassword(user.email.value, user.password.value)
+	.then(function() {
+		alert('You are signed-in');
+		user.reset();
+		document.location.href = '/';
+	})
+	.catch(function(err) {
+		alert('Sign-in failed. Chcek your email/password and try again.');
+	});
 }
 
 function signOut() {
@@ -53,15 +51,16 @@ function signOut() {
 var currentUser = auth.currentUser;
 
 if (currentUser) {
-	$('#signedInOnly').text('Welcome ' + currentUser.firstName);
-	$('#signedInOnly').append('<button class="btn btn-primary" data-target="#addBook" data-toggle="modal" type="button">Add a Book</button>');
+	$('#greetMember').text('Hey ' + currentUser.firstName +'!');
+	$('#signInButton').remove();
+	$('#footerNav').append('<a onclick="signOut;" return false;><button class="btn btn-primary" type="button">Sign Out</button></a> <button class="btn btn-primary" data-target="#addBook" data-toggle="modal" type="button">Add a Book</button>');
 } else {
 	// No user is signed in.
 }
 
 function addBook() {
 	WeDeploy
-		.data('http://data.gsbc.wedeploy.io')
+		.data('http://data.gsbc.wedeploy.me')
 		.create(
 			'books',
 			 {
@@ -75,48 +74,3 @@ function addBook() {
 			console.log(book);
 		});
 }
-
-$(document).ready(
-	function() {
-		$.tablesorter.addParser(
-			{
-				format: function(str) {
-					var mon = str.match(REGEX_MON);
-					var year = str.match(REGEX_YEAR);
-
-					mon = getMonthFromString(mon);
-
-					str = '01/' + mon + '/' + year;
-					return Date.parse(str);
-				},
-				id: 'mon-yyyy',
-				is: function() {
-					return false;
-				},
-				parsed: false,
-				type: 'numeric'
-			}
-		);
-
-		function getMonthFromString (mon) {
-			return new Date(Date.parse(mon + ' 1, 2017')).getMonth() + 1;
-		}
-
-		$('table').tablesorter(
-				{
-				headers: {
-					2: {
-						sorter: 'mon-yyyy',
-						sortInitialOrder: 'desc'
-					}
-				},
-				theme: 'bootstrap'
-			}
-		);
-
-		$('table').trigger('update');
-
-		$('table').trigger('sorton', [[[2, 1]]]);
-
-	}
-);

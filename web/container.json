@@ -1,9 +1,5 @@
 {
 	"description": "Static hosting for gsbc.com",
-	"env": {
-		"DATABASE_USER": "test",
-		"DATABASE_NAME": "testdb"
-	},
 	"id": "web",
 	"type": "wedeploy/hosting"
 }

@@ -7,22 +7,22 @@
 	<meta name="description" content="">
 	<meta name="author" content="Alex Valencia">
 
-	<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+	<link rel="apple-touch-icon" sizes="57x57" href="img/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="img/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="img/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="img/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="img/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="img/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="img/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
 	<link rel="manifest" href="manifest.json">
 	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+	<meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
 
 	<title>gsbc.com</title>
@@ -39,6 +39,7 @@
 				<div class="col text-center">
 					<h1 class="site-title">Good <span id="stuff">Stuff</span> Book Club</h1>
 					<hr class="my-4">
+					<h2 id="greetMember"></h2>
 					<p>Our book club. Carry your spoon.</p>
 				</div>
 			</div>
@@ -63,36 +64,6 @@
 						</thead>
 						<tbody>
 							<tr>
-								<th scope="row">The Casual Vacancy</th>
-								<td>J.K. Rowling</td>
-								<td>Jan 2013</td>
-								<td>Alex</td>
-							</tr>
-							<tr>
-								<th scope="row">The Last Unicorn</th>
-								<td>Peter S. Beagle</td>
-								<td>Feb 2013</td>
-								<td>Brian</td>
-							</tr>
-							<tr>
-								<th scope="row">The Man Who Mistook His Wife For A Hat</th>
-								<td>Oliver Sacks</td>
-								<td>Mar 2013</td>
-								<td>Leigh</td>
-							</tr>
-							<tr>
-								<th scope="row">Ubik</th>
-								<td>Phillip K. Dick</td>
-								<td>Apr 2013</td>
-								<td>Russell</td>
-							</tr>
-							<tr>
-								<th scope="row">The Witch of Blackbird Pond</th>
-								<td>Elizabeth George Speare</td>
-								<td>May 2013</td>
-								<td>Angela</td>
-							</tr>
-							<tr>
 								<th scope="row">River of Darkness: Francisco Orellana's Legendary Voyage of Death and Discovery Down the Amazon</th>
 								<td>Buddy Levy</td>
 								<td>Jun 2013</td>
@@ -112,7 +83,7 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<form name="signIn" onsubmit="signIn(); return false;">
+					<form name="user" onsubmit="signIn(); return false;">
 						<div class="modal-body">
 							<div class="form-group">
 								<label for="email">Email address</label>
@@ -181,16 +152,20 @@
 		<footer class="container-fluid">
 			<div class="row">
 				<div class="col text-center">
-					<button class="btn btn-primary" data-target="#signInModal" data-toggle="modal" type="button">Sign In</button>
+					<div id="footerNav">
+						<button class="btn btn-primary" data-target="#signInModal" data-toggle="modal" id="signInButton" type="button">Sign In</button>
+					</div>
 				</div>
 			</div>
+		</footer>
 
 		<script src="js/jquery-3.2.1.min.js"></script>
 		<script src="js/jquery.tablesorter.min.js"></script>
 		<script src="js/tether.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/ie10-viewport-bug-workaround.js"></script>
-		<script src="http://cdn.wedeploy.com/api/latest/wedeploy.js"></script>
+		<script src="js/wedeploy.js"></script>
 		<script src="js/main.js"></script>
+		<script src="js/booklist.js"></script>
 	</body>
 </html>

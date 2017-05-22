@@ -5,7 +5,7 @@
 		},
 		"data": true,
 		"description": "Creates a new book.",
-		"method": "POST",
+		"method": "PUT",
 		"parameters": {
 			"author": {
 				"type": "string",
@@ -24,11 +24,11 @@
 				"required": true
 			}
 		},
-		"path": "/books"
+		"path": "/books/*"
 	},
 	{
 		"data": true,
 		"method": "GET",
-		"path": "/books/:bookId"
+		"path": "/books/*"
 	}
 ]
