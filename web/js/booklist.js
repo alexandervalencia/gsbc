@@ -1,5 +1,5 @@
 WeDeploy
-	.data('data.gsbc.wedeploy.me')
+	.data('data.gsbc.wedeploy.io')
 	.get('books')
 	.then(function(movie) {
 		console.log(movie);

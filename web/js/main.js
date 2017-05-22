@@ -1,5 +1,5 @@
 //@ts-check
-var auth = WeDeploy.auth('auth.gsbc.wedeploy.me')
+var auth = WeDeploy.auth('auth.gsbc.wedeploy.io')
 
 var REGEX_MON = /\w{3}/g;
 
@@ -60,7 +60,7 @@ if (currentUser) {
 
 function addBook() {
 	WeDeploy
-		.data('http://data.gsbc.wedeploy.me')
+		.data('http://data.gsbc.wedeploy.io')
 		.create(
 			'books',
 			 {
