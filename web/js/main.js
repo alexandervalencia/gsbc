@@ -64,10 +64,10 @@ function addBook() {
 		.create(
 			'books',
 			 {
-				'author': addBook.author.value,
-				'book': addBook.title.value,
-				'datePicked': addBook.date.value,
-				'pickedBy': addBook.pickedBy.value
+				'author': book.author.value,
+				'book': book.title.value,
+				'datePicked': book.date.value,
+				'pickedBy': book.pickedBy.value
 			}
 		)
 		.then(function(book) {
