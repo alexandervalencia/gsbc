@@ -1,8 +1,8 @@
 WeDeploy
 	.data('data.gsbc.wedeploy.io')
 	.get('books')
-	.then(function(movie) {
-		console.log(movie);
+	.then(function(book) {
+		console.log(book);
 	})
 	.catch(function(error) {
 		console.error(error);

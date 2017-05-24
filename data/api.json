@@ -5,7 +5,7 @@
 		},
 		"data": true,
 		"description": "Creates a new book.",
-		"method": "PUT",
+		"method": ["DELETE", "PATCH", "POST", "PUT"],
 		"parameters": {
 			"author": {
 				"type": "string",
