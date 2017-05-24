@@ -60,7 +60,7 @@ if (currentUser) {
 
 function addBook() {
 	WeDeploy
-		.data('http://data.gsbc.wedeploy.io')
+		.data('data.gsbc.wedeploy.io')
 		.create(
 			'books',
 			 {
