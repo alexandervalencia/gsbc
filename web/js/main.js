@@ -67,6 +67,7 @@ function addBook() {
 				'author': book.author.value,
 				'book': book.title.value,
 				'datePicked': book.date.value,
+				'enteredBy': currentUser,
 				'pickedBy': book.pickedBy.value
 			}
 		)
