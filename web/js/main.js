@@ -58,20 +58,33 @@ if (currentUser) {
 	// No user is signed in.
 }
 
-function addBook() {
+var form = document.querySelector('#book');
+
+form.addEventListener(
+	'submit',
+	function(e) {
+		e.preventDefault();
+
+		var values = {
+			'author': form.author.value,
+			'book': form.title.value,
+			'datePicked': form.datePicked.value,
+			'submittedBy': currentUser,
+			'pickedBy': form.pickedBy.value
+		}
+
 	WeDeploy
 		.data('data.gsbc.wedeploy.io')
-		.create(
-			'books',
-			 {
-				'author': book.author.value,
-				'book': book.title.value,
-				'datePicked': book.datePicked.value,
-				'enteredBy': currentUser,
-				'pickedBy': book.pickedBy.value
+		.create('books', values)
+		.then(
+			function(book) {
+				console.log(book);
 			}
 		)
-		.then(function(book) {
-			console.log(book);
-		});
-}
+		.catch(
+			function(err) {
+				console.error(err);
+			}
+		);
+	}
+);

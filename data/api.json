@@ -19,6 +19,9 @@
 				"type": "string",
 				"required": true
 			},
+			"submittedBy": {
+				"type": "string"
+			},
 			"title": {
 				"type": "string",
 				"required": true
