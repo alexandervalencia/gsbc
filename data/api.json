@@ -8,7 +8,8 @@
 		"method": ["DELETE", "PATCH", "POST", "PUT"],
 		"parameters": {
 			"author": {
-				"type": "string"
+				"type": "string",
+				"required": true
 			},
 			"datePicked": {
 				"type": "string"

@@ -51,7 +51,7 @@ var currentUser = auth.currentUser;
 if (currentUser) {
 	$('#greetMember').text('Hey ' + currentUser.firstName + '!');
 	$('#signInButton').remove();
-	$('#footerNav').append('<a onclick="signOut;" return false;><button class="btn btn-primary" type="button">Sign Out</button></a> <button class="btn btn-primary" data-target="#addBookModal" data-toggle="modal" type="button">Add a Book</button>');
+	$('#footerNav').append('<a onclick="signOut();" return false;><button class="btn btn-primary" type="button">Sign Out</button></a> <button class="btn btn-primary" data-target="#addBookModal" data-toggle="modal" type="button">Add a Book</button>');
 } else {
 	// No user is signed in.
 }
