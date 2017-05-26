@@ -65,7 +65,7 @@ form.addEventListener(
 
 		var values = {
 			'author': form.author.value,
-			'book': form.title.value,
+			'title': form.title.value,
 			'datePicked': form.datePicked.value,
 			'pickedBy': form.pickedBy.value
 		}
