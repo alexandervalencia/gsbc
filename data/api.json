@@ -8,23 +8,19 @@
 		"method": ["DELETE", "PATCH", "POST", "PUT"],
 		"parameters": {
 			"author": {
-				"type": "string",
-				"required": true
+				"type": "string"
 			},
 			"datePicked": {
-				"type": "string",
-				"required": true
+				"type": "string"
 			},
 			"pickedBy": {
-				"type": "string",
-				"required": true
+				"type": "string"
 			},
 			"submittedBy": {
 				"type": "string"
 			},
 			"title": {
-				"type": "string",
-				"required": true
+				"type": "string"
 			}
 		},
 		"path": "/books/*"
