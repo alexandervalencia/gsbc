@@ -12,16 +12,20 @@
 				"required": true
 			},
 			"datePicked": {
-				"type": "string"
+				"type": "string",
+				"required": true
 			},
 			"pickedBy": {
-				"type": "string"
+				"type": "string",
+				"required": true
 			},
 			"submittedBy": {
-				"type": "string"
+				"type": "string",
+				"required": true
 			},
 			"title": {
-				"type": "string"
+				"type": "string",
+				"required": true
 			}
 		},
 		"path": "/books/*"
