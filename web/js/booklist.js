@@ -1,12 +1,44 @@
+var bookList = {
+	_init: function() {
+
+	},
+
+	_formatBooks: function(books) {
+
+	},
+
+	_getBookData: function() {
+		var instance = this;
+
+		WeDeploy
+			.data('data.gsbc.wedeploy.io')
+			.get('books')
+			.then(
+				function(books) {
+					instance._formatBooks(books);
+				}
+			)
+			.catch(
+				function(error) {
+					console.error(error);
+				}
+			);
+	}
+}
+
 WeDeploy
 	.data('data.gsbc.wedeploy.io')
 	.get('books')
-	.then(function(book) {
-		console.log(book);
-	})
-	.catch(function(error) {
-		console.error(error);
-	});
+	.then(
+		function(books) {
+			console.log(books);
+		}
+	)
+	.catch(
+		function(error) {
+			console.error(error);
+		}
+	);
 
 $(document).ready(
 	function() {
