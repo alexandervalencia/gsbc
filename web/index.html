@@ -16,7 +16,7 @@
 	<link rel="apple-touch-icon" sizes="144x144" href="img/apple-icon-144x144.png">
 	<link rel="apple-touch-icon" sizes="152x152" href="img/apple-icon-152x152.png">
 	<link rel="apple-touch-icon" sizes="180x180" href="img/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="img/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="img/android-icon-192x192.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
@@ -30,6 +30,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:900i|Raleway:400,700" rel="stylesheet">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/theme.bootstrap_4.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/main.css" rel="stylesheet">
 	</head>
 
@@ -39,8 +40,8 @@
 				<div class="col text-center">
 					<h1 class="site-title">Good <span id="stuff">Stuff</span> Book Club</h1>
 					<hr class="my-4">
-					<h2 id="greetMember"></h2>
 					<p>Our book club. Carry your spoon.</p>
+					<h2 id="greetMember"></h2>
 				</div>
 			</div>
 			<div class="row">
@@ -53,22 +54,27 @@
 		<section class="container main">
 			<div class="row">
 				<div class="col">
-					<table class="table table-hover" id="book-list">
+					<h2>The Bookshelf:</h2>
+				</div>
+				<div class="col col-edit">
+					<span class="edit" id="edit">
+						<a href="javascript;">Edit Bookshelf</a>
+					</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<table class="table table-hover" id="book-table">
 						<thead class="thead">
 							<tr>
-								<th>Book</th>
+								<th>Book Title</th>
 								<th>Author</th>
 								<th>Date Read</th>
 								<th>Picked By</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">River of Darkness: Francisco Orellana's Legendary Voyage of Death and Discovery Down the Amazon</th>
-								<td>Buddy Levy</td>
-								<td>Jun 2013</td>
-								<td>John</td>
-							</tr>
+						<tbody id="book-list">
+
 						</tbody>
 					</table>
 				</div>
@@ -111,7 +117,7 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<form id="book" name="book">
+					<form id="book" name="book" onsubmit="addBook(); return false;">
 						<div class="modal-body">
 							<div class="form-group">
 								<label for="title">Book</label>
@@ -122,12 +128,32 @@
 								<input class="form-control" id="author" name="author" placeholder="" required type="text">
 							</div>
 							<div class="form-group">
-								<label for="datePicked">Date Read</label>
-								<input class="form-control" id="datePicked" name="datePicked" placeholder="" required type="text">
+								<label for="monthPicked" id="dateRead">Date Read</label>
+								<select class="form-control" id="monthPicked" name="monthPicked" placeholder="" required>
+									<option>Jan</option>
+									<option>Feb</option>
+									<option>Mar</option>
+									<option>Apr</option>
+									<option>May</option>
+									<option>Jun</option>
+									<option>Jul</option>
+									<option>Aug</option>
+									<option>Sep</option>
+									<option>Oct</option>
+									<option>Nov</option>
+									<option>Dec</option>
+								</select>
+								<select class="form-control" id="yearPicked" name="yearPicked" placeholder="" required>
+									<option>2013</option>
+									<option>2014</option>
+									<option>2015</option>
+									<option>2016</option>
+									<option>2017</option>
+								</select>
 							</div>
 							<div class="form-group">
 								<label for="pickedBy">Picked By</label>
-								<select class="form-control" id="pickedBy" name="pickedBy">
+								<select class="form-control" id="pickedBy" name="pickedBy" required>
 									<option>Alex</option>
 									<option>Angela</option>
 									<option>Brian</option>

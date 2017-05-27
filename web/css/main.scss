@@ -25,6 +25,8 @@ $color-complement-2: #FFAA5B;
 $color-complement-3: #CA6A12;
 $color-complement-4: #A14F03;
 
+$color-danger: #E33243;
+
 $font-body: 'Raleway', sans-serif;
 $font-headline: 'Playfair Display', serif;
 
@@ -46,15 +48,71 @@ h1, h2, h3, h4, h5, h6 {
 	color: $color-primary-0;
 }
 
-.main {
-	min-height: 80vh;
-}
-
 .card.card-create-member {
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 	margin: 0 auto;
 	margin-top: 80px;
 	max-width: 400px;
+}
+
+#monthPicked, #yearPicked {
+	display: inline-block;
+	width: 49%;
+}
+
+.col-edit {
+	align-items: flex-end;
+	display: flex;
+	justify-content: flex-end;
+}
+.edit {
+	opacity: 0;
+	transition: opacity 300ms;
+
+	&:hover {
+		opacity: 1;
+	}
+
+	a {
+		color: $color-primary-1;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+#book-table {
+	&.table thead th {
+		white-space: nowrap;
+	}
+
+	#dateRead {
+		display: block;
+	}
+
+	.form-controls {
+		display: initial;
+		right: -25px;
+		position: absolute;
+
+		&.hidden {
+			display: none;
+		}
+
+		a {
+			color: desaturate($color-primary-1, 50%);
+		}
+
+		.book-remove:hover {
+			color: $color-danger;
+		}
+
+		.book-edit:hover {
+			color: $color-complement-0;
+		}
+	}
 }
 
 .btn.btn-primary {
