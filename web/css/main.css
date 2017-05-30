@@ -74,7 +74,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #8f8f8f;
 }
 
-#book-table .form-controls .book-remove:hover {
+#book-table .form-controls .book-delete:hover {
   color: #E33243;
 }
 

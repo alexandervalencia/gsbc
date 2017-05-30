@@ -1,14 +1,58 @@
 (function() {
+	var DATA = 	WeDeploy.data('http://data.gsbc.wedeploy.io');
+
 	var bookList = {
 		initializer: function() {
-			this._getBookData();
+			var instance = this;
+
+			instance._getBookData();
 		},
 
 		renderUI: function() {
 
 		},
 
+		_deleteBook: function(book) {
+			console.log(book.id);
+			var d = confirm('Are you sure you want to remove ' + book.title + ' from The Bookshelf?');
+			if (d) {
+				DATA.delete('books/'+ book.id);
+			}
+		},
+
+		_editBook: function(book) {
+			var instance = this;
+
+			$(document).on(
+				'click',
+				'.book-edit',
+				function(event) {
+					event.preventDefault();
+
+					var span = $(this).closest('span');
+					var td = span.closest('td');
+					var author = td.siblings('.author').text();
+
+					DATA.get('books')
+						.then(
+							function(results) {
+								results.forEach(
+									function(data) {
+										if (data.author === author) {
+											console.log(`It's a match! ${data.author} === ${instance.author}`)
+										}
+									}
+								)
+							}
+						)
+					;
+				}
+			);
+		},
+
 		_formatBooks: function(books, cb) {
+			var instance = this;
+
 			var fragment = document.createDocumentFragment();
 			var table = document.querySelector('#book-list');
 
@@ -16,12 +60,12 @@
 				function(book) {
 					let tr = document.createElement("tr");
 					tr.innerHTML = `<th scope="row">${book.title}</th>
-					<td>${book.author}</td>
+					<td class="author">${book.author}</td>
 					<td>${book.datePicked}</td>
 					<td>${book.pickedBy}
 						<span class="form-controls hidden">
-							<a href="javascript;"><i class="fa fa-minus-square book-remove" aria-hidden="true"></i></a>
-							 <a href="javascript;"><i class="fa fa-pencil-square-o book-edit" aria-hidden="true"></i></a>
+							<a href="javascript;"><i class="fa fa-minus-square book-delete" aria-hidden="true"></i></a>
+							<a href="javascript;"> <i class="fa fa-pencil-square-o book-edit" aria-hidden="true"></i></a>
 						</span>
 					</td>`;
 
@@ -31,7 +75,7 @@
 
 			table.appendChild(fragment);
 
-			this._toggleControls();
+			instance._toggleControls();
 
 			cb();
 		},
@@ -39,12 +83,9 @@
 		_getBookData: function() {
 			var instance = this;
 
-			WeDeploy
-				.data('data.gsbc.wedeploy.io')
-				.get('books')
+			DATA.get('books')
 				.then(
 					function(books) {
-						console.log(books);
 						instance._formatBooks(books, instance._sortTable);
 					}
 				)
@@ -52,7 +93,62 @@
 					function(error) {
 						console.error(error);
 					}
-				);
+				)
+			;
+		},
+
+		_getBookToDelete: function(book) {
+			var instance = this;
+
+			$(document).on(
+				'click',
+				'.book-delete',
+				function(event) {
+					event.preventDefault();
+
+					var span = $(this).closest('span');
+					var td = span.closest('td');
+					var author = td.siblings('.author').text();
+
+
+					DATA.get('books')
+						.then(function(results) {
+							results.forEach(function(data) {
+								if (data.author === author) {
+									instance._deleteBook(data);
+								}
+							})
+						})
+					;
+				}
+			)
+		},
+
+		_getBookToEdit: function(book) {
+			var instance = this;
+
+			$(document).on(
+				'click',
+				'.book-delete',
+				function(event) {
+					event.preventDefault();
+
+					var span = $(this).closest('span');
+					var td = span.closest('td');
+					var author = td.siblings('.author').text();
+
+
+					DATA.get('books')
+						.then(function(results) {
+							results.forEach(function(data) {
+								if (data.author === author) {
+									instance._editBook(data);
+								}
+							})
+						})
+					;
+				}
+			)
 		},
 
 		_sortTable: function() {
@@ -98,15 +194,20 @@
 		},
 
 		_toggleControls: function() {
+			var instance = this;
+
 			var edit = $('.edit');
 
 			edit.click(
-				(event) =>{
+				(event) => {
 					event.preventDefault();
 
 					$('.form-controls').toggleClass('hidden');
 				}
 			)
+
+			instance._getBookToDelete();
+			instance._getBookToEdit();
 		}
 	}
 

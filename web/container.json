@@ -1,5 +1,5 @@
 {
 	"description": "Static hosting for gsbc.com",
 	"id": "web",
-	"type": "wedeploy/hosting"
+	"type": "wedeploy/hosting:latest"
 }
