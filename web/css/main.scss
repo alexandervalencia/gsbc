@@ -48,6 +48,11 @@ h1, h2, h3, h4, h5, h6 {
 	color: $color-primary-0;
 }
 
+.main {
+	min-height: 50vh;
+	padding-bottom: 66px;
+}
+
 .card.card-create-member {
 	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 	margin: 0 auto;
@@ -55,9 +60,15 @@ h1, h2, h3, h4, h5, h6 {
 	max-width: 400px;
 }
 
-#monthPicked, #yearPicked {
-	display: inline-block;
-	width: 49%;
+#addBookModal {
+	#monthPicked, #yearPicked {
+		display: inline-block;
+		width: 49%;
+	}
+
+	#dateRead {
+		display: block;
+	}
 }
 
 .col-edit {
@@ -86,10 +97,6 @@ h1, h2, h3, h4, h5, h6 {
 #book-table {
 	&.table thead th {
 		white-space: nowrap;
-	}
-
-	#dateRead {
-		display: block;
 	}
 
 	.form-controls {

@@ -48,9 +48,11 @@ function signIn() {
 
 function signOut() {
 	auth.signOut()
-		.then(() => {
-			document.location.href = '/';
-		});
+		.then(
+			function() {
+				document.location.href = '/';
+			}
+		);
 }
 
 var currentUser = auth.currentUser;
@@ -67,13 +69,17 @@ if (currentUser) {
 		</a>`
 	);
 
-	//$('.edit').innerHTML = `<a href="javascript;">Edit Bookshelf</a>`;
+	$('.edit').html('<a href="javascript;">Edit Bookshelf</a>');
 
 	var stuff = $('#stuff');
 
 	stuff.hover(
-		() => stuff.text('Shit'),
-		() => stuff.text('Stuff')
+		function() {
+			stuff.text('Shit')
+		},
+		function() {
+			stuff.text('Stuff')
+		}
 	);
 
 } else {
@@ -96,7 +102,7 @@ function addBook() {
 		.then(
 			function(results) {
 				book.reset();
-				document.location.href = "/"
+				$('#addBookModalClose').click();
 			}
 		)
 		.catch(
