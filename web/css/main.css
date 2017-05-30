@@ -1,3 +1,24 @@
+@font-face {
+  font-family: 'Playfair Display';
+  src: url("../fonts/playfairdisplay-blackitalic-webfont.woff2") format("woff2"), url("../fonts/playfairdisplay-blackitalic-webfont.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("../fonts/raleway-bold-webfont.woff2") format("woff2"), url("../fonts/raleway-bold-webfont.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url("../fonts/raleway-regular-webfont.woff2") format("woff2"), url("../fonts/raleway-regular-webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
   background-color: #FFF;
   color: #333;
@@ -61,6 +82,19 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
 }
 
+td.inline-dates {
+  width: 20%;
+}
+
+td.inline-author {
+  width: 20%;
+}
+
+.inline-month, .inline-year {
+  width: 38%;
+  display: inline-block;
+}
+
 #book-table.table thead th {
   white-space: nowrap;
 }
@@ -102,6 +136,11 @@ h1, h2, h3, h4, h5, h6 {
 .btn.btn-primary:hover:active {
   border-width: 0;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.19), 0 1px 2px rgba(0, 0, 0, 0.23);
+}
+
+.btn.btn-primary.btn-save {
+  position: absolute;
+  right: -40px;
 }
 
 footer.container-fluid {

@@ -1,15 +1,11 @@
 (function() {
-	var DATA = 	WeDeploy.data('http://data.gsbc.wedeploy.io');
+	var DATA = WeDeploy.data('http://data.gsbc.wedeploy.io');
 
 	var bookList = {
 		initializer: function() {
 			var instance = this;
 
 			instance._getBookData();
-		},
-
-		renderUI: function() {
-
 		},
 
 		_deleteBook: function(book, row) {
@@ -22,8 +18,117 @@
 			}
 		},
 
-		_editBook: function(book) {
+		_formatOptions: function(data) {
 			var instance = this;
+
+			var months = instance._formatMonths(data);
+			var pickedBy = instance._formatPickedBy(data);
+			var years = instance._formatYears(data);
+
+			return {
+				months: months,
+				pickedBy: pickedBy,
+				years: years
+			}
+
+		},
+
+		_formatMonths: function(data) {
+			var instance = this;
+
+			var mon = data.datePicked.slice(0, 3);
+			var monthArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+			var months = [];
+
+			for (var i = 0; i < monthArray.length; i++) {
+				if (monthArray[i] === mon) {
+					months.push('<option selected>' + monthArray[i] + '</option>')
+				}
+				else {
+					months.push('<option>' + monthArray[i] + '</options>')
+				}
+			}
+
+			return months.join('\n');
+		},
+
+		_formatPickedBy: function(data) {
+			var instance = this;
+
+			var pickArray = ['Alex', 'Angela', 'Brian', 'Dan', 'John', 'Leigh', 'Kelly', 'Kelsey', 'Russell', 'Group'];
+			var pickedBy = [];
+
+			for (var i = 0; i < pickArray.length; i++) {
+				if (pickArray[i] === data.pickedBy) {
+					pickedBy.push('<option selected>' + pickArray[i] + '</option>')
+				}
+				else {
+					pickedBy.push('<option>' + pickArray[i] + '</option>')
+				}
+			}
+
+			return pickedBy.join('\n')
+		},
+
+		_formatYears: function(data) {
+			var instance = this;
+
+			var year = data.datePicked.slice(4, 8);
+			var yearArray = ['2013', '2014', '2015', '2016', '2017']
+			var years = [];
+
+			for (var i = 0; i < yearArray.length; i++) {
+				if (yearArray[i] === year) {
+					years.push('<option selected>' + yearArray[i] + '</option>')
+				}
+				else {
+					years.push('<option>' + yearArray[i] + '</options>')
+				}
+			}
+
+			return years.join('\n')
+		},
+
+		_editBook: function(book, row) {
+			var instance = this;
+
+			var options = instance._formatOptions(book)
+
+			var editBookForm = `<tr>
+				<td>
+					<input type="hidden" name="id" value="${book.id}">
+					<input type="textarea" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineTitle" name="title" placeholder="${book.title}" rows="2" value="${book.title}">
+				</td>
+				<td>
+					<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineAuthor" name="author" placeholder="${book.author}" value="${book.author}">
+				</td>
+				<td class="inline-dates">
+					<select class="form-control mb-2 mr-sm-2 mb-sm-0 inline-month" id="inlineMonth" name="monthPicked" required>
+						${options.months}
+					</select>
+					<select class="form-control mb-2 mr-sm-2 mb-sm-0 inline-year" id="inlineYear" name="yearPicked" required>
+						${options.years}
+					</select>
+				</td>
+				<td>
+					<select class="form-control mb-2 mr-sm-2 mb-sm-0" id="pickedBy" name="pickedBy" required>
+						${options.pickedBy}
+					</select>
+				</td>
+				<td>
+					<button type="submit" class="btn btn-primary btn-save">Save</button>
+				</td>
+			</tr>`;
+
+			$(row).replaceWith(editBookForm);
+
+			$('#editBook').submit(
+				function(event) {
+					event.preventDefault();
+
+					instance._saveBook(row);
+				}
+			);
 		},
 
 		_getBookData: function() {
@@ -58,7 +163,6 @@
 					var author = td.siblings('.author').text();
 					var tr = td.closest('tr');
 
-
 					DATA.get('books')
 						.then(function(results) {
 							results.forEach(function(data) {
@@ -77,20 +181,20 @@
 
 			$(document).on(
 				'click',
-				'.book-delete',
+				'.book-edit',
 				function(event) {
 					event.preventDefault();
 
 					var span = $(this).closest('span');
 					var td = span.closest('td');
 					var author = td.siblings('.author').text();
-
+					var tr = td.closest('tr');
 
 					DATA.get('books')
 						.then(function(results) {
 							results.forEach(function(data) {
 								if (data.author === author) {
-									instance._editBook(data);
+									instance._editBook(data, tr);
 								}
 							})
 						})
@@ -113,7 +217,8 @@
 					tr.innerHTML = `<th scope="row">${book.title}</th>
 					<td class="author">${book.author}</td>
 					<td>${book.datePicked}</td>
-					<td>${book.pickedBy}
+					<td>${book.pickedBy}</td>
+					<td>
 						<span class="form-controls hidden">
 							<a href="javascript;"><i class="fa fa-minus-square book-delete" aria-hidden="true"></i></a>
 							<a href="javascript;"> <i class="fa fa-pencil-square-o book-edit" aria-hidden="true"></i></a>
@@ -129,6 +234,35 @@
 			instance._toggleControls();
 
 			cb();
+		},
+
+		_saveBook: function(row) {
+			var instance = this;
+
+			var date = new Date();
+			var updatedOn = date.getFullYear() + '-' + (date.getMonth() + 1 ) + '-'+ date.getDate();
+
+
+			DATA.update(('books/' + editBook.id.value),
+				{
+					'title': editBook.title.value,
+					'author': editBook.author.value,
+					'datePicked': (editBook.monthPicked.value + ' ' + editBook.yearPicked.value),
+					'pickedBy': editBook.pickedBy.value,
+					'lastUpdatedBy': currentUser.firstName,
+					'updatedOn': updatedOn
+				}
+			)
+			.then(
+				function(result) {
+					$(row).remove();
+				}
+			)
+			.catch(
+				function(err) {
+					console.error(err);
+				}
+			);
 		},
 
 		_sortTable: function() {
@@ -179,7 +313,7 @@
 			var edit = $('.edit');
 
 			edit.click(
-				function (event) {
+				function(event) {
 					event.preventDefault();
 
 					$('.form-controls').toggleClass('hidden');
