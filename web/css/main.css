@@ -2,7 +2,7 @@
   font-family: 'Playfair Display';
   src: url("../fonts/playfairdisplay-blackitalic-webfont.woff2") format("woff2"), url("../fonts/playfairdisplay-blackitalic-webfont.woff") format("woff");
   font-weight: 900;
-  font-style: italic;
+  font-style: normal;
 }
 
 @font-face {
