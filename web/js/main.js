@@ -73,18 +73,6 @@ if (currentUser) {
 	);
 
 	$('.edit').html('<a href="javascript;">Edit Bookshelf</a>');
-	
-	var stuff = $('#stuff');
-
-	stuff.hover(
-		function() {
-			stuff.text('Shit')
-		},
-		function() {
-			stuff.text('Stuff')
-		}
-	);
-	
 } else {
 	// No user is signed in.
 }
