@@ -6,7 +6,7 @@
 		initializer: function() {
 			var instance = this;
 
-			instance._table = document.querySelector('#book-list');
+			instance.table = document.querySelector('#book-list');
 
 			instance._renderUI();
 			instance._bindUI();
@@ -18,6 +18,7 @@
 			DATA.get('books')
 				.then(
 					function(books) {
+						instance.masterBookshelf = books;
 						instance._renderPickList(books);
 						instance._renderBookshelf(books);
 					}
@@ -61,7 +62,8 @@
 			.then(
 				function(newBook) {
 					book.reset();
-					instance._prependBook(newBook)
+					instance._prependBook(newBook);
+					instance._refreshPickList(newBook.pickedBy);
 					$('#addBookModalClose').click();
 				}
 			)
@@ -154,7 +156,6 @@
 				pickedBy: pickedBy,
 				years: years
 			}
-
 		},
 
 		_formatMonths: function(data) {
@@ -194,6 +195,22 @@
 			return pickedBy.join('\n')
 		},
 
+		_formatPickList: function(array) {
+			var index = array.indexOf('Group');
+
+			if (index > -1) {
+				array.splice(index, 1);
+			}
+
+			index = array.indexOf('Russell');
+
+			if (index > -1) {
+				array.splice(index, 1);
+			}
+
+			return array
+		},
+
 		_formatYears: function(data) {
 			var instance = this;
 
@@ -223,19 +240,22 @@
 				function(event) {
 					event.preventDefault();
 
-					var span = $(this).closest('span');
-					var td = span.closest('td');
+					var td = $(this).closest('span').closest('td');;
 					var author = td.siblings('.author').text();
 					var tr = td.closest('tr');
 
 					DATA.get('books')
-						.then(function(results) {
-							results.forEach(function(data) {
-								if (data.author === author) {
-									instance._deleteBook(data, tr);
-								}
-							})
-						})
+						.then(
+							function(results) {
+								results.forEach(
+									function(data) {
+										if (data.author === author) {
+											instance._deleteBook(data, tr);
+										}
+									}
+								)
+							}
+						)
 					;
 				}
 			)
@@ -250,8 +270,7 @@
 				function(event) {
 					event.preventDefault();
 
-					var span = $(this).closest('span');
-					var td = span.closest('td');
+					var td = $(this).closest('span').closest('td');;
 					var author = td.siblings('.author').text();
 					var tr = td.closest('tr');
 
@@ -268,10 +287,35 @@
 			)
 		},
 
+		_getPickList: function(callback) {
+			var instance = this;
+
+			DATA.get('members')
+				.then(
+					function(lists) {
+						instance.masterPickList = lists[0].masterList.sort();
+						instance.pickAvailable = instance._formatPickList(lists[0].pickAvailable.sort());
+						instance.pickUnavailable = lists[0].pickUnavailable;
+
+						if (instance.pickUnavailable.length > 0) {
+							instance.pickUnavailable = instance.pickUnavailable.sort();
+						}
+
+						callback(instance.pickAvailable);
+					}
+				)
+				.catch(
+					function(err) {
+						console.error(err);
+					}
+				)
+			;
+		},
+
 		_prependBook: function(book) {
 			var instance = this;
 
-			instance._table.prepend(instance._createBookRow(book));
+			instance.table.prepend(instance._createBookRow(book));
 
 			$('table').trigger('sortReset');
 		},
@@ -290,33 +334,49 @@
 				}
 			);
 
-			instance._table.appendChild(fragment);
+			instance.table.appendChild(fragment);
 
 			instance._toggleControls();
 
 			instance._sortTable();
 		},
 
-		_renderPickList: function(books) {
+		_refreshAvailableList: function(picker) {
 			var instance = this;
 
-			var pickList = books.map(
-				function(book) {
-					return book.pickedBy;
-				}
-			)
+			var availableList = instance.pickAvailable;
 
-			DATA.create(
+			var index = availableList.indexOf(picker);
+
+			if (index > -1) {
+				availableList.splice(index, 1);
+			}
+
+			return availableList;
+		},
+
+		_refreshPickList: function(picker) {
+			var instance = this;
+
+			// var newPickAvailable = instance._refreshAvailableList(picker);
+			// var newPickUnavailable = instance._refreshUnavailableList(picker);
+
+			DATA.create('members', {
+					'masterPickList': ['Alex', 'Angela', 'Brian', 'Dan', 'Group', 'John', 'Kelly', 'Kelsey', 'Leigh', 'Russell'],
+					'pickAvailable': ['Alex', 'Angela', 'Brian', 'Dan', 'Group', 'John', 'Kelly', 'Kelsey', 'Leigh', 'Russell'],
+					'pickUnavailable': []
+			}).then(function(res) {console.log(res)});
+/*
+			DATA.update(
 				'members',
 				{
-					masterList: pickList,
-					pickAvailable: pickList,
-					pickUnavailable: '',
+					'pickAvailable': newPickAvailable,
+					'pickUnavailable': newPickUnavailable
 				}
 			)
 			.then(
-				function(lists) {
-					console.log(lists);
+				function() {
+					// instance._renderPickList();
 				}
 			)
 			.catch(
@@ -324,6 +384,33 @@
 					console.error(err);
 				}
 			);
+*/
+		},
+
+		_refreshUnavailableList: function(picker) {
+			var instance = this;
+
+			var unavailable = []
+
+			unavailable.push(picker);
+
+			unavailable.sort();
+
+			return unavailable;
+		},
+
+		_renderPickList: function() {
+			var instance = this;
+/*
+			instance._getPickList(
+				function(pickers) {
+					pickers = pickers.join(', ')
+
+					$('#pickAvailable').text(pickers);
+				}
+			);
+*/
+					instance._refreshPickList();
 		},
 
 		_renderSavedBookRow: function(book) {
