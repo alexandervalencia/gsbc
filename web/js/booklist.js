@@ -293,7 +293,7 @@
 			DATA.get('members')
 				.then(
 					function(lists) {
-						instance.masterPickList = lists[0].masterList.sort();
+						instance.masterPickList = lists[0].masterPickList.sort();
 						instance.pickAvailable = instance._formatPickList(lists[0].pickAvailable.sort());
 						instance.pickUnavailable = lists[0].pickUnavailable;
 
@@ -358,15 +358,10 @@
 		_refreshPickList: function(picker) {
 			var instance = this;
 
-			// var newPickAvailable = instance._refreshAvailableList(picker);
-			// var newPickUnavailable = instance._refreshUnavailableList(picker);
+			var newPickAvailable = instance._refreshAvailableList(picker);
+			var newPickUnavailable = instance._refreshUnavailableList(picker);
 
-			DATA.create('members', {
-					'masterPickList': ['Alex', 'Angela', 'Brian', 'Dan', 'Group', 'John', 'Kelly', 'Kelsey', 'Leigh', 'Russell'],
-					'pickAvailable': ['Alex', 'Angela', 'Brian', 'Dan', 'Group', 'John', 'Kelly', 'Kelsey', 'Leigh', 'Russell'],
-					'pickUnavailable': []
-			}).then(function(res) {console.log(res)});
-/*
+
 			DATA.update(
 				'members',
 				{
@@ -384,7 +379,6 @@
 					console.error(err);
 				}
 			);
-*/
 		},
 
 		_refreshUnavailableList: function(picker) {
@@ -392,7 +386,9 @@
 
 			var unavailable = []
 
-			unavailable.push(picker);
+			if (picker) {
+				unavailable.push(picker);
+			}
 
 			unavailable.sort();
 
@@ -401,16 +397,15 @@
 
 		_renderPickList: function() {
 			var instance = this;
-/*
+
 			instance._getPickList(
 				function(pickers) {
 					pickers = pickers.join(', ')
 
 					$('#pickAvailable').text(pickers);
+					instance._refreshPickList('Alex');
 				}
 			);
-*/
-					instance._refreshPickList();
 		},
 
 		_renderSavedBookRow: function(book) {
