@@ -63,44 +63,33 @@ var currentUser = AUTH.currentUser;
 if (currentUser) {
 	$('#greetMember').text('Hey ' + currentUser.firstName + '!');
 
-	$('#signInButton').remove();
-
-	$('#footerNav').append(
-		`<button class="btn btn-primary" data-target="#addBookModal" data-toggle="modal" type="button">Add a Book</button>
-		<a onclick="signOut();" return false;>
-			<button class="btn btn-primary" type="button">Sign Out</button>
-		</a>`
+	$('#controlMenu').replaceWith(`<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="javascript:;" id="controlMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				${currentUser.firstName}
+			</a>
+			<div class="dropdown-menu" aria-labelledby="controlMenu">
+				<a class="dropdown-item" data-target="#addBookModal" data-toggle="modal" href="javascript:;"><i class="fa fa-plus fa-fw"></i> Add a Book</a>
+				<a class="dropdown-item" href="javascript:;"><i class="fa fa-sign-out fa-fw"></i> Sign Out</a>
+			</div>
+		</li>`
 	);
+
+	(function easterEgg() {
+		var stuff = $('#stuff');
+
+		stuff.hover(
+			function() {
+				stuff.text('Shit ')
+			},
+			function() {
+				stuff.text('Stuff')
+			}
+		);
+	})();
+
+
 
 	$('.edit').html('<a href="javascript;">Edit Bookshelf</a>');
 } else {
 	// No user is signed in.
-}
-
-function addBook() {
-	var date = new Date();
-	var createdOn = date.getFullYear() + '-' + (date.getMonth() + 1 ) + '-'+ date.getDate();
-
-	DATA.create(
-		'books',
-		{
-			'author': book.author.value,
-			'title': book.title.value,
-			'datePicked': (book.monthPicked.value + ' ' + book.yearPicked.value),
-			'pickedBy': book.pickedBy.value,
-			'submittedBy': currentUser.firstName,
-			'createdOn': createdOn
-		}
-	)
-	.then(
-		function(results) {
-			book.reset();
-			$('#addBookModalClose').click();
-		}
-	)
-	.catch(
-		function(err) {
-			console.error(err);
-		}
-	);
 }

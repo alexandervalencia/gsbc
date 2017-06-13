@@ -59,5 +59,51 @@
 		"data": true,
 		"method": "GET",
 		"path": "/books/*"
+	},
+	{
+		"auth": {
+			"validator": "$auth != null"
+		},
+		"data": true,
+		"description": "Member list for picking purposes.",
+		"method": ["POST"],
+		"parameters": {
+			"masterList": {
+				"type": "array",
+				"required": true
+			},
+			"pickAvailable": {
+				"type": "array"
+			},
+			"pickUnavailable": {
+				"type": "array"
+			}
+		},
+		"path": "/members/*"
+	},
+	{
+		"auth": {
+			"validator": "$auth != null"
+		},
+		"data": true,
+		"description": "Member list for picking purposes.",
+		"method": ["DELETE", "PATCH", "PUT"],
+		"parameters": {
+			"masterList": {
+				"type": "array"
+			},
+			"pickAvailable": {
+				"type": "array"
+			},
+			"pickUnavailable": {
+				"type": "array"
+			}
+		},
+		"path": "/members/*"
+	},
+	{
+		"data": true,
+		"method": "GET",
+		"path": "/members/*"
 	}
 ]
