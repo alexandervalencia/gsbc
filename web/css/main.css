@@ -31,6 +31,8 @@ h1, h2, h3, h4, h5, h6 {
 
 nav.bg-gsbc {
   background-color: #228390;
+  padding-bottom: 0;
+  padding-top: 20px;
 }
 
 nav button:focus {
@@ -59,9 +61,31 @@ nav .nav-item .dropdown-menu {
   right: 0;
 }
 
+nav .nav-item .nav-link {
+  padding-bottom: 0.6em;
+}
+
+nav .nav-item .nav-link > h1 {
+  line-height: 0.6em;
+}
+
+.tagline {
+  background-color: #228390;
+  color: #FFF;
+  padding-bottom: 0.5em;
+}
+
 #stuff {
   display: inline-block;
   min-width: 92px;
+}
+
+#picklist {
+  display: inline-block;
+}
+
+#pickAvailable {
+  padding-left: 12px;
 }
 
 .header {
@@ -99,15 +123,6 @@ nav .nav-item .dropdown-menu {
   justify-content: flex-end;
 }
 
-.edit {
-  opacity: 0;
-  transition: opacity 300ms;
-}
-
-.edit:hover {
-  opacity: 1;
-}
-
 .edit a {
   color: #62B1BB;
   text-decoration: none;
@@ -115,6 +130,11 @@ nav .nav-item .dropdown-menu {
 
 .edit a:hover {
   text-decoration: none;
+}
+
+.edit .dropdown-menu {
+  left: initial;
+  right: 0;
 }
 
 td.inline-dates {

@@ -73,6 +73,8 @@ h1, h2, h3, h4, h5, h6 {
 nav {
 	&.bg-gsbc {
 		background-color: $primary;
+		padding-bottom: 0;
+		padding-top: 20px;
 	}
 
 	button:focus {
@@ -101,12 +103,34 @@ nav {
 			left: initial;
 			right: 0;
 		}
+
+		.nav-link {
+			padding-bottom: 0.6em;
+
+			> h1 {
+				line-height: 0.6em;
+			}
+		}
 	}
+}
+
+.tagline {
+	background-color: $primary;
+	color: #FFF;
+	padding-bottom: 0.5em;
 }
 
 #stuff {
 	display: inline-block;
 	min-width: 92px;
+}
+
+#picklist {
+	display: inline-block;
+}
+
+#pickAvailable {
+	padding-left: 12px;
 }
 
 .header {
@@ -146,13 +170,6 @@ nav {
 	justify-content: flex-end;
 }
 .edit {
-	opacity: 0;
-	transition: opacity 300ms;
-
-	&:hover {
-		opacity: 1;
-	}
-
 	a {
 		color: $blueAccent;
 		text-decoration: none;
@@ -160,6 +177,11 @@ nav {
 		&:hover {
 			text-decoration: none;
 		}
+	}
+
+	.dropdown-menu {
+		left: initial;
+		right: 0;
 	}
 }
 

@@ -92,6 +92,22 @@
 			return tr
 		},
 
+		_createYearArray: function() {
+			var instance = this;
+
+			var end = new Date().getFullYear();
+			var start = 2013;
+			var yearArray = []
+
+			var i = start;
+
+			for (i; i <= end; i++) {
+				yearArray.push(i);
+			}
+
+			return yearArray;
+		},
+
 		_deleteBook: function(book, row) {
 			var d = confirm(`Are you sure you want to remove ${book.title} from The Bookshelf?`);
 
@@ -215,7 +231,7 @@
 			var instance = this;
 
 			var yearSelected = data.datePicked.slice(4, 8);
-			var yearArray = ['2013', '2014', '2015', '2016', '2017']
+			var yearArray = instance._createYearArray();
 
 			var years = yearArray.map(
 				function(year, index) {
@@ -275,13 +291,17 @@
 					var tr = td.closest('tr');
 
 					DATA.get('books')
-						.then(function(results) {
-							results.forEach(function(data) {
-								if (data.author === author) {
-									instance._editBook(data, tr);
-								}
-							})
-						})
+						.then(
+							function(results) {
+								results.forEach(
+									function(data) {
+										if (data.author === author) {
+											instance._editBook(data, tr);
+										}
+									}
+								)
+							}
+						)
 					;
 				}
 			)
@@ -352,26 +372,31 @@
 				availableList.splice(index, 1);
 			}
 
-			return availableList;
+			if (availableList.length == 0) {
+				return instance._resetAvailablelist();
+			}
+			else {
+				return availableList;
+			}
 		},
 
 		_refreshPickList: function(picker) {
 			var instance = this;
 
-			var newPickAvailable = instance._refreshAvailableList(picker);
-			var newPickUnavailable = instance._refreshUnavailableList(picker);
+			instance.pickAvailable = instance._refreshAvailableList(picker);
+			instance.pickUnavailable = instance._refreshUnavailableList(picker);
 
 
 			DATA.update(
 				'members',
 				{
-					'pickAvailable': newPickAvailable,
-					'pickUnavailable': newPickUnavailable
+					'pickAvailable': instance.pickAvailable,
+					'pickUnavailable': instance.pickUnavailable
 				}
 			)
 			.then(
 				function() {
-					// instance._renderPickList();
+					instance._renderPickList();
 				}
 			)
 			.catch(
@@ -403,7 +428,6 @@
 					pickers = pickers.join(', ')
 
 					$('#pickAvailable').text(pickers);
-					instance._refreshPickList('Alex');
 				}
 			);
 		},
@@ -504,7 +528,7 @@
 		_toggleControls: function() {
 			var instance = this;
 
-			var edit = $('.edit');
+			var edit = $('.edit-bookshelf');
 
 			edit.click(
 				function(event) {
