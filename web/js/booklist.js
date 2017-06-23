@@ -2,7 +2,7 @@
 (function() {
 	var DATA = WeDeploy.data('http://data.gsbc.wedeploy.io');
 
-	var bookList = {
+	var BookList = {
 		initializer: function() {
 			var instance = this;
 
@@ -19,7 +19,6 @@
 				.then(
 					function(books) {
 						instance.masterBookshelf = books;
-						instance._renderPickList(books);
 						instance._renderBookshelf(books);
 					}
 				)
@@ -63,7 +62,7 @@
 				function(newBook) {
 					book.reset();
 					instance._prependBook(newBook);
-					instance._refreshPickList(newBook.pickedBy);
+					PickList._refreshPickList(newBook.pickedBy);
 					$('#addBookModalClose').click();
 				}
 			)
@@ -146,6 +145,7 @@
 				</td>
 				<td>
 					<button type="submit" class="btn btn-primary btn-save">Save</button>
+					<button class="btn btn-primary btn-save" id="cancel">Cancel</button>
 				</td>
 			</tr>`;
 
@@ -211,22 +211,6 @@
 			return pickedBy.join('\n')
 		},
 
-		_formatPickList: function(array) {
-			var index = array.indexOf('Group');
-
-			if (index > -1) {
-				array.splice(index, 1);
-			}
-
-			index = array.indexOf('Russell');
-
-			if (index > -1) {
-				array.splice(index, 1);
-			}
-
-			return array
-		},
-
 		_formatYears: function(data) {
 			var instance = this;
 
@@ -261,18 +245,14 @@
 					var tr = td.closest('tr');
 
 					DATA.get('books')
-						.then(
-							function(results) {
-								results.forEach(
-									function(data) {
-										if (data.author === author) {
-											instance._deleteBook(data, tr);
-										}
-									}
-								)
-							}
-						)
-					;
+						.then(function(results) {
+							results.forEach(function(data) {
+								if (data.author === author) {
+									instance._deleteBook(data, tr);
+								}
+							})
+						}
+					);
 				}
 			)
 		},
@@ -286,50 +266,21 @@
 				function(event) {
 					event.preventDefault();
 
-					var td = $(this).closest('span').closest('td');;
+					var td = $(this).closest('span').closest('td');
 					var author = td.siblings('.author').text();
 					var tr = td.closest('tr');
 
 					DATA.get('books')
-						.then(
-							function(results) {
-								results.forEach(
-									function(data) {
-										if (data.author === author) {
-											instance._editBook(data, tr);
-										}
-									}
-								)
-							}
-						)
-					;
+						.then(function(results) {
+							results.forEach(function(data) {
+								if (data.author === author) {
+									instance._editBook(data, tr);
+								}
+							})
+						}
+					);
 				}
 			)
-		},
-
-		_getPickList: function(callback) {
-			var instance = this;
-
-			DATA.get('members')
-				.then(
-					function(lists) {
-						instance.masterPickList = lists[0].masterPickList.sort();
-						instance.pickAvailable = instance._formatPickList(lists[0].pickAvailable.sort());
-						instance.pickUnavailable = lists[0].pickUnavailable;
-
-						if (instance.pickUnavailable.length > 0) {
-							instance.pickUnavailable = instance.pickUnavailable.sort();
-						}
-
-						callback(instance.pickAvailable);
-					}
-				)
-				.catch(
-					function(err) {
-						console.error(err);
-					}
-				)
-			;
 		},
 
 		_prependBook: function(book) {
@@ -361,77 +312,6 @@
 			instance._sortTable();
 		},
 
-		_refreshAvailableList: function(picker) {
-			var instance = this;
-
-			var availableList = instance.pickAvailable;
-
-			var index = availableList.indexOf(picker);
-
-			if (index > -1) {
-				availableList.splice(index, 1);
-			}
-
-			if (availableList.length == 0) {
-				return instance._resetAvailablelist();
-			}
-			else {
-				return availableList;
-			}
-		},
-
-		_refreshPickList: function(picker) {
-			var instance = this;
-
-			instance.pickAvailable = instance._refreshAvailableList(picker);
-			instance.pickUnavailable = instance._refreshUnavailableList(picker);
-
-
-			DATA.update(
-				'members',
-				{
-					'pickAvailable': instance.pickAvailable,
-					'pickUnavailable': instance.pickUnavailable
-				}
-			)
-			.then(
-				function() {
-					instance._renderPickList();
-				}
-			)
-			.catch(
-				function(err) {
-					console.error(err);
-				}
-			);
-		},
-
-		_refreshUnavailableList: function(picker) {
-			var instance = this;
-
-			var unavailable = []
-
-			if (picker) {
-				unavailable.push(picker);
-			}
-
-			unavailable.sort();
-
-			return unavailable;
-		},
-
-		_renderPickList: function() {
-			var instance = this;
-
-			instance._getPickList(
-				function(pickers) {
-					pickers = pickers.join(', ')
-
-					$('#pickAvailable').text(pickers);
-				}
-			);
-		},
-
 		_renderSavedBookRow: function(book) {
 			var instance = this;
 
@@ -456,7 +336,7 @@
 			var instance = this;
 
 			var date = new Date();
-			var updatedOn = `${date.getFullYear()}-${(date.getMonth() + 1 )}-${date.getDate()}-${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+			var updatedOn = `${date.getFullYear()}-${(date.getMonth() + 1 )}-${date.getDate()}::${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
 
 			DATA.update(('books/' + editBook.id.value),
 				{
@@ -541,7 +421,106 @@
 			instance._getBookToDelete();
 			instance._getBookToEdit();
 		}
-	}
+	};
 
-	bookList.initializer();
+	var PickList = {
+		initializer: function() {
+			var instance = this;
+
+			instance._renderPickList();
+		},
+
+		_formatPickList: function(array) {
+			var index = array.indexOf('Group');
+
+			if (index > -1) {
+				array.splice(index, 1);
+			}
+
+			index = array.indexOf('Russell');
+
+			if (index > -1) {
+				array.splice(index, 1);
+			}
+
+			return array
+		},
+
+		_getPickList: function(callback) {
+			var instance = this;
+
+			DATA.get('members')
+				.then(
+					function(lists) {
+						instance.masterPickList = lists[0].masterPickList.sort();
+						instance.pickAvailable = instance._formatPickList(lists[0].pickAvailable.sort());
+
+						callback(instance.pickAvailable);
+					}
+				)
+				.catch(
+					function(err) {
+						console.error(err);
+					}
+				)
+			;
+		},
+
+		_refreshAvailableList: function(picker) {
+			var instance = this;
+
+			var availableList = instance.pickAvailable;
+
+			var index = availableList.indexOf(picker);
+
+			if (index > -1) {
+				availableList.splice(index, 1);
+			}
+
+			if (availableList.length == 0) {
+				return instance._resetAvailablelist();
+			}
+			else {
+				return availableList;
+			}
+		},
+
+		_refreshPickList: function(picker) {
+			var instance = this;
+
+			instance.pickAvailable = instance._refreshAvailableList(picker);
+
+			DATA.update(
+				'members',
+				{
+					'pickAvailable': instance.pickAvailable,
+				}
+			)
+			.then(
+				function() {
+					instance._renderPickList();
+				}
+			)
+			.catch(
+				function(err) {
+					console.error(err);
+				}
+			);
+		},
+
+		_renderPickList: function() {
+			var instance = this;
+
+			instance._getPickList(
+				function(pickers) {
+					pickers = pickers.join(', ')
+
+					$('#pickAvailable').text(pickers);
+				}
+			);
+		},
+	};
+
+	PickList.initializer();
+	BookList.initializer();
 })();

@@ -6,6 +6,37 @@ var REGEX_MON = /\w{3}/g;
 
 var REGEX_YEAR = /\d{4}/g;
 
+function addMemberToDatabase(member) {
+	DATA.create() {
+
+	}
+}
+
+function newMember() {
+	AUTH.createUser(
+		{
+			email: user.email.value,
+			firstName: user.firstName.value,
+			lastName: user.lastName.value,
+			password: user.password.value
+		}
+	)
+	.then(
+		function(member) {
+			//addMemberToDatabase(member);
+			alert('Account sucessfully created!');
+			signIn();
+			user.reset();
+		}
+	)
+	.catch(
+		function() {
+			alert('Sign-up failed. Try again.');
+			user.reset();
+		}
+	);
+}
+
 function signIn() {
 	AUTH.signInWithEmailAndPassword(
 		user.email.value,
@@ -31,7 +62,8 @@ function signOut() {
 			function() {
 				document.location.href = '/';
 			}
-		);
+		)
+	;
 }
 
 var currentUser = AUTH.currentUser;
@@ -42,24 +74,11 @@ if (currentUser) {
 				${currentUser.firstName}
 			</a>
 			<div class="dropdown-menu" aria-label="User settings">
-				<a class="dropdown-item" href="profile.html"><i class="fa fa-user fa-fw"></i> Edit Profile</a>
+				<a class="dropdown-item" href="/profile/"><i class="fa fa-user fa-fw"></i> Edit Profile</a>
 				<a class="dropdown-item" href="javascript:;"><i class="fa fa-sign-out fa-fw"></i> Sign Out</a>
 			</div>
 		</li>`
 	);
-
-	(function easterEgg() {
-		var stuff = $('#stuff');
-
-		stuff.hover(
-			function() {
-				stuff.text('Shit ')
-			},
-			function() {
-				stuff.text('Stuff')
-			}
-		);
-	})();
 
 	$('.edit').html(`
 	<div class="btn-group dropup">
