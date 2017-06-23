@@ -1,6 +1,8 @@
 //@ts-check
 (function() {
 	var DATA = WeDeploy.data('http://data.gsbc.wedeploy.io');
+	var REGEX_MON = /\w{3}/g;
+	var REGEX_YEAR = /\d{4}/g;
 
 	var BookList = {
 		initializer: function() {

@@ -2,15 +2,13 @@
 var AUTH = WeDeploy.auth('auth.gsbc.wedeploy.io');
 var DATA = WeDeploy.data('data.gsbc.wedeploy.io');
 
-var REGEX_MON = /\w{3}/g;
-
-var REGEX_YEAR = /\d{4}/g;
-
+/**
 function addMemberToDatabase(member) {
 	DATA.create() {
 
 	}
 }
+*/
 
 function newMember() {
 	AUTH.createUser(
