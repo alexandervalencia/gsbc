@@ -204,6 +204,10 @@ td.inline-author {
 		white-space: nowrap;
 	}
 
+	&.table-hover tbody tr:hover {
+		background-color: rgba($primary, 0.25);
+	}
+
 	.form-controls {
 		display: initial;
 		right: -25px;

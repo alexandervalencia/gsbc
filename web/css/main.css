@@ -155,6 +155,10 @@ td.inline-author {
   white-space: nowrap;
 }
 
+#book-table.table-hover tbody tr:hover {
+  background-color: rgba(34, 131, 144, 0.25);
+}
+
 #book-table .form-controls {
   display: initial;
   right: -25px;

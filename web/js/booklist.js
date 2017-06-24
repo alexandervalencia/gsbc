@@ -79,11 +79,12 @@
 			var tr = document.createElement("tr");
 
 			tr.id = book.id;
-			tr.innerHTML = `<th scope="row">${book.title}</th>
+			tr.innerHTML = `<th class="title" scope="row">${book.title}</th>
+				<td class="rating"></td>
 				<td class="author">${book.author}</td>
-				<td>${book.datePicked}</td>
-				<td>${book.pickedBy}</td>
-				<td>
+				<td class="datePicked">${book.datePicked}</td>
+				<td class="pickedBy">
+					${book.pickedBy}
 					<span class="form-controls hidden">
 						<a href="javascript;"><i class="fa fa-minus-square book-delete" aria-hidden="true"></i></a>
 						<a href="javascript;"> <i class="fa fa-pencil-square-o book-edit" aria-hidden="true"></i></a>
@@ -291,6 +292,7 @@
 			instance.table.prepend(instance._createBookRow(book));
 
 			$('table').trigger('sortReset');
+			$('table').trigger('update');
 		},
 
 		_renderBookshelf: function(books) {
@@ -366,9 +368,14 @@
 		},
 
 		_sortTable: function() {
+			function getMonthFromString(mon) {
+				return new Date(Date.parse(mon + ' 1, 2017')).getMonth() + 1;
+			}
+
 			$.tablesorter.addParser(
 				{
 					format: function(str) {
+						console.log(str);
 						var mon = str.match(REGEX_MON);
 						var year = str.match(REGEX_YEAR);
 
@@ -386,25 +393,19 @@
 				}
 			);
 
-			function getMonthFromString (mon) {
-				return new Date(Date.parse(mon + ' 1, 2017')).getMonth() + 1;
-			}
-
 			$('table').tablesorter(
-					{
+				{
+					theme: "bootstrap",
 					headers: {
-						2: {
+						3: {
 							sorter: 'mon-yyyy',
 							sortInitialOrder: 'desc'
 						}
-					},
-					theme: 'bootstrap'
+					}
 				}
 			);
 
-			$('table').trigger('update');
-
-			$('table').trigger('sorton', [[[2, 1]]]);
+			$('table').trigger('sorton', [[[3, 1]]]);
 		},
 
 		_toggleControls: function() {

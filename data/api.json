@@ -46,6 +46,9 @@
 			"pickedBy": {
 				"type": "string"
 			},
+			"rating": {
+				"type": "array"
+			},
 			"submittedBy": {
 				"type": "string"
 			},
@@ -65,17 +68,23 @@
 			"validator": "$auth != null"
 		},
 		"data": true,
-		"description": "Member list for picking purposes.",
+		"description": "Members Database",
 		"method": ["DELETE", "PATCH", "POST", "PUT"],
 		"parameters": {
-			"masterList": {
-				"type": "array"
+			"booksPicked": {
+				"type": "string"
+			},
+			"firstName": {
+				"type": "string"
+			},
+			"lastName": {
+				"type": "string"
+			},
+			"photoUrl": {
+				"type": "string"
 			},
 			"pickAvailable": {
-				"type": "array"
-			},
-			"pickUnavailable": {
-				"type": "array"
+				"type": "boolean"
 			}
 		},
 		"path": "/members/*"
