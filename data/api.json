@@ -63,15 +63,35 @@
 		"method": "GET",
 		"path": "/books/*"
 	},
+		{
+		"data": true,
+		"description": "Members Database",
+		"method": ["DELETE", "PATCH", "PUT"],
+		"parameters": {
+			"email": {
+				"type": "string"
+			},
+			"firstName": {
+				"type": "string"
+			},
+			"lastName": {
+				"type": "string"
+			}
+		},
+		"path": "/members/*"
+	},
 	{
 		"auth": {
 			"validator": "$auth != null"
 		},
 		"data": true,
 		"description": "Members Database",
-		"method": ["DELETE", "PATCH", "POST", "PUT"],
+		"method": ["DELETE", "PATCH", "PUT"],
 		"parameters": {
 			"booksPicked": {
+				"type": "string"
+			},
+			"email": {
 				"type": "string"
 			},
 			"firstName": {
