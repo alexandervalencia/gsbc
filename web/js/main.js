@@ -2,13 +2,26 @@
 var AUTH = WeDeploy.auth('auth.gsbc.wedeploy.io');
 var DATA = WeDeploy.data('data.gsbc.wedeploy.io');
 
-/**
 function addMemberToDatabase(member) {
-	DATA.create() {
-
-	}
-}
-*/
+	DATA.create(
+		'members',
+		{
+			email: member.email,
+			firstName: member.firstName,
+			lastName: member.lastName
+		}
+	)
+	.then(
+		function(newMember) {
+			// console.log(newMember);
+		}
+	)
+	.catch(
+		function(err) {
+			console.error(err)
+		}
+	);
+};
 
 function newMember() {
 	AUTH.createUser(
@@ -21,7 +34,7 @@ function newMember() {
 	)
 	.then(
 		function(member) {
-			//addMemberToDatabase(member);
+			addMemberToDatabase(member);
 			alert('Account sucessfully created!');
 			signIn();
 			user.reset();

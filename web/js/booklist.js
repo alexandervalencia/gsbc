@@ -375,7 +375,6 @@
 			$.tablesorter.addParser(
 				{
 					format: function(str) {
-						console.log(str);
 						var mon = str.match(REGEX_MON);
 						var year = str.match(REGEX_YEAR);
 
@@ -454,11 +453,16 @@
 
 			DATA.get('members')
 				.then(
-					function(lists) {
-						instance.masterPickList = lists[0].masterPickList.sort();
-						instance.pickAvailable = instance._formatPickList(lists[0].pickAvailable.sort());
+					function(members) {
+						var picklist = members.map(
+							function(member) {
+								if (member.pickAvailable) {
+									return member.firstName;
+								}
+							}
+						);
 
-						callback(instance.pickAvailable);
+						callback(picklist);
 					}
 				)
 				.catch(
@@ -496,6 +500,7 @@
 			DATA.update(
 				'members',
 				{
+					'firstName': picker.firstName,
 					'pickAvailable': instance.pickAvailable,
 				}
 			)
@@ -515,10 +520,10 @@
 			var instance = this;
 
 			instance._getPickList(
-				function(pickers) {
-					pickers = pickers.join(', ')
+				function(picklist) {
+					picklist = picklist.join(', ')
 
-					$('#pickAvailable').text(pickers);
+					$('#pickAvailable').text(picklist);
 				}
 			);
 		},

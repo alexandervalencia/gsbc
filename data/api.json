@@ -34,7 +34,6 @@
 			"validator": "$auth != null"
 		},
 		"data": true,
-		"description": "Creates a new book.",
 		"method": ["DELETE", "PATCH", "PUT"],
 		"parameters": {
 			"author": {
@@ -66,8 +65,11 @@
 		{
 		"data": true,
 		"description": "Members Database",
-		"method": ["DELETE", "PATCH", "PUT"],
+		"method": ["POST"],
 		"parameters": {
+			"booksPicked": {
+				"type": "string"
+			},
 			"email": {
 				"type": "string"
 			},
@@ -76,6 +78,12 @@
 			},
 			"lastName": {
 				"type": "string"
+			},
+			"photoUrl": {
+				"type": "string"
+			},
+			"pickAvailable": {
+				"type": "boolean"
 			}
 		},
 		"path": "/members/*"
