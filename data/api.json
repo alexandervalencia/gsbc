@@ -7,6 +7,9 @@
 		"description": "Creates a new book.",
 		"method": ["POST"],
 		"parameters": {
+			"amazonUrl": {
+				"type": "string"
+			},
 			"author": {
 				"type": "string",
 				"required": true
@@ -36,6 +39,9 @@
 		"data": true,
 		"method": ["DELETE", "PATCH", "PUT"],
 		"parameters": {
+			"amazonUrl": {
+				"type": "string"
+			},
 			"author": {
 				"type": "string"
 			},

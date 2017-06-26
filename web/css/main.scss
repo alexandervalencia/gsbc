@@ -208,6 +208,16 @@ td.inline-author {
 		background-color: rgba($primary, 0.25);
 	}
 
+	.book-title-wrapper {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+
+			.amazon svg {
+				fill: $blue;
+			}
+	}
+
 	.form-controls {
 		display: initial;
 		right: -25px;

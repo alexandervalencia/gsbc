@@ -1,5 +1,6 @@
 //@ts-check
 (function() {
+	var AMAZON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13.305 10.271v.456c0 .821.019 1.504-.394 2.234-.334.594-.867.958-1.458.958-.809 0-1.282-.616-1.282-1.528.001-1.794 1.611-2.12 3.134-2.12zm10.695-5.271v14c0 2.761-2.238 5-5 5h-14c-2.761 0-5-2.239-5-5v-14c0-2.761 2.239-5 5-5h14c2.762 0 5 2.239 5 5zm-10.695 3.31v.274c-1.222.136-2.818.227-3.961.73-1.32.57-2.247 1.732-2.247 3.442 0 2.189 1.38 3.283 3.154 3.283 1.498 0 2.317-.353 3.473-1.531.384.554.508.823 1.21 1.404.155.085.363.081.502-.045.419-.374 1.184-1.038 1.615-1.399.171-.139.142-.368.006-.56-.384-.532-.795-.965-.795-1.952v-3.282c0-1.391.097-2.668-.928-3.625-.807-.776-2.147-1.049-3.172-1.049-2.004 0-4.241.748-4.711 3.226-.05.263.143.402.315.44l2.041.222c.191-.01.33-.198.366-.388.175-.853.89-1.265 1.693-1.265.434 0 .927.16 1.183.546.296.434.256 1.027.256 1.529zm4.497 8.879c-1.832.981-3.823 1.454-5.635 1.454-2.684 0-5.284-.929-7.387-2.471-.185-.135-.321.103-.167.277 1.949 2.218 4.523 3.551 7.383 3.551 2.04 0 4.41-.809 6.044-2.33.271-.251.039-.629-.238-.481zm1.594-.96c-.182-.224-1.741-.417-2.693.252-.147.103-.121.245.041.225.536-.064 1.73-.208 1.942.065.213.272-.236 1.395-.437 1.896-.061.151.07.213.207.098.892-.747 1.122-2.311.94-2.536z"/></svg>`;
 	var DATA = WeDeploy.data('http://data.gsbc.wedeploy.io');
 	var REGEX_MON = /\w{3}/g;
 	var REGEX_YEAR = /\d{4}/g;
@@ -52,6 +53,7 @@
 			DATA.create(
 				'books',
 				{
+					'amazonUrl': book.amazonUrl.value,
 					'author': book.author.value,
 					'title': book.title.value,
 					'datePicked': (book.monthPicked.value + ' ' + book.yearPicked.value),
@@ -64,7 +66,7 @@
 				function(newBook) {
 					book.reset();
 					instance._prependBook(newBook);
-					PickList._refreshPickList(newBook.pickedBy);
+					PickList._removePicker(newBook.pickedBy);
 					$('#addBookModalClose').click();
 				}
 			)
@@ -79,7 +81,12 @@
 			var tr = document.createElement("tr");
 
 			tr.id = book.id;
-			tr.innerHTML = `<th class="title" scope="row">${book.title}</th>
+			tr.innerHTML = `<th class="title" scope="row">
+					<div class="book-title-wrapper">
+						<span class="book-title">${book.title}</span>
+						<span class="amazon"><a href="${book.amazonUrl}">${AMAZON_SVG}</a></span>
+					</div>
+				</th>
 				<td class="rating"></td>
 				<td class="author">${book.author}</td>
 				<td class="datePicked">${book.datePicked}</td>
@@ -128,7 +135,14 @@
 			var editBookForm = `<tr id="${book.id}">
 				<td>
 					<input type="hidden" name="id" value="${book.id}">
-					<input type="textarea" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineTitle" name="title" placeholder="${book.title}" rows="2" value="${book.title}">
+					<div class="row">
+						<label for="inlineTitle" class="col-sm-2 col-form-label">Book Title</label>
+						<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineTitle" name="title" placeholder="${book.title}" rows="2" value="${book.title}">
+					</div>
+					<div class="row">
+						<label for="inlineAmazonUrl" class="col-sm-2 col-form-label">Amazon Link</label>
+						<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineAmazonUrl" name="title" placeholder="${book.amazonUrl}" rows="2" value="${book.amazonUrl}">
+					</div>
 				</td>
 				<td>
 					<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineAuthor" name="author" placeholder="${book.author}" value="${book.author}">
@@ -299,7 +313,6 @@
 			var instance = this;
 
 			var fragment = document.createDocumentFragment();
-			var tr;
 
 			books.forEach(
 				function(book) {
@@ -322,7 +335,12 @@
 			var tr = document.createElement("tr");
 
 			tr.id = book.id;
-			tr.innerHTML = `<th scope="row">${book.title.value}</th>
+			tr.innerHTML = `<th scope="row">
+					<div class="book-title-wrapper">
+						<span class="book-title">${book.title.value}</span>
+						<span class="amazon"><a href="${book.amazonUrl.value}">${AMAZON_SVG}</a></span>
+					</div>
+				</th>
 				<td class="author">${book.author.value}</td>
 				<td>${book.monthPicked.value} ${book.yearPicked.value}</td>
 				<td>${book.pickedBy.value}</td>
@@ -344,11 +362,12 @@
 
 			DATA.update(('books/' + editBook.id.value),
 				{
-					'title': editBook.title.value,
+					'amazonUrl': editBook.amazonUrl.value,
 					'author': editBook.author.value,
 					'datePicked': (editBook.monthPicked.value + ' ' + editBook.yearPicked.value),
-					'pickedBy': editBook.pickedBy.value,
 					'lastUpdatedBy': currentUser.firstName,
+					'pickedBy': editBook.pickedBy.value,
+					'title': editBook.title.value,
 					'updatedOn': updatedOn
 				}
 			)
@@ -432,6 +451,54 @@
 			instance._renderPickList();
 		},
 
+		_addPickersToAddBookModal: function(pickers) {
+			var instance = this;
+
+			var fragment = document.createDocumentFragment();
+			var pickedBy = $('#pickedBy');
+			var picklist = [];
+
+			pickers.sort();
+
+			pickers.forEach(function(picker) {
+				var option = document.createElement('option');
+
+				option.innerHTML = picker.firstName;
+
+				$(fragment).prepend(option);
+			});
+
+			$(pickedBy).append(fragment);
+		},
+
+		_checkAvailablePicks: function() {
+			var instance = this;
+
+			DATA.get('members')
+				.then(function(members) {
+					var checkList = [];
+
+					members.forEach(function(member) {
+						if (member.pickAvailable) {
+							checkList.push(member.firstName);
+						}
+					});
+
+					if (checkList.length === 0) {
+						members.forEach(function(member) {
+							DATA.update('members/' + member.id, {
+								"pickAvailable": true
+							}).then(function() {
+								instance._renderPickList();
+							});
+						});
+					}
+				})
+				.catch(function(error) {
+					console.error(error);
+				});
+		},
+
 		_formatPickList: function(array) {
 			var index = array.indexOf('Group');
 
@@ -454,13 +521,16 @@
 			DATA.get('members')
 				.then(
 					function(members) {
-						var picklist = members.map(
+						var picklist = []
+						members.forEach(
 							function(member) {
 								if (member.pickAvailable) {
-									return member.firstName;
+									picklist.push(member.firstName);
 								}
 							}
 						);
+
+						instance._addPickersToAddBookModal(members);
 
 						callback(picklist);
 					}
@@ -471,6 +541,19 @@
 					}
 				)
 			;
+		},
+
+		_getPickerId: function(picker, callback) {
+			DATA.get('members')
+				.then(function(members) {
+					members.forEach(
+						function(member) {
+							if (picker === member.firstName) {
+								callback(member.id);
+							}
+						}
+					)
+				})
 		},
 
 		_refreshAvailableList: function(picker) {
@@ -492,28 +575,31 @@
 			}
 		},
 
-		_refreshPickList: function(picker) {
+		_removePicker: function(picker) {
 			var instance = this;
 
-			instance.pickAvailable = instance._refreshAvailableList(picker);
-
-			DATA.update(
-				'members',
-				{
-					'firstName': picker.firstName,
-					'pickAvailable': instance.pickAvailable,
+			instance._getPickerId(
+				picker,
+				function(id) {
+					DATA.update(
+						'members/' + id,
+						{
+							'pickAvailable': false,
+						}
+					)
+					.then(
+						function(member) {
+							instance._checkAvailablePicks();
+							instance._renderPickList();
+						}
+					)
+					.catch(
+						function(err) {
+							console.error(err);
+						}
+					);
 				}
 			)
-			.then(
-				function() {
-					instance._renderPickList();
-				}
-			)
-			.catch(
-				function(err) {
-					console.error(err);
-				}
-			);
 		},
 
 		_renderPickList: function() {
@@ -521,7 +607,17 @@
 
 			instance._getPickList(
 				function(picklist) {
-					picklist = picklist.join(', ')
+					picklist.sort();
+
+					if (picklist.length > 1) {
+						picklist = picklist.join(', ');
+					}
+					else if (picklist.length < 1) {
+						instance._checkAvailablePicks();
+					}
+					else {
+						picklist = picklist.join('');
+					}
 
 					$('#pickAvailable').text(picklist);
 				}

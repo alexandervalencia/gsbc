@@ -159,6 +159,16 @@ td.inline-author {
   background-color: rgba(34, 131, 144, 0.25);
 }
 
+#book-table .book-title-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+#book-table .book-title-wrapper .amazon svg {
+  fill: #228390;
+}
+
 #book-table .form-controls {
   display: initial;
   right: -25px;
