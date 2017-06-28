@@ -213,8 +213,12 @@ td.inline-author {
 		display: flex;
 		justify-content: space-between;
 
-			.amazon svg {
-				fill: $blue;
+			.amazon {
+				margin-left: 1em;
+
+				svg {
+					fill: $blue;
+				}
 			}
 	}
 

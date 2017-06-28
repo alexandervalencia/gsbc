@@ -165,6 +165,10 @@ td.inline-author {
   justify-content: space-between;
 }
 
+#book-table .book-title-wrapper .amazon {
+  margin-left: 1em;
+}
+
 #book-table .book-title-wrapper .amazon svg {
   fill: #228390;
 }

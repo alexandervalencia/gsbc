@@ -8,7 +8,8 @@ function addMemberToDatabase(member) {
 		{
 			email: member.email,
 			firstName: member.firstName,
-			lastName: member.lastName
+			lastName: member.lastName,
+            pickAvailable: true
 		}
 	)
 	.then(
@@ -86,7 +87,7 @@ if (currentUser) {
 			</a>
 			<div class="dropdown-menu" aria-label="User settings">
 				<a class="dropdown-item" href="/profile/"><i class="fa fa-user fa-fw"></i> Edit Profile</a>
-				<a class="dropdown-item" href="javascript:;"><i class="fa fa-sign-out fa-fw"></i> Sign Out</a>
+				<a class="dropdown-item" href="javascript:;" onclick="signOut(); return false;"><i class="fa fa-sign-out fa-fw"></i> Sign Out</a>
 			</div>
 		</li>`
 	);

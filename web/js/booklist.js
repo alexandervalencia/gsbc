@@ -80,11 +80,15 @@
 		_createBookRow: function(book) {
 			var tr = document.createElement("tr");
 
+			if (book.amazonUrl === undefined) {
+				book.amazonUrl = 'javascript:;';
+			}
+
 			tr.id = book.id;
 			tr.innerHTML = `<th class="title" scope="row">
 					<div class="book-title-wrapper">
 						<span class="book-title">${book.title}</span>
-						<span class="amazon"><a href="${book.amazonUrl}">${AMAZON_SVG}</a></span>
+						<span class="amazon"><a href="${book.amazonUrl}" target="_blank">${AMAZON_SVG}</a></span>
 					</div>
 				</th>
 				<td class="rating"></td>
@@ -133,7 +137,7 @@
 			var options = instance._formatOptions(book)
 
 			var editBookForm = `<tr id="${book.id}">
-				<td>
+				<td colspan="2">
 					<input type="hidden" name="id" value="${book.id}">
 					<div class="row">
 						<label for="inlineTitle" class="col-sm-2 col-form-label">Book Title</label>
@@ -141,7 +145,7 @@
 					</div>
 					<div class="row">
 						<label for="inlineAmazonUrl" class="col-sm-2 col-form-label">Amazon Link</label>
-						<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineAmazonUrl" name="title" placeholder="${book.amazonUrl}" rows="2" value="${book.amazonUrl}">
+						<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineAmazonUrl" name="amazonUrl" placeholder="${book.amazonUrl}" rows="2" value="${book.amazonUrl}">
 					</div>
 				</td>
 				<td>
@@ -162,7 +166,7 @@
 				</td>
 				<td>
 					<button type="submit" class="btn btn-primary btn-save">Save</button>
-					<button class="btn btn-primary btn-save" id="cancel">Cancel</button>
+					<button class="btn btn-primary btn-cancel" id="cancel">Cancel</button>
 				</td>
 			</tr>`;
 
@@ -334,11 +338,15 @@
 
 			var tr = document.createElement("tr");
 
+			if (!book.amazonUrl.value) {
+				book.amazonUrl.value = '';
+			}
+
 			tr.id = book.id;
 			tr.innerHTML = `<th scope="row">
 					<div class="book-title-wrapper">
 						<span class="book-title">${book.title.value}</span>
-						<span class="amazon"><a href="${book.amazonUrl.value}">${AMAZON_SVG}</a></span>
+						<span class="amazon"><a href="${book.amazonUrl.value}" target="_blank">${AMAZON_SVG}</a></span>
 					</div>
 				</th>
 				<td class="author">${book.author.value}</td>
@@ -359,6 +367,10 @@
 
 			var date = new Date();
 			var updatedOn = `${date.getFullYear()}-${(date.getMonth() + 1 )}-${date.getDate()}::${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+
+			if (!editBook.amazonUrl.value) {
+				editBook.amazonUrl.value = '';
+			}
 
 			DATA.update(('books/' + editBook.id.value),
 				{
@@ -415,6 +427,10 @@
 				{
 					theme: "bootstrap",
 					headers: {
+						0: {
+							sorter: 'ignoreArticles',
+							ignoreArticles : 'en'
+						},
 						3: {
 							sorter: 'mon-yyyy',
 							sortInitialOrder: 'desc'
