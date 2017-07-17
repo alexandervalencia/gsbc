@@ -22,6 +22,10 @@
 				"type": "string",
 				"required": true
 			},
+			"rating": {
+				"type": "array",
+				"required": false
+			},
 			"submittedBy": {
 				"type": "string"
 			},

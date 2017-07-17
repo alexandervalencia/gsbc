@@ -1,28 +1,30 @@
 //@ts-check
 (function() {
-	var AMAZON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13.305 10.271v.456c0 .821.019 1.504-.394 2.234-.334.594-.867.958-1.458.958-.809 0-1.282-.616-1.282-1.528.001-1.794 1.611-2.12 3.134-2.12zm10.695-5.271v14c0 2.761-2.238 5-5 5h-14c-2.761 0-5-2.239-5-5v-14c0-2.761 2.239-5 5-5h14c2.762 0 5 2.239 5 5zm-10.695 3.31v.274c-1.222.136-2.818.227-3.961.73-1.32.57-2.247 1.732-2.247 3.442 0 2.189 1.38 3.283 3.154 3.283 1.498 0 2.317-.353 3.473-1.531.384.554.508.823 1.21 1.404.155.085.363.081.502-.045.419-.374 1.184-1.038 1.615-1.399.171-.139.142-.368.006-.56-.384-.532-.795-.965-.795-1.952v-3.282c0-1.391.097-2.668-.928-3.625-.807-.776-2.147-1.049-3.172-1.049-2.004 0-4.241.748-4.711 3.226-.05.263.143.402.315.44l2.041.222c.191-.01.33-.198.366-.388.175-.853.89-1.265 1.693-1.265.434 0 .927.16 1.183.546.296.434.256 1.027.256 1.529zm4.497 8.879c-1.832.981-3.823 1.454-5.635 1.454-2.684 0-5.284-.929-7.387-2.471-.185-.135-.321.103-.167.277 1.949 2.218 4.523 3.551 7.383 3.551 2.04 0 4.41-.809 6.044-2.33.271-.251.039-.629-.238-.481zm1.594-.96c-.182-.224-1.741-.417-2.693.252-.147.103-.121.245.041.225.536-.064 1.73-.208 1.942.065.213.272-.236 1.395-.437 1.896-.061.151.07.213.207.098.892-.747 1.122-2.311.94-2.536z"/></svg>`;
-	var DATA = WeDeploy.data('http://data.gsbc.wedeploy.io');
-	var REGEX_MON = /\w{3}/g;
-	var REGEX_YEAR = /\d{4}/g;
+	const amazonSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13.305 10.271v.456c0 .821.019 1.504-.394 2.234-.334.594-.867.958-1.458.958-.809 0-1.282-.616-1.282-1.528.001-1.794 1.611-2.12 3.134-2.12zm10.695-5.271v14c0 2.761-2.238 5-5 5h-14c-2.761 0-5-2.239-5-5v-14c0-2.761 2.239-5 5-5h14c2.762 0 5 2.239 5 5zm-10.695 3.31v.274c-1.222.136-2.818.227-3.961.73-1.32.57-2.247 1.732-2.247 3.442 0 2.189 1.38 3.283 3.154 3.283 1.498 0 2.317-.353 3.473-1.531.384.554.508.823 1.21 1.404.155.085.363.081.502-.045.419-.374 1.184-1.038 1.615-1.399.171-.139.142-.368.006-.56-.384-.532-.795-.965-.795-1.952v-3.282c0-1.391.097-2.668-.928-3.625-.807-.776-2.147-1.049-3.172-1.049-2.004 0-4.241.748-4.711 3.226-.05.263.143.402.315.44l2.041.222c.191-.01.33-.198.366-.388.175-.853.89-1.265 1.693-1.265.434 0 .927.16 1.183.546.296.434.256 1.027.256 1.529zm4.497 8.879c-1.832.981-3.823 1.454-5.635 1.454-2.684 0-5.284-.929-7.387-2.471-.185-.135-.321.103-.167.277 1.949 2.218 4.523 3.551 7.383 3.551 2.04 0 4.41-.809 6.044-2.33.271-.251.039-.629-.238-.481zm1.594-.96c-.182-.224-1.741-.417-2.693.252-.147.103-.121.245.041.225.536-.064 1.73-.208 1.942.065.213.272-.236 1.395-.437 1.896-.061.151.07.213.207.098.892-.747 1.122-2.311.94-2.536z"/></svg>`;
+	const currentUser = WeDeploy.auth('auth.gsbc.wedeploy.io').currentUser;
+	const data = WeDeploy.data('http://data.gsbc.wedeploy.io');
+	const regexMonth = /\w{3}/g;
+	const regexYear = /\d{4}/g;
 
 	var BookList = {
-		initializer: function() {
+		init: function() {
 			var instance = this;
 
 			instance.table = document.querySelector('#book-list');
 
-			instance._renderUI();
-			instance._bindUI();
+			instance.renderUI();
+			instance.bindUI();
 		},
 
-		_renderUI: function() {
+		renderUI: function() {
 			var instance = this;
 
-			DATA.get('books')
+			data.get('books')
 				.then(
 					function(books) {
-						instance.masterBookshelf = books;
+						instance._masterBookshelf = books;
 						instance._renderBookshelf(books);
+console.log(instance._masterBookshelf);
 					}
 				)
 				.catch(
@@ -32,25 +34,23 @@
 				);
 		},
 
-		_bindUI: function() {
+		bindUI: function() {
 			var instance = this;
 
-			$('#addBook').on(
-				'click',
-				function(event) {
+			$('#addBook').on('click', function(event) {
 					event.preventDefault();
-					instance._addBook();
-				}
-			)
+
+					instance.addBook();
+			});
 		},
 
-		_addBook: function() {
+		addBook: function() {
 			var instance = this;
 
 			var date = new Date();
 			var createdOn = date.getFullYear() + '-' + (date.getMonth() + 1 ) + '-'+ date.getDate();
 
-			DATA.create(
+			data.create(
 				'books',
 				{
 					'amazonUrl': book.amazonUrl.value,
@@ -77,8 +77,52 @@
 			);
 		},
 
+		_addBookToRate: function(bookId) {
+			var instance = this;
+
+			var book = instance._matchBookById(bookId);
+
+			$('#bookToRate').text(book);
+
+			document.getElementById('rating').value = bookId;
+
+			$('#addRatingModal').modal();
+
+			instance._addRating();
+		},
+
+		_addRating: function() {
+			var instance = this;
+
+			$('input[type="radio"]').change(
+				function() {
+					alert('Rating saved!');
+					instance._saveRating($(this)[0].value);
+				}
+			);
+		},
+
+		_addRatingListener: function() {
+			var instance = this;
+
+			$('.rating-link').on(
+				'click',
+				function(event) {
+					event.preventDefault();
+
+					var $bookId = $(this)[0].dataset.bookId;
+
+					instance._addBookToRate($bookId);
+				}
+			);
+		},
+
 		_createBookRow: function(book) {
+			var instance = this;
+
 			var tr = document.createElement("tr");
+
+			book.rating = 0;
 
 			if (book.amazonUrl === undefined) {
 				book.amazonUrl = 'javascript:;';
@@ -88,10 +132,13 @@
 			tr.innerHTML = `<th class="title" scope="row">
 					<div class="book-title-wrapper">
 						<span class="book-title">${book.title}</span>
-						<span class="amazon"><a href="${book.amazonUrl}" target="_blank">${AMAZON_SVG}</a></span>
+						<span class="amazon"><a href="${book.amazonUrl}" target="_blank">${amazonSVG}</a></span>
 					</div>
 				</th>
-				<td class="rating"></td>
+				<td class="book-rating text-center">
+					<span class="average-rating">${book.rating}</span>
+					<span class="add-rating"><a class="rating-link" data-book-id="${book.id}" href="javascript:;">Add Rating</a></span>
+				</td>
 				<td class="author">${book.author}</td>
 				<td class="datePicked">${book.datePicked}</td>
 				<td class="pickedBy">
@@ -125,7 +172,7 @@
 			var d = confirm(`Are you sure you want to remove ${book.title} from The Bookshelf?`);
 
 			if (d) {
-				DATA.delete('books/'+ book.id);
+				data.delete('books/'+ book.id);
 
 				$(row).remove();
 			}
@@ -265,7 +312,7 @@
 					var author = td.siblings('.author').text();
 					var tr = td.closest('tr');
 
-					DATA.get('books')
+					data.get('books')
 						.then(function(results) {
 							results.forEach(function(data) {
 								if (data.author === author) {
@@ -291,7 +338,7 @@
 					var author = td.siblings('.author').text();
 					var tr = td.closest('tr');
 
-					DATA.get('books')
+					data.get('books')
 						.then(function(results) {
 							results.forEach(function(data) {
 								if (data.author === author) {
@@ -302,6 +349,21 @@
 					);
 				}
 			)
+		},
+
+		_matchBookById: function(bookId) {
+			var instance = this,
+				bookTitle;
+
+			instance._masterBookshelf.forEach(
+				function(book) {
+					if (book.id === bookId) {
+						bookTitle = book.title;
+					}
+				}
+			);
+
+			return bookTitle
 		},
 
 		_prependBook: function(book) {
@@ -331,6 +393,16 @@
 			instance._toggleControls();
 
 			instance._sortTable();
+
+			instance._addRatingListener();
+		},
+
+		_renderRating: function(book) {
+			book.rating.forEach(
+				function(rating) {
+
+				}
+			);
 		},
 
 		_renderSavedBookRow: function(book) {
@@ -343,16 +415,17 @@
 			}
 
 			tr.id = book.id;
-			tr.innerHTML = `<th scope="row">
+			tr.innerHTML = `<th class="title" scope="row">
 					<div class="book-title-wrapper">
 						<span class="book-title">${book.title.value}</span>
-						<span class="amazon"><a href="${book.amazonUrl.value}" target="_blank">${AMAZON_SVG}</a></span>
+						<span class="amazon"><a href="${book.amazonUrl.value}" target="_blank">${amazonSVG}</a></span>
 					</div>
 				</th>
+				<td class="book-rating"></td>
 				<td class="author">${book.author.value}</td>
-				<td>${book.monthPicked.value} ${book.yearPicked.value}</td>
-				<td>${book.pickedBy.value}</td>
-				<td>
+				<td class="datePicked">${book.monthPicked.value} ${book.yearPicked.value}</td>
+				<td class="pickedBy">
+					${book.pickedBy.value}
 					<span class="form-controls">
 						<a href="javascript;"><i class="fa fa-minus-square book-delete" aria-hidden="true"></i></a>
 						<a href="javascript;"> <i class="fa fa-pencil-square-o book-edit" aria-hidden="true"></i></a>
@@ -366,13 +439,13 @@
 			var instance = this;
 
 			var date = new Date();
-			var updatedOn = `${date.getFullYear()}-${(date.getMonth() + 1 )}-${date.getDate()}::${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+			var updatedOn = `${date.getFullYear()}-${(date.getMonth() + 1 )}-${date.getDate()}_${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
 
 			if (!editBook.amazonUrl.value) {
 				editBook.amazonUrl.value = '';
 			}
 
-			DATA.update(('books/' + editBook.id.value),
+			data.update(('books/' + editBook.id.value),
 				{
 					'amazonUrl': editBook.amazonUrl.value,
 					'author': editBook.author.value,
@@ -398,6 +471,12 @@
 			);
 		},
 
+		_saveRating: function(rating) {
+			var instance = this;
+
+			data.update()
+		},
+
 		_sortTable: function() {
 			function getMonthFromString(mon) {
 				return new Date(Date.parse(mon + ' 1, 2017')).getMonth() + 1;
@@ -406,8 +485,8 @@
 			$.tablesorter.addParser(
 				{
 					format: function(str) {
-						var mon = str.match(REGEX_MON);
-						var year = str.match(REGEX_YEAR);
+						var mon = str.match(regexMonth);
+						var year = str.match(regexYear);
 
 						mon = getMonthFromString(mon);
 
@@ -461,8 +540,10 @@
 	};
 
 	var PickList = {
-		initializer: function() {
+		init: function() {
 			var instance = this;
+
+//			instance._memberList = instance._getMembersList();
 
 			instance._renderPickList();
 		},
@@ -481,7 +562,7 @@
 
 				option.innerHTML = picker.firstName;
 
-				$(fragment).prepend(option);
+				$(fragment).append(option);
 			});
 
 			$(pickedBy).append(fragment);
@@ -490,7 +571,7 @@
 		_checkAvailablePicks: function() {
 			var instance = this;
 
-			DATA.get('members')
+			data.get('members')
 				.then(function(members) {
 					var checkList = [];
 
@@ -502,7 +583,7 @@
 
 					if (checkList.length === 0) {
 						members.forEach(function(member) {
-							DATA.update('members/' + member.id, {
+							data.update('members/' + member.id, {
 								"pickAvailable": true
 							}).then(function() {
 								instance._renderPickList();
@@ -534,7 +615,7 @@
 		_getPickList: function(callback) {
 			var instance = this;
 
-			DATA.get('members')
+			data.get('members')
 				.then(
 					function(members) {
 						var picklist = []
@@ -560,7 +641,7 @@
 		},
 
 		_getPickerId: function(picker, callback) {
-			DATA.get('members')
+			data.get('members')
 				.then(function(members) {
 					members.forEach(
 						function(member) {
@@ -597,7 +678,7 @@
 			instance._getPickerId(
 				picker,
 				function(id) {
-					DATA.update(
+					data.update(
 						'members/' + id,
 						{
 							'pickAvailable': false,
@@ -641,6 +722,6 @@
 		},
 	};
 
-	PickList.initializer();
-	BookList.initializer();
+	PickList.init();
+	BookList.init();
 })();

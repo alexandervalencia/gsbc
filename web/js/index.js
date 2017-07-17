@@ -9,7 +9,7 @@ function addMemberToDatabase(member) {
 			email: member.email,
 			firstName: member.firstName,
 			lastName: member.lastName,
-            pickAvailable: true
+			pickAvailable: true
 		}
 	)
 	.then(
@@ -93,14 +93,26 @@ if (currentUser) {
 	);
 
 	$('.edit').html(`
-	<div class="btn-group dropup">
-		<a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog" aria-hidden="false" aria-label="Edit Bookshelf"></i></a>
-		<div class="dropdown-menu">
-			<a class="dropdown-item" data-target="#addBookModal" data-toggle="modal" href="javascript:;"><i class="fa fa-plus fa-fw"></i> Add a Book</a>
-			<a class="dropdown-item edit-bookshelf" href="javascript;"><i class="fa fa-pencil fa-fw"></i> Toggle Controls</a>
+		<div class="btn-group dropup">
+			<a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog" aria-hidden="false" aria-label="Edit Bookshelf"></i></a>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" data-target="#addBookModal" data-toggle="modal" href="javascript:;"><i class="fa fa-plus fa-fw"></i> Add a Book</a>
+				<a class="dropdown-item edit-bookshelf" href="javascript;"><i class="fa fa-pencil fa-fw"></i> Toggle Controls</a>
+			</div>
 		</div>
-	</div>
-`);
-} else {
+	`);
+
+	var stuff = $('#stuff');
+
+	stuff.hover(
+		function() {
+			stuff.text('Shit ')
+		},
+		function() {
+			stuff.text('Stuff')
+		}
+	);
+}
+else {
 	// No user is signed in.
 }

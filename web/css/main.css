@@ -25,8 +25,21 @@ body {
   font-family: "Raleway", sans-serif;
 }
 
+body a {
+  color: #228390;
+}
+
+body a:hover {
+  color: #62B1BB;
+  text-decoration: none;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Playfair Display", serif;
+}
+
+*:focus {
+  outline: #228390 auto 2px;
 }
 
 nav.bg-gsbc {
@@ -156,7 +169,7 @@ td.inline-author {
 }
 
 #book-table.table-hover tbody tr:hover {
-  background-color: rgba(34, 131, 144, 0.25);
+  background-color: rgba(34, 131, 144, 0.1);
 }
 
 #book-table .book-title-wrapper {
@@ -215,6 +228,63 @@ td.inline-author {
 .btn.btn-primary.btn-save {
   position: absolute;
   right: -40px;
+}
+
+.book-rating {
+  line-height: 1;
+}
+
+.book-rating span {
+  display: inline-block;
+}
+
+.add-rating {
+  white-space: nowrap;
+  font-size: 0.75em;
+}
+
+.add-rating a {
+  color: rgba(34, 131, 144, 0.25);
+}
+
+.rating {
+  border: none;
+  float: left;
+}
+
+.rating > input {
+  display: none;
+}
+
+.rating > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label {
+  color: #ddd;
+  float: right;
+}
+
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #FFD700;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label {
+  color: #FFED85;
 }
 
 @media (min-width: 768px) {
