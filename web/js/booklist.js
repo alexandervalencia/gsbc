@@ -24,7 +24,6 @@
 					function(books) {
 						instance._masterBookshelf = books;
 						instance._renderBookshelf(books);
-console.log(instance._masterBookshelf);
 					}
 				)
 				.catch(
@@ -128,7 +127,9 @@ console.log(instance._masterBookshelf);
 				book.amazonUrl = 'javascript:;';
 			}
 
+			tr.className = 'book';
 			tr.id = book.id;
+
 			tr.innerHTML = `<th class="title" scope="row">
 					<div class="book-title-wrapper">
 						<span class="book-title">${book.title}</span>
