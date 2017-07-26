@@ -5,70 +5,82 @@
   const data = WeDeploy.data('http://data.gsbc.wedeploy.io');
   const regexMonth = /\w{3}/
 
-  let bookshelf = {
-      init: function() {
-          this.getBooks(this.renderBookshelf);
-      },
+  const bookshelf = {
+    init: function() {
+      this.container = $('#bookshelf');
+      this.getBooks();
+    },
 
-      createBookRow: function(book) {
-        let tr = document.createElement("tr");
+    createBookRow: function(book) {
+      let tr = document.createElement("tr");
 
-        if (book.bookAmazonUrl === undefined) {
-          book.bookAmazonUrl = 'javascript:;';
-        }
+      book = this.formatBookData(book);
 
-        tr.className = 'book';
-        tr.id = book.id;
-
-        tr.innerHTML = `<th class="title" scope="row">
-            <div class="book-title-wrapper">
-              <span class="book-title">${book.bookTitle}</span>
-              <span class="amazon"><a href="${book.bookAmazonUrl}" target="_blank">${amazonSVG}</a></span>
-            </div>
-          </th>
-          <td class="book-rating text-center">
-            <span class="average-rating">${book.bookRating}</span>
-            <span class="add-rating"><a class="rating-link" data-book-id="${book.id}" href="javascript:;">Add Rating</a></span>
-          </td>
-          <td class="author">${book.bookAuthor}</td>
-          <td class="datePicked">${book.datePicked}</td>
-          <td class="pickedBy">
-            ${book.userPicked}
-            <span class="form-controls hidden">
-              <a href="javascript:;"><i class="fa fa-minus-square book-delete" aria-hidden="true"></i></a>
-              <a href="javascript:;"> <i class="fa fa-pencil-square-o book-edit" aria-hidden="true"></i></a>
-            </span>
-          </td>`
-
-        return tr
-      },
-
-      getBooks: function(cb) {
-        data.get('books')
-          .then(
-            function(books) {
-              cb(books);
-            }
-          )
-          .catch(
-            function(error) {
-              console.error(error);
-            }
-          )
-        ;
-      },
-
-      renderBookshelf: function(books) {
-        const frag = document.createDocumentFragment();
-
-        books.forEach(function(book) {
-          let row = this.createBookRow(book);
-
-          frag.appendChild(row)
-        });
-
-        this.container.appendChild(frag);
+      if (book.bookAmazonUrl === undefined) {
+        book.bookAmazonUrl = 'javascript:;';
       }
+
+      tr.className = 'book';
+      tr.id = book.id;
+
+      tr.innerHTML = `<th class="title" scope="row">
+          <div class="book-title-wrapper">
+            <span class="book-title">${book.bookTitle}</span>
+            <span class="amazon"><a href="${book.bookAmazonUrl}" target="_blank">${amazonSVG}</a></span>
+          </div>
+        </th>
+        <td class="book-rating text-center">
+          <span class="average-rating">${book.bookRating}</span>
+          <span class="add-rating"><a class="rating-link" data-book-id="${book.id}" href="javascript:;">Add Rating</a></span>
+        </td>
+        <td class="author">${book.bookAuthor}</td>
+        <td class="datePicked">${book.datePicked}</td>
+        <td class="pickedBy">
+          ${book.userPicked}
+          <span class="form-controls hidden">
+            <a href="javascript:;"><i class="fa fa-minus-square book-delete" aria-hidden="true"></i></a>
+            <a href="javascript:;"> <i class="fa fa-pencil-square-o book-edit" aria-hidden="true"></i></a>
+          </span>
+        </td>`
+
+      return tr
+    },
+
+    formatBookData: function(book) {
+      console.log(book);
+    },
+
+    getBooks: function(cb) {
+      const that = this;
+
+      data.get('books')
+        .then(
+          function(books) {
+            that.renderBookshelf(books);
+          }
+        )
+        .catch(
+          function(error) {
+            console.error(error);
+          }
+        )
+      ;
+    },
+
+    renderBookshelf: function(books) {
+      const that = this;
+
+      const container = that.container;
+      const frag = document.createDocumentFragment();
+
+      books.forEach(function(book) {
+        let row = that.createBookRow(book);
+
+        frag.appendChild(row);
+      });
+
+      container.append(frag);
+    }
   };
 
   let picklist = {

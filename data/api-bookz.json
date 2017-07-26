@@ -1,0 +1,92 @@
+[
+	{
+		"auth": {
+			"validator": "$auth != null"
+		},
+		"data": true,
+		"description": "Creates a new book.",
+		"method": ["POST"],
+		"parameters": {
+			"bookAmazonUrl": {
+				"type": "string"
+			},
+			"bookAuthor": {
+				"type": "string",
+				"required": true
+      },
+      "bookPhootUrl": {
+        "type": "string"
+      },
+			"bookRating": {
+				"type": "array",
+				"required": false
+      },
+			"bookTitle": {
+				"type": "string",
+				"required": true
+			},
+			"datePicked": {
+				"type": "string",
+				"required": true
+      },
+      "dateUpdated": {
+        "type": "string"
+      },
+      "userPicked": {
+        "type": "string"
+      },
+			"userSubmitted": {
+				"type": "string"
+      },
+      "userUpdated": {
+        "type": "string"
+      }
+		},
+		"path": "/bookz/*"
+	},
+	{
+		"auth": {
+			"validator": "$auth != null"
+		},
+		"data": true,
+		"method": ["DELETE", "PATCH", "PUT"],
+		"parameters": {
+		  "bookAmazonUrl": {
+				"type": "string"
+			},
+			"bookAuthor": {
+				"type": "string"
+      },
+      "bookPhootUrl": {
+        "type": "string"
+      },
+			"bookRating": {
+				"type": "array"
+      },
+			"bookTitle": {
+				"type": "string"
+			},
+			"datePicked": {
+				"type": "string"
+      },
+      "dateUpdated": {
+        "type": "string"
+      },
+      "userPicked": {
+        "type": "string"
+      },
+			"userSubmitted": {
+				"type": "string"
+      },
+      "userUpdated": {
+        "type": "string"
+      }
+		},
+		"path": "/bookz/*"
+	},
+	{
+		"data": true,
+		"method": "GET",
+		"path": "/bookz/*"
+  }
+]
