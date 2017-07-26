@@ -7,32 +7,40 @@
 		"description": "Creates a new book.",
 		"method": ["POST"],
 		"parameters": {
-			"amazonUrl": {
+			"bookAmazonUrl": {
 				"type": "string"
 			},
-			"author": {
+			"bookAuthor": {
+				"type": "string",
+				"required": true
+      },
+      "bookPhootUrl": {
+        "type": "string"
+      },
+			"bookRating": {
+				"type": "array",
+				"required": false
+      },
+			"bookTitle": {
 				"type": "string",
 				"required": true
 			},
 			"datePicked": {
 				"type": "string",
 				"required": true
-			},
-			"pickedBy": {
-				"type": "string",
-				"required": true
-			},
-			"rating": {
-				"type": "array",
-				"required": false
-			},
-			"submittedBy": {
+      },
+      "dateUpdated": {
+        "type": "string"
+      },
+      "userPicked": {
+        "type": "string"
+      },
+			"userSubmitted": {
 				"type": "string"
-			},
-			"title": {
-				"type": "string",
-				"required": true
-			}
+      },
+      "userUpdated": {
+        "type": "string"
+      }
 		},
 		"path": "/books/*"
 	},
@@ -43,27 +51,36 @@
 		"data": true,
 		"method": ["DELETE", "PATCH", "PUT"],
 		"parameters": {
-			"amazonUrl": {
+		  "bookAmazonUrl": {
 				"type": "string"
 			},
-			"author": {
+			"bookAuthor": {
+				"type": "string"
+      },
+      "bookPhootUrl": {
+        "type": "string"
+      },
+			"bookRating": {
+				"type": "array"
+      },
+			"bookTitle": {
 				"type": "string"
 			},
 			"datePicked": {
 				"type": "string"
-			},
-			"pickedBy": {
+      },
+      "dateUpdated": {
+        "type": "string"
+      },
+      "userPicked": {
+        "type": "string"
+      },
+			"userSubmitted": {
 				"type": "string"
-			},
-			"rating": {
-				"type": "array"
-			},
-			"submittedBy": {
-				"type": "string"
-			},
-			"title": {
-				"type": "string"
-			}
+      },
+      "userUpdated": {
+        "type": "string"
+      }
 		},
 		"path": "/books/*"
 	},
@@ -107,15 +124,15 @@
 		"method": ["DELETE", "PATCH", "PUT"],
 		"parameters": {
 			"booksPicked": {
-				"type": "string"
+				"type": "array"
 			},
 			"email": {
 				"type": "string"
 			},
-			"firstName": {
+			"nameFirst": {
 				"type": "string"
 			},
-			"lastName": {
+			"nameLast": {
 				"type": "string"
 			},
 			"photoUrl": {
