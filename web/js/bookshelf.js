@@ -53,7 +53,7 @@
     getBooks: function(cb) {
       const that = this;
 
-      data.get('books')
+      data.get('bookz')
         .then(
           function(books) {
             that.renderBookshelf(books);

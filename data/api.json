@@ -1,5 +1,5 @@
 [
-	{
+  {
 		"auth": {
 			"validator": "$auth != null"
 		},
@@ -42,7 +42,7 @@
         "type": "string"
       }
 		},
-		"path": "/books/*"
+		"path": "/bookz/*"
 	},
 	{
 		"auth": {
@@ -82,71 +82,161 @@
         "type": "string"
       }
 		},
-		"path": "/books/*"
+		"path": "/bookz/*"
 	},
 	{
 		"data": true,
 		"method": "GET",
-		"path": "/books/*"
-	},
-		{
-		"data": true,
-		"description": "Members Database",
-		"method": ["POST"],
-		"parameters": {
-			"booksPicked": {
-				"type": "string"
-			},
-			"email": {
-				"type": "string"
-			},
-			"firstName": {
-				"type": "string"
-			},
-			"lastName": {
-				"type": "string"
-			},
-			"photoUrl": {
-				"type": "string"
-			},
-			"pickAvailable": {
-				"type": "boolean"
-			}
-		},
-		"path": "/members/*"
-	},
-	{
-		"auth": {
-			"validator": "$auth != null"
-		},
-		"data": true,
-		"description": "Members Database",
-		"method": ["DELETE", "PATCH", "PUT"],
-		"parameters": {
-			"booksPicked": {
-				"type": "array"
-			},
-			"email": {
-				"type": "string"
-			},
-			"nameFirst": {
-				"type": "string"
-			},
-			"nameLast": {
-				"type": "string"
-			},
-			"photoUrl": {
-				"type": "string"
-			},
-			"pickAvailable": {
-				"type": "boolean"
-			}
-		},
-		"path": "/members/*"
-	},
-	{
-		"data": true,
-		"method": "GET",
-		"path": "/members/*"
-	}
+		"path": "/bookz/*"
+  },
+  {
+    "auth": {
+      "validator": "$auth != null"
+    },
+    "data": true,
+    "description": "Creates a new book.",
+    "method": ["POST"],
+    "parameters": {
+      "bookAmazonUrl": {
+        "type": "string"
+      },
+      "bookAuthor": {
+        "type": "string",
+        "required": true
+      },
+      "bookPhootUrl": {
+        "type": "string"
+      },
+      "bookRating": {
+        "type": "array",
+        "required": false
+      },
+      "bookTitle": {
+        "type": "string",
+        "required": true
+      },
+      "datePicked": {
+        "type": "string",
+        "required": true
+      },
+      "dateUpdated": {
+        "type": "string"
+      },
+      "userPicked": {
+        "type": "string"
+      },
+      "userSubmitted": {
+        "type": "string"
+      },
+      "userUpdated": {
+        "type": "string"
+      }
+    },
+    "path": "/books/*"
+  },
+  {
+    "auth": {
+      "validator": "$auth != null"
+    },
+    "data": true,
+    "method": ["DELETE", "PATCH", "PUT"],
+    "parameters": {
+      "bookAmazonUrl": {
+        "type": "string"
+      },
+      "bookAuthor": {
+        "type": "string"
+      },
+      "bookPhootUrl": {
+        "type": "string"
+      },
+      "bookRating": {
+        "type": "array"
+      },
+      "bookTitle": {
+        "type": "string"
+      },
+      "datePicked": {
+        "type": "string"
+      },
+      "dateUpdated": {
+        "type": "string"
+      },
+      "userPicked": {
+        "type": "string"
+      },
+      "userSubmitted": {
+        "type": "string"
+      },
+      "userUpdated": {
+        "type": "string"
+      }
+    },
+    "path": "/books/*"
+  },
+  {
+    "data": true,
+    "method": "GET",
+    "path": "/books/*"
+  },
+    {
+    "data": true,
+    "description": "Members Database",
+    "method": ["POST"],
+    "parameters": {
+      "booksPicked": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string"
+      },
+      "firstName": {
+        "type": "string"
+      },
+      "lastName": {
+        "type": "string"
+      },
+      "photoUrl": {
+        "type": "string"
+      },
+      "pickAvailable": {
+        "type": "boolean"
+      }
+    },
+    "path": "/members/*"
+  },
+  {
+    "auth": {
+      "validator": "$auth != null"
+    },
+    "data": true,
+    "description": "Members Database",
+    "method": ["DELETE", "PATCH", "PUT"],
+    "parameters": {
+      "booksPicked": {
+        "type": "array"
+      },
+      "email": {
+        "type": "string"
+      },
+      "nameFirst": {
+        "type": "string"
+      },
+      "nameLast": {
+        "type": "string"
+      },
+      "photoUrl": {
+        "type": "string"
+      },
+      "pickAvailable": {
+        "type": "boolean"
+      }
+    },
+    "path": "/members/*"
+  },
+  {
+    "data": true,
+    "method": "GET",
+    "path": "/members/*"
+  }
 ]
