@@ -1,9 +1,10 @@
 //@ts-check
-var AUTH = WeDeploy.auth('auth.gsbc.wedeploy.io');
-var DATA = WeDeploy.data('data.gsbc.wedeploy.io');
+const auth = WeDeploy.auth('auth.gsbc.wedeploy.io');
+const data = WeDeploy.data('data.gsbc.wedeploy.io');
+const currentUser = auth.currentUser;
 
 function addMemberToDatabase(member) {
-	DATA.create(
+	data.create(
 		'members',
 		{
 			email: member.email,
@@ -25,7 +26,7 @@ function addMemberToDatabase(member) {
 };
 
 function newMember() {
-	AUTH.createUser(
+	auth.createUser(
 		{
 			email: user.email.value,
 			firstName: user.firstName.value,
@@ -50,7 +51,7 @@ function newMember() {
 }
 
 function signIn() {
-	AUTH.signInWithEmailAndPassword(
+	auth.signInWithEmailAndPassword(
 		user.email.value,
 		user.password.value
 		)
@@ -69,7 +70,7 @@ function signIn() {
 }
 
 function signOut() {
-	AUTH.signOut()
+	auth.signOut()
 		.then(
 			function() {
 				document.location.href = '/';
@@ -77,8 +78,6 @@ function signOut() {
 		)
 	;
 }
-
-var currentUser = AUTH.currentUser;
 
 if (currentUser) {
 	$('#controlMenu').replaceWith(`<li class="nav-item dropdown">
@@ -102,7 +101,7 @@ if (currentUser) {
 		</div>
 	`);
 
-	var stuff = $('#stuff');
+	const stuff = $('#stuff');
 
 	stuff.hover(
 		function() {

@@ -16,10 +16,6 @@
 
       book = this.formatBookData(book);
 
-      if (book.bookAmazonUrl === undefined) {
-        book.bookAmazonUrl = 'javascript:;';
-      }
-
       tr.className = 'book';
       tr.id = book.id;
 
@@ -47,7 +43,10 @@
     },
 
     formatBookData: function(book) {
-      console.log(book);
+      book.bookAmazonUrl = this.setAmazonUrl(book.bookAmazonUrl);
+      book.bookRating = this.setAverageRating(book.bookRatings);
+console.log(book);
+      return book;
     },
 
     getBooks: function(cb) {
@@ -80,6 +79,14 @@
       });
 
       container.append(frag);
+    },
+
+    setAmazonUrl: function(url) {
+      if (url === undefined) {
+        url = 'javascript:;';
+      }
+
+      return url;
     }
   };
 
