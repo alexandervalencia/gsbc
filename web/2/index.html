@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
-	<meta name="author" content="Alex Valencia">
+	<meta name="bookAuthor" content="Alex Valencia">
 
 	<link rel="apple-touch-icon" sizes="57x57" href="../img/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="../img/apple-icon-60x60.png">
@@ -47,7 +47,6 @@
 				<div class="collapse navbar-collapse navbar-centered" id="navbarNavDropdown">
 					<ul class="navbar-nav navbar-wide">
 						<li class="nav-item">
-							<a class="nav-link" href="#"><i class="fa fa-book fa-fw"></i> Books</a>
 						</li>
 						<li class="nav-item active nav-item-tablet">
 							<a class="nav-link" href="index.html">
@@ -73,8 +72,8 @@
 		<header class="container header">
 			<div class="row">
 				<div class="col">
-					<h2 id="picklist">The Picklist:</h2>
-					<p id="pickAvailable"></p>
+					<h2>The Picklist:</h2>
+					<p id="picklist"></p>
 				</div>
 			</div>
 		</header>
@@ -153,20 +152,20 @@
 					<form id="book" name="book">
 						<div class="modal-body">
 							<div class="form-group">
-								<label for="title">Book</label>
-								<input class="form-control" id="title" name="title" placeholder="" required type="text">
+								<label for="bookTitle">Book</label>
+								<input class="form-control" id="bookTitle" name="bookTitle" placeholder="" required="true" type="text">
 							</div>
 							<div class="form-group">
-								<label for="amazonUrl">Amazon Link</label>
-								<input class="form-control" id="amazonUrl" name="amazonUrl" placeholder="" required type="text">
+								<label for="bookAmazonUrl">Amazon Link</label>
+								<input class="form-control" id="bookAmazonUrl" name="bookAmazonUrl" placeholder="" type="text">
 							</div>
 							<div class="form-group">
-								<label for="author">Author</label>
-								<input class="form-control" id="author" name="author" placeholder="" required type="text">
+								<label for="bookAuthor">Author</label>
+								<input class="form-control" id="bookAuthor" name="bookAuthor" placeholder="" required="true" type="text">
 							</div>
 							<div class="form-group">
-								<label for="monthPicked" id="dateRead">Date Read</label>
-								<select class="form-control" id="monthPicked" name="monthPicked" placeholder="" required>
+								<label for="datePickedMonth" id="dateRead">Date Read</label>
+								<select class="form-control" id="datePickedMonth" name="datePickedMonth" placeholder="" required="true">
 									<option>Jan</option>
 									<option>Feb</option>
 									<option>Mar</option>
@@ -180,7 +179,7 @@
 									<option>Nov</option>
 									<option>Dec</option>
 								</select>
-								<select class="form-control" id="yearPicked" name="yearPicked" placeholder="" required>
+								<select class="form-control" id="datePickedYear" name="datePickedYear" placeholder="" required="true">
 									<option>2013</option>
 									<option>2014</option>
 									<option>2015</option>
@@ -189,8 +188,8 @@
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="pickedBy">Picked By</label>
-								<select class="form-control" id="pickedBy" name="pickedBy" required></select>
+								<label for="userPicked">Picked By</label>
+								<select class="form-control" id="userPicked" name="userPicked" required="true"></select>
 							</div>
 						</div>
 						<div class="modal-footer">
@@ -199,52 +198,6 @@
 						</div>
 					</form>
 
-				</div>
-			</div>
-		</div>
-
-		<div class="modal fade" id="addRatingModal" tabindex="-1" role="dialog" aria-labelledby="addRatingModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="addRatingModalLabel">Add your rating...</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<form name="addRatingForm" onsubmit="return false;">
-						<div class="modal-body">
-							<div class="form-group">
-								<label for="rating">How did you like <span id="bookToRate"></span> ?</label>
-								<input id="rating" name="rating" placeholder="" type="hidden" />
-								<fieldset class="form-group rating rating-stars">
-									<input type="radio" id="star5" name="rating" value="5" />
-									<label class="full" for="star5" title="Awesome - 5 stars"></label>
-									<input type="radio" id="star4half" name="rating" value="4.5" />
-									<label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-									<input type="radio" id="star4" name="rating" value="4" />
-									<label class="full" for="star4" title="Pretty good - 4 stars"></label>
-									<input type="radio" id="star3half" name="rating" value="3.5" />
-									<label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-									<input type="radio" id="star3" name="rating" value="3" />
-									<label class="full" for="star3" title="Meh - 3 stars"></label>
-									<input type="radio" id="star2half" name="rating" value="2.5" />
-									<label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-									<input type="radio" id="star2" name="rating" value="2" />
-									<label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-									<input type="radio" id="star1half" name="rating" value="1.5" />
-									<label class="half" for="star1half" title="Bray - 1.5 stars"></label>
-									<input type="radio" id="star1" name="rating" value="1" />
-									<label class="full" for="star1" title="Sucks big time - 1 star"></label>
-									<input type="radio" id="starhalf" name="rating" value="0.5" />
-									<label class="half" for="starhalf" title="TRASH - 0.5 stars"></label>
-								</fieldset>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						</div>
-					</form>
 				</div>
 			</div>
 		</div>
