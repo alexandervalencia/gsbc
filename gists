@@ -1,0 +1,45 @@
+bookAmazonUrl
+bookAuthor
+bookPhootUrl
+bookRating
+bookTitle
+datePicked
+dateUpdated
+userPicked
+userSubmitted
+userUpdated
+
+WeDeploy.data('http://data.gsbc.wedeploy.io')
+  .create(
+    'bookz',
+    {
+      'bookAmazonUrl': '',
+      'bookAuthor': 'J.K. Rowling',
+      'bookPhootUrl': '',
+      'bookRatings': [{user: 1, rating: 5}, {user: 2, rating: 3}],
+      'bookTitle': 'The Casual Vacancy',
+      'datePicked': 'Jan 2013',
+      'dateUpdated': '',
+      'userPicked': 'Alex',
+      'userSubmitted': 'Alex',
+      'userUpdated': ''
+    }
+  )
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
+;
+
+WeDeploy.data('http://data.gsbc.wedeploy.io')
+  .create(
+    'memberz',
+    {
+      'email': 'test@test.com',
+      'nameFirst': 'Test',
+      'nameLast': 'Johnson',
+      'nameUser': 'testyblesty',
+      'pickAvailable': true
+    }
+  )
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
+;

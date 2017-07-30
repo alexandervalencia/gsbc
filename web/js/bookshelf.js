@@ -7,52 +7,59 @@
 
   const bookshelf = {
     init: function() {
-      this.container = $('#bookshelf');
-      this.renderBookshelf();
-      this.bindUI();
+      this.container = document.querySelector('#bookshelf');
+
+      data.get('members')
+        .then(members => {
+          this.membersList = members;
+
+          this.renderBookshelf();
+          this.bindUI();
+        })
+        .catch(error => console.error(error))
     },
 
     bindUI: function() {
-      $('#addBook').on('click', event => {
-					event.preventDefault();
+      document.querySelector('#addBook').addEventListener('click', event => {
+          event.preventDefault();
 
           this.addBook(document.forms.book);
-			});
+      });
     },
 
     addBook: function(book) {
       const b = this.simplifyFormData(book);
       const dateCreated = Date.now();
 
-			data.create(
-				'bookz',
-				{
-					'bookAmazonUrl': b.bookAmazonUrl,
-					'bookAuthor': b.bookAuthor,
-					'bookTitle': b.bookTitle,
-					'dateCreated': dateCreated,
-					'datePicked': b.datePicked,
-					'userPicked': b.userPicked,
-					'userSubmitted': currentUser.firstName,
-				}
-			)
-			.then(
-				function(newBook) {
-					book.reset();
-					this.prependBook(newBook);
-					picklist.removePicker(newBook.userPicked);
-					$('#addBookModalClose').click();
-				}
-			)
-			.catch(
-				function(err) {
-					console.error(err);
-				}
-			);
-		},
+      data.create(
+        'books',
+        {
+          'bookAmazonUrl': b.bookAmazonUrl,
+          'bookAuthor': b.bookAuthor,
+          'bookTitle': b.bookTitle,
+          'dateCreated': dateCreated,
+          'datePicked': b.datePicked,
+          'userPicked': b.userPicked,
+          'userSubmitted': currentUser.firstName,
+        }
+      )
+      .then(
+        newBook => {
+          picklist.removePicker(newBook.userPicked);
+          this.refreshBookshelf();
+          book.reset();
+          document.getElementById('addBookModalClose').click();
+        }
+      )
+      .catch(
+        error => {
+          console.error(error);
+        }
+      );
+    },
 
     createBookRow: function(book) {
-      let tr = document.createElement("tr");
+      const tr = document.createElement("tr");
 
       book = this.formatBookData(book);
 
@@ -83,13 +90,21 @@
 
     formatBookData: function(book) {
       book.bookAmazonUrl = this.setAmazonUrl(book.bookAmazonUrl);
-      book.bookRating = this.setAverageRating(book.bookRatings);
+
+      if (book.bookRatings) {
+        book.bookRating = this.setAverageRating(book.bookRatings);
+      }
+      else {
+        book.bookRating = '';
+      }
+
+      book.userPicked = this.getNameById(book.userPicked);
 
       return book;
     },
 
     getBooks: function(cb) {
-      data.get('bookz')
+      data.get('books')
         .then(
           books => {
             cb(books);
@@ -103,8 +118,22 @@
       ;
     },
 
+    getNameById: function(id) {
+      let name;
+
+      this.membersList.forEach(member => {
+        if (member.id === id) {
+          name = member.nameFirst;
+        }
+      })
+
+      return name;
+    },
+
     refreshBookshelf: function() {
-      $('#bookshelf').empty();
+      while (this.container.firstChild) {
+        this.container.removeChild(this.container.firstChild);
+      }
 
       this.renderBookshelf();
     },
@@ -165,24 +194,35 @@
 
   const picklist = {
     init: function() {
-      this.container = $('#picklist');
-      this.userPickedSelect = $('#userPicked');
+      this.container = document.querySelector('#picklist');
       this.renderPicklist();
     },
 
-    compare: function(a,b) {
-      if (a.firstName < b.firstName) {
-        return -1;
-      }
-      else if (a.firstName > b.firstName) {
-        return 1;
-      }
-      return 0;
+    getFirstNames: function(members) {
+      const picklist = members.map(
+        function(member) {
+          return member.nameFirst;
+        }
+      );
+
+      picklist.sort();
+
+      return picklist;
     },
 
-    getPicklist: function(cb) {
-      data.get('memberz')
-				.then(
+    getMemberId: function(name, cb) {
+      this.getMembers(members => {
+        members.forEach(member => {
+          if (name === member.nameFirst) {
+            cb(member.id);
+          }
+        });
+      });
+    },
+
+    getMembers: function(cb) {
+      data.get('members')
+        .then(
           members => {
             cb(members);
           }
@@ -196,29 +236,151 @@
     },
 
     renderPicklist: function() {
-      this.getPicklist(members => {
-        let picklist = this.setPicklist(members);
+      this.getMembers(members => {
+        let picklistArray = [];
+        let picklist;
 
-        this.userPickedSelect.text(picklist);
+        members.forEach(member => {
+          if (member.pickAvailable) {
+            picklistArray.push(member.nameFirst);
+          }
+        });
+
+        picklistArray.sort();
+
+        if (picklistArray.length > 1) {
+            picklist = picklistArray.join(', ');
+          }
+          else if (picklistArray.length < 1) {
+            this.resetAvailablePicks();
+          }
+          else {
+            picklist = picklistArray.join('');
+          }
+
+        this.container.innerText = picklist;
 
         this.renderUserPickedOptions(members);
       });
     },
 
-    renderUserPickedOptions: function(members) {
-      const frag = document.createDocumentFragment();
-
-      members.sort(this.compare);
-
-
-      console.log(members);
+    removePicker: function(id) {
+      data.update(
+        'members/' + id,
+        {
+          'pickAvailable': false
+        }
+      )
+      .then((member) => {
+        this.renderPicklist();
+      })
+      .catch(error => console.error(error));
     },
 
-    setPicklist: function(members) {
+    renderUserPickedOptions: function(members) {
+      const frag = document.createDocumentFragment();
+      const userPickedSelect = document.querySelector('#userPicked');
 
+      members = this.sortUsers(members)
+
+      members.forEach(member => {
+        const option = document.createElement('option');
+
+        option.innerHTML = member.nameFirst;
+        option.value = member.id;
+
+        frag.appendChild(option);
+      });
+
+      while (userPickedSelect.firstChild) {
+        userPickedSelect.removeChild(userPickedSelect.firstChild);
+      }
+
+      userPickedSelect.appendChild(frag);
+    },
+
+    resetAvailablePicks: function() {
+      this.getMembers(members => {
+        members.forEach(member => {
+          data.update(
+            'members/' + member.id,
+            {
+              "pickAvailable": true
+            }
+          )
+          .then(() => {})
+          .catch(error => console.error(error));
+        });
+      });
+    },
+
+    sortUsers(array) {
+      array.sort(function(a, b) {
+        const nameA = a.nameFirst.toUpperCase();
+        const nameB = b.nameFirst.toUpperCase();
+
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+
+        return 0;
+      });
+
+      return array;
     }
   };
 
   bookshelf.init();
   picklist.init();
 })();
+
+const createBook = function(title, author, datePicked, userPicked) {
+  WeDeploy.data('http://data.gsbc.wedeploy.io')
+    .create(
+      'books',
+      {
+        'bookAuthor': author,
+        'bookTitle': title,
+        'datePicked': datePicked,
+        'userPicked': userPicked,
+      }
+    )
+    .then(newBook => console.log(newBook))
+    .catch(error => console.error(error))
+};
+
+const createMember = function(nameF) {
+  WeDeploy.data('http://data.gsbc.wedeploy.io')
+    .create(
+      'members',
+      {
+        'nameFirst': nameF,
+        'pickAvailable': true
+      }
+    )
+    .then(name => console.log(name))
+    .catch(error => console.error(error))
+};
+
+const getAllIds = () => {
+  WeDeploy.data('http://data.gsbc.wedeploy.io')
+    .get('members')
+    .then(members => {
+      members.forEach(member => {
+        console.log(member.id);
+      })
+    })
+    .catch(error => console.error(error))
+}
+
+const getAllUsers = () => {
+  WeDeploy.data('http://data.gsbc.wedeploy.io')
+    .get('members')
+    .then(members => {
+      console.log(members);
+    })
+    .catch(error => console.error(error))
+}
