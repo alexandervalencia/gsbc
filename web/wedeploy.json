@@ -1,6 +1,4 @@
 {
-  "customDomains": ["www.goodstuffbook.club", "goodstuffbook.club", "www.goodshitbook.club", "goodshitbook.club"],
-	"description": "Static hosting for gsbc.com",
 	"id": "web",
 	"image": "wedeploy/hosting:0.0.1"
 }
