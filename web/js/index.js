@@ -1,6 +1,6 @@
 //@ts-check
-const auth = WeDeploy.auth('auth.gsbc.wedeploy.io');
-const data = WeDeploy.data('data.gsbc.wedeploy.io');
+const auth = WeDeploy.auth('auth-gsbc.wedeploy.io');
+const data = WeDeploy.data('data-gsbc.wedeploy.io');
 const currentUser = auth.currentUser;
 
 function addMemberToDatabase(member) {

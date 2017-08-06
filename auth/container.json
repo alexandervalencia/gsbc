@@ -1,8 +1,0 @@
-{
-	"id": "auth",
-	"type": "wedeploy/auth:latest",
-	"env": {
-		"WEDEPLOY_AUTH_PASSWORD": "true",
-		"WEDEPLOY_AUTH_SECURE_FIELDS": "password"
-	}
-}
