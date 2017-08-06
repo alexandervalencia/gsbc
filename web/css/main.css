@@ -155,6 +155,11 @@ h2, h4, h6 {
   transition: opacity 500ms;
 }
 
+.book .book-data .book-rating-user a:hover {
+  color: #FFF;
+  text-decoration: underline;
+}
+
 .book .book-data .book-info {
   margin-top: 0.5rem;
 }
