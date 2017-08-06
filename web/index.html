@@ -1,269 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
+  <head>
 
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="Alex Valencia">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Alex Valencia">
 
-	<link rel="apple-touch-icon" sizes="57x57" href="img/apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="img/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="img/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="img/apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="img/apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="img/apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="img/apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="img/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192" href="img/android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-	<link rel="manifest" href="manifest.json">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">
+  <link rel="apple-touch-icon" sizes="57x57" href="img/favicons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="img/favicons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="img/favicons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="img/favicons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="img/favicons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="img/favicons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="img/favicons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/favicons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="img/favicons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="img/favicons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="img/favicons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
 
-	<title>GoodStuffBook.Club</title>
+  <title>GoodStuffBook.Club</title>
 
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/theme.bootstrap_4.min.css" rel="stylesheet">
-	<link href="css/font-awesome.min.css" rel="stylesheet">
-	<link href="css/main.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Raleway:400,700,800" rel="stylesheet">
 
-	<script src="http://cdn.wedeploy.com/api/beta/wedeploy.js"></script>
-	</head>
+  <link href="css/vendor/bootstrap.min.css" rel="stylesheet">
+  <link href="css/vendor/font-awesome.min.css" rel="stylesheet">
+  <link href="css/vendor/jquery.rateyo.min.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
 
-	<body>
-		<nav class="navbar navbar-inverse navbar-light navbar-toggleable-sm bg-gsbc">
-			<div class="container">
-				<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<a class="navbar-brand navbar-brand-mobile" href="index.html">
-					<h1><span class="tablet-title">Good Stuff Book Club</span><span class="mobile-title">GSBC</span></h1>
-				</a>
-				<div class="collapse navbar-collapse navbar-centered" id="navbarNavDropdown">
-					<ul class="navbar-nav navbar-wide">
-						<li class="nav-item">
-							<a class="nav-link" href="#"><i class="fa fa-book fa-fw"></i> Books</a>
-						</li>
-						<li class="nav-item active nav-item-tablet">
-							<a class="nav-link" href="index.html">
-								<h1>Good <span id="stuff">Stuff</span> Book Club</h1>
-							</a>
-						</li>
-						<li class="nav-item" id="controlMenu">
-							<a class="nav-link" data-target="#signInModal" data-toggle="modal" href="javascript:;" id="signIn"><i class="fa fa-sign-in fa-fw"></i> Sign In</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
+  <script src="https://cdn.wedeploy.com/api/2.3.1/wedeploy.js"></script>
+  </head>
 
-		<div class="container-fluid tagline">
-			<div class="row">
-				<div class="col text-center">
-					Our book club. Carry your spoon.
-				</div>
-			</div>
-		</div>
+  <body>
+    <div class="container-fluid" id="site-wrapper">
+      <nav>
+        <header class="title-header">
+          <div class="row">
+            <div class="col">
+              <div class="text-center title">
+                <div class="title-back">
+                  <h1>Book Club</h1>
+                </div>
 
-		<header class="container header">
-			<div class="row">
-				<div class="col">
-					<h2 id="picklist">The Picklist:</h2>
-					<p id="pickAvailable"></p>
-				</div>
-			</div>
-		</header>
+                <div class="title-front">
+                  <h2 class="align-middle">Good <span id="stuff">Stuff</span></h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+      </nav>
 
-		<section class="container main">
+      <div class="main" id="main-wrapper">
+        <header class="filter-header">
+          <div class="row">
+            <div class="col">
+              <form class="form-inline filter" id="bookshelf-filter">
+                <label class="sr-only" for="filter-title">Title</label>
+                <select type="select" class="custom-select form-control mb-2 mb-sm-0" id="filter-title" name="title">
+                  <option value="" disabled hidden selected>Title</option>
+                  <option value="title-az">Title - A-Z</option>
+                  <option value="title-za">Title - Z-A</option>
+                </select>
 
-			<div class="row">
-				<div class="col">
-					<h2>The Bookshelf:</h2>
-				</div>
-				<div class="col col-edit">
-					<span class="edit" id="edit">
-					</span>
-				</div>
-			</div>
+                <label class="sr-only" for="filter-author">Author</label>
+                <select type="select" class="custom-select form-control mb-2 mb-sm-0" id="filter-author" name="author">
+                  <option value="" disabled hidden selected>Author</option>
+                  <option value="author-az">Author - A-Z</option>
+                  <option value="author-za">Author - Z-A</option>
+                </select>
 
-			<div class="row">
-				<div class="col">
-					<form class="form-inline" id="editBook" name="editBook">
-						<table class="table table-hover" id="book-table">
-							<thead class="thead">
-								<tr>
-									<th>Book Title</th>
-									<th>Rating</th>
-									<th>Author</th>
-									<th>Date Read</th>
-									<th>Picked By</th>
-								</tr>
-							</thead>
-							<tbody id="book-list"></tbody>
-						</table>
-					</form>
-				</div>
-			</div>
-		</section>
+                <label class="sr-only" for="filter-rating">Rating</label>
+                <select type="select" class="custom-select form-control mb-2 mb-sm-0" id="filter-rating" name="rating">
+                  <option value="" disabled hidden selected>Rating</option>
+                  <option value="rating-low">Rating - Low to High</option>
+                  <option value="rating-high">Rating - High to Low</option>
+                </select>
 
-		<div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="signInModalLabel">Sign In to GSBC</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<form name="user" onsubmit="signIn(); return false;">
-						<div class="modal-body">
-							<div class="form-group">
-								<label for="email">Email address</label>
-								<input class="form-control" id="email" name="email" placeholder="you@example.com" required type="email">
-							</div>
-							<div class="form-group">
-								<label for="password">Password</label>
-								<input class="form-control" id="password" name="password" placeholder="password" required type="password">
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary">Sign In</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
+                <label class="sr-only" for="filter-date">Date Read</label>
+                <select type="select" class="active custom-select form-control mb-2 mb-sm-0" id="filter-date" name="date-read">
+                  <option value="" disabled hidden>Date Read</option>
+                  <option value="date-read-old">Date Read - Oldest to Newest</option>
+                  <option elected value="date-read-new">Date Read - Newest to Oldest</option>
+                </select>
 
-		<div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="addBookModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="addBookModalLabel">Add a Book!</h5>
-						<button aria-label="Close" class="close" data-dismiss="modal" id="addBookModalClose" type="button">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
+                <label class="sr-only" for="filter-user">Picked By</label>
+                <select type="select" class="custom-select form-control mb-2 mb-sm-0" id="filter-user" name="picked-by">
+                  <option value="" disabled hidden selected>Picked By</option>
+                  <option value="picked-by-az">Picked By - A-Z</option>
+                  <option value="picked-by-za">Picked By - Z-A</option>
+                </select>
+              </form>
+            </div>
+          </div>
+        </header>
 
-					<form id="book" name="book">
-						<div class="modal-body">
-							<div class="form-group">
-								<label for="title">Book</label>
-								<input class="form-control" id="title" name="title" placeholder="" required type="text">
-							</div>
-							<div class="form-group">
-								<label for="amazonUrl">Amazon Link</label>
-								<input class="form-control" id="amazonUrl" name="amazonUrl" placeholder="" required type="text">
-							</div>
-							<div class="form-group">
-								<label for="author">Author</label>
-								<input class="form-control" id="author" name="author" placeholder="" required type="text">
-							</div>
-							<div class="form-group">
-								<label for="monthPicked" id="dateRead">Date Read</label>
-								<select class="form-control" id="monthPicked" name="monthPicked" placeholder="" required>
-									<option>Jan</option>
-									<option>Feb</option>
-									<option>Mar</option>
-									<option>Apr</option>
-									<option>May</option>
-									<option>Jun</option>
-									<option>Jul</option>
-									<option>Aug</option>
-									<option>Sep</option>
-									<option>Oct</option>
-									<option>Nov</option>
-									<option>Dec</option>
-								</select>
-								<select class="form-control" id="yearPicked" name="yearPicked" placeholder="" required>
-									<option>2013</option>
-									<option>2014</option>
-									<option>2015</option>
-									<option>2016</option>
-									<option>2017</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="pickedBy">Picked By</label>
-								<select class="form-control" id="pickedBy" name="pickedBy" required></select>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-							<button type="submit" class="btn btn-primary" id="addBook">Submit</button>
-						</div>
-					</form>
+        <section>
+          <div class="row">
+            <div class="col" id="bookshelf">
 
-				</div>
-			</div>
-		</div>
+              <div class="book row">
+                <div class="book-amazon col-2">
+                  <a class="amazon-wrapper" href="javascript:;">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="amazon-logo" width="24" height="24" viewBox="0 0 24 24"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705c-.209.189-.512.201-.745.074-1.052-.872-1.238-1.276-1.814-2.106-1.734 1.767-2.962 2.297-5.209 2.297-2.66 0-4.731-1.641-4.731-4.925 0-2.565 1.391-4.309 3.37-5.164 1.715-.754 4.11-.891 5.942-1.095v-.41c0-.753.06-1.642-.383-2.294-.385-.579-1.124-.82-1.775-.82-1.205 0-2.277.618-2.54 1.897-.054.285-.261.567-.549.582l-3.061-.333c-.259-.056-.548-.266-.472-.66.704-3.716 4.06-4.838 7.066-4.838 1.537 0 3.547.41 4.758 1.574 1.538 1.436 1.392 3.352 1.392 5.438v4.923c0 1.481.616 2.13 1.192 2.929.204.287.247.63-.01.839-.647.541-1.794 1.537-2.423 2.099l-.008-.007zm3.559 1.988c-2.748 1.472-5.735 2.181-8.453 2.181-4.027 0-7.927-1.393-11.081-3.706-.277-.202-.481.154-.251.416 2.925 3.326 6.786 5.326 11.076 5.326 3.061 0 6.614-1.214 9.066-3.494.406-.377.058-.945-.357-.723zm.67 2.216c-.091.227.104.32.31.147 1.339-1.12 1.685-3.466 1.411-3.804-.272-.336-2.612-.626-4.04.377-.22.154-.182.367.062.337.805-.096 2.595-.312 2.913.098.319.41-.355 2.094-.656 2.845z" fill-rule="evenodd" clip-rule="evenodd"/></svg>
+                  </a>
+                </div>
 
-		<div class="modal fade" id="addRatingModal" tabindex="-1" role="dialog" aria-labelledby="addRatingModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="addRatingModalLabel">Add your rating...</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<form name="addRatingForm" onsubmit="return false;">
-						<div class="modal-body">
-							<div class="form-group">
-								<label for="rating">How did you like <span id="bookToRate"></span> ?</label>
-								<input id="rating" name="rating" placeholder="" type="hidden" />
-								<fieldset class="form-group rating rating-stars">
-									<input type="radio" id="star5" name="rating" value="5" />
-									<label class="full" for="star5" title="Awesome - 5 stars"></label>
-									<input type="radio" id="star4half" name="rating" value="4.5" />
-									<label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-									<input type="radio" id="star4" name="rating" value="4" />
-									<label class="full" for="star4" title="Pretty good - 4 stars"></label>
-									<input type="radio" id="star3half" name="rating" value="3.5" />
-									<label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-									<input type="radio" id="star3" name="rating" value="3" />
-									<label class="full" for="star3" title="Meh - 3 stars"></label>
-									<input type="radio" id="star2half" name="rating" value="2.5" />
-									<label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-									<input type="radio" id="star2" name="rating" value="2" />
-									<label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-									<input type="radio" id="star1half" name="rating" value="1.5" />
-									<label class="half" for="star1half" title="Bray - 1.5 stars"></label>
-									<input type="radio" id="star1" name="rating" value="1" />
-									<label class="full" for="star1" title="Sucks big time - 1 star"></label>
-									<input type="radio" id="starhalf" name="rating" value="0.5" />
-									<label class="half" for="starhalf" title="TRASH - 0.5 stars"></label>
-								</fieldset>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
+                <div class="book-cover-wrapper col-2">
+                  <div class="book-cover">
+                    <img alt="The Casual Vacancy - J.K. Rowling" class="img-fluid" src="img/covers/thecasualvacancy_cover.jpg" />
+                  </div>
+                </div>
 
-		<footer class="container">
-			<div class="row">
-				<div class="col">
-					&copy; Alex Valencia 2017
-				</div>
-			</div>
-		</footer>
+                <div class="book-data col-5">
+                  <div class="book-rating-wrapper">
+                    <div class="book-rating" data-placement="right" data-toggle="tooltip" title="3.6" id="123-rating"></div>
 
-		<script src="js/vendor/jquery-3.2.1.min.js"></script>
-		<script src="js/vendor/jquery.tablesorter.min.js"></script>
-		<script src="js/vendor/parser-ignore-articles.min.js"></script>
-		<script src="js/vendor/tether.min.js"></script>
-		<script src="js/vendor/bootstrap.min.js"></script>
-		<script src="js/vendor/ie10-viewport-bug-workaround.js"></script>
-		<script src="js/index.js"></script>
-		<script src="js/booklist.js"></script>
-	</body>
+                    <div class="book-rating-user">
+                      Your rating: <span id="current-user-rating">4</span> - <a id="set-user-rating" href="javascript:;">edit rating</a>
+                    </div>
+                  </div>
+
+                  <div class="book-info">
+                    <h1 class="book-title">The Casual Vacancy</h1>
+
+                    <h2 class="book-author">J.K. Rowling</h2>
+
+                    <p class="book-date-read">Jan 2013</p>
+                  </div>
+                </div>
+
+                <div class="book-member col-2">
+                  <div class="book-member-profile">
+                    <img alt="Alex" class="img-fluid" src="img/alexmoji.png">
+                    <spam class="book-member-name">Alex</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="signInModalLabel">Sign In to GSBC</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form name="user" onsubmit="signIn(); return false;">
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="email">Email address</label>
+                  <input class="form-control" id="email" name="email" placeholder="you@example.com" required type="email">
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input class="form-control" id="password" name="password" placeholder="password" required type="password">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Sign In</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="addBookModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addBookModalLabel">Add a Book!</h5>
+              <button aria-label="Close" class="close" data-dismiss="modal" id="addBookModalClose" type="button">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+            <form id="book" name="book">
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="title">Book</label>
+                  <input class="form-control" id="title" name="title" placeholder="" required type="text">
+                </div>
+                <div class="form-group">
+                  <label for="amazonUrl">Amazon Link</label>
+                  <input class="form-control" id="amazonUrl" name="amazonUrl" placeholder="" required type="text">
+                </div>
+                <div class="form-group">
+                  <label for="author">Author</label>
+                  <input class="form-control" id="author" name="author" placeholder="" required type="text">
+                </div>
+                <div class="form-group">
+                  <label for="monthPicked" id="dateRead">Date Read</label>
+                  <select class="form-control" id="monthPicked" name="monthPicked" placeholder="" required>
+                    <option>Jan</option>
+                    <option>Feb</option>
+                    <option>Mar</option>
+                    <option>Apr</option>
+                    <option>May</option>
+                    <option>Jun</option>
+                    <option>Jul</option>
+                    <option>Aug</option>
+                    <option>Sep</option>
+                    <option>Oct</option>
+                    <option>Nov</option>
+                    <option>Dec</option>
+                  </select>
+                  <select class="form-control" id="yearPicked" name="yearPicked" placeholder="" required>
+                    <option>2013</option>
+                    <option>2014</option>
+                    <option>2015</option>
+                    <option>2016</option>
+                    <option>2017</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="pickedBy">Picked By</label>
+                  <select class="form-control" id="pickedBy" name="pickedBy" required></select>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="addBook">Submit</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="addRatingModal" tabindex="-1" role="dialog" aria-labelledby="addRatingModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addRatingModalLabel">Add your rating...</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form name="addRatingForm" onsubmit="return false;">
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="rating">How did you like <span id="bookToRate"></span> ?</label>
+                  <input id="rating" name="rating" placeholder="" type="hidden" />
+                  <fieldset class="form-group rating rating-stars">
+                    <input type="radio" id="star5" name="rating" value="5" />
+                    <label class="full" for="star5" title="Awesome - 5 stars"></label>
+                    <input type="radio" id="star4half" name="rating" value="4.5" />
+                    <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                    <input type="radio" id="star4" name="rating" value="4" />
+                    <label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                    <input type="radio" id="star3half" name="rating" value="3.5" />
+                    <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                    <input type="radio" id="star3" name="rating" value="3" />
+                    <label class="full" for="star3" title="Meh - 3 stars"></label>
+                    <input type="radio" id="star2half" name="rating" value="2.5" />
+                    <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                    <input type="radio" id="star2" name="rating" value="2" />
+                    <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                    <input type="radio" id="star1half" name="rating" value="1.5" />
+                    <label class="half" for="star1half" title="Bray - 1.5 stars"></label>
+                    <input type="radio" id="star1" name="rating" value="1" />
+                    <label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                    <input type="radio" id="starhalf" name="rating" value="0.5" />
+                    <label class="half" for="starhalf" title="TRASH - 0.5 stars"></label>
+                  </fieldset>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="container">
+      <div class="row">
+        <div class="col text-center">
+          Alex Valencia &copy; 2017
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/vendor/jquery-3.2.1.min.js"></script>
+    <script src="js/vendor/tether.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/vendor/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/vendor/jquery.rateyo.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/bookshelf.js"></script>
+
+    <script>
+      $(function () {
+
+        $("#123-rating").rateYo({
+          ratedFill: "#FFF",
+          rating: 3.6,
+          readOnly: true,
+          spacing: "16px"
+        });
+
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
+  </body>
 </html>

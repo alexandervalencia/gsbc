@@ -1,4 +1,4 @@
 .vscode
-gulpfile.js
-assets/
 .DS_Store
+assets/*
+node_modules/*

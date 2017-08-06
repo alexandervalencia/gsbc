@@ -1,0 +1,265 @@
+$black: #1A1A1A;
+$blue: #228390;
+$blueAccent: #62B1BB;
+$darkGray: #333;
+$lightGray: #818181;
+$lighterGray: #CCC;
+$mediumGray: #929292;
+$orange: #EC8C34;
+$red: #E33243;
+$white: #FFF;
+
+$primary: $white;
+$secondary: $lightGray;
+$primary-dark: $black;
+$primary-font: $white;
+$light-font: $mediumGray;
+$active-font: $lighterGray;
+
+$accent: #323232;
+$complement: $orange;
+$danger: $red;
+
+$color-primary-2: #3A909C;
+$color-primary-3: #0D6E7C;
+$color-primary-4: #045762;
+
+$color-secondary-1-0: #3541A2;
+$color-secondary-1-1: #757EC9;
+$color-secondary-1-2: #4E59AF;
+$color-secondary-1-3: #1D2A8B;
+$color-secondary-1-4: #111C6F;
+
+$color-secondary-2-0: #40C32B;
+$color-secondary-2-1: #83E174;
+$color-secondary-2-2: #5ED34C;
+$color-secondary-2-3: #24A70F;
+$color-secondary-2-4: #148503;
+
+$color-complement-1: #FFBF84;
+$color-complement-2: #FFAA5B;
+$color-complement-3: #CA6A12;
+$color-complement-4: #A14F03;
+
+$font-sans: 'Raleway', sans-serif;
+$font-serif: 'Playfair Display', serif;
+
+/** General **/
+
+body {
+	background-color: $white;
+	color: $primary-font;
+	font-family: $font-sans;
+
+	a {
+		color: $primary;
+
+		&:hover {
+			color: $accent;
+			text-decoration: none;
+		}
+	}
+}
+
+h1, h3, h5, {
+	font-family: $font-sans;
+}
+
+h2, h4, h6 {
+  font-family: $font-serif;
+}
+
+*:focus {
+	outline: $primary auto 2px;
+}
+
+#site-wrapper {
+  background-color: $primary-dark;
+  border: 35px solid $white
+}
+
+/** Header **/
+
+.title-header {
+  padding-bottom: 3rem;
+}
+
+.title {
+  min-height: 5rem;
+  position: relative;
+  text-transform: uppercase;
+
+  .title-back {
+    h1 {
+      color: darken($primary-font, 80%);
+      font-family: $font-sans;
+      font-size: 5rem;
+      font-weight: 800;
+      letter-spacing: 2rem;
+    }
+  }
+
+  .title-front {
+    bottom: 0;
+    left: 0;
+    letter-spacing: 0.5rem;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    h2 {
+      display: inline-block;
+      font-family: $font-sans;
+      font-size: 2.5rem;
+      font-weight: 800;
+    }
+  }
+}
+
+.main {
+  padding-bottom: 3rem;
+}
+
+.filter-header {
+  padding-bottom: 5rem;
+}
+
+.filter {
+  justify-content: center;
+
+  select, .custom-select {
+    background-color: $primary-dark;
+    border: 1px solid rgba($secondary, 0.25);
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    color: $secondary;
+    font-family: $font-serif;
+    font-size: 0.75rem;
+
+    &.form-control:focus {
+      background-color: inherit;
+      color: $active-font;
+      outline: none;
+    }
+
+    &.active {
+      background-color: $accent;
+      color: $active-font;
+    }
+  }
+}
+
+/** Book Cards **/
+
+.book {
+  align-items: center;
+  border: 5px solid greenyellow;
+  box-sizing: border-box;
+  margin: 1rem 0;
+  min-height: 286px;
+  padding: 1rem;
+
+  .book-amazon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .amazon-wrapper {
+      align-items: center;
+      background-color: $accent;
+      border-radius: 50%;
+      display: flex;
+      height: 50px;
+      justify-content: center;
+      width: 50px;
+
+      &:hover {
+        background-color: $white;
+
+        .amazon-logo {
+          fill: $accent;
+        }
+      }
+
+      .amazon-logo {
+        fill: $mediumGray;
+      }
+    }
+
+  }
+
+  .book-cover {
+    img {
+      border: 2px solid $mediumGray;
+      box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30),
+                  0 15px 12px rgba(0, 0, 0, 0.22),
+                  0px 20px 90px 20px rgba(50, 50, 50, 0.8);
+    }
+  }
+
+  .book-data {
+    .book-rating-wrapper:hover .book-rating-user {
+      opacity: 1;
+    }
+
+    .book-rating-user {
+      font-size: 0.75rem;
+      font-style: italic;
+      margin-top: 0.5rem;
+      opacity: 0;
+      transition: opacity 500ms;
+    }
+
+    .book-info {
+      margin-top: 0.5rem;
+
+      .book-title {
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 2.5rem;
+        margin-bottom: 0;
+      }
+
+      .book-author {
+        font-family: $font-serif;
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+        padding-bottom: 1rem;
+      }
+
+      .book-date-read {
+        color: $mediumGray;
+        font-family: $font-sans;
+        font-size: 1rem;
+        line-height: 1.5rem;
+      }
+    }
+  }
+
+  .book-member-profile {
+    align-items: center;
+    align-self: flex-start;
+    color: $mediumGray;
+    display: flex;
+    filter: grayscale(100%);
+    flex-direction: column;
+    justify-content: center;
+
+    img {
+      max-height: 111px;
+      max-width: 111px;
+    }
+  }
+}
+
+/** Footer **/
+
+footer {
+  background-color: $white;
+  color: $secondary;
+  font-size: 0.75rem;
+  letter-spacing: 1.5rem;
+  min-height: 5rem;
+  text-transform: uppercase;
+}

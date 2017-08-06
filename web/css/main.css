@@ -1,335 +1,206 @@
-@font-face {
-  font-family: 'Playfair Display';
-  src: url("../fonts/playfairdisplay-blackitalic-webfont.woff2") format("woff2"), url("../fonts/playfairdisplay-blackitalic-webfont.woff") format("woff");
-  font-weight: 900;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Raleway';
-  src: url("../fonts/raleway-bold-webfont.woff2") format("woff2"), url("../fonts/raleway-bold-webfont.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Raleway';
-  src: url("../fonts/raleway-regular-webfont.woff2") format("woff2"), url("../fonts/raleway-regular-webfont.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
+/** General **/
 body {
   background-color: #FFF;
-  color: #333;
+  color: #FFF;
   font-family: "Raleway", sans-serif;
 }
 
 body a {
-  color: #228390;
+  color: #FFF;
 }
 
 body a:hover {
-  color: #62B1BB;
+  color: #323232;
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h3, h5 {
+  font-family: "Raleway", sans-serif;
+}
+
+h2, h4, h6 {
   font-family: "Playfair Display", serif;
 }
 
 *:focus {
-  outline: #228390 auto 2px;
+  outline: #FFF auto 2px;
 }
 
-nav.bg-gsbc {
-  background-color: #228390;
-  padding-bottom: 0;
-  padding-top: 20px;
+#site-wrapper {
+  background-color: #1A1A1A;
+  border: 35px solid #FFF;
 }
 
-nav button:focus {
-  outline: 5px auto #62B1BB;
+/** Header **/
+.title-header {
+  padding-bottom: 3rem;
 }
 
-nav .navbar-brand-mobile {
-  display: inline-block;
+.title {
+  min-height: 5rem;
+  position: relative;
+  text-transform: uppercase;
 }
 
-nav .navbar-centered {
-  justify-content: center;
+.title .title-back h1 {
+  color: #333333;
+  font-family: "Raleway", sans-serif;
+  font-size: 5rem;
+  font-weight: 800;
+  letter-spacing: 2rem;
 }
 
-nav .navbar-centered .navbar-wide {
-  justify-content: space-between;
-  width: 100%;
-}
-
-nav .navbar-centered .navbar-wide .nav-item:focus, nav .navbar-centered .navbar-wide .nav-link:focus {
-  outline-style: none;
-}
-
-nav .nav-item .dropdown-menu {
-  left: initial;
+.title .title-front {
+  bottom: 0;
+  left: 0;
+  letter-spacing: 0.5rem;
+  position: absolute;
   right: 0;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-nav .nav-item .nav-link {
-  padding-bottom: 0.6em;
-}
-
-nav .nav-item .nav-link > h1 {
-  line-height: 0.6em;
-}
-
-.tagline {
-  background-color: #228390;
-  color: #FFF;
-  padding-bottom: 0.5em;
-}
-
-#stuff {
+.title .title-front h2 {
   display: inline-block;
-  min-width: 92px;
-}
-
-#picklist {
-  display: inline-block;
-}
-
-#pickAvailable {
-  padding-left: 12px;
-}
-
-.header {
-  padding-top: 1rem;
-}
-
-.site-title {
-  color: #228390;
+  font-family: "Raleway", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
 }
 
 .main {
-  min-height: 50vh;
-  padding-bottom: 66px;
+  padding-bottom: 3rem;
 }
 
-.card.card-create-member {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  margin: 0 auto;
-  margin-top: 80px;
-  max-width: 400px;
+.filter-header {
+  padding-bottom: 5rem;
 }
 
-#addBookModal #monthPicked, #addBookModal #yearPicked {
-  display: inline-block;
-  width: 49%;
+.filter {
+  justify-content: center;
 }
 
-#addBookModal #dateRead {
-  display: block;
+.filter select, .filter .custom-select {
+  background-color: #1A1A1A;
+  border: 1px solid rgba(129, 129, 129, 0.25);
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  color: #818181;
+  font-family: "Playfair Display", serif;
+  font-size: 0.75rem;
 }
 
-.col-edit {
-  align-items: flex-end;
-  display: flex;
-  justify-content: flex-end;
+.filter select.form-control:focus, .filter .custom-select.form-control:focus {
+  background-color: inherit;
+  color: #CCC;
+  outline: none;
 }
 
-.edit a {
-  color: #62B1BB;
-  text-decoration: none;
+.filter select.active, .filter .custom-select.active {
+  background-color: #323232;
+  color: #CCC;
 }
 
-.edit a:hover {
-  text-decoration: none;
-}
-
-.edit .dropdown-menu {
-  left: initial;
-  right: 0;
-}
-
-td.inline-dates {
-  width: 20%;
-}
-
-td.inline-author {
-  color: #E33243;
-  width: 20%;
-}
-
-.inline-month, .inline-year {
-  width: 38%;
-  display: inline-block;
-}
-
-#book-table.table thead th {
-  white-space: nowrap;
-}
-
-#book-table.table-hover tbody tr:hover {
-  background-color: rgba(34, 131, 144, 0.1);
-}
-
-#book-table .book-title-wrapper {
+/** Book Cards **/
+.book {
   align-items: center;
+  border: 5px solid greenyellow;
+  box-sizing: border-box;
+  margin: 1rem 0;
+  min-height: 286px;
+  padding: 1rem;
+}
+
+.book .book-amazon {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
 }
 
-#book-table .book-title-wrapper .amazon {
-  margin-left: 1em;
+.book .book-amazon .amazon-wrapper {
+  align-items: center;
+  background-color: #323232;
+  border-radius: 50%;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  width: 50px;
 }
 
-#book-table .book-title-wrapper .amazon svg {
-  fill: #228390;
+.book .book-amazon .amazon-wrapper:hover {
+  background-color: #FFF;
 }
 
-#book-table .form-controls {
-  display: initial;
-  right: -25px;
-  position: absolute;
+.book .book-amazon .amazon-wrapper:hover .amazon-logo {
+  fill: #323232;
 }
 
-#book-table .form-controls.hidden {
-  display: none;
+.book .book-amazon .amazon-wrapper .amazon-logo {
+  fill: #929292;
 }
 
-#book-table .form-controls a {
-  color: #8f8f8f;
+.book .book-cover img {
+  border: 2px solid #929292;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22), 0px 20px 90px 20px rgba(50, 50, 50, 0.8);
 }
 
-#book-table .form-controls .book-delete:hover {
-  color: #E33243;
+.book .book-data .book-rating-wrapper:hover .book-rating-user {
+  opacity: 1;
 }
 
-#book-table .form-controls .book-edit:hover {
-  color: #EC8C34;
+.book .book-data .book-rating-user {
+  font-size: 0.75rem;
+  font-style: italic;
+  margin-top: 0.5rem;
+  opacity: 0;
+  transition: opacity 500ms;
 }
 
-.btn.btn-primary {
-  background-color: #62B1BB;
-  border-width: 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+.book .book-data .book-info {
+  margin-top: 0.5rem;
 }
 
-.btn.btn-primary:hover {
-  border-width: 0;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+.book .book-data .book-info .book-title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 2.5rem;
+  margin-bottom: 0;
 }
 
-.btn.btn-primary:hover:active {
-  border-width: 0;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.19), 0 1px 2px rgba(0, 0, 0, 0.23);
+.book .book-data .book-info .book-author {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  padding-bottom: 1rem;
 }
 
-.btn.btn-primary.btn-save {
-  position: absolute;
-  right: -40px;
+.book .book-data .book-info .book-date-read {
+  color: #929292;
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
-.book-rating {
-  line-height: 1;
+.book .book-member-profile {
+  align-items: center;
+  align-self: flex-start;
+  color: #929292;
+  display: flex;
+  filter: grayscale(100%);
+  flex-direction: column;
+  justify-content: center;
 }
 
-.book-rating span {
-  display: inline-block;
+.book .book-member-profile img {
+  max-height: 111px;
+  max-width: 111px;
 }
 
-.add-rating {
-  white-space: nowrap;
-  font-size: 0.75em;
-}
-
-.add-rating a {
-  color: rgba(34, 131, 144, 0.25);
-}
-
-.rating {
-  border: none;
-  float: left;
-}
-
-.rating > input {
-  display: none;
-}
-
-.rating > label:before {
-  margin: 5px;
-  font-size: 1.25em;
-  font-family: FontAwesome;
-  display: inline-block;
-  content: "\f005";
-}
-
-.rating > .half:before {
-  content: "\f089";
-  position: absolute;
-}
-
-.rating > label {
-  color: #ddd;
-  float: right;
-}
-
-.rating > input:checked ~ label,
-.rating:not(:checked) > label:hover,
-.rating:not(:checked) > label:hover ~ label {
-  color: #FFD700;
-}
-
-.rating > input:checked + label:hover,
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label,
-.rating > input:checked ~ label:hover ~ label {
-  color: #FFED85;
-}
-
-@media (min-width: 768px) {
-  nav .navbar-wide {
-    align-items: baseline;
-    justify-content: space-between;
-  }
-  nav .navbar-wide li:nth-child(1) {
-    text-align: left;
-    flex: 1;
-  }
-  nav .navbar-wide li:nth-child(2) {
-    text-align: center;
-  }
-  nav .navbar-wide li:nth-child(3) {
-    text-align: right;
-    flex: 1;
-  }
-  nav .navbar-brand-mobile {
-    display: none;
-  }
-  nav .no-mobile {
-    text-align: center;
-  }
-}
-
-@media (max-width: 767px) {
-  .nav-item-tablet {
-    display: none;
-  }
-}
-
-@media (min-width: 576px) {
-  .mobile-title {
-    display: none;
-  }
-}
-
-@media (max-width: 575px) {
-  nav > .container {
-    min-width: 320px;
-    width: 100%;
-    max-width: 100%;
-  }
-  .tablet-title {
-    display: none;
-  }
+/** Footer **/
+footer {
+  background-color: #FFF;
+  color: #818181;
+  font-size: 0.75rem;
+  letter-spacing: 1.5rem;
+  min-height: 5rem;
+  text-transform: uppercase;
 }
