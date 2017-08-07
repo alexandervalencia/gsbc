@@ -8,9 +8,11 @@ $mediumGray: #929292;
 $orange: #EC8C34;
 $red: #E33243;
 $white: #FFF;
+$green: #40C32B;
 
-$primary: $white;
 $secondary: $lightGray;
+$primary-color: #8D2EAA;
+$accent-color: lighten($primary-color, 10%);
 $primary-dark: $black;
 $primary-font: $white;
 $light-font: $mediumGray;
@@ -19,27 +21,6 @@ $active-font: $lighterGray;
 $accent: #323232;
 $complement: $orange;
 $danger: $red;
-
-$color-primary-2: #3A909C;
-$color-primary-3: #0D6E7C;
-$color-primary-4: #045762;
-
-$color-secondary-1-0: #3541A2;
-$color-secondary-1-1: #757EC9;
-$color-secondary-1-2: #4E59AF;
-$color-secondary-1-3: #1D2A8B;
-$color-secondary-1-4: #111C6F;
-
-$color-secondary-2-0: #40C32B;
-$color-secondary-2-1: #83E174;
-$color-secondary-2-2: #5ED34C;
-$color-secondary-2-3: #24A70F;
-$color-secondary-2-4: #148503;
-
-$color-complement-1: #FFBF84;
-$color-complement-2: #FFAA5B;
-$color-complement-3: #CA6A12;
-$color-complement-4: #A14F03;
 
 $font-sans: 'Raleway', sans-serif;
 $font-serif: 'Playfair Display', serif;
@@ -52,7 +33,7 @@ body {
 	font-family: $font-sans;
 
 	a {
-		color: $primary;
+		color: $white;
 
 		&:hover {
 			color: $accent;
@@ -70,7 +51,25 @@ h2, h4, h6 {
 }
 
 *:focus {
-	outline: $primary auto 2px;
+	outline: $white auto 2px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: $primary-color;
+  border-color: $primary-color;
+
+  &:active, &:focus, &:hover {
+    background-color: $accent-color;
+    border-color: $accent-color;
+    box-shadow: 0 0 0 2px rgba($primary-color, .25);
+  }
+
+  &.disabled,
+  &:disabled {
+    background-color: desaturate($primary-color, 30%);
+    border-color: desaturate($primary-color, 30%);
+  }
 }
 
 #site-wrapper {
@@ -82,6 +81,26 @@ h2, h4, h6 {
 
 .title-header {
   padding-bottom: 3rem;
+
+  .title-row {
+    padding-bottom: 0.5rem;
+  }
+
+  .nav-row {
+    color: $mediumGray;
+    min-height: 29px;
+
+    button {
+      background-color: $primary-dark;
+      border-width: 0;
+      color: $mediumGray;
+
+      &:hover, &:focus {
+        color: $white;
+        outline: none;
+      }
+    }
+  }
 }
 
 .title {
@@ -121,6 +140,12 @@ h2, h4, h6 {
   padding-bottom: 3rem;
 }
 
+.picklist-container {
+  margin-bottom: 1rem;
+  min-height: 40px;
+  padding-bottom: 1rem;
+}
+
 .filter-header {
   padding-bottom: 5rem;
 }
@@ -154,7 +179,7 @@ h2, h4, h6 {
 
 .book {
   align-items: center;
-  border: 5px solid greenyellow;
+  border-width: 0;
   box-sizing: border-box;
   margin: 1rem 0;
   min-height: 286px;
@@ -254,6 +279,114 @@ h2, h4, h6 {
     img {
       max-height: 111px;
       max-width: 111px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .book-member {
+    padding-left: 0;
+  }
+}
+
+/** Modals **/
+
+.modal-content {
+  background-color: $primary-dark;
+  color: $white;
+
+  .modal-title {
+    font-family: $font-sans;
+    font-weight: 800;
+  }
+
+  .close span {
+    color: $white;
+  }
+}
+
+#signInFailAlert {
+  display: none;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1100;
+
+  &.show {
+    display: initial;
+  }
+}
+
+/** Loading Spinner **/
+
+.spinner-container {
+  background-color: $primary-dark;
+  display: none;
+  left: 0;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: opacity 300ms;
+  z-index: 1100;
+
+  &.show {
+    display: initial;
+    opacity: 1;
+  }
+
+  .spinner {
+    margin: 66px auto;
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    font-size: 10px;
+
+    > div {
+      background-color: #FFF;
+      height: 100%;
+      width: 6px;
+      display: inline-block;
+
+      -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+      animation: sk-stretchdelay 1.2s infinite ease-in-out;
+    }
+
+    .rect2 {
+      -webkit-animation-delay: -1.1s;
+      animation-delay: -1.1s;
+    }
+
+    .rect3 {
+      -webkit-animation-delay: -1.0s;
+      animation-delay: -1.0s;
+    }
+
+    .rect4 {
+      -webkit-animation-delay: -0.9s;
+      animation-delay: -0.9s;
+    }
+
+    .rect5 {
+      -webkit-animation-delay: -0.8s;
+      animation-delay: -0.8s;
+    }
+  }
+
+  @-webkit-keyframes sk-stretchdelay {
+    0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+    20% { -webkit-transform: scaleY(1.0) }
+  }
+
+  @keyframes sk-stretchdelay {
+    0%, 40%, 100% {
+      transform: scaleY(0.4);
+      -webkit-transform: scaleY(0.4);
+    }  20% {
+      transform: scaleY(1.0);
+      -webkit-transform: scaleY(1.0);
     }
   }
 }

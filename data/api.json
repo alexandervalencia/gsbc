@@ -14,7 +14,7 @@
         "type": "string",
         "required": true
       },
-      "bookPhootUrl": {
+      "bookCoverUrl": {
         "type": "string"
       },
       "bookRatingAvg": {
@@ -32,6 +32,12 @@
         "required": true
       },
       "dateUpdated": {
+        "type": "string"
+      },
+      "userFirstName": {
+        "type": "string"
+      },
+      "userPhotoUrl" :{
         "type": "string"
       },
       "userPicked": {
@@ -59,13 +65,19 @@
       "bookAuthor": {
         "type": "string"
       },
-      "bookPhootUrl": {
+      "bookCoverUrl": {
         "type": "string"
       },
       "bookRating": {
         "type": "array"
       },
       "bookTitle": {
+        "type": "string"
+      },
+      "userFirstName": {
+        "type": "string"
+      },
+      "userPhotoUrl" :{
         "type": "string"
       },
       "datePicked": {
@@ -97,7 +109,7 @@
     "method": ["POST"],
     "parameters": {
       "booksPicked": {
-        "type": "string"
+        "type": "array"
       },
       "email": {
         "type": "string"

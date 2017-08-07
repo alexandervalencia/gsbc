@@ -41,7 +41,7 @@
     <div class="container-fluid" id="site-wrapper">
       <nav>
         <header class="title-header">
-          <div class="row">
+          <div class="row title-row">
             <div class="col">
               <div class="text-center title">
                 <div class="title-back">
@@ -54,10 +54,20 @@
               </div>
             </div>
           </div>
+
+          <div class="row nav-row">
+            <div class="col text-center" id="control-bar"></div>
+          </div>
         </header>
       </nav>
 
       <div class="main" id="main-wrapper">
+        <div class="row">
+          <div class="col text-center picklist-container">
+            Picklist: <span id="picklist"></span>
+          </div>
+        </div>
+
         <header class="filter-header">
           <div class="row">
             <div class="col">
@@ -103,48 +113,7 @@
 
         <section>
           <div class="row">
-            <div class="col" id="bookshelf">
-
-              <div class="book row">
-                <div class="book-amazon col-2">
-                  <a class="amazon-wrapper" href="javascript:;">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="amazon-logo" width="24" height="24" viewBox="0 0 24 24"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705c-.209.189-.512.201-.745.074-1.052-.872-1.238-1.276-1.814-2.106-1.734 1.767-2.962 2.297-5.209 2.297-2.66 0-4.731-1.641-4.731-4.925 0-2.565 1.391-4.309 3.37-5.164 1.715-.754 4.11-.891 5.942-1.095v-.41c0-.753.06-1.642-.383-2.294-.385-.579-1.124-.82-1.775-.82-1.205 0-2.277.618-2.54 1.897-.054.285-.261.567-.549.582l-3.061-.333c-.259-.056-.548-.266-.472-.66.704-3.716 4.06-4.838 7.066-4.838 1.537 0 3.547.41 4.758 1.574 1.538 1.436 1.392 3.352 1.392 5.438v4.923c0 1.481.616 2.13 1.192 2.929.204.287.247.63-.01.839-.647.541-1.794 1.537-2.423 2.099l-.008-.007zm3.559 1.988c-2.748 1.472-5.735 2.181-8.453 2.181-4.027 0-7.927-1.393-11.081-3.706-.277-.202-.481.154-.251.416 2.925 3.326 6.786 5.326 11.076 5.326 3.061 0 6.614-1.214 9.066-3.494.406-.377.058-.945-.357-.723zm.67 2.216c-.091.227.104.32.31.147 1.339-1.12 1.685-3.466 1.411-3.804-.272-.336-2.612-.626-4.04.377-.22.154-.182.367.062.337.805-.096 2.595-.312 2.913.098.319.41-.355 2.094-.656 2.845z" fill-rule="evenodd" clip-rule="evenodd"/></svg>
-                  </a>
-                </div>
-
-                <div class="book-cover-wrapper col-2">
-                  <div class="book-cover">
-                    <img alt="The Casual Vacancy - J.K. Rowling" class="img-fluid" src="img/covers/thecasualvacancy_cover.jpg" />
-                  </div>
-                </div>
-
-                <div class="book-data col-5">
-                  <div class="book-rating-wrapper">
-                    <div class="book-rating" data-placement="right" data-toggle="tooltip" title="3.6" id="123-rating"></div>
-
-                    <div class="book-rating-user">
-                      Your rating: <span id="current-user-rating">4</span> - <a id="set-user-rating" href="javascript:;">edit rating</a>
-                    </div>
-                  </div>
-
-                  <div class="book-info">
-                    <h1 class="book-title">The Casual Vacancy</h1>
-
-                    <h2 class="book-author">J.K. Rowling</h2>
-
-                    <p class="book-date-read">Jan 2013</p>
-                  </div>
-                </div>
-
-                <div class="book-member col-2">
-                  <div class="book-member-profile">
-                    <img alt="Alex" class="img-fluid" src="img/alexmoji.png">
-                    <spam class="book-member-name">Alex</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
+            <div class="col" id="bookshelf"></div>
           </div>
         </section>
       </div>
@@ -153,25 +122,48 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="signInModalLabel">Sign In to GSBC</h5>
+              <h5 class="modal-title" id="signInModalLabel">Sign-In to GSBC</h5>
+
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form name="user" onsubmit="signIn(); return false;">
-              <div class="modal-body">
+
+            <form name="user">
+              <div class="modal-body" id="signInBody">
+                <div class="alert alert-danger alert-dismissible fade" id="signInFailAlert" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+
+                  <strong>Sign-In Failed.</strong><br>
+                  Check your email and password and try again.
+                </div>
+
+                <div class="spinner-container">
+                  <div class="spinner">
+                    <div class="rect1"></div>
+                    <div class="rect2"></div>
+                    <div class="rect3"></div>
+                    <div class="rect4"></div>
+                    <div class="rect5"></div>
+                  </div>
+                </div>
+
                 <div class="form-group">
                   <label for="email">Email address</label>
                   <input class="form-control" id="email" name="email" placeholder="you@example.com" required type="email">
                 </div>
+
                 <div class="form-group">
                   <label for="password">Password</label>
                   <input class="form-control" id="password" name="password" placeholder="password" required type="password">
                 </div>
               </div>
+
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Sign In</button>
+                <button class="btn btn-primary" id="signInBtn" type="submit">Sign In</button>
               </div>
             </form>
           </div>
@@ -191,20 +183,21 @@
             <form id="book" name="book">
               <div class="modal-body">
                 <div class="form-group">
-                  <label for="title">Book</label>
-                  <input class="form-control" id="title" name="title" placeholder="" required type="text">
+                  <label for="bookTitle">Book</label>
+                  <input class="form-control" id="bookTitle" name="bookTitle" placeholder="" required type="text">
                 </div>
                 <div class="form-group">
-                  <label for="amazonUrl">Amazon Link</label>
-                  <input class="form-control" id="amazonUrl" name="amazonUrl" placeholder="" required type="text">
+                  <label for="bookAmazonUrl">Amazon Link</label>
+                  <input class="form-control" id="bookAmazonUrl" name="bookAmazonUrl" placeholder="" type="text">
                 </div>
                 <div class="form-group">
-                  <label for="author">Author</label>
-                  <input class="form-control" id="author" name="author" placeholder="" required type="text">
+                  <label for="bookAuthor">Author</label>
+                  <input class="form-control" id="bookAuthor" name="bookAuthor" placeholder="" required type="text">
                 </div>
                 <div class="form-group">
-                  <label for="monthPicked" id="dateRead">Date Read</label>
-                  <select class="form-control" id="monthPicked" name="monthPicked" placeholder="" required>
+                  <label for="datePickedMonth" id="datePicked">Date Read</label>
+                  <select class="form-control" id="datePickedMonth" name="datePickedMonth" placeholder="" required>
+                    <option value="" disabled hidden selected>Month</option>
                     <option>Jan</option>
                     <option>Feb</option>
                     <option>Mar</option>
@@ -218,7 +211,8 @@
                     <option>Nov</option>
                     <option>Dec</option>
                   </select>
-                  <select class="form-control" id="yearPicked" name="yearPicked" placeholder="" required>
+                  <select class="form-control" id="datePickedYear" name="datePickedYear" placeholder="" required>
+                    <option value="" disabled hidden selected>Year</option>
                     <option>2013</option>
                     <option>2014</option>
                     <option>2015</option>
@@ -227,8 +221,8 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="pickedBy">Picked By</label>
-                  <select class="form-control" id="pickedBy" name="pickedBy" required></select>
+                  <label for="userPicked">Picked By</label>
+                  <select class="form-control" id="userPicked" name="userPicked" required></select>
                 </div>
               </div>
               <div class="modal-footer">
@@ -241,51 +235,6 @@
         </div>
       </div>
 
-      <div class="modal fade" id="addRatingModal" tabindex="-1" role="dialog" aria-labelledby="addRatingModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="addRatingModalLabel">Add your rating...</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <form name="addRatingForm" onsubmit="return false;">
-              <div class="modal-body">
-                <div class="form-group">
-                  <label for="rating">How did you like <span id="bookToRate"></span> ?</label>
-                  <input id="rating" name="rating" placeholder="" type="hidden" />
-                  <fieldset class="form-group rating rating-stars">
-                    <input type="radio" id="star5" name="rating" value="5" />
-                    <label class="full" for="star5" title="Awesome - 5 stars"></label>
-                    <input type="radio" id="star4half" name="rating" value="4.5" />
-                    <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                    <input type="radio" id="star4" name="rating" value="4" />
-                    <label class="full" for="star4" title="Pretty good - 4 stars"></label>
-                    <input type="radio" id="star3half" name="rating" value="3.5" />
-                    <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                    <input type="radio" id="star3" name="rating" value="3" />
-                    <label class="full" for="star3" title="Meh - 3 stars"></label>
-                    <input type="radio" id="star2half" name="rating" value="2.5" />
-                    <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-                    <input type="radio" id="star2" name="rating" value="2" />
-                    <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-                    <input type="radio" id="star1half" name="rating" value="1.5" />
-                    <label class="half" for="star1half" title="Bray - 1.5 stars"></label>
-                    <input type="radio" id="star1" name="rating" value="1" />
-                    <label class="full" for="star1" title="Sucks big time - 1 star"></label>
-                    <input type="radio" id="starhalf" name="rating" value="0.5" />
-                    <label class="half" for="starhalf" title="TRASH - 0.5 stars"></label>
-                  </fieldset>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
     </div>
 
     <footer class="container">
@@ -303,7 +252,6 @@
     <script src="js/vendor/jquery.rateyo.min.js"></script>
     <script src="js/index.js"></script>
     <script src="js/bookshelf.js"></script>
-
     <script>
       $(function () {
 
