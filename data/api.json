@@ -104,6 +104,9 @@
     "path": "/books/*"
   },
   {
+    "auth": {
+      "validator": "$auth != null"
+    },
     "data": true,
     "description": "Members Database",
     "method": ["POST"],
@@ -114,10 +117,10 @@
       "email": {
         "type": "string"
       },
-      "firstName": {
+      "nameFirst": {
         "type": "string"
       },
-      "lastName": {
+      "nameLast": {
         "type": "string"
       },
       "photoUrl": {
@@ -125,6 +128,9 @@
       },
       "pickAvailable": {
         "type": "boolean"
+      },
+      "userId" : {
+        "type": "string"
       }
     },
     "path": "/members/*"
@@ -154,6 +160,9 @@
       },
       "pickAvailable": {
         "type": "boolean"
+      },
+      "userId" : {
+        "type": "string"
       }
     },
     "path": "/members/*"

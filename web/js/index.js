@@ -8,12 +8,15 @@ $(function() {
   const signInBtn = document.querySelector('#signInBtn');
   const stuff = $('#stuff');
 
+  const newMemberBtn = document.querySelector('#newMemberBtn');
+
   const addMemberToDatabase = function(member) {
     data.create('members', {
       email: member.email,
-      firstName: member.firstName,
-      lastName: member.lastName,
-      pickAvailable: true
+      nameFirst: member.nameFirst,
+      nameLast: member.lastName,
+      pickAvailable: true,
+      userId: member.userId
     })
     .then(function(newMember) {
       // console.log(newMember);
@@ -23,17 +26,26 @@ $(function() {
     });
   };
 
-  const newMember = function() {
+  const newMember = function(event) {
+    event.preventDefault();
+
+    let form = event.target.form;
+    let email = form.querySelector('#email').value;
+    let nameFirst = form.querySelector('#nameFirst').value;
+    let nameLast = form.querySelector('#nameLast').value;
+    let password = form.querySelector('#password').value;
+
     auth.createUser({
-      email: user.email.value,
-      firstName: user.firstName.value,
-      lastName: user.lastName.value,
-      password: user.password.value
+      email: email,
+      nameFirst: nameFirst,
+      nameLast: nameLast,
+      password: password
     })
     .then(function(member) {
+      member.userId = member.id;
       addMemberToDatabase(member);
       alert('Account sucessfully created!');
-      signIn();
+      //signIn();
       user.reset();
     })
     .catch(function(err) {
@@ -42,6 +54,8 @@ $(function() {
       user.reset();
     });
   }
+
+  newMemberBtn.addEventListener('click', newMember);
 
   const signIn = function(event) {
     event.preventDefault();
@@ -96,17 +110,42 @@ $(function() {
       }
     );
 
-    controlBar.innerHTML = `<button data-target="#addBookModal" data-toggle="modal" id="addBookBtn" type="button">Add a Book</button> | <button id="signOutBtn" type="button">Sign Out</button>`
+    //controlBar.innerHTML = `<button data-target="#addBookModal" data-toggle="modal" id="addBookBtn" type="button">Add a Book</button> | <button id="signOutBtn" type="button">Sign Out</button>`
 
-    const signOutBtn = document.querySelector('#signOutBtn');
+    //const signOutBtn = document.querySelector('#signOutBtn');
 
-    signOutBtn.addEventListener('click', signOut);
+    //signOutBtn.addEventListener('click', signOut);
 
   }
   else {
-    controlBar.innerHTML = `<button data-target="#signInModal" data-toggle="modal" type="button">Sign In</button>`
+    //controlBar.innerHTML = `<button data-target="#signInModal" data-toggle="modal" type="button">Sign In</button>`
 
-    signInBtn.addEventListener('click', signIn);
+    //signInBtn.addEventListener('click', signIn);
   }
 
 });
+
+const getAllAuthUsers = () => {
+  WeDeploy.auth('https://auth-gsbc.wedeploy.io')
+    .getAllUsers()
+    .then(users => {
+      console.log(users);
+    })
+    .catch(error => {console.error(error)})
+}
+
+const getAllUsers = () => {
+  WeDeploy.data('https://data-gsbc.wedeploy.io')
+    .get('members')
+    .then(members => {
+      console.log(members);
+    })
+    .catch(error => {console.error(error)})
+}
+
+const getAllBooks = () => {
+  WeDeploy.data('https://data-gsbc.wedeploy.io')
+    .get('books')
+    .then(books => {console.log(books)})
+    .catch(error => {console.error(error)})
+}

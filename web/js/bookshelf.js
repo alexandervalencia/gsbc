@@ -5,6 +5,27 @@
   const data = WeDeploy.data('https://data-gsbc.wedeploy.io');
   const regexMonth = /\w{3}/;
 
+  const getDB = function(db, cb) {
+    data.get(db)
+      .then(res => {cb(res)})
+      .catch(e => {console.error(e)});
+  };
+
+  const getItemById = function(db, id, cb) {
+    data.get(`$db/$id`)
+      .then(item => {cb(item)})
+      .catch(e => {console.error(e)});
+  }
+
+  const updateItem = function(db, item, config, cb) {
+    data.update(
+      `${db}/${item}`,
+      config
+    )
+    .then(r => {cb(r)})
+    .catch(e => {console.error(e)});
+  };
+
   const bookshelf = {
     init: function() {
       this.container = document.querySelector('#bookshelf');
@@ -23,7 +44,7 @@
       document.querySelector('#addBook').addEventListener('click', event => {
           event.preventDefault();
 
-          this.addBook(document.forms.book);
+          this.addBook(document.forms[2]);
       });
     },
 
@@ -58,13 +79,22 @@
       );
     },
 
-    createBookRow: function(book, user) {
+    createBookRow: function(book) {
+      let noAvg = '';
+      let noAvgClass = '';
       const div = document.createElement("div");
+      const user = {};
+
       let userRating = `<span class="no-rating">You have not rated this book yet - <a class="set-user-rating" href="javascript:;">rate this book</a></span>`;
 
       book = this.formatBookData(book);
 
-      if (user) {
+      if (book.bookRatingAvg === 0) {
+        noAvg = 'No one has rated this book yet! <a class="set-user-rating" href="javascript:;">Be the first!</a>'
+        noAvgClass = 'hide'
+      }
+
+      if (user.rating) {
         userRating = `Your rating: <span class="current-user-rating">${user.rating}</span> - <a class="set-user-rating" href="javascript:;">edit rating</a>`
       }
 
@@ -72,7 +102,7 @@
       div.id = book.id;
 
       div.innerHTML = `<div class="book-amazon col-2">
-          <a class="amazon-wrapper" href="${book.bookAmazonUrl}">${amazonSVG}</a>
+          <a class="amazon-wrapper" href="${book.bookAmazonUrl}" rel="noopener">${amazonSVG}</a>
         </div>
         <div class="book-cover-wrapper col-2">
           <div class="book-cover">
@@ -82,6 +112,7 @@
         <div class="book-data col-5 col-xl-4">
           <div class="book-rating-wrapper">
             <div class="book-rating" data-placement="right" data-toggle="tooltip" title="${book.bookRating}" id="${book.id}-rating"></div>
+            <div class="book-rating-none ${noAvgClass}">${noAvg}</div>
             <div class="book-rating-user">
               ${userRating}
             </div>
@@ -99,18 +130,22 @@
           </div>
         </div>`
 
-      return div
+      this.container.appendChild(div);
+
+      if (book.bookRatingAvg !== NaN && book.bookRatingAvg !== 0) {
+        $(`#${book.id}-rating`).rateYo({
+          ratedFill: "#FFF",
+          rating: book.bookRatingAvg,
+          readOnly: true,
+          spacing: "16px"
+        });
+      }
     },
 
     formatBookData: function(book) {
       book.bookAmazonUrl = this.setAmazonUrl(book.bookAmazonUrl);
 
-      if (book.bookRatings) {
-        book.bookRating = this.setAverageRating(book.bookRatings);
-      }
-      else {
-        book.bookRating = '';
-      }
+      book.bookRatingAvg = this.setAverageRating(book.bookRatings, book.id);
 
       book.userPicked = this.getNameById(book.userPicked);
 
@@ -153,17 +188,13 @@
     },
 
     renderBookshelf: function() {
-      const frag = document.createDocumentFragment();
-
       this.getBooks(books => {
         books.forEach(book => {
-          let row = this.createBookRow(book);
-
-          frag.appendChild(row);
+          this.createBookRow(book);
         });
-
-        this.container.append(frag);
       });
+
+      $('[data-toggle="tooltip"]').tooltip();
     },
 
     setAmazonUrl: function(url) {
@@ -174,20 +205,26 @@
       return url;
     },
 
-    setAverageRating: function(ratingsArray) {
+    setAverageRating: function(ratingsArray, id) {
       let ratings = [];
 
-      ratingsArray.forEach(rating => {
-        ratings.push(rating.rating);
-      });
+      if (ratingsArray) {
+        ratingsArray.forEach(rating => {
+          ratings.push(rating.rating);
+        });
 
-      const sum = ratings.reduce(
-        (a, b) => a + b
-      );
+        const sum = ratings.reduce(
+          (a, b) => a + b
+        );
 
-      const avg = (sum / ratings.length);
+        const avg = (Math.round((sum / ratings.length) * 10) / 10);
 
-      return (Math.round(avg * 2) / 2).toFixed(1);
+        updateItem('book', id, {bookRatingAvg: avg});
+
+        return avg;
+      }
+
+      return 0;
     },
 
     simplifyFormData: function(data) {
@@ -351,51 +388,3 @@
   bookshelf.init();
   picklist.init();
 })();
-
-const createBook = function(title, author, datePicked, userPicked) {
-  WeDeploy.data('http://data.gsbc.wedeploy.io')
-    .create(
-      'books',
-      {
-        'bookAuthor': author,
-        'bookTitle': title,
-        'datePicked': datePicked,
-        'userPicked': userPicked,
-      }
-    )
-    .then(newBook => console.log(newBook))
-    .catch(error => console.error(error))
-};
-
-const createMember = function(nameF) {
-  WeDeploy.data('http://data.gsbc.wedeploy.io')
-    .create(
-      'members',
-      {
-        'nameFirst': nameF,
-        'pickAvailable': true
-      }
-    )
-    .then(name => console.log(name))
-    .catch(error => console.error(error))
-};
-
-const getAllIds = () => {
-  WeDeploy.data('http://data.gsbc.wedeploy.io')
-    .get('members')
-    .then(members => {
-      members.forEach(member => {
-        console.log(member.id);
-      })
-    })
-    .catch(error => console.error(error))
-}
-
-const getAllUsers = () => {
-  WeDeploy.data('http://data.gsbc.wedeploy.io')
-    .get('members')
-    .then(members => {
-      console.log(members);
-    })
-    .catch(error => console.error(error))
-}

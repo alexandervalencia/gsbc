@@ -64,15 +64,10 @@ WeDeploy.data('data-gsbc.wedeploy.io')
 		}
 	);
 
+  const currentUser = WeDeploy.auth('https://auth-gsbc.wedeploy.io').currentUser;
 
-WeDeploy.auth('auth-gsbc.wedeploy.io')
-  .createUser({
-    email: "alex.valencia@me.com",
-    password: "gsbFZJ685"
-  })
-	.then(function(user) {
-			alert('account created');
-  })
-	.catch(function() {
-			alert('Sign-up failed. Try again.');
-  });
+WeDeploy.data('https://data-gsbc.wedeploy.io')
+	.update('members/238206042415950498',{
+	userId: currentUser
+})
+  .then(function(res){console.log(res)})
