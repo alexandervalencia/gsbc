@@ -5,10 +5,8 @@ $(function() {
   const data = WeDeploy.data('https://data-gsbc.wedeploy.io');
   const currentUser = auth.currentUser;
   const controlBar = document.querySelector('#control-bar');
-  const signInBtn = document.querySelector('#signInBtn');
-  const stuff = $('#stuff');
-
   const newMemberBtn = document.querySelector('#newMemberBtn');
+  const signInBtn = document.querySelector('#signInBtn');
 
   const addMemberToDatabase = function(member) {
     data.create('members', {
@@ -55,7 +53,7 @@ $(function() {
     });
   }
 
-  newMemberBtn.addEventListener('click', newMember);
+  // newMemberBtn.addEventListener('click', newMember);
 
   const signIn = function(event) {
     event.preventDefault();
@@ -101,29 +99,25 @@ $(function() {
   }
 
   if (currentUser) {
-    stuff.hover(
-      function() {
-        stuff.text('Shit ')
-      },
-      function() {
-        stuff.text('Stuff')
-      }
-    );
+    controlBar.innerHTML = `<button data-target="#addBookModal" data-toggle="modal" id="addBookBtn" type="button">Add a Book</button> | <button id="signOutBtn" type="button">Sign Out</button>`
 
-    //controlBar.innerHTML = `<button data-target="#addBookModal" data-toggle="modal" id="addBookBtn" type="button">Add a Book</button> | <button id="signOutBtn" type="button">Sign Out</button>`
+    const signOutBtn = document.querySelector('#signOutBtn');
 
-    //const signOutBtn = document.querySelector('#signOutBtn');
-
-    //signOutBtn.addEventListener('click', signOut);
+    signOutBtn.addEventListener('click', signOut);
 
   }
   else {
-    //controlBar.innerHTML = `<button data-target="#signInModal" data-toggle="modal" type="button">Sign In</button>`
+    controlBar.innerHTML = `<button data-target="#signInModal" data-toggle="modal" type="button">Sign In</button>`
 
-    //signInBtn.addEventListener('click', signIn);
+    signInBtn.addEventListener('click', signIn);
   }
 
 });
+
+if (location.host === 'goodshitbook.club') {
+  document.title = 'GoodShitBook.Club';
+  document.querySelector('#stuff').innerHTML = 'Shit';
+}
 
 const getAllAuthUsers = () => {
   WeDeploy.auth('https://auth-gsbc.wedeploy.io')

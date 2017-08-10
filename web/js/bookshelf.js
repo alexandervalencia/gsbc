@@ -48,19 +48,19 @@
       });
     },
 
-    addBook: function(book) {
-      const b = this.simplifyFormData(book);
+    addBook: function(formData) {
+      const book = this.simplifyFormData(formData);
       const dateCreated = Date.now();
 
       data.create(
         'books',
         {
-          'bookAmazonUrl': b.bookAmazonUrl,
-          'bookAuthor': b.bookAuthor,
-          'bookTitle': b.bookTitle,
+          'bookAmazonUrl': book.bookAmazonUrl,
+          'bookAuthor': book.bookAuthor,
+          'bookTitle': book.bookTitle,
           'dateCreated': dateCreated,
-          'datePicked': b.datePicked,
-          'userPicked': b.userPicked,
+          'datePicked': book.datePicked,
+          'userPicked': book.userPicked,
           'userSubmitted': currentUser.firstName,
         }
       )
@@ -90,7 +90,7 @@
       book = this.formatBookData(book);
 
       if (book.bookRatingAvg === 0) {
-        noAvg = 'No one has rated this book yet! <a class="set-user-rating" href="javascript:;">Be the first!</a>'
+        noAvg = 'No one has rated this book yet!<br /><a class="set-user-rating" href="javascript:;">Be the first!</a>'
         noAvgClass = 'hide'
       }
 
@@ -111,9 +111,9 @@
         </div>
         <div class="book-data col-5 col-xl-4">
           <div class="book-rating-wrapper">
-            <div class="book-rating" data-placement="right" data-toggle="tooltip" title="${book.bookRating}" id="${book.id}-rating"></div>
-            <div class="book-rating-none ${noAvgClass}">${noAvg}</div>
-            <div class="book-rating-user">
+            <div class="book-rating ${noAvgClass}" data-placement="right" data-toggle="tooltip" title="${book.bookRating}" id="${book.id}-rating"></div>
+            <div class="book-rating-none">${noAvg}</div>
+            <div class="book-rating-user ${noAvgClass}">
               ${userRating}
             </div>
           </div>
@@ -132,14 +132,13 @@
 
       this.container.appendChild(div);
 
-      if (book.bookRatingAvg !== NaN && book.bookRatingAvg !== 0) {
-        $(`#${book.id}-rating`).rateYo({
-          ratedFill: "#FFF",
-          rating: book.bookRatingAvg,
-          readOnly: true,
-          spacing: "16px"
-        });
-      }
+      $(`#${book.id}-rating`).rateYo({
+        ratedFill: "#FFF",
+        rating: book.bookRatingAvg,
+        readOnly: true,
+        spacing: "16px"
+      });
+
     },
 
     formatBookData: function(book) {
