@@ -1,5 +1,4 @@
 {
-  "customDomains": ["goodstuffbook.club", "www.goodstuffbook.club", "goodshitbook.club", "www.goodshitbook.club"],
 	"id": "web",
 	"image": "wedeploy/hosting:0.0.1"
 }
