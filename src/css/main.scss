@@ -224,20 +224,90 @@ h2, h4, h6 {
   }
 
   .book-data {
-    .book-rating-wrapper:hover .book-rating-user {
+    .book-rating-wrapper {
+      position: relative;
+
+      &:hover .book-rating-user {
+        opacity: 1;
+      }
+    }
+
+    .book-rating {
       opacity: 1;
+      transition: opacity 300ms;
+      visibility: visible;
+
+      &.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      &:hover .ratings-counter {
+        display: block;
+      }
+    }
+
+    .ratings-counter {
+      display: none;
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 2px;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      height: 18px;
+      line-height: 3px;
+      margin-top: -12px;
+      min-width: 24px;
+      padding: 5px;
+      padding-left: 8px;
+      position: absolute;
+      right: -60px;
+      top: 50%;
+
+      &::before {
+        content: "";
+        border-style: solid;
+        border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent;
+        border-width: 7px 7px 7px 0px;
+        display: block;
+        height: 0;
+        left: -15px;
+        margin-top: -6px;
+        position: relative;
+        top: 50%;
+        width: 0;
+      }
+    }
+
+    .book-rating-none {
+      padding: 0 5px;
+      opacity: 1;
+      transition: opacity 500ms;
+      visibility: visible;
+
+      &.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
     }
 
     .book-rating-user {
       font-size: 0.75rem;
       font-style: italic;
       margin-top: 0.5rem;
-      opacity: 0;
+      opacity: 1;
+      padding: 0 5px;
       transition: opacity 500ms;
+      visibility: visible;
 
       a:hover {
         color: $white;
         text-decoration: underline;
+      }
+
+      &.hidden {
+        opacity: 0;
+        visibility: hidden;
       }
     }
 
@@ -288,6 +358,9 @@ h2, h4, h6 {
     padding-left: 0;
   }
 }
+
+/** Ratings **/
+
 
 /** Modals **/
 

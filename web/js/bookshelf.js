@@ -6,31 +6,38 @@
   const regexMonth = /\w{3}/;
 
   const getDB = function(db, cb) {
-    data.get(db)
+    data.auth('682643b8-2be1-4fc8-8d04-a32ffeb3ecef')
+      .get(db)
       .then(res => {cb(res)})
-      .catch(e => {console.error(e)});
+      .catch(e => {console.error(e)})
+    ;
   };
 
   const getItemById = function(db, id, cb) {
-    data.get(`$db/$id`)
+    data.auth('682643b8-2be1-4fc8-8d04-a32ffeb3ecef')
+      .get(`$db/$id`)
       .then(item => {cb(item)})
-      .catch(e => {console.error(e)});
+      .catch(e => {console.error(e)})
+    ;
   }
 
   const updateItem = function(db, item, config, cb) {
-    data.update(
-      `${db}/${item}`,
-      config
-    )
-    .then(r => {cb(r)})
-    .catch(e => {console.error(e)});
+    data.auth('682643b8-2be1-4fc8-8d04-a32ffeb3ecef')
+      .update(
+        `${db}/${item}`,
+        config
+      )
+      .then(r => {cb(r)})
+      .catch(e => {console.error(e)})
+    ;
   };
 
   const bookshelf = {
     init: function() {
       this.container = document.querySelector('#bookshelf');
 
-      data.get('members')
+      data.auth('682643b8-2be1-4fc8-8d04-a32ffeb3ecef')
+        .get('members')
         .then(members => {
           this.membersList = members;
 
@@ -85,17 +92,20 @@
       const div = document.createElement("div");
       const user = {};
 
-      let userRating = `<span class="no-rating">You have not rated this book yet - <a class="set-user-rating" href="javascript:;">rate this book</a></span>`;
-
       book = this.formatBookData(book);
 
+      book.bookRatingAvg = 4.3;
+      user.rating = 3.2;
+
       if (book.bookRatingAvg === 0) {
-        noAvg = 'No one has rated this book yet!<br /><a class="set-user-rating" href="javascript:;">Be the first!</a>'
-        noAvgClass = 'hide'
+        noAvg = `No one has rated this book yet!<br /><a class="set-user-rating" href="javascript:;" id="setRating-${book.id}">Be the first!</a>`
+        noAvgClass = 'hidden d-none'
       }
 
+      let userRating = `<span class="no-rating">You have not rated this book yet - <a class="set-user-rating" href="javascript:;" id="setRating-${book.id}">rate this book</a></span>`;
+
       if (user.rating) {
-        userRating = `Your rating: <span class="current-user-rating">${user.rating}</span> - <a class="set-user-rating" href="javascript:;">edit rating</a>`
+        userRating = `Your rating: <span class="current-user-rating">${user.rating}</span> - <a class="set-user-rating" href="javascript:;" id="setRating-${book.id}">edit rating</a>`
       }
 
       div.className = 'book row';
@@ -111,7 +121,7 @@
         </div>
         <div class="book-data col-5 col-xl-4">
           <div class="book-rating-wrapper">
-            <div class="book-rating ${noAvgClass}" data-placement="right" data-toggle="tooltip" title="${book.bookRating}" id="${book.id}-rating"></div>
+            <div class="book-rating ${noAvgClass}" id="rating-${book.id}"></div>
             <div class="book-rating-none">${noAvg}</div>
             <div class="book-rating-user ${noAvgClass}">
               ${userRating}
@@ -132,13 +142,7 @@
 
       this.container.appendChild(div);
 
-      $(`#${book.id}-rating`).rateYo({
-        ratedFill: "#FFF",
-        rating: book.bookRatingAvg,
-        readOnly: true,
-        spacing: "16px"
-      });
-
+      rateYoBook.init(book.id, book.bookRatingAvg);
     },
 
     formatBookData: function(book) {
@@ -152,17 +156,14 @@
     },
 
     getBooks: function(cb) {
-      data.get('books')
-        .then(
-          books => {
-            cb(books);
-          }
-        )
-        .catch(
-          error => {
-            console.error(error);
-          }
-        )
+      data.auth('682643b8-2be1-4fc8-8d04-a32ffeb3ecef')
+        .get('books')
+        .then(books => {
+          cb(books);
+        })
+        .catch(error => {
+          console.error(error);
+        })
       ;
     },
 
@@ -272,17 +273,14 @@
     },
 
     getMembers: function(cb) {
-      data.get('members')
-        .then(
-          members => {
-            cb(members);
-          }
-        )
-        .catch(
-          error => {
-            console.error(error);
-          }
-        )
+      data.auth('682643b8-2be1-4fc8-8d04-a32ffeb3ecef')
+        .get('members')
+        .then(members => {
+          cb(members);
+        })
+        .catch(error => {
+          console.error(error);
+        })
       ;
     },
 
@@ -316,7 +314,8 @@
     },
 
     removePicker: function(id) {
-      data.update(
+      data.auth('682643b8-2be1-4fc8-8d04-a32ffeb3ecef')
+        .update(
         'members/' + id,
         {
           'pickAvailable': false
@@ -353,7 +352,7 @@
     resetAvailablePicks: function() {
       this.getMembers(members => {
         members.forEach(member => {
-          data.update(
+          data.auth('682643b8-2be1-4fc8-8d04-a32ffeb3ecef').update(
             'members/' + member.id,
             {
               "pickAvailable": true
@@ -365,7 +364,7 @@
       });
     },
 
-    sortUsers(array) {
+    sortUsers: function(array) {
       array.sort(function(a, b) {
         const nameA = a.nameFirst.toUpperCase();
         const nameB = b.nameFirst.toUpperCase();
@@ -381,6 +380,42 @@
       });
 
       return array;
+    }
+  };
+
+  const rateYoBook = {
+    init: function(id, rating) {
+      this.container = $(`#rating-${id}`);
+      this.ratingLink = $(`#setRating-${id}`);
+      const userRating = `Your rating: <span class="current-user-rating">${rating}</span> - <a class="set-user-rating" href="javascript:;" id="setRating-${id}">edit rating</a>`;
+      this.userRatingContainer = this.container.siblings('.book-rating-user');
+
+      this.container.rateYo({
+        ratedFill: "#FFF",
+        rating: rating,
+        readOnly: true,
+        spacing: "16px"
+      });
+
+      this.container.find('.ratings-counter').text(rating);
+
+      this.container.rateYo().on('rateyo.change', (e, data) => {
+        const rating = data.rating;
+
+        this.container.find('.ratings-counter').text(rating);
+      });
+
+      this.ratingLink.on('click', e => {
+        this.container.removeClass('d-none hidden');
+
+        this.userRatingContainer.removeClass('d-none hidden');
+
+        if (this.ratingLink.hasClass('.book-rating-none')) {
+          this.ratingLink.parent().addClass('d-none');
+        }
+
+        this.container.rateYo("option", "readOnly", false);
+      })
     }
   };
 

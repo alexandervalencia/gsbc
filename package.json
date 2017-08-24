@@ -1,0 +1,28 @@
+{
+  "name": "gsbc",
+  "version": "1.0.0",
+  "description": "Good Stuff Book Club",
+  "main": "index.js",
+  "dependencies": {
+    "blueimp-file-upload": "^9.18.0",
+    "bootstrap": "^4.0.0-beta",
+    "bootstrap-v4-dev": "^4.0.0-alpha.6",
+    "cloudinary-jquery-file-upload": "^2.3.0",
+    "jquery": "^3.2.1",
+    "popper.js": "^1.11.1",
+    "rateyo": "^2.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexandervalencia/gsbc"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexandervalencia/gsbc/issues"
+  }
+}

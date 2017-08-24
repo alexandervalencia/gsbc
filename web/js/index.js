@@ -139,6 +139,7 @@ const getAllUsers = () => {
 
 const getAllBooks = () => {
   WeDeploy.data('https://data-gsbc.wedeploy.io')
+    .auth('682643b8-2be1-4fc8-8d04-a32ffeb3ecef')
     .get('books')
     .then(books => {console.log(books)})
     .catch(error => {console.error(error)})
