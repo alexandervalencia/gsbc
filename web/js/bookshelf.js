@@ -116,7 +116,7 @@
         </div>
         <div class="book-cover-wrapper col-2">
           <div class="book-cover">
-            <img alt="${book.bookTitle} - ${book.author}" class="img-fluid" src="${book.bookCoverUrl}" />
+            <img alt="${book.bookTitle} - ${book.bookAuthor}" class="img-fluid" src="${book.bookCoverUrl}" />
           </div>
         </div>
         <div class="book-data col-5 col-xl-4">
@@ -151,6 +151,10 @@
       book.bookRatingAvg = this.setAverageRating(book.bookRatings, book.id);
 
       book.userPicked = this.getNameById(book.userPicked);
+
+      if (book.bookCoverUrl === undefined) {
+        book.bookCoverUrl = 'https://res.cloudinary.com/gsbc/image/upload/v1502156126/defaultcover_wpztad.jpg'
+      }
 
       return book;
     },
@@ -385,37 +389,39 @@
 
   const rateYoBook = {
     init: function(id, rating) {
-      this.container = $(`#rating-${id}`);
-      this.ratingLink = $(`#setRating-${id}`);
-      const userRating = `Your rating: <span class="current-user-rating">${rating}</span> - <a class="set-user-rating" href="javascript:;" id="setRating-${id}">edit rating</a>`;
-      this.userRatingContainer = this.container.siblings('.book-rating-user');
+      const container = $(`#rating-${id}`);
+      const ratingLink = $(`#setRating-${id}`);
+      const userRatingTpl = `Your rating: <span class="current-user-rating">${rating}</span> - <a class="set-user-rating" href="javascript:;" id="setRating-${id}">edit rating</a>`;
 
-      this.container.rateYo({
-        ratedFill: "#FFF",
+      this.userRatingContainer = container.siblings('.book-rating-user');
+
+      container.rateYo({
+        ratedFill: "#FFED85",
         rating: rating,
         readOnly: true,
         spacing: "16px"
       });
 
-      this.container.find('.ratings-counter').text(rating);
+      container.find('.ratings-counter').text(rating);
 
-      this.container.rateYo().on('rateyo.change', (e, data) => {
+      container.rateYo().on('rateyo.change', (e, data) => {
         const rating = data.rating;
 
-        this.container.find('.ratings-counter').text(rating);
+        container.find('.ratings-counter').text(rating);
       });
 
-      this.ratingLink.on('click', e => {
-        this.container.removeClass('d-none hidden');
+      ratingLink.on('click', e => {
+        container.removeClass('d-none hidden');
 
         this.userRatingContainer.removeClass('d-none hidden');
 
-        if (this.ratingLink.hasClass('.book-rating-none')) {
-          this.ratingLink.parent().addClass('d-none');
+        if (ratingLink.hasClass('.book-rating-none')) {
+          ratingLink.parent().addClass('d-none');
         }
 
-        this.container.rateYo("option", "readOnly", false);
-      })
+        container.rateYo('option', 'ratedFill', '#D1B621');
+        container.rateYo('option', 'readOnly', false);
+      });
     }
   };
 

@@ -220,6 +220,7 @@ h2, h4, h6 {
       box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30),
                   0 15px 12px rgba(0, 0, 0, 0.22),
                   0px 20px 90px 20px rgba(50, 50, 50, 0.8);
+      max-height: 200px;
     }
   }
 
@@ -466,6 +467,14 @@ h2, h4, h6 {
 
 .newmember {
   margin-bottom: 3rem;
+}
+
+.alert {
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 100;
 }
 
 .card-block {

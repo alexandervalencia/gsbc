@@ -27,11 +27,11 @@ $(function() {
   const newMember = function(event) {
     event.preventDefault();
 
-    let form = event.target.form;
-    let email = form.querySelector('#email').value;
-    let nameFirst = form.querySelector('#nameFirst').value;
-    let nameLast = form.querySelector('#nameLast').value;
-    let password = form.querySelector('#password').value;
+    const form = event.target.form;
+    const email = form.querySelector('#email').value;
+    const nameFirst = form.querySelector('#nameFirst').value;
+    const nameLast = form.querySelector('#nameLast').value;
+    const password = form.querySelector('#password').value;
 
     auth.createUser({
       email: email,
@@ -42,18 +42,23 @@ $(function() {
     .then(function(member) {
       member.userId = member.id;
       addMemberToDatabase(member);
-      alert('Account sucessfully created!');
-      //signIn();
+      signUpSuccessful();
       user.reset();
+
+      auth.signInWithEmailAndPassword(email, password)
+      .then(user => {document.location.href = '/';})
+      .catch(err => {console.error(err);});
     })
     .catch(function(err) {
-      alert('Sign-up failed. Try again.');
-      console.log(err);
+      signUpFailed();
+      console.error(err);
       user.reset();
     });
   }
 
-  // newMemberBtn.addEventListener('click', newMember);
+  if (newMemberBtn) {
+    newMemberBtn.addEventListener('click', newMember);
+  }
 
   const signIn = function(event) {
     event.preventDefault();
@@ -98,20 +103,43 @@ $(function() {
       });
   }
 
-  if (currentUser) {
-    controlBar.innerHTML = `<button data-target="#addBookModal" data-toggle="modal" id="addBookBtn" type="button">Add a Book</button> | <button id="signOutBtn" type="button">Sign Out</button>`
+  const signUpSuccessful = function () {
+    const alert = `<div class="alert alert-success alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>Account created!</strong> Signing you in now.
+    </div>`;
 
-    const signOutBtn = document.querySelector('#signOutBtn');
+    $('body').prepend(alert);
+  };
 
-    signOutBtn.addEventListener('click', signOut);
+  const signUpFailed = function() {
+    const alert = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>Sign-up Failed!</strong> Make sure you've filled in all the fields and try again.
+    </div>`;
 
+    $('body').prepend(alert);
+  };
+
+  if (controlBar){
+    if (currentUser) {
+      controlBar.innerHTML = `<button data-target="#addBookModal" data-toggle="modal" id="addBookBtn" type="button">Add a Book</button> | <button id="signOutBtn" type="button">Sign Out</button>`
+
+      const signOutBtn = document.querySelector('#signOutBtn');
+
+      signOutBtn.addEventListener('click', signOut);
+
+    }
+    else {
+      controlBar.innerHTML = `<button data-target="#signInModal" data-toggle="modal" type="button">Sign In</button>`
+
+      signInBtn.addEventListener('click', signIn);
+    }
   }
-  else {
-    controlBar.innerHTML = `<button data-target="#signInModal" data-toggle="modal" type="button">Sign In</button>`
-
-    signInBtn.addEventListener('click', signIn);
-  }
-
 });
 
 if (location.host === 'goodshitbook.club') {
