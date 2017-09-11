@@ -1,0 +1,28 @@
+.filter {
+  justify-content: center;
+}
+
+.filter-header {
+  padding-bottom: 5rem;
+}
+
+.filter select, .filter .custom-select {
+  background-color: #1A1A1A;
+  border: 1px solid rgba(129, 129, 129, 0.25);
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  color: #818181;
+  font-family: "Playfair Display", serif;
+  font-size: 0.75rem;
+}
+
+.filter select.form-control:focus, .filter .custom-select.form-control:focus {
+  background-color: inherit;
+  color: #CCC;
+  outline: none;
+}
+
+.filter select.active, .filter .custom-select.active {
+  background-color: #323232;
+  color: #CCC;
+}

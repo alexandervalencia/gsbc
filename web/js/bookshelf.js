@@ -136,7 +136,7 @@
         <div class="book-member col-2 col-xl-3">
           <div class="book-member-profile">
             <img alt="${book.userPicked}" class="img-fluid" src="${book.userPhotoUrl}">
-            <spam class="book-member-name">${book.userPicked}</span>
+            <span class="book-member-name">${book.userPicked}</span>
           </div>
         </div>`
 

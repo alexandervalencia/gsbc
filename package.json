@@ -1,28 +1,18 @@
 {
-  "name": "gsbc",
-  "version": "1.0.0",
-  "description": "Good Stuff Book Club",
-  "main": "index.js",
+  "name": "gsbc-react",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "blueimp-file-upload": "^9.18.0",
-    "bootstrap": "^4.0.0-beta",
-    "bootstrap-v4-dev": "^4.0.0-alpha.6",
-    "cloudinary-jquery-file-upload": "^2.3.0",
-    "jquery": "^3.2.1",
-    "popper.js": "^1.11.1",
-    "rateyo": "^2.3.2"
+    "cloudinary-react": "^1.0.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-scripts": "1.0.13",
+    "wedeploy": "^3.1.0"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/alexandervalencia/gsbc"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/alexandervalencia/gsbc/issues"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }
