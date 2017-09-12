@@ -3,15 +3,19 @@ import React, { Component } from 'react';
 class Rating extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
-      average: props.average,
+      average: '',
       members: props.members,
-      ratings: props.ratings
+      ratings: ''
     }
-    console.log(props);
   }
-
+  componentWillMount() {
+    WeDeploy.data('data-gsbc.wedeploy.io')
+      .auth('')
+      .get('ratings')
+      .then(ratings => this.setState({ ratings }))
+      .catch(error => console.error(error));
+  }
   render() {
     return (
       <div className="rating">
