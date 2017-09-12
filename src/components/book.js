@@ -14,10 +14,7 @@ const Book = (props) => {
         bookTitle={props.book.bookTitle} />
 
       <div className="col-6 col-xl-5">
-        <Rating
-          average={props.book.bookAvgRating}
-          members={props.members}
-          ratings={props.book.bookRatings} />
+        <Rating average={props.book.averageRating} />
         <Info
           bookAuthor={props.book.bookAuthor}
           bookTitle={props.book.bookTitle}

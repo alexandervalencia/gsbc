@@ -14,8 +14,8 @@ class Rating extends Component {
 
   render() {
     return (
-      <div>
-        Rating
+      <div className="rating">
+        {this.state.average}
       </div>
     )
   }

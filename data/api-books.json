@@ -1,0 +1,109 @@
+[
+  {
+    "auth": {
+      "validator": "$auth != null"
+    },
+    "data": true,
+    "description": "Creates a new book.",
+    "method": ["POST"],
+    "parameters": {
+      "amazonUrl": {
+        "type": "string"
+      },
+      "author": {
+        "type": "string",
+        "required": true
+      },
+      "averageRating": {
+        "type": "string"
+      },
+      "coverUrl": {
+        "type": "string"
+      },
+      "datePicked": {
+        "type": "string",
+        "required": true
+      },
+      "dateUpdated": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string",
+        "required": true
+      },
+      "ratingsArray": {
+        "type": "array"
+      },
+      "userNameFirst": {
+        "type": "string"
+      },
+      "userPhotoUrl" :{
+        "type": "string"
+      },
+      "userPicked": {
+        "type": "string"
+      },
+      "userSubmitted": {
+        "type": "string"
+      },
+      "userUpdated": {
+        "type": "string"
+      }
+    },
+    "path": "/books/*"
+  },
+  {
+    "auth": {
+      "validator": "$auth != null"
+    },
+    "data": true,
+    "method": ["DELETE", "PATCH", "PUT"],
+    "parameters": {
+      "amazonUrl": {
+        "type": "string"
+      },
+      "author": {
+        "type": "string"
+      },
+      "averageRating": {
+        "type": "string"
+      },
+      "coverUrl": {
+        "type": "string"
+      },
+      "datePicked": {
+        "type": "string"
+      },
+      "dateUpdated": {
+        "type": "string"
+      },
+      "ratingsArray": {
+        "type": "array"
+      },
+      "title": {
+        "type": "string"
+      },
+      "userNameFirst": {
+        "type": "string"
+      },
+      "userPhotoUrl" :{
+        "type": "string"
+      },
+      "userPicked": {
+        "type": "string"
+      },
+      "userSubmitted": {
+        "type": "string"
+      },
+      "userUpdated": {
+        "type": "string"
+      }
+    },
+    "path": "/books/*"
+  },
+  {
+    "data": true,
+    "method": "GET",
+    "path": "/books/*"
+  }
+]
