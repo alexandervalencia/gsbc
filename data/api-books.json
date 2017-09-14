@@ -14,9 +14,6 @@
         "type": "string",
         "required": true
       },
-      "averageRating": {
-        "type": "string"
-      },
       "coverUrl": {
         "type": "string"
       },
@@ -27,12 +24,18 @@
       "dateUpdated": {
         "type": "string"
       },
-      "title": {
-        "type": "string",
-        "required": true
+      "rating": {
+        "type": "string"
       },
       "ratingsArray": {
         "type": "array"
+      },
+      "subtitle": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string",
+        "required": true
       },
       "userNameFirst": {
         "type": "string"
@@ -65,9 +68,6 @@
       "author": {
         "type": "string"
       },
-      "averageRating": {
-        "type": "string"
-      },
       "coverUrl": {
         "type": "string"
       },
@@ -77,8 +77,14 @@
       "dateUpdated": {
         "type": "string"
       },
+      "rating": {
+        "type": "string"
+      },
       "ratingsArray": {
         "type": "array"
+      },
+      "subtitle": {
+        "type": "string"
       },
       "title": {
         "type": "string"

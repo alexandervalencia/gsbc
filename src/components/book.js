@@ -5,25 +5,28 @@ import Info from './info';
 import Profile from './profile';
 import Rating from './rating';
 
-const Book = (props) => {
+const Book = ({book, member, members, ratings}) => {
   return (
     <div className="book row">
-      <AmazonButton bookAmazonUrl={props.book.bookAmazonUrl} />
+      <AmazonButton amazonUrl={ book.amazonUrl} />
       <Cover
-        bookCoverUrl={props.book.bookCoverUrl}
-        bookTitle={props.book.bookTitle} />
+        coverUrl={ book.coverUrl }
+        title={ book.bookTitle } />
 
       <div className="col-6 col-xl-5">
-        <Rating average={props.book.averageRating} />
+        <Rating
+          average={ book.averageRating }
+          members={ members }
+          ratings={ ratings } />
         <Info
-          bookAuthor={props.book.bookAuthor}
-          bookTitle={props.book.bookTitle}
-          datePicked={props.book.datePicked}  />
+          author={ book.author }
+          title={ book.title }
+          datePicked={ book.datePicked } />
       </div>
 
       <Profile
-        userPhotoUrl={props.book.userPhotoUrl}
-        userPicked={props.member.nameFirst} />
+        userPhotoUrl={ book.userPhotoUrl }
+        userPicked={ member.nameFirst } />
     </div>
   )
 }

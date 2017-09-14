@@ -13,15 +13,30 @@ const attachMember = function(book, members) {
   return bookMember;
 };
 
-const Shelf = (props) => {
-  const books = props.books.map(book => {
-    return <Book
-      book={book}
-      key={book.id}
-      member={attachMember(book, props.members)}
-      members={props.members} />
+const bookRatings = function(bookId, ratings){
+  let filteredRatings = [];
+
+  ratings.forEach(rating => {
+    if (rating.book === bookId) {
+      filteredRatings.push(rating);
+    }
   })
-  return <div className="col">{books}</div>
+
+  return filteredRatings;
+};
+
+const Shelf = ({books, members, ratings}) => {
+  const booksList = books.map(book => {
+    return (
+      <Book
+        book={book}
+        key={book.id}
+        member={attachMember(book, members)}
+        members={members}
+        ratings={bookRatings(book.id, ratings)} />
+    )
+  })
+  return <div className="col">{booksList}</div>
 }
 
 export default Shelf;

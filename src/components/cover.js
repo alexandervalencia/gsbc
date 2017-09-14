@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Cover = ({bookCoverUrl, bookTitle}) => {
+const Cover = ({coverUrl, title}) => {
   return (
     <div className="cover-wrapper col-2">
       <div className="cover">
-        <img alt={bookTitle} className="img-fluid" src={bookCoverUrl} />
+        <img alt={title} className="img-fluid" src={coverUrl} />
       </div>
     </div>
   )
