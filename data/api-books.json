@@ -14,7 +14,7 @@
         "type": "string",
         "required": true
       },
-      "coverUrl": {
+      "coverImg": {
         "type": "string"
       },
       "datePicked": {
@@ -37,10 +37,7 @@
         "type": "string",
         "required": true
       },
-      "userNameFirst": {
-        "type": "string"
-      },
-      "userPhotoUrl" :{
+      "userImg" :{
         "type": "string"
       },
       "userPicked": {
@@ -68,7 +65,7 @@
       "author": {
         "type": "string"
       },
-      "coverUrl": {
+      "coverImg": {
         "type": "string"
       },
       "datePicked": {
@@ -89,10 +86,7 @@
       "title": {
         "type": "string"
       },
-      "userNameFirst": {
-        "type": "string"
-      },
-      "userPhotoUrl" :{
+      "userImg" :{
         "type": "string"
       },
       "userPicked": {

@@ -1,30 +1,28 @@
-import React, { Component } from 'react';
-import Bookshelf from './components/bookshelf';
-import './App.css';
+import React from 'react'
+import Bookshelf from './components/Bookshelf'
+import './App.css'
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <header className="title-header">
-          <div className="row title-row">
-            <div className="col">
-              <div className="text-center title">
-                <div className="title-back">
-                  <h1>Book Club</h1>
-                </div>
-                <div className="title-front">
-                  <h2 className="align-middle">Good <span id="stuff">Stuff</span></h2>
-                </div>
+const App = () => {
+  return (
+    <div className="container">
+      <header className="site-title">
+        <div className="row title-row">
+          <div className="col">
+            <div className="text-center">
+              <div className="title-back">
+                <h1>Book Club</h1>
+              </div>
+              <div className="title-front">
+                <h2 className="align-middle">Good <span id="stuff">Stuff</span></h2>
               </div>
             </div>
           </div>
-        </header>
+        </div>
+      </header>
 
-        <Bookshelf />
-      </div>
-    );
-  }
+      <Bookshelf />
+    </div>
+  )
 }
 
-export default App;
+export default App

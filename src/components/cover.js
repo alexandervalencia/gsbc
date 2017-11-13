@@ -1,13 +1,20 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Image } from 'cloudinary-react'
 
-const Cover = ({coverUrl, title}) => {
+import '../styles/Cover.css'
+
+const Cover = ({ coverImg, title }) => {
   return (
-    <div className="cover-wrapper col-2">
-      <div className="cover">
-        <img alt={title} className="img-fluid" src={coverUrl} />
-      </div>
+    <div className="Cover">
+      <Image alt={title} className="img-fluid" cloudName="gsbc" publicId={coverImg} />
     </div>
   )
-};
+}
 
-export default Cover;
+Cover.propTypes = {
+  coverImg: PropTypes.string,
+  title: PropTypes.string,
+}
+
+export default Cover

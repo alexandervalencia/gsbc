@@ -1,5 +1,67 @@
 body {
+  background-color: #FFF;
+  box-sizing: border-box;
+  color: #FFF;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Raleway', sans-serif;
+}
+
+a {
+  color: #FFF;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #323232;
+  text-decoration: none;
+}
+
+h1, h3, h5, {
+	font-family: 'Raleway', sans-serif;
+}
+
+h2, h4, h6 {
+  font-family: 'Playfair Display', serif;
+}
+
+*:focus {
+	outline: #FFF auto 2px;
+}
+
+.btn-primary {
+  background-color: transparent;
+  border: 1px solid rgba(129, 129, 129, 0.25);
+  color: #A5A5A5;
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.8em;
+  margin: 0 8px;
+}
+
+.btn-primary:active, .btn-primary:focus, .btn-primary:hover {
+  background-color: rgba(129, 129, 129, 0.75);
+  border: 1px solid rgba(129, 129, 129, 0.25);
+  box-shadow: 0 0 0 2px rgba(129, 129, 129, .25);
+  color: #FFF;
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+  background-color: rgba(100, 100, 100, 0.5);
+  border: 1px solid rgba(129, 129, 129, 0.25);
+}
+
+#root {
+  background-color: #1A1A1A;
+  border: 35px solid #FFF;
+}
+
+footer {
+  background-color: #FFF;
+  color: #818181;
+  font-size: 0.75rem;
+  letter-spacing: 1.5rem;
+  min-height: 5rem;
+  text-transform: uppercase;
 }
