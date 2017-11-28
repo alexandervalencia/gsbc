@@ -13,21 +13,36 @@ export default class Bookshelf extends Component {
     super(props)
 
     this.state = {
+      addBookFormAmazonUrl: '',
+      addBookFormAuthor: '',
+      addBookFormCoverImg: '',
+      addBookFormDatePicked: '',
+      addBookFormSubtitle: '',
+      addBookFormTitle: '',
+      addBookFormUserImg: '',
+      addBookFormUserPicked: '',
+      addBookFormUserSubmitted: '',
       books: [],
       currentMember: {},
       currentUser: {},
-      email: '',
       members: [],
-      password: '',
       ratings: [],
+      showModalAddBook: false,
+      showModalSignIn: false,
+      signInFormEmail: '',
+      signInFormPassword: '',
       sortValue: '3',
     }
 
-    this.onSorterChange = this.onSorterChange.bind(this)
+    this.handleAddBook = this.handleAddBook.bind(this)
+    this.handleAddBookModalClose = this.handleAddBookModalClose.bind(this)
+    this.handleAddBookModalOpen = this.handleAddBookModalOpen.bind(this)
     this.handleSignIn = this.handleSignIn.bind(this)
     this.handleSignOut = this.handleSignOut.bind(this)
     this.onEmailChange = this.onEmailChange.bind(this)
     this.onPasswordChange = this.onPasswordChange.bind(this)
+    this.onSorterChange = this.onSorterChange.bind(this)
+    this.onTitleChange = this.onTitleChange.bind(this)
   }
 
   componentWillMount() {
@@ -37,12 +52,22 @@ export default class Bookshelf extends Component {
     this.getCurrentMember()
   }
 
-  onEmailChange(email) {
-    this.setState({ email })
+  onBookAddition() {
+    WeDeploy.data('data-gsbc.wedeploy.io')
+      .get('books')
+      .then(books => this.setState({ books }))
   }
 
-  onPasswordChange(password) {
-    this.setState({ password })
+  onEmailChange(event) {
+    const signInFormEmail = event.target.value
+
+    this.setState({ signInFormEmail })
+  }
+
+  onPasswordChange(event) {
+    const signInFormPassword = event.target.value
+
+    this.setState({ signInFormPassword })
   }
 
   onSorterChange(event) {
@@ -62,6 +87,12 @@ export default class Bookshelf extends Component {
 
         this.setState({ books, sortValue })
       })
+  }
+
+  onTitleChange(event) {
+    const addBookFormTitle = event.target.value
+
+    this.setState({ addBookFormTitle })
   }
 
   async getCurrentMember() {
@@ -98,7 +129,31 @@ export default class Bookshelf extends Component {
     this.setState({ books, members, ratings })
   }
 
-  handleSignIn() {
+  handleAddBook(event) {
+    event.preventDefault()
+
+    console.log(event)
+  }
+
+  handleAddBookModalClose() {
+    this.setState({ showModalAddBook: false })
+  }
+
+  handleAddBookModalOpen() {
+    this.setState({ showModalAddBook: true })
+  }
+
+  handleSignInModalClose() {
+    this.setState({ showModalSignIn: false })
+  }
+
+  handleSignInModalOpen() {
+    this.setState({ showModalSignIn: true })
+  }
+
+  handleSignIn(event) {
+    event.preventDefault()
+
     WeDeploy.auth('https://auth-gsbc.wedeploy.io')
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then((currentUser) => {
@@ -107,7 +162,9 @@ export default class Bookshelf extends Component {
       .catch(err => console.error(err))
   }
 
-  handleSignOut() {
+  handleSignOut(event) {
+    event.preventDefault()
+
     WeDeploy.auth('https://auth-gsbc.wedeploy.io')
       .signOut()
       .then(() => this.setState({ currentUser: {} }))
@@ -129,13 +186,22 @@ export default class Bookshelf extends Component {
                 value={this.state.sortValue}
               />
               <Navbar
+                currentMember={this.state.currentMember}
                 currentUser={this.state.currentUser}
-                email={this.state.email}
+                email={this.state.signInFormEmail}
+                handleAddBook={this.handleAddBook}
+                handleAddBookModalClose={this.handleAddBookModalClose}
+                handleAddBookModalOpen={this.handleAddBookModalOpen}
                 handleSignIn={this.handleSignIn}
+                handleSignInModalClose={this.handleSignInModalClose}
+                handleSignInModalOpen={this.handleSignInModalOpen}
                 handleSignOut={this.handleSignOut}
                 onEmailChange={this.onEmailChange}
                 onPasswordChange={this.onPasswordChange}
-                password={this.state.password}
+                onTitleChange={this.onTitleChange}
+                password={this.state.signInFormPassword}
+                showModalAddBook={this.state.showModalAddBook}
+                showModalSignIn={this.state.showModalSignIn}
               />
             </div>
           </div>

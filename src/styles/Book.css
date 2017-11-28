@@ -1,0 +1,9 @@
+.Book.row {
+  margin: 32px auto;
+}
+
+@media (min-width: 1200px) {
+  .Book.row {
+    margin-bottom: 64px;
+  }
+}

@@ -30,12 +30,11 @@ h2, h4, h6 {
 }
 
 .btn-primary {
-  background-color: transparent;
+  background-color: rgba(129, 129, 129, 1);;
   border: 1px solid rgba(129, 129, 129, 0.25);
-  color: #A5A5A5;
+  color: #FFF;
   cursor: pointer;
-  font-family: 'Playfair Display', serif;
-  font-size: 0.8em;
+  font-size: 1em;
   margin: 0 8px;
 }
 
@@ -50,6 +49,10 @@ h2, h4, h6 {
 .btn-primary:disabled {
   background-color: rgba(100, 100, 100, 0.5);
   border: 1px solid rgba(129, 129, 129, 0.25);
+}
+
+.btn-secondary {
+  cursor: pointer;
 }
 
 #root {
