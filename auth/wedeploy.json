@@ -1,6 +1,6 @@
 {
 	"id": "auth",
-	"image": "wedeploy/auth:0.0.1",
+	"image": "wedeploy/auth",
 	"env": {
 		"WEDEPLOY_AUTH_PASSWORD": "true",
 		"WEDEPLOY_AUTH_SECURE_FIELDS": "password"

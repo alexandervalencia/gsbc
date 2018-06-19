@@ -1,39 +1,4 @@
-.site-title {
-  margin: 0;
-  padding: 0;
-}
-
-.site-title .title-row {
-  padding-bottom: 0.5rem;
-}
-
-.site-title {
-  min-height: 5rem;
-  position: relative;
-  text-transform: uppercase;
-}
-
-.site-title .title-back h1 {
-  color: #333333;
-  font-family: "Raleway", sans-serif;
-  font-size: 5rem;
-  font-weight: 800;
-  letter-spacing: 2rem;
-}
-
-.site-title .title-front {
-  bottom: 0;
-  left: 0;
-  letter-spacing: 0.5rem;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.site-title .title-front h2 {
-  display: inline-block;
-  font-family: "Raleway", sans-serif;
-  font-size: 2.5rem;
-  font-weight: 800;
+.App {
+  background-color: #1A1A1A;
+  border: 35px solid #FFF;
 }
