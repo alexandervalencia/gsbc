@@ -8,7 +8,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.SORTER_CHANGE:
+    case actionTypes.SORT_BOOKS:
       return {
         ...state,
         books: [
