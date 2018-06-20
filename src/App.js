@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Bookcase from './containers/Bookcase/Bookcase'
-import { Footer, Header } from 'components'
+import { Footer, Header } from './components'
 import './App.css';
 
 class App extends Component {

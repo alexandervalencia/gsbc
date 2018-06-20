@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import WeDeploy from 'wedeploy'
 
-import { BookshelfSorter } from 'components'
+import { BookshelfSorter } from '../../components'
 
 import BookSortUtil from '../../utils/BookSortUtil'
 import SortOptionsList from '../../utils/SortOptionsList'
@@ -9,12 +9,16 @@ import SortOptionsList from '../../utils/SortOptionsList'
 import './Bookcase.css'
 
 class Bookcase extends Component {
-  state = {
-    books: [],
-    currentMember: {},
-    currentUser: {},
-    members: [],
-    ratings: [],
+  constructor() {
+    super();
+
+    state = {
+      books: [],
+      currentMember: {},
+      currentUser: {},
+      members: [],
+      ratings: [],
+    }
   }
 
   componentDidMount() {
