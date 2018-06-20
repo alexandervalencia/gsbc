@@ -16,48 +16,42 @@ const config = {
       {
         exclude: /node_modules/,
         test: /\.js$/,
-        use: 'babel-loader'
+        use: 'babel-loader',
       },
       {
         test: /\.(s*)css$/,
-        use: ExtractTextPlugin.extract(
-          {
-            fallback: 'style-loader',
-            use: [
-              {
-                loader: 'css-loader',
-                options: {
-                  importLoaders: 2
-                }
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2,
               },
-              {
-                loader: 'postcss-loader',
-                options: {
-                  plugins: () => [
-                    autoprefixer()
-                  ]
-                }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: () => [autoprefixer()],
               },
-              {
-                loader: 'sass-loader'
-              }
-            ]
-          }
-        )
-      }
-    ]
+            },
+            {
+              loader: 'sass-loader',
+            },
+          ],
+        }),
+      },
+    ],
   },
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, './public/dist'),
-    publicPath: PUBLIC_PATH
+    publicPath: PUBLIC_PATH,
   },
-  plugins: [
-    new ExtractTextPlugin('main.css')
-  ]
+  plugins: [new ExtractTextPlugin('main.css')],
 };
 
 module.exports = {
   config: config,
-  publicPath: PUBLIC_PATH
+  publicPath: PUBLIC_PATH,
 };
