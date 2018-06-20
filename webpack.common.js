@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const PUBLIC_PATH = '/dist/';
+const PUBLIC_PATH = '/public/';
 
 const config = {
   entry: {
@@ -49,7 +49,7 @@ const config = {
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, './public/dist'),
     publicPath: PUBLIC_PATH
   },
   plugins: [

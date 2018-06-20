@@ -8,7 +8,7 @@ module.exports = merge(
     common.config,
     {
         plugins: [
-            new CleanWebpackPlugin(['dist']),
+            new CleanWebpackPlugin(path.resolve(__dirname, './public/dist')),
             new webpack.DefinePlugin(
                 {
                     'process.env': {
