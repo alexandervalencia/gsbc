@@ -4,15 +4,11 @@
   "private": true,
   "dependencies": {
     "cloudinary-react": "^1.0.6",
-    "husky": "^0.14.3",
-    "lint-staged": "^7.1.3",
-    "prettier": "^1.13.4",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
-    "react-scripts": "1.1.4",
     "redux": "^4.0.0",
     "wedeploy": "^4.2.0"
   },
@@ -29,19 +25,39 @@
     ]
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "webpack-dev-server --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "build:dev": "webpack --config webpack.dev.js",
     "precommit": "lint-staged",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "watch": "webpack --config webpack.dev.js --watch"
   },
   "devDependencies": {
+    "autoprefixer": "^8.6.3",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.11",
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.1.3",
+    "node-sass": "^4.9.0",
+    "postcss-loader": "^2.1.5",
+    "prettier": "^1.13.4",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
     "stylelint": "^9.2.1",
-    "stylelint-config-standard": "^18.2.0"
+    "stylelint-config-standard": "^18.2.0",
+    "uglifyjs-webpack-plugin": "^1.2.6",
+    "webpack": "^3.12.0",
+    "webpack-dev-server": "^2.0.0",
+    "webpack-merge": "^4.1.3"
   }
 }
