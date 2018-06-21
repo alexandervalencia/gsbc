@@ -12,7 +12,7 @@ class Bookcase extends Component {
   constructor() {
     super();
 
-    state = {
+    this.state = {
       books: [],
       currentMember: {},
       currentUser: {},
