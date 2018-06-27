@@ -1,0 +1,109 @@
+[
+  {
+    "auth": {
+      "validator": "$auth != null"
+    },
+    "data": true,
+    "description": "Creates a new book.",
+    "method": ["POST"],
+    "parameters": {
+      "amazonUrl": {
+        "type": "string"
+      },
+      "author": {
+        "type": "string",
+        "required": true
+      },
+      "coverImg": {
+        "type": "string"
+      },
+      "datePicked": {
+        "type": "string",
+        "required": true
+      },
+      "dateUpdated": {
+        "type": "string"
+      },
+      "rating": {
+        "type": "string"
+      },
+      "ratingsArray": {
+        "type": "array"
+      },
+      "subtitle": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string",
+        "required": true
+      },
+      "userImg" :{
+        "type": "string"
+      },
+      "userPicked": {
+        "type": "string"
+      },
+      "userSubmitted": {
+        "type": "string"
+      },
+      "userUpdated": {
+        "type": "string"
+      }
+    },
+    "path": "/books/*"
+  },
+  {
+    "auth": {
+      "validator": "$auth != null"
+    },
+    "data": true,
+    "method": ["DELETE", "PATCH", "PUT"],
+    "parameters": {
+      "amazonUrl": {
+        "type": "string"
+      },
+      "author": {
+        "type": "string"
+      },
+      "coverImg": {
+        "type": "string"
+      },
+      "datePicked": {
+        "type": "string"
+      },
+      "dateUpdated": {
+        "type": "string"
+      },
+      "rating": {
+        "type": "string"
+      },
+      "ratingsArray": {
+        "type": "array"
+      },
+      "subtitle": {
+        "type": "string"
+      },
+      "title": {
+        "type": "string"
+      },
+      "userImg" :{
+        "type": "string"
+      },
+      "userPicked": {
+        "type": "string"
+      },
+      "userSubmitted": {
+        "type": "string"
+      },
+      "userUpdated": {
+        "type": "string"
+      }
+    },
+    "path": "/books/*"
+  },
+  {
+    "data": true,
+    "method": "GET",
+    "path": "/books/*"
+  }
+]

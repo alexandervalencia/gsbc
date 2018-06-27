@@ -1,0 +1,47 @@
+[
+  {
+    "auth": {
+      "validator": "$auth != null"
+    },
+    "data": true,
+    "description": "Ratings Database",
+    "method": ["POST"],
+    "parameters": {
+      "book": {
+        "type": "string"
+      },
+      "rating": {
+        "type": "string"
+      },
+      "user": {
+        "type": "string"
+      }
+    },
+    "path": "/ratings/*"
+  },
+  {
+    "auth": {
+      "validator": "$auth != null"
+    },
+    "data": true,
+    "description": "Ratings Database",
+    "method": ["DELETE", "PATCH", "PUT"],
+    "parameters": {
+      "book": {
+        "type": "string"
+      },
+      "rating": {
+        "type": "string"
+      },
+      "user": {
+        "type": "string"
+      }
+    },
+    "path": "/ratings/*"
+  },
+  {
+    "data": true,
+    "method": "GET",
+    "path": "/ratings/*"
+  }
+]
