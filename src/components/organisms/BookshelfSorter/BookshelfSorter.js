@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import SortOptionsList from '../../../utils/SortOptionsList'
 import './BookshelfSorter.css'
 
-import { Input, Label } from 'components';
+import { Input, Label } from '../../../components';
 
 const BookshelfSorter = ({ onSorterChange, value }) => {
   const optionsList = SortOptionsList.map(option => (
