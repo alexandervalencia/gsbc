@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
 import Bookcase from './containers/Bookcase/Bookcase'
-import { Footer, Header } from 'components'
+import { SiteFooter, SiteHeader } from 'components'
 import './App.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <SiteHeader />
         <Bookcase />
-        <Footer />
+        <SiteFooter />
       </div>
     );
   }

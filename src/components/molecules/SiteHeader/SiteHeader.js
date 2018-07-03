@@ -4,7 +4,7 @@ import './Header.css'
 
 const title = 'Good Stuff';
 
-const header = () => (
+const siteHeader = () => (
   <header className="Header">
     <div className="title-back">
       <h1>Book Club</h1>
@@ -16,4 +16,4 @@ const header = () => (
   </header>
 );
 
-export default header;
+export default siteHeader;
