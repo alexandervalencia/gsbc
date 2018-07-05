@@ -80,13 +80,13 @@ class Bookcase extends Component {
           /> */}
         </div>
 
-        {/* <Shelf
-          books={this.state.books}
+        <Shelf
+          books={this.props.bks}
           currentMember={this.state.currentMember}
           currentUser={this.state.currentUser}
           members={this.state.members}
           ratings={this.state.ratings}
-        /> */}
+        />
       </div>
     );
   }
