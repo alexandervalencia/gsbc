@@ -1,6 +1,6 @@
 import WeDeploy from 'wedeploy';
 
-const data = WeDeploy.data('data-gsbc.wedeploy.io')
+const data = WeDeploy.data(process.env.REACT_APP_DATABASE);
 
 const AsyncFetchCollection = async (collection) => {
   return await data.get(collection);
