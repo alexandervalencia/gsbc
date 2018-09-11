@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import * as actionTypes from '../../../store/actions';
-
-import BookSortUtil from '../../../utils/BookSortUtil';
 import SortOptionsList from '../../../utils/sortingOptions';
 import './BookshelfSorter.css';
 
