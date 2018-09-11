@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Header.css'
+import './SiteHeader.css';
 
 const title = 'Good Stuff';
 

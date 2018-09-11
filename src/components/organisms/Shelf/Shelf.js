@@ -1,51 +1,50 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-// import Book from './Book'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Book } from 'components';
 
-import './Shelf.css'
+import './Shelf.css';
 
 const attachUserPicked = (book, members) => {
-  let bookMember
+  let bookMember;
 
-  members.forEach((member) => {
+  members.forEach(member => {
     if (book.userPicked === member.id) {
-      bookMember = member
+      bookMember = member;
     }
-  })
+  });
 
-  return bookMember
-}
+  return bookMember;
+};
 
 const bookRatings = (bookId, ratings) => {
-  const filteredRatings = []
+  const filteredRatings = [];
 
-  ratings.forEach((rating) => {
+  ratings.forEach(rating => {
     if (rating.book === bookId) {
-      filteredRatings.push(rating)
+      filteredRatings.push(rating);
     }
-  })
+  });
 
-  return filteredRatings
-}
+  return filteredRatings;
+};
 
 const Shelf = ({ books, currentMember, currentUser, members, ratings }) => {
-  const booksList = books.map((book) => {
+  const booksList = books.map(book => {
     return (
-      <div></div>
-      // <Book
-      //   book={book}
-      //   currentMember={currentMember}
-      //   currentUser={currentUser}
-      //   key={book.id}
-      //   members={members}
-      //   ratings={bookRatings(book.id, ratings)}
-      //   userPicked={attachUserPicked(book, members)}
-      // />
-    )
-  })
+      <Book
+        bookData={book}
+        currentMember={currentMember}
+        currentUser={currentUser}
+        key={book.id}
+        members={members}
+        ratings={bookRatings(book.id, ratings)}
+        userPicked={attachUserPicked(book, members)}
+      />
+    );
+  });
 
-  return <div className="Shelf">{booksList}</div>
-}
+  return <div className="Shelf">{booksList}</div>;
+};
 
 Shelf.propTypes = {
   books: PropTypes.array.isRequired,
@@ -53,6 +52,6 @@ Shelf.propTypes = {
   currentUser: PropTypes.object,
   members: PropTypes.array.isRequired,
   ratings: PropTypes.array.isRequired,
-}
+};
 
-export default Shelf
+export default Shelf;

@@ -1,4 +1,4 @@
-const SortOptionsList = [
+const sortingOptions = [
   {
     selected: '',
     dir: 'asc',
@@ -69,6 +69,6 @@ const SortOptionsList = [
     type: 'title',
     value: '9',
   },
-]
+];
 
-export default SortOptionsList
+export default sortingOptions;

@@ -1,64 +1,41 @@
-import React, { Component } from 'react'
-import WeDeploy from 'wedeploy'
+import React, { Component } from 'react';
+import WeDeploy from 'wedeploy';
+import { connect } from 'react-redux';
 
-import { BookshelfSorter } from 'components'
+import { BookshelfSorter, Shelf } from 'components';
 
-import BookSortUtil from '../../utils/BookSortUtil'
-import SortOptionsList from '../../utils/SortOptionsList'
-
-import './Bookcase.css'
+import './Bookcase.css';
 
 class Bookcase extends Component {
   state = {
-    books: [],
+    // books: [],
     currentMember: {},
     currentUser: {},
     members: [],
     ratings: [],
-  }
+  };
 
   componentDidMount() {
-    const data = WeDeploy.data('data-gsbc.wedeploy.io');
+    const data = WeDeploy.data(process.env.REACT_APP_DATABASE);
 
-    const books = data.get('books');
+    // const books = data.get('books');
     const members = data.get('members');
     const ratings = data.get('ratings');
 
-    Promise.all([books, members, ratings])
-      .then(([books, members, ratings]) => {
-        this.setState({
-          books,
-          members,
-          ratings,
-        });
+    Promise.all([members, ratings]).then(([members, ratings]) => {
+      console.log(members, ratings);
+      this.setState({
+        members,
+        ratings,
       });
+    });
   }
-
-  onSorterChange(event) {
-    const sortValue = event.target.value
-    let config
-
-    SortOptionsList.forEach((option) => {
-      if (sortValue === option.value) {
-        config = option
-      }
-    })
-
-
-    const sortedBooks = BookSortUtil(this.state.books, config)
-
-    this.setState({ sortedBooks, sortValue })
-  }
-
 
   render() {
     return (
       <div className="Bookcase">
         <div className="control-box">
-          <BookshelfSorter
-            onSorterChange={this.onSorterChange}
-            value={this.state.sortValue}
-          />
+          <BookshelfSorter value={this.state.sortValue} />
 
           {/* <Navbar
             currentMember={this.state.currentMember}
@@ -92,4 +69,14 @@ class Bookcase extends Component {
   }
 }
 
-export default Bookcase;
+const mapStateToProps = state => {
+  return {
+    bks: state.books,
+    // curMember: state.currentMember,
+    // curUser: state.currentUser,
+    // members: state.members,
+    // ratings: state.ratings,
+  };
+};
+
+export default connect(mapStateToProps)(Bookcase);

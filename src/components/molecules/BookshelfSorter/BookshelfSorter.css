@@ -4,17 +4,17 @@
 }
 
 .BookshelfSorter label {
-  color: #A5A5A5;
+  color: #a5a5a5;
   font-family: "playfair Display", serif;
   font-size: 0.8em;
 }
 
 .BookshelfSorter select,
 .BookshelfSorter .custom-select {
-  background-color: #1A1A1A;
+  background-color: #1a1a1a;
   border: 1px solid rgba(129, 129, 129, 0.25);
   border-radius: 2px;
-  color: #A5A5A5;
+  color: #a5a5a5;
   font-family: "Playfair Display", serif;
   font-size: 0.75rem;
 }
@@ -22,12 +22,12 @@
 .BookshelfSorter select.form-control:focus,
 .BookshelfSorter .custom-select.form-control:focus {
   background-color: inherit;
-  color: #CCC;
+  color: #ccc;
   outline: none;
 }
 
 .BookshelfSorter select.active,
 .BookshelfSorter .custom-select.active {
   background-color: #323232;
-  color: #CCC;
+  color: #ccc;
 }

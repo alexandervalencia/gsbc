@@ -1,0 +1,21 @@
+.Book {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 32px auto;
+}
+
+.Book > div {
+  margin: 0 16px;
+}
+
+.Book .book-info {
+  flex: 1;
+  max-width: 350px;
+}
+
+@media (min-width: 1200px) {
+  .Book {
+    margin-bottom: 64px;
+  }
+}
