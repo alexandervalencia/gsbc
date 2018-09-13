@@ -1,5 +1,3 @@
-import sortingOptions from './sortingOptions';
-
 const articleRegEx = /(^the|^a|^an) +/i;
 
 const bookSortUtil = (array, config) => {

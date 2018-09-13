@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import WeDeploy from 'wedeploy';
 import { connect } from 'react-redux';
+import * as booksActions from '../../store/actions/books';
+import WeDeploy from 'wedeploy';
 
-import { BookshelfSorter, Shelf } from 'components';
+import { BookshelfSorter, Shelf, Spinner } from 'components';
 
 import './Bookcase.css';
 
@@ -16,9 +17,10 @@ class Bookcase extends Component {
   };
 
   componentDidMount() {
+    this.props.onGetBooks();
+
     const data = WeDeploy.data(process.env.REACT_APP_DATABASE);
 
-    // const books = data.get('books');
     const members = data.get('members');
     const ratings = data.get('ratings');
 
@@ -32,6 +34,25 @@ class Bookcase extends Component {
   }
 
   render() {
+    let shelf = this.props.error ? (
+      <p>
+        We're having some trouble loading the books. Try refreshing the page!
+      </p>
+    ) : (
+      <Spinner />
+    );
+
+    if (this.props.bks) {
+      shelf = (
+        <Shelf
+          books={this.props.bks}
+          currentMember={this.state.currentMember}
+          currentUser={this.state.currentUser}
+          members={this.state.members}
+          ratings={this.state.ratings}
+        />
+      );
+    }
     return (
       <div className="Bookcase">
         <div className="control-box">
@@ -57,13 +78,7 @@ class Bookcase extends Component {
           /> */}
         </div>
 
-        <Shelf
-          books={this.props.bks}
-          currentMember={this.state.currentMember}
-          currentUser={this.state.currentUser}
-          members={this.state.members}
-          ratings={this.state.ratings}
-        />
+        {shelf}
       </div>
     );
   }
@@ -79,4 +94,13 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Bookcase);
+const mapDispatchToProps = dispatch => {
+  return {
+    onGetBooks: () => dispatch(booksActions.getBooks()),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Bookcase);

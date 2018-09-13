@@ -2,27 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import * as actionTypes from '../../../store/actions';
-import SortOptionsList from '../../../utils/sortingOptions';
+import * as booksActions from '../../../store/actions/books';
+import { sortingOptions } from 'utils';
 import './BookshelfSorter.css';
 
 import { Input, Label } from 'components';
 
-const onSorterChange = event => {
-  const sortValue = event.target.value;
-  let config;
-
-  SortOptionsList.forEach(option => {
-    if (sortValue === option.value) {
-      config = option;
-    }
-  });
-
-  return config;
-};
-
 const BookshelfSorter = props => {
-  const optionsList = SortOptionsList.map(option => (
+  const optionsList = sortingOptions.map(option => (
     <option key={`${option.type}-${option.dir}`} value={option.value}>
       {option.name}
     </option>
@@ -39,7 +26,7 @@ const BookshelfSorter = props => {
           className="custom-select form-control"
           id="sorter"
           name="sorter"
-          onChange={onSorterChange}
+          onChange={() => props.onSorterChange()}
           type="select"
           value={props.value}
         >
@@ -55,23 +42,10 @@ BookshelfSorter.propTypes = {
   value: PropTypes.string,
 };
 
-const mapStateToProps = state => {
-  return {
-    books: state.books,
-  };
-};
-
 const mapDispatchToProps = dispatch => {
   return {
-    onSorterChange: sortValue =>
-      dispatch({
-        type: actionTypes.SORT_BOOKS,
-        payload: sortValue,
-      }),
+    onSorterChange: sortValue => dispatch(booksActions.sortBooks(sortValue)),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BookshelfSorter);
+export default connect(mapDispatchToProps)(BookshelfSorter);
