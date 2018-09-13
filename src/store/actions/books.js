@@ -34,6 +34,8 @@ export const getBooks = sortValue => {
 
 export const sortBooks = (books, sortValue) => ({
   type: actionTypes.SORT_BOOKS,
-  books: books,
-  sortValue: sortValue,
+  payload: {
+    books: books,
+    sortValue: sortValue,
+  },
 });

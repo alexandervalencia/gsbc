@@ -14,13 +14,13 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SORT_BOOKS:
       const config = sortingOptions.filter(
-        opt => action.sortValue === opt.value
+        opt => action.payload.sortValue === opt.value
       )[0];
-      const sortedBooks = bookSortUtil(action.books, config);
+      const sortedBooks = bookSortUtil(action.payload.books, config);
       return {
         ...state,
         books: sortedBooks,
-        sortValue: action.sortValue,
+        sortValue: action.payload.sortValue,
       };
     case actionTypes.GET_BOOKS_BEGIN:
       return {
