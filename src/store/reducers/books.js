@@ -1,5 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
-import { bookSortUtil /* , SortOptionsList */ } from 'utils';
+import { bookSortUtil, sortingOptions } from 'utils';
 
 const initialState = {
   books: [],
@@ -8,15 +8,20 @@ const initialState = {
   gettingBooks: false,
   members: [],
   ratings: [],
+  sortValue: '3',
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SORT_BOOKS:
-      const sortedBooks = bookSortUtil(state.books, action.payload);
+      const config = sortingOptions.filter(
+        opt => action.sortValue === opt.value
+      )[0];
+      const sortedBooks = bookSortUtil(action.books, config);
       return {
         ...state,
         books: sortedBooks,
+        sortValue: action.sortValue,
       };
     case actionTypes.GET_BOOKS_BEGIN:
       return {

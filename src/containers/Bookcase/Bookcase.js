@@ -9,7 +9,6 @@ import './Bookcase.css';
 
 class Bookcase extends Component {
   state = {
-    // books: [],
     currentMember: {},
     currentUser: {},
     members: [],
@@ -17,7 +16,7 @@ class Bookcase extends Component {
   };
 
   componentDidMount() {
-    this.props.onGetBooks();
+    this.props.onGetBooks(this.props.srtVal);
 
     const data = WeDeploy.data(process.env.REACT_APP_DATABASE);
 
@@ -25,7 +24,6 @@ class Bookcase extends Component {
     const ratings = data.get('ratings');
 
     Promise.all([members, ratings]).then(([members, ratings]) => {
-      console.log(members, ratings);
       this.setState({
         members,
         ratings,
@@ -56,7 +54,11 @@ class Bookcase extends Component {
     return (
       <div className="Bookcase">
         <div className="control-box">
-          <BookshelfSorter value={this.state.sortValue} />
+          <BookshelfSorter
+            books={this.props.bks}
+            onSorterChange={this.props.onSorterChange}
+            value={this.props.srtVal}
+          />
 
           {/* <Navbar
             currentMember={this.state.currentMember}
@@ -87,6 +89,7 @@ class Bookcase extends Component {
 const mapStateToProps = state => {
   return {
     bks: state.books,
+    srtVal: state.sortValue,
     // curMember: state.currentMember,
     // curUser: state.currentUser,
     // members: state.members,
@@ -96,7 +99,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGetBooks: () => dispatch(booksActions.getBooks()),
+    onGetBooks: sortValue => dispatch(booksActions.getBooks(sortValue)),
+    onSorterChange: (books, sortValue) =>
+      dispatch(booksActions.sortBooks(books, sortValue)),
   };
 };
 

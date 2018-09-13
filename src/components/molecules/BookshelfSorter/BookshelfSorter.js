@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
-import * as booksActions from '../../../store/actions/books';
 import { sortingOptions } from 'utils';
 import './BookshelfSorter.css';
 
@@ -26,7 +24,7 @@ const BookshelfSorter = props => {
           className="custom-select form-control"
           id="sorter"
           name="sorter"
-          onChange={() => props.onSorterChange()}
+          onChange={e => props.onSorterChange(props.books, e.target.value)}
           type="select"
           value={props.value}
         >
@@ -42,10 +40,4 @@ BookshelfSorter.propTypes = {
   value: PropTypes.string,
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onSorterChange: sortValue => dispatch(booksActions.sortBooks(sortValue)),
-  };
-};
-
-export default connect(mapDispatchToProps)(BookshelfSorter);
+export default BookshelfSorter;

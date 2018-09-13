@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import WeDeploy from 'wedeploy';
+import { bookSortUtil, sortingOptions } from 'utils';
 
 export const getBooksBegin = () => ({
   type: actionTypes.GET_BOOKS_BEGIN,
@@ -15,22 +16,24 @@ export const getBooksFailure = error => ({
   payload: error,
 });
 
-export const getBooks = () => {
+export const getBooks = sortValue => {
   return dispatch => {
     dispatch(getBooksBegin());
 
     WeDeploy.data(process.env.REACT_APP_DATABASE)
       .get('books')
       .then(books => {
-        dispatch(getBooksSuccess(books));
+        const config = sortingOptions.filter(opt => sortValue === opt.value)[0];
+        const sortedBooks = bookSortUtil(books, config);
+
+        dispatch(getBooksSuccess(sortedBooks));
       })
       .catch(error => dispatch(getBooksFailure(error)));
   };
 };
 
-export const sortBooks = books => {
-  return {
-    type: actionTypes.SORT_BOOKS,
-    payload: books,
-  };
-};
+export const sortBooks = (books, sortValue) => ({
+  type: actionTypes.SORT_BOOKS,
+  books: books,
+  sortValue: sortValue,
+});
