@@ -1,6 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
+  currentMember: {},
   members: [],
   failedToGetMembers: false,
   getMembersError: [],
@@ -27,6 +28,11 @@ const reducer = (state = initialState, action) => {
         failedToGetMembers: true,
         getMembersError: action.payload.error,
         gettingMembers: false,
+      };
+    case actionTypes.SET_CURRENT_MEMBER:
+      return {
+        ...state,
+        currentMember: action.payload,
       };
     default:
       return state;

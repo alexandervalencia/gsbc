@@ -9,11 +9,6 @@ import { BookshelfSorter, Shelf, Spinner } from 'components';
 import './Bookcase.css';
 
 class Bookcase extends Component {
-  state = {
-    currentMember: {},
-    currentUser: {},
-  };
-
   componentDidMount() {
     this.props.onGetBooks(this.props.srtVal);
     this.props.onGetMembers();
@@ -33,8 +28,8 @@ class Bookcase extends Component {
       shelf = (
         <Shelf
           books={this.props.bks}
-          currentMember={this.state.currentMember}
-          currentUser={this.state.currentUser}
+          currentMember={this.props.currentMember}
+          currentUser={this.props.currentUser}
           members={this.props.mbrs}
           ratings={this.props.rtngs}
         />
@@ -78,11 +73,11 @@ class Bookcase extends Component {
 const mapStateToProps = state => {
   return {
     bks: state.books.books,
+    currentUser: state.auth.currentUser,
+    currentMember: state.members.currentMember,
     mbrs: state.members.members,
     rtngs: state.ratings.ratings,
     srtVal: state.books.sortValue,
-    // curMember: state.currentMember,
-    // curUser: state.currentUser,
   };
 };
 

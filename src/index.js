@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 
 import './index.css';
 import App from './App';
+import authReducer from './store/reducers/auth';
 import booksReducer from './store/reducers/books';
 import membersReducer from './store/reducers/members';
 import ratingsReducer from './store/reducers/ratings';
@@ -15,6 +16,7 @@ import registerServiceWorker from './registerServiceWorker';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
+  auth: authReducer,
   books: booksReducer,
   members: membersReducer,
   ratings: ratingsReducer,
