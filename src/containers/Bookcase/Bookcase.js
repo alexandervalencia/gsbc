@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as booksActions from '../../store/actions/books';
-import WeDeploy from 'wedeploy';
+import * as membersActions from '../../store/actions/members';
+import * as ratingsActions from '../../store/actions/ratings';
 
 import { BookshelfSorter, Shelf, Spinner } from 'components';
 
@@ -11,24 +12,12 @@ class Bookcase extends Component {
   state = {
     currentMember: {},
     currentUser: {},
-    members: [],
-    ratings: [],
   };
 
   componentDidMount() {
     this.props.onGetBooks(this.props.srtVal);
-
-    const data = WeDeploy.data(process.env.REACT_APP_DATABASE);
-
-    const members = data.get('members');
-    const ratings = data.get('ratings');
-
-    Promise.all([members, ratings]).then(([members, ratings]) => {
-      this.setState({
-        members,
-        ratings,
-      });
-    });
+    this.props.onGetMembers();
+    this.props.onGetRatings();
   }
 
   render() {
@@ -40,14 +29,14 @@ class Bookcase extends Component {
       <Spinner />
     );
 
-    if (this.props.bks) {
+    if (this.props.bks && this.props.mbrs && this.props.rtngs) {
       shelf = (
         <Shelf
           books={this.props.bks}
           currentMember={this.state.currentMember}
           currentUser={this.state.currentUser}
-          members={this.state.members}
-          ratings={this.state.ratings}
+          members={this.props.mbrs}
+          ratings={this.props.rtngs}
         />
       );
     }
@@ -88,18 +77,20 @@ class Bookcase extends Component {
 
 const mapStateToProps = state => {
   return {
-    bks: state.books,
-    srtVal: state.sortValue,
+    bks: state.books.books,
+    mbrs: state.members.members,
+    rtngs: state.ratings.ratings,
+    srtVal: state.books.sortValue,
     // curMember: state.currentMember,
     // curUser: state.currentUser,
-    // members: state.members,
-    // ratings: state.ratings,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onGetBooks: sortValue => dispatch(booksActions.getBooks(sortValue)),
+    onGetMembers: () => dispatch(membersActions.getMembers()),
+    onGetRatings: () => dispatch(ratingsActions.getRatings()),
     onSorterChange: (books, sortValue) =>
       dispatch(booksActions.sortBooks(books, sortValue)),
   };

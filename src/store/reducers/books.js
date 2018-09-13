@@ -6,7 +6,6 @@ const initialState = {
   getBooksError: [],
   failedToGetBooks: false,
   gettingBooks: false,
-  members: [],
   ratings: [],
   sortValue: '3',
 };
