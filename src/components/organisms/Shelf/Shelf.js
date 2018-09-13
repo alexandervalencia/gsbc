@@ -4,30 +4,6 @@ import { Book } from 'components';
 
 import './Shelf.css';
 
-const attachUserPicked = (book, members) => {
-  let bookMember;
-
-  members.forEach(member => {
-    if (book.userPicked === member.id) {
-      bookMember = member;
-    }
-  });
-
-  return bookMember;
-};
-
-const bookRatings = (bookId, ratings) => {
-  const filteredRatings = [];
-
-  ratings.forEach(rating => {
-    if (rating.book === bookId) {
-      filteredRatings.push(rating);
-    }
-  });
-
-  return filteredRatings;
-};
-
 const Shelf = ({ books, currentMember, currentUser, members, ratings }) => {
   const booksList = books.map(book => {
     return (
@@ -37,8 +13,8 @@ const Shelf = ({ books, currentMember, currentUser, members, ratings }) => {
         currentUser={currentUser}
         key={book.id}
         members={members}
-        ratings={bookRatings(book.id, ratings)}
-        userPicked={attachUserPicked(book, members)}
+        ratings={ratings.filter(rating => rating.book === book.id)}
+        userPicked={members.filter(member => book.userPicked === member.id)[0]}
       />
     );
   });
