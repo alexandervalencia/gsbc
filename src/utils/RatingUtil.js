@@ -11,13 +11,9 @@ export const checkForUserRating = (ratings, userId) => {
 };
 
 export const getUserRatingId = (ratings, userId) => {
-  let ratingId;
+  if (ratings.filter(rating => rating.user === userId).length > 0) {
+    return ratings.filter(rating => rating.user === userId).shift().id;
+  }
 
-  ratings.forEach(rating => {
-    if (rating.user === userId) {
-      ratingId = rating.id;
-    }
-  });
-
-  return ratingId;
+  return null;
 };

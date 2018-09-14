@@ -14,7 +14,7 @@ export const getCurrentUser = () => {
   return dispatch => {
     const currentUser = WeDeploy.auth('https://auth-gsbc.wedeploy.io')
       .currentUser;
-    console.log(currentUser);
+
     if (currentUser) {
       dispatch(getCurrentUserSuccess(currentUser));
     } else {

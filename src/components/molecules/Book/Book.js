@@ -25,14 +25,14 @@ const Book = ({
       <BookCover coverImg={bookData.coverImg} title={bookData.bookTitle} />
 
       <div className="book-info">
-        {/* <Rating
+        <Rating
           bookId={bookData.id}
           currentMember={currentMember}
           currentUser={currentUser}
           members={members}
           rating={bookData.rating}
           ratings={ratings}
-        /> */}
+        />
 
         <BookInfo
           author={bookData.author}
@@ -44,8 +44,7 @@ const Book = ({
 
       <UserPicked
         userImg={bookData.userImg}
-        userNameFirst="Alex"
-        // userNameFirst={userPicked.nameFirst}
+        userNameFirst={userPicked.nameFirst}
       />
     </div>
   );

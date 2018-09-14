@@ -24,7 +24,7 @@ class Bookcase extends Component {
       <Spinner />
     );
 
-    if (this.props.bks && this.props.mbrs && this.props.rtngs) {
+    if (this.props.bks.length > 0 && this.props.mbrs.length > 0) {
       shelf = (
         <Shelf
           books={this.props.bks}

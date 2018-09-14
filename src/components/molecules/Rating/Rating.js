@@ -1,39 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Rater from 'react-rater';
+import Ratings from 'react-ratings-declarative';
+import { connect } from 'react-redux';
 import WeDeploy from 'wedeploy';
-import { checkForUserRating, getUserRatingId } from '../../../utils/RatingUtil';
+
+import { checkForUserRating, getUserRatingId } from 'utils';
 import './Rating.css';
 
 class Rating extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    average: 0,
+  };
 
-    this.state = {
-      average: '',
-      interactive: true,
-      members: props.members,
-      ratings: props.ratings,
-      signedIn: false,
-    };
-
-    this.handleRating = this.handleRating.bind(this);
-    this.updateAverage = this.updateAverage.bind(this);
-    this.updateRatings = this.updateRatings.bind(this);
-  }
-
-  componentWillMount() {
-    this.updateAverage();
-
-    if (!this.props.currentUser) {
-      this.setState({
-        interactive: false,
-        signedIn: false,
-      });
-    } else {
-      this.setState({ signedIn: true });
-    }
-  }
+  componentDidMount() {}
 
   handleRating(event) {
     const data = WeDeploy.data('data-gsbc.wedeploy.io');
@@ -71,28 +50,24 @@ class Rating extends Component {
 
   updateAverage() {
     const ratings = this.state.ratings;
-    const ratingsArray = [];
+    const ratingsArray = ratings.map(rating => rating.rating);
 
-    if (ratings.length > 0) {
-      ratings.forEach(rating => {
-        ratingsArray.push(rating.rating);
-      });
-
+    if (ratingsArray.length > 0) {
       const sum = ratingsArray.reduce((a, b) => a + b);
       const average = Math.round(((sum / ratings.length) * 2) / 2);
-      this.setState({ average });
 
-      WeDeploy.data('data-gsbc.wedeploy.io').update(
-        `books/${this.props.bookId}`,
-        {
+      WeDeploy.data(process.env.REACT_APP_DATABASE)
+        .update(`books/${this.props.bookId}`, {
           rating: average,
-        }
-      );
+        })
+        .then(() => {
+          this.setState({ average });
+        });
     }
   }
 
   updateRatings() {
-    WeDeploy.data('data-gsbc.wedeploy.io')
+    WeDeploy.data(process.env.REACT_APP_DATABASE)
       .get('ratings')
       .then(ratings => {
         this.setState({ ratings });
@@ -103,6 +78,8 @@ class Rating extends Component {
 
   render() {
     const average = this.state.average;
+    const ratingClassName = average > 0 ? 'rating' : 'no-rating';
+
     let rateEncouragement = <p />;
 
     if (!this.state.signedIn) {
@@ -111,28 +88,19 @@ class Rating extends Component {
       rateEncouragement = <p>No rating yet, be the first!</p>;
     }
 
-    if (average <= 0) {
-      return (
-        <div className="no-rating">
-          <Rater
-            interactive={this.state.interactive}
-            onRate={this.handleRating}
-            rating={0}
-            total={5}
-          />
-          {rateEncouragement}
-        </div>
-      );
-    }
-
     return (
-      <div className="rating">
-        <Rater
-          interactive={this.state.interactive}
-          onRate={this.handleRating}
-          rating={average}
-          total={5}
-        />
+      <div className={ratingClassName}>
+        <Ratings
+          rating={average > 0 ? average : 0}
+          widgetRatedColors="rgb(255, 237, 133)"
+        >
+          <Ratings.Widget />
+          <Ratings.Widget />
+          <Ratings.Widget />
+          <Ratings.Widget />
+          <Ratings.Widget />
+        </Ratings>
+
         {rateEncouragement}
       </div>
     );
@@ -147,4 +115,19 @@ Rating.propTypes = {
   ratings: PropTypes.array,
 };
 
-export default Rating;
+const mapStateToProps = state => {
+  return {
+    books: state.books.books,
+    members: state.members.members,
+    rtngs: state.ratings.ratings,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Rating);
