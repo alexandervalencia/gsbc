@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import { data } from 'wedeploy';
+import WeDeploy from 'wedeploy';
 import { bookSortUtil, sortingOptions } from 'utils';
 
 export const getBooksBegin = () => ({
@@ -20,7 +20,7 @@ export const getBooks = (sortValue = '3') => {
   return dispatch => {
     dispatch(getBooksBegin());
 
-    data(process.env.REACT_APP_DATABASE)
+    WeDeploy.data(process.env.REACT_APP_DATABASE)
       .get('books')
       .then(books => {
         const config = sortingOptions.filter(opt => sortValue === opt.value)[0];
