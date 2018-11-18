@@ -1,4 +1,4 @@
 {
 	"id": "web",
-	"image": "wedeploy/hosting:2.0.0"
+	"image": "wedeploy/hosting:2.0.1"
 }
