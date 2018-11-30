@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as authActions from '../../store/actions/auth';
 import * as booksActions from '../../store/actions/books';
 import * as membersActions from '../../store/actions/members';
 import * as ratingsActions from '../../store/actions/ratings';
@@ -88,6 +89,7 @@ const mapDispatchToProps = dispatch => {
     onGetRatings: () => dispatch(ratingsActions.getRatings()),
     onSorterChange: (books, sortValue) =>
       dispatch(booksActions.sortBooks(books, sortValue)),
+    onSignOutCurrentUser: () => dispatch(authActions.signOutCurrentUser()),
   };
 };
 

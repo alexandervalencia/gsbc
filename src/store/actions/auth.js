@@ -22,3 +22,7 @@ export const getCurrentUser = () => {
     }
   };
 };
+
+export const signOutCurrentUser = () => ({
+  type: actionTypes.SIGN_OUT,
+});
