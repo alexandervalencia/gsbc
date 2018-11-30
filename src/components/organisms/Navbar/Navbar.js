@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ModalSignIn } from 'components';
+import { ModalAddBook, ModalSignIn } from 'components';
 
 import './Navbar.css';
 
@@ -8,6 +8,7 @@ const NavBar = ({ currentUser, handleSignOut }) => {
   if (currentUser) {
     return (
       <div className="Navbar">
+        <ModalAddBook />
         <button className="btn btn-primary" onClick={() => handleSignOut()}>
           Sign Out
         </button>
