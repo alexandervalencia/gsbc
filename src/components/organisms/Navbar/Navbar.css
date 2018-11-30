@@ -1,0 +1,21 @@
+.Navbar {
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0 20px;
+}
+
+.Navbar .btn-primary {
+  background-color: transparent;
+  border: 1px solid rgba(129, 129, 129, 0.25);
+  color: #a5a5a5;
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.8em;
+  margin: 0 8px;
+}
+
+.modal-content {
+  color: #555;
+}

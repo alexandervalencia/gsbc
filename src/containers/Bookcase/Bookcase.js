@@ -5,7 +5,7 @@ import * as booksActions from '../../store/actions/books';
 import * as membersActions from '../../store/actions/members';
 import * as ratingsActions from '../../store/actions/ratings';
 
-import { BookshelfSorter, Shelf, Spinner } from 'components';
+import { BookshelfSorter, Navbar, Shelf, Spinner } from 'components';
 
 import './Bookcase.css';
 
@@ -45,24 +45,10 @@ class Bookcase extends Component {
             value={this.props.srtVal}
           />
 
-          {/* <Navbar
-            currentMember={this.state.currentMember}
-            currentUser={this.state.currentUser}
-            email={this.state.signInFormEmail}
-            handleAddBook={this.handleAddBook}
-            handleAddBookModalClose={this.handleAddBookModalClose}
-            handleAddBookModalOpen={this.handleAddBookModalOpen}
-            handleSignIn={this.handleSignIn}
-            handleSignInModalClose={this.handleSignInModalClose}
-            handleSignInModalOpen={this.handleSignInModalOpen}
-            handleSignOut={this.handleSignOut}
-            onEmailChange={this.onEmailChange}
-            onPasswordChange={this.onPasswordChange}
-            onTitleChange={this.onTitleChange}
-            password={this.state.signInFormPassword}
-            showModalAddBook={this.state.showModalAddBook}
-            showModalSignIn={this.state.showModalSignIn}
-          /> */}
+          <Navbar
+            currentUser={this.props.currentUser}
+            handleSignOut={this.props.onSignOutCurrentUser}
+          />
         </div>
 
         {shelf}
