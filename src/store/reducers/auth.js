@@ -1,7 +1,9 @@
 import * as actionTypes from '../actions/actionTypes';
 
+import WeDeploy from 'wedeploy';
+
 const initialState = {
-  currentUser: {},
+  currentUser: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -14,7 +16,14 @@ const reducer = (state = initialState, action) => {
     case actionTypes.GET_CURRENT_USER_NONE:
       return {
         ...state,
-        currentUser: {},
+        currentUser: null,
+      };
+    case actionTypes.SIGN_OUT:
+      WeDeploy.auth('https://auth-gsbc.wedeploy.io').signOut();
+
+      return {
+        ...state,
+        currentUser: null,
       };
     default:
       return state;

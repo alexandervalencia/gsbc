@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { ModalSignIn } from 'components';
+
 import './Navbar.css';
 
 const NavBar = ({ currentUser, handleSignOut }) => {
@@ -13,7 +15,11 @@ const NavBar = ({ currentUser, handleSignOut }) => {
     );
   }
 
-  return <div className="Navbar" />;
+  return (
+    <div className="Navbar">
+      <ModalSignIn />
+    </div>
+  );
 };
 
 export default NavBar;
