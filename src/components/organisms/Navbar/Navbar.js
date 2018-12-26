@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ModalAddBook, ModalSignIn } from 'components';
+import { ModalAddBook, SignInModal } from 'components';
 
 import './Navbar.css';
 
@@ -18,7 +18,7 @@ const NavBar = ({ currentUser, handleSignOut }) => {
 
   return (
     <div className="Navbar">
-      <ModalSignIn />
+      <SignInModal />
     </div>
   );
 };

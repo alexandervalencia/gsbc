@@ -24,6 +24,10 @@ export const getCurrentUser = () => {
   };
 };
 
+export const submitSignInBegin = () => ({
+  type: actionTypes.SUBMIT_SIGN_IN_BEGIN,
+});
+
 export const submitSignIn = (email, password) => {
   return dispatch => {
     auth
