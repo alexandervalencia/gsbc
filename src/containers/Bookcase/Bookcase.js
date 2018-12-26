@@ -36,6 +36,7 @@ class Bookcase extends Component {
         />
       );
     }
+
     return (
       <div className="Bookcase">
         <div className="control-box">
