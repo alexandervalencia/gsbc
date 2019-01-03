@@ -41,6 +41,7 @@ const SignInForm = ({ submitForm, handleModalClose }) => {
           <button
             className="modal-btn modal-btn-default"
             onClick={() => handleModalClose()}
+            type="button"
           >
             Cancel
           </button>
