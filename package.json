@@ -52,6 +52,7 @@
     "eslint-plugin-jsx-a11y": "^5.1.0",
     "eslint-plugin-prettier": "^2.6.1",
     "eslint-plugin-react": "^7.9.1",
+    "node-sass": "4.11.0",
     "stylelint": "^9.2.1",
     "stylelint-config-standard": "^18.2.0"
   },

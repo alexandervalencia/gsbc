@@ -37,7 +37,7 @@
         "type": "string",
         "required": true
       },
-      "userImg" :{
+      "userImg": {
         "type": "string"
       },
       "userPicked": {
@@ -68,6 +68,9 @@
       "coverImg": {
         "type": "string"
       },
+      "dateCreated": {
+        "type": "number"
+      },
       "datePicked": {
         "type": "string"
       },
@@ -86,7 +89,7 @@
       "title": {
         "type": "string"
       },
-      "userImg" :{
+      "userImg": {
         "type": "string"
       },
       "userPicked": {

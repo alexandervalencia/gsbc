@@ -10,11 +10,13 @@ export function email(value) {
   return error;
 }
 
+const AMAZON_URL = /^https?:\/\/(www|smile)\.amazon\.com\/([A-Za-z0-9-_]+)\/(?:gp|dp|asin)\/(\w{6,12})/i;
+
 export function link(value) {
   let error;
 
-  if (!value) {
-    error = '*Required';
+  if (value && !AMAZON_URL.test(value)) {
+    error = `Incorrect format, be sure to copy and paste the entire URL.`;
   }
 
   return error;

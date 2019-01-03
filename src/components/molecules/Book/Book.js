@@ -43,7 +43,7 @@ const Book = ({
       </div>
 
       <UserPicked
-        userImg={bookData.userImg}
+        userImg={userPicked.userImg}
         userNameFirst={userPicked.nameFirst}
       />
     </div>
