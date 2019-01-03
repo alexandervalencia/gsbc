@@ -1,4 +1,4 @@
-const articleRegEx = /(^the|^a|^an) +/i;
+const ARTICLE_REGEX = /(^the|^a|^an) +/i;
 
 const bookSortUtil = (array, config) => {
   const dir = config.dir;
@@ -15,8 +15,8 @@ const bookSortUtil = (array, config) => {
     }
 
     if (type === 'title') {
-      aSort = a.title.replace(articleRegEx, '');
-      bSort = b.title.replace(articleRegEx, '');
+      aSort = a.title.replace(ARTICLE_REGEX, '');
+      bSort = b.title.replace(ARTICLE_REGEX, '');
     }
 
     if (aSort < bSort) {
@@ -40,8 +40,8 @@ const bookSortUtil = (array, config) => {
     }
 
     if (type === 'title') {
-      aSort = a.title.replace(articleRegEx, '');
-      bSort = b.title.replace(articleRegEx, '');
+      aSort = a.title.replace(ARTICLE_REGEX, '');
+      bSort = b.title.replace(ARTICLE_REGEX, '');
     }
 
     if (aSort > bSort) {
