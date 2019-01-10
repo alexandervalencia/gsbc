@@ -2,15 +2,13 @@ import * as actionTypes from './actionTypes';
 import WeDeploy from 'wedeploy';
 import { bookSortUtil, newBookConfig, sortingOptions } from 'utils';
 
-const weDeployData = WeDeploy.data(process.env.REACT_APP_DATABASE);
-
 export const addBook = values => {
   return dispatch => {
     dispatch(addBookBegin());
 
     let newBook = newBookConfig(values);
 
-    weDeployData
+    WeDeploy.data(process.env.REACT_APP_DATABASE)
       .create('books', newBook)
       .then(function(book) {
         dispatch(addBookSuccess());
@@ -52,7 +50,7 @@ export const getBooks = (sortValue = '3') => {
   return dispatch => {
     dispatch(getBooksBegin());
 
-    weDeployData
+    WeDeploy.data(process.env.REACT_APP_DATABASE)
       .get('books')
       .then(books => {
         const config = sortingOptions.filter(opt => sortValue === opt.value)[0];
