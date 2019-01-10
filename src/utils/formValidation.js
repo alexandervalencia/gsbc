@@ -22,13 +22,20 @@ export function link(value) {
   return error;
 }
 
+const maxLength = 32;
+const minLength = 4;
+
 export function password(value) {
   let error;
+  let passwordLength = value.length;
 
   if (!value) {
     error = '*Required';
-  } else if (3 > value.length) {
-    error = 'Passwords are a minimum of four characters in length';
+  } else if (/[^a-zA-Z0-9!@#$%^&]/.test(value)) {
+    error =
+      'Passwords may only contain alphanumeric or any of the following special characters: !@#$%^&';
+  } else if (passwordLength < minLength || passwordLength > maxLength) {
+    error = 'Passwords must be between 4 and 32 characters in length. ';
   }
 
   return error;

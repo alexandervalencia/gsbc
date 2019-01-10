@@ -1,7 +1,42 @@
 import * as actionTypes from './actionTypes';
+import { addMember } from './members';
 import WeDeploy from 'wedeploy';
 
 const auth = WeDeploy.auth('https://auth-gsbc.wedeploy.io');
+
+export const addUser = values => {
+  return dispatch => {
+    dispatch(addUserBegin());
+
+    let newUser = {
+      email: values.email,
+      password: values.password,
+      name: `${values.nameFirst} ${values.nameLast}`,
+    };
+
+    auth
+      .createUser(newUser)
+      .then(() => {
+        dispatch(addUserSuccess());
+        dispatch(addMember(values));
+        dispatch(submitSignIn(values.email, values.password));
+      })
+      .catch(error => dispatch(addUserFailure(error)));
+  };
+};
+
+export const addUserBegin = () => ({
+  type: actionTypes.ADD_USER_BEGIN,
+});
+
+export const addUserFailure = error => ({
+  type: actionTypes.ADD_USER_FAILURE,
+  payload: error,
+});
+
+export const addUserSuccess = () => ({
+  type: actionTypes.ADD_USER_SUCCESS,
+});
 
 export const getCurrentUserSuccess = currentUser => ({
   type: actionTypes.GET_CURRENT_USER_SUCCESS,
