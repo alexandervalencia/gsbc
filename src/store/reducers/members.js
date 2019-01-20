@@ -6,6 +6,7 @@ const initialState = {
   failedToGetMembers: false,
   getMembersError: [],
   gettingMembers: true,
+  settingCurrentMember: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -29,10 +30,22 @@ const reducer = (state = initialState, action) => {
         getMembersError: action.payload.error,
         gettingMembers: false,
       };
-    case actionTypes.SET_CURRENT_MEMBER:
+    case actionTypes.SET_CURRENT_MEMBER_BEGIN:
+      return {
+        ...state,
+        settingCurrentMember: true,
+      };
+    case actionTypes.SET_CURRENT_MEMBER_SUCCESS:
       return {
         ...state,
         currentMember: action.payload,
+        settingCurrentMember: false,
+      };
+    case actionTypes.SET_CURRENT_MEMBER_FAILURE:
+      return {
+        ...state,
+        currentMember: action.payload,
+        settingCurrentMember: false,
       };
     default:
       return state;

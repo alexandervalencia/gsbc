@@ -6,9 +6,11 @@ import './Navbar.css';
 
 const NavBar = ({ currentUser, handleSignOut }) => {
   if (currentUser) {
+    const isAdmin = currentUser.data_.supportedScopes;
+
     return (
       <div className="Navbar">
-        <AddMemberModal />
+        {isAdmin && isAdmin[0] === 'admin' && <AddMemberModal />}
 
         <AddBookModal />
 

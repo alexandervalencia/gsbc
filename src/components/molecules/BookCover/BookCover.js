@@ -1,22 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image } from 'cloudinary-react';
+import { Image, Transformation } from 'cloudinary-react';
 
 import './BookCover.css';
-import noCover from '../../../assets/cover_na.jpg';
 
 const Cover = ({ coverImg, title }) => {
-  let image = coverImg ? (
-    <Image
-      alt={title}
-      className="cover-img"
-      cloudName="gsbc"
-      publicId={coverImg}
-    />
-  ) : (
-    <img alt="No Cover Available" className="cover-img" src={noCover} />
+  coverImg = coverImg || 'cover_na_fmljuu.jpg';
+
+  return (
+    <div className="BookCover">
+      <Image alt={title} className="cover-img" cloudName="gsbc" publicId={coverImg}>
+        <Transformation height="250" quality="auto:eco" crop="scale" />
+      </Image>
+    </div>
   );
-  return <div className="BookCover">{image}</div>;
 };
 
 Cover.propTypes = {

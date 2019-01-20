@@ -33,12 +33,7 @@ const AddBookForm = ({ booksState, handleModalClose, members, submitForm }) => {
         <Form className="AddBookForm">
           <div className="form-group">
             <label htmlFor="title">Title*</label>
-            <Field
-              className="form-control"
-              name="title"
-              type="text"
-              validate={formValidation.required}
-            />
+            <Field className="form-control" name="title" type="text" validate={formValidation.required} />
             <ErrorMessage className="error" name="title" component="div" />
           </div>
 
@@ -50,12 +45,7 @@ const AddBookForm = ({ booksState, handleModalClose, members, submitForm }) => {
 
           <div className="form-group">
             <label htmlFor="author">Author*</label>
-            <Field
-              className="form-control"
-              name="author"
-              type="text"
-              validate={formValidation.required}
-            />
+            <Field className="form-control" name="author" type="text" validate={formValidation.required} />
             <ErrorMessage className="error" name="author" component="div" />
           </div>
 
@@ -73,12 +63,7 @@ const AddBookForm = ({ booksState, handleModalClose, members, submitForm }) => {
 
           <div className="form-group">
             <label htmlFor="userPicked">Picked By*</label>
-            <Field
-              component="select"
-              className="form-control"
-              name="userPicked"
-              validate={formValidation.required}
-            >
+            <Field component="select" className="form-control" name="userPicked" validate={formValidation.required}>
               {options.members(members)}
             </Field>
             <ErrorMessage className="error" name="userPicked" component="div" />
@@ -94,40 +79,20 @@ const AddBookForm = ({ booksState, handleModalClose, members, submitForm }) => {
             >
               {options.months}
             </Field>
-            <ErrorMessage
-              className="error"
-              name="datePickedMonth"
-              component="div"
-            />
+            <ErrorMessage className="error" name="datePickedMonth" component="div" />
 
-            <Field
-              component="select"
-              className="form-control"
-              name="datePickedYear"
-            >
+            <Field component="select" className="form-control" name="datePickedYear">
               {options.years}
             </Field>
-            <ErrorMessage
-              className="error"
-              name="datePickedYear"
-              component="div"
-            />
+            <ErrorMessage className="error" name="datePickedYear" component="div" />
           </div>
 
           <div className="form-group last">
-            <button
-              className="modal-btn modal-btn-primary"
-              disabled={isSubmitting}
-              type="submit"
-            >
+            <button className="modal-btn modal-btn-primary" disabled={isSubmitting} type="submit">
               Add Book
             </button>
 
-            <button
-              className="modal-btn modal-btn-secondary"
-              onClick={() => handleModalClose()}
-              type="button"
-            >
+            <button className="modal-btn modal-btn-secondary" onClick={() => handleModalClose()} type="button">
               Cancel
             </button>
           </div>
