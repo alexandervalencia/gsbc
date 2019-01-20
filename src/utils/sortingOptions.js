@@ -45,14 +45,14 @@ const sortingOptions = [
     selected: '',
     dir: 'asc',
     name: 'Rating: Low to High',
-    type: 'rating',
+    type: 'ratingValue',
     value: '6',
   },
   {
     selected: '',
     dir: 'desc',
     name: 'Rating: High to Low',
-    type: 'rating',
+    type: 'ratingValue',
     value: '7',
   },
   {

@@ -68,9 +68,6 @@
       "coverImg": {
         "type": "string"
       },
-      "dateCreated": {
-        "type": "number"
-      },
       "datePicked": {
         "type": "string"
       },

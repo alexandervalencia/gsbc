@@ -5,11 +5,8 @@
     },
     "data": true,
     "description": "Members Database",
-    "method": ["POST"],
+    "method": ["DELETE", "PATCH", "POST", "PUT"],
     "parameters": {
-      "booksPicked": {
-        "type": "array"
-      },
       "email": {
         "type": "string"
       },
@@ -25,39 +22,7 @@
       "pickAvailable": {
         "type": "boolean"
       },
-      "userId" : {
-        "type": "string"
-      }
-    },
-    "path": "/members/*"
-  },
-  {
-    "auth": {
-      "validator": "$auth != null"
-    },
-    "data": true,
-    "description": "Members Database",
-    "method": ["DELETE", "PATCH", "PUT"],
-    "parameters": {
-      "booksPicked": {
-        "type": "array"
-      },
-      "email": {
-        "type": "string"
-      },
-      "nameFirst": {
-        "type": "string"
-      },
-      "nameLast": {
-        "type": "string"
-      },
-      "photoUrl": {
-        "type": "string"
-      },
-      "pickAvailable": {
-        "type": "boolean"
-      },
-      "userId" : {
+      "userId": {
         "type": "string"
       }
     },

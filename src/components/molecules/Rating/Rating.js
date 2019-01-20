@@ -1,130 +1,143 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Ratings from 'react-ratings-declarative';
 import { connect } from 'react-redux';
-import WeDeploy from 'wedeploy';
+import { Tooltip } from 'reactstrap';
+import ReactRating from 'react-rating';
+import isEqual from 'react-fast-compare';
 
-import { checkForUserRating, getUserRatingId } from 'utils';
-import './Rating.css';
+import * as ratingsActions from '../../../store/actions/ratings';
+import { updateBookRating } from '../../../store/actions/books';
+
+import { getBookRating, getBookRatings, getMemberRating } from '../../../utils/ratingsUtils';
+import './Rating.scss';
+
+import starGrey from '../../../assets/star-grey.png';
+import starOrange from '../../../assets/star-orange.png';
+import starYellow from '../../../assets/star-yellow.png';
 
 class Rating extends Component {
   state = {
-    average: 0,
+    bookRating: 0,
+    bookRatings: [],
+    tooltipOpen: false,
+    memberRating: 0,
+    memberRatingId: '',
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    const bookRatings = getBookRatings(this.props.bookId, this.props.rtngs);
+    const bookRating = getBookRating(this.props.bookId, bookRatings);
 
-  handleRating(event) {
-    const data = WeDeploy.data('data-gsbc.wedeploy.io');
-    const propsRatings = this.props.ratings;
-    const propsMember = this.props.currentMember;
+    this.setState({ bookRating: bookRating, bookRatings: bookRatings });
 
-    if (event.type === 'click') {
-      if (checkForUserRating(propsRatings, propsMember.id)) {
-        const ratingId = getUserRatingId(propsRatings, propsMember.id);
+    if (this.props.curMbr) {
+      const { memberRatingId, memberRatingValue } = getMemberRating(this.props.curMbr.id, bookRatings);
 
-        data
-          .update(`ratings/${ratingId}`, {
-            rating: event.rating,
-          })
-          .then(() => {
-            this.updateRatings();
-          });
-      } else {
-        data
-          .create('ratings', {
-            book: this.props.bookId,
-            rating: event.rating,
-            user: this.props.currentMember.id,
-          })
-          .then(() => {
-            this.updateRatings();
-          });
-      }
-    }
-
-    if (event.type === 'mouseenter') {
-      this.setState({ hint: event.rating });
+      this.setState({ memberRating: memberRatingValue, memberRatingId: memberRatingId });
     }
   }
 
-  updateAverage() {
-    const ratings = this.state.ratings;
-    const ratingsArray = ratings.map(rating => rating.rating);
+  componentDidUpdate(prevProps) {
+    const newBookRatings = getBookRatings(this.props.bookId, this.props.rtngs);
+    const newBookRating = getBookRating(this.props.bookId, newBookRatings);
+    const prevBookRatings = getBookRatings(this.props.bookId, prevProps.rtngs);
 
-    if (ratingsArray.length > 0) {
-      const sum = ratingsArray.reduce((a, b) => a + b);
-      const average = Math.round(((sum / ratings.length) * 2) / 2);
+    if (!isEqual(prevBookRatings, newBookRatings)) {
+      this.setState({ bookRatings: newBookRatings });
+      this.props.onUpdateBookRating(this.props.book, newBookRating);
+    }
 
-      WeDeploy.data(process.env.REACT_APP_DATABASE)
-        .update(`books/${this.props.bookId}`, {
-          rating: average,
-        })
-        .then(() => {
-          this.setState({ average });
-        });
+    const currentMember = this.props.curMbr;
+
+    if (currentMember.id && this.state.bookRatings.length && this.state.memberRatingId === '') {
+      const { memberRatingId, memberRatingValue } = getMemberRating(currentMember.id, this.state.bookRatings);
+
+      this.setState({ memberRating: memberRatingValue, memberRatingId: memberRatingId });
     }
   }
 
-  updateRatings() {
-    WeDeploy.data(process.env.REACT_APP_DATABASE)
-      .get('ratings')
-      .then(ratings => {
-        this.setState({ ratings });
+  handleRate(ratingValue) {
+    if (this.state.memberRating) {
+      this.props.onUpdateRating(ratingValue, this.state.memberRatingId, this.props.book);
+    } else {
+      this.props.onAddRating(this.props.bookId, this.props.curMbr.id, ratingValue);
+    }
 
-        this.updateAverage();
-      });
+    this.setState({ memberRating: ratingValue });
+  }
+
+  toggleTooltip() {
+    this.setState({
+      tooltipOpen: !this.state.tooltipOpen,
+    });
   }
 
   render() {
-    const average = this.state.average;
-    const ratingClassName = average > 0 ? 'rating' : 'no-rating';
+    const signedIn = this.props.curUser && this.props.curMbr;
+    const rating = getBookRating(this.props.bookId, this.state.bookRatings);
 
-    let rateEncouragement = <p />;
+    let rateEncouragement = '';
 
-    if (!this.state.signedIn) {
-      rateEncouragement = <p>Want to rate this book? Sign-in or sign-up!</p>;
-    } else if (average <= 0) {
-      rateEncouragement = <p>No rating yet, be the first!</p>;
+    if (!signedIn) {
+      rateEncouragement = 'Sign in to rate this book!';
+    } else if (rating <= 0) {
+      rateEncouragement = 'No rating yet, be the first!';
+    } else if (this.state.memberRating) {
+      rateEncouragement = (
+        <div className="rate-info">
+          Your rating: {this.state.memberRating}
+          <img alt="star" className="star star-small" src={starYellow} />
+        </div>
+      );
+    } else if (this.props.curMbr && !this.state.memberRating) {
+      rateEncouragement = 'You have not rated this book yet';
     }
 
     return (
-      <div className={ratingClassName}>
-        <Ratings
-          rating={average > 0 ? average : 0}
-          widgetRatedColors="rgb(255, 237, 133)"
+      <div className="Rating">
+        <ReactRating
+          id={`rating_${this.props.bookId}`}
+          fractions={2}
+          onClick={value => this.handleRate(value)}
+          placeholderRating={rating}
+          readonly={!signedIn}
+          emptySymbol={<img alt="star" src={starGrey} className="star" />}
+          fullSymbol={<img alt="star" src={starOrange} className="star" />}
+          placeholderSymbol={<img alt="star" src={starYellow} className="star" />}
+        />
+        {rating > 0 && (
+          <div className="book-rating">
+            <span className="book-rating-total">{Math.round(rating * 10) / 10}</span>
+            <span className="book-rating-max">/5</span>
+          </div>
+        )}
+        <Tooltip
+          isOpen={this.state.tooltipOpen}
+          placement="bottom"
+          target={`rating_${this.props.bookId}`}
+          toggle={() => this.toggleTooltip()}
         >
-          <Ratings.Widget />
-          <Ratings.Widget />
-          <Ratings.Widget />
-          <Ratings.Widget />
-          <Ratings.Widget />
-        </Ratings>
-
-        {rateEncouragement}
+          {rateEncouragement}
+        </Tooltip>
       </div>
     );
   }
 }
 
-Rating.propTypes = {
-  bookId: PropTypes.string,
-  currentMember: PropTypes.object,
-  currentUser: PropTypes.object,
-  members: PropTypes.array.isRequired,
-  ratings: PropTypes.array,
-};
-
 const mapStateToProps = state => {
   return {
-    books: state.books.books,
-    members: state.members.members,
+    curMbr: state.members.currentMember,
+    curUser: state.auth.currentUser,
+    mbrs: state.members.members,
     rtngs: state.ratings.ratings,
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    onAddRating: (bookId, memberId, ratingValue) => dispatch(ratingsActions.addRating(bookId, memberId, ratingValue)),
+    onUpdateBookRating: (book, ratingValue) => dispatch(updateBookRating(book, ratingValue)),
+    onUpdateRating: (ratingValue, ratingId, book) => dispatch(ratingsActions.updateRating(ratingValue, ratingId, book)),
+  };
 };
 
 export default connect(

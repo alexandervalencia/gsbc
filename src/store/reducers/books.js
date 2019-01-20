@@ -1,5 +1,6 @@
 import * as actionTypes from '../actions/actionTypes';
-import { bookSortUtil, sortingOptions } from 'utils';
+// import { getBookRatingData } from '../../utils/ratingsUtils';
+import { updateObjectInArrayById } from '../../utils/updateObjectInArrayById';
 
 const initialState = {
   addingBook: false,
@@ -8,20 +9,15 @@ const initialState = {
   failedToAddBook: false,
   failedToGetBooks: false,
   gettingBooks: false,
-  ratings: [],
   sortValue: '3',
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SORT_BOOKS:
-      const config = sortingOptions
-        .filter(opt => action.payload.sortValue === opt.value)
-        .pop();
-      const sortedBooks = bookSortUtil(action.payload.books, config);
       return {
         ...state,
-        books: sortedBooks,
+        books: action.payload.sortedBooks,
         sortValue: action.payload.sortValue,
       };
     case actionTypes.ADD_BOOK_BEGIN:
@@ -57,8 +53,14 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         failedToGetBooks: true,
-        getBooksError: action.payload.error,
+        getBooksError: action.payload,
         gettingBooks: false,
+      };
+    case actionTypes.UPDATE_BOOK_RATING_SUCCESS:
+      const updatedBooks = updateObjectInArrayById(state.books, action.payload);
+      return {
+        ...state,
+        books: updatedBooks,
       };
     default:
       return state;

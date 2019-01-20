@@ -11,45 +11,28 @@ import './Bookcase.css';
 
 class Bookcase extends Component {
   componentDidMount() {
-    this.props.onGetBooks(this.props.srtVal);
-    this.props.onGetMembers();
-    this.props.onGetRatings();
+    this.props.getBooks(this.props.sortValue);
+    this.props.getMembers();
+    this.props.getRatings();
   }
 
   render() {
-    let shelf = this.props.error ? (
-      <p>
-        We're having some trouble loading the books. Try refreshing the page!
-      </p>
-    ) : (
-      <Spinner />
-    );
+    let shelf = <Spinner />;
 
-    if (this.props.bks.length > 0 && this.props.mbrs.length > 0) {
-      shelf = (
-        <Shelf
-          books={this.props.bks}
-          currentMember={this.props.currentMember}
-          currentUser={this.props.currentUser}
-          members={this.props.mbrs}
-          ratings={this.props.rtngs}
-        />
-      );
+    if (this.props.books.length > 0 && this.props.members.length > 0) {
+      shelf = <Shelf books={this.props.books} members={this.props.members} />;
     }
 
     return (
       <div className="Bookcase">
         <div className="control-box">
           <BookshelfSorter
-            books={this.props.bks}
+            books={this.props.books}
             onSorterChange={this.props.onSorterChange}
-            value={this.props.srtVal}
+            value={this.props.sortValue}
           />
 
-          <Navbar
-            currentUser={this.props.currentUser}
-            handleSignOut={this.props.onSignOutCurrentUser}
-          />
+          <Navbar currentUser={this.props.curUser} handleSignOut={this.props.onSignOutCurrentUser} />
         </div>
 
         {shelf}
@@ -60,23 +43,22 @@ class Bookcase extends Component {
 
 const mapStateToProps = state => {
   return {
-    bks: state.books.books,
-    currentUser: state.auth.currentUser,
-    currentMember: state.members.currentMember,
-    mbrs: state.members.members,
-    rtngs: state.ratings.ratings,
-    srtVal: state.books.sortValue,
+    books: state.books.books,
+    curUser: state.auth.currentUser,
+    membersState: state.members,
+    members: state.members.members,
+    sortValue: state.books.sortValue,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGetBooks: sortValue => dispatch(booksActions.getBooks(sortValue)),
-    onGetMembers: () => dispatch(membersActions.getMembers()),
-    onGetRatings: () => dispatch(ratingsActions.getRatings()),
-    onSorterChange: (books, sortValue) =>
-      dispatch(booksActions.sortBooks(books, sortValue)),
+    getBooks: sortValue => dispatch(booksActions.getBooks(sortValue)),
+    getMembers: () => dispatch(membersActions.getMembers()),
+    getRatings: () => dispatch(ratingsActions.getRatings()),
+    onSorterChange: (books, sortValue) => dispatch(booksActions.sortBooks(books, sortValue)),
     onSignOutCurrentUser: () => dispatch(authActions.signOutCurrentUser()),
+    setCurrentMember: () => dispatch(membersActions.setCurrentMember()),
   };
 };
 

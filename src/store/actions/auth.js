@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import { addMember } from './members';
+import { addMember, setCurrentMember } from './members';
 import WeDeploy from 'wedeploy';
 
 const auth = WeDeploy.auth('https://auth-gsbc.wedeploy.io');
@@ -38,23 +38,24 @@ export const addUserSuccess = () => ({
   type: actionTypes.ADD_USER_SUCCESS,
 });
 
-export const getCurrentUserSuccess = currentUser => ({
-  type: actionTypes.GET_CURRENT_USER_SUCCESS,
+export const setCurrentUserSuccess = currentUser => ({
+  type: actionTypes.SET_CURRENT_USER_SUCCESS,
   payload: currentUser,
 });
 
-export const getCurrentUserNone = () => ({
-  type: actionTypes.GET_CURRENT_USER_NONE,
+export const setCurrentUserFailure = () => ({
+  type: actionTypes.SET_CURRENT_USER_FAILURE,
 });
 
-export const getCurrentUser = () => {
+export const setCurrentUser = () => {
   return dispatch => {
     const currentUser = auth.currentUser;
 
     if (currentUser) {
-      dispatch(getCurrentUserSuccess(currentUser));
+      dispatch(setCurrentUserSuccess(currentUser));
+      dispatch(setCurrentMember(currentUser));
     } else {
-      dispatch(getCurrentUserNone());
+      dispatch(setCurrentUserFailure());
     }
   };
 };
@@ -86,3 +87,9 @@ export const submitSignInFailure = () => ({
 export const signOutCurrentUser = () => ({
   type: actionTypes.SIGN_OUT,
 });
+
+export const submitSignOut = () => dispatch => {
+  WeDeploy.auth('https://auth-gsbc.wedeploy.io').signOut();
+
+  dispatch(signOutCurrentUser());
+};

@@ -2,20 +2,20 @@ import * as actionTypes from './actionTypes';
 import WeDeploy from 'wedeploy';
 import { bookSortUtil, newBookConfig, sortingOptions } from 'utils';
 
-export const addBook = values => {
-  return dispatch => {
-    dispatch(addBookBegin());
+const data = WeDeploy.data(process.env.REACT_APP_DATABASE);
 
-    let newBook = newBookConfig(values);
+export const addBook = values => dispatch => {
+  dispatch(addBookBegin());
 
-    WeDeploy.data(process.env.REACT_APP_DATABASE)
-      .create('books', newBook)
-      .then(function(book) {
-        dispatch(addBookSuccess());
-        dispatch(getBooks());
-      })
-      .catch(error => dispatch(addBookFailure(error)));
-  };
+  let newBook = newBookConfig(values);
+
+  data
+    .create('books', newBook)
+    .then(book => {
+      dispatch(addBookSuccess());
+      dispatch(getBooks());
+    })
+    .catch(error => dispatch(addBookFailure(error)));
 };
 
 export const addBookBegin = () => ({
@@ -50,10 +50,10 @@ export const getBooks = (sortValue = '3') => {
   return dispatch => {
     dispatch(getBooksBegin());
 
-    WeDeploy.data(process.env.REACT_APP_DATABASE)
+    data
       .get('books')
       .then(books => {
-        const config = sortingOptions.filter(opt => sortValue === opt.value)[0];
+        const config = sortingOptions.find(opt => sortValue === opt.value);
         const sortedBooks = bookSortUtil(books, config);
 
         dispatch(getBooksSuccess(sortedBooks));
@@ -62,10 +62,43 @@ export const getBooks = (sortValue = '3') => {
   };
 };
 
-export const sortBooks = (books, sortValue) => ({
-  type: actionTypes.SORT_BOOKS,
-  payload: {
-    books: books,
-    sortValue: sortValue,
-  },
+export const sortBooks = (books, sortValue) => {
+  const config = sortingOptions.filter(opt => sortValue === opt.value).pop();
+
+  const sortedBooks = bookSortUtil(books, config);
+
+  return {
+    type: actionTypes.SORT_BOOKS,
+    payload: {
+      sortedBooks,
+      sortValue,
+    },
+  };
+};
+
+export const updateBookRating = (book, ratingValue) => dispatch => {
+  dispatch(updateBookRatingBegin());
+  console.log(book, ratingValue);
+  data
+    .update(`books/${book.id}`, { ratingValue })
+    .then(() => {
+      const updatedBook = book;
+      updatedBook.ratingValue = ratingValue;
+
+      dispatch(updateBookRatingSuccess(updatedBook));
+    })
+    .catch(error => dispatch(updateBookRatingFailure(error)));
+};
+
+export const updateBookRatingBegin = () => ({
+  type: actionTypes.UPDATE_BOOK_RATING_BEGIN,
+});
+
+export const updateBookRatingFailure = error => ({
+  type: actionTypes.UPDATE_BOOK_RATING_FAILURE,
+  payload: error,
+});
+export const updateBookRatingSuccess = updatedBook => ({
+  type: actionTypes.UPDATE_BOOK_RATING_SUCCESS,
+  payload: updatedBook,
 });

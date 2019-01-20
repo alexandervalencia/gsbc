@@ -1,7 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
 
-import WeDeploy from 'wedeploy';
-
 const initialState = {
   addingUser: false,
   addUserError: false,
@@ -27,7 +25,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         addUserError: action.payload,
       };
-    case actionTypes.GET_CURRENT_USER_SUCCESS:
+    case actionTypes.SET_CURRENT_USER_BEGIN:
+      return {
+        ...state,
+        signingIn: true,
+      };
+    case actionTypes.SET_CURRENT_USER_SUCCESS:
     case actionTypes.SUBMIT_SIGN_IN_SUCCESS:
       return {
         ...state,
@@ -35,18 +38,16 @@ const reducer = (state = initialState, action) => {
         signInError: false,
         signingIn: false,
       };
-    case actionTypes.GET_CURRENT_USER_NONE:
+    case actionTypes.SET_CURRENT_USER_FAILURE:
       return {
         ...state,
         currentUser: null,
         signingIn: false,
       };
     case actionTypes.SIGN_OUT:
-      WeDeploy.auth('https://auth-gsbc.wedeploy.io').signOut();
-
       return {
         ...state,
-        currentUser: null,
+        currentUser: {},
       };
     case actionTypes.SUBMIT_SIGN_IN_BEGIN:
       return {

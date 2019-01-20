@@ -1,0 +1,33 @@
+.BookInfo {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+}
+
+.BookInfo .title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 2;
+  margin-bottom: 0;
+}
+
+.BookInfo .subtitle {
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+
+.BookInfo .author {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+
+  &-name {
+    color: lighten(#17a2b8, 10%);
+  }
+}
+
+.BookInfo .date-read {
+  color: #929292;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}

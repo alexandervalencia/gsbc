@@ -36,6 +36,40 @@ export const addMemberSuccess = members => ({
   payload: members,
 });
 
+export const setCurrentMember = authUser => {
+  return dispatch => {
+    dispatch(setCurrentMemberBegin());
+
+    let currentMember = {};
+    const currentUser = authUser || WeDeploy.auth('auth-gsbc.wedeploy.io').currentUser;
+    const members = WeDeploy.data(process.env.REACT_APP_DATABASE).get('members');
+
+    Promise.all([currentUser, members]).then(([curUser, mbrs]) => {
+      if (curUser && mbrs) {
+        currentMember = mbrs.filter(member => member.userId === currentUser.id).pop();
+
+        dispatch(setCurrentMemberSuccess(currentMember));
+      } else {
+        dispatch(setCurrentMemberFailure(currentMember));
+      }
+    });
+  };
+};
+
+export const setCurrentMemberBegin = () => ({
+  type: actionTypes.SET_CURRENT_MEMBER_BEGIN,
+});
+
+export const setCurrentMemberFailure = noMember => ({
+  type: actionTypes.SET_CURRENT_MEMBER_FAILURE,
+  payload: noMember,
+});
+
+export const setCurrentMemberSuccess = currentMember => ({
+  type: actionTypes.SET_CURRENT_MEMBER_SUCCESS,
+  payload: currentMember,
+});
+
 export const getMembersBegin = () => ({
   type: actionTypes.GET_MEMBERS_BEGIN,
 });

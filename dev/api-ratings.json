@@ -5,15 +5,18 @@
     },
     "data": true,
     "description": "Ratings Database",
-    "method": ["POST"],
+    "method": "POST",
     "parameters": {
-      "book": {
+      "bookId": {
+        "required": true,
         "type": "string"
       },
-      "rating": {
+      "memberId": {
+        "required": true,
         "type": "string"
       },
-      "user": {
+      "ratingValue": {
+        "required": true,
         "type": "string"
       }
     },
@@ -27,13 +30,13 @@
     "description": "Ratings Database",
     "method": ["DELETE", "PATCH", "PUT"],
     "parameters": {
-      "book": {
+      "bookId": {
         "type": "string"
       },
-      "rating": {
+      "memberId": {
         "type": "string"
       },
-      "user": {
+      "ratingValue": {
         "type": "string"
       }
     },
