@@ -1,7 +1,19 @@
 {
-  "main.css": "static/css/main.ea5088dd.css",
-  "main.css.map": "static/css/main.ea5088dd.css.map",
-  "main.js": "static/js/main.1cd06f8d.js",
-  "main.js.map": "static/js/main.1cd06f8d.js.map",
-  "static/media/amazon_logo.svg": "static/media/amazon_logo.3613023e.svg"
+  "main.css": "/static/css/main.6802a0e2.chunk.css",
+  "main.js": "/static/js/main.b53397ed.chunk.js",
+  "main.js.map": "/static/js/main.b53397ed.chunk.js.map",
+  "static/css/1.05afa7b3.chunk.css": "/static/css/1.05afa7b3.chunk.css",
+  "static/js/1.0fd5bf82.chunk.js": "/static/js/1.0fd5bf82.chunk.js",
+  "static/js/1.0fd5bf82.chunk.js.map": "/static/js/1.0fd5bf82.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
+  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
+  "static/media/star-yellow.png": "/static/media/star-yellow.ff2cde50.png",
+  "static/media/star-grey.png": "/static/media/star-grey.46fcd5ec.png",
+  "static/media/star-orange.png": "/static/media/star-orange.91a487ff.png",
+  "static/media/amazon_logo.svg": "/static/media/amazon_logo.3613023e.svg",
+  "static/css/1.05afa7b3.chunk.css.map": "/static/css/1.05afa7b3.chunk.css.map",
+  "static/css/main.6802a0e2.chunk.css.map": "/static/css/main.6802a0e2.chunk.css.map",
+  "index.html": "/index.html",
+  "precache-manifest.a7683f06f94eefe9f733461fd7256375.js": "/precache-manifest.a7683f06f94eefe9f733461fd7256375.js",
+  "service-worker.js": "/service-worker.js"
 }
