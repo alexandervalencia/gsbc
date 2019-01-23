@@ -78,9 +78,9 @@ export const sortBooks = (books, sortValue) => {
 
 export const updateBookRating = (book, ratingValue) => dispatch => {
   dispatch(updateBookRatingBegin());
-  console.log(book, ratingValue);
+
   data
-    .update(`books/${book.id}`, { ratingValue })
+    .update(`books/${book.id}`, { ratingValue: ratingValue })
     .then(() => {
       const updatedBook = book;
       updatedBook.ratingValue = ratingValue;

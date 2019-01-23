@@ -7,7 +7,7 @@ import isEqual from 'react-fast-compare';
 import * as ratingsActions from '../../../store/actions/ratings';
 import { updateBookRating } from '../../../store/actions/books';
 
-import { getBookRating, getBookRatings, getMemberRating } from '../../../utils/ratingsUtils';
+import { checkForMemberRating, getBookRating, getBookRatings, getMemberRating } from '../../../utils/ratingsUtils';
 import './Rating.scss';
 
 import starGrey from '../../../assets/star-grey.png';
@@ -19,6 +19,7 @@ class Rating extends Component {
     bookRating: 0,
     bookRatings: [],
     tooltipOpen: false,
+    memberHasRated: false,
     memberRating: 0,
     memberRatingId: '',
   };
@@ -30,9 +31,14 @@ class Rating extends Component {
     this.setState({ bookRating: bookRating, bookRatings: bookRatings });
 
     if (this.props.curMbr) {
+      const memberHasRated = checkForMemberRating(this.props.curMbr.id, bookRatings);
       const { memberRatingId, memberRatingValue } = getMemberRating(this.props.curMbr.id, bookRatings);
 
-      this.setState({ memberRating: memberRatingValue, memberRatingId: memberRatingId });
+      this.setState({
+        memberHasRated: memberHasRated,
+        memberRating: memberRatingValue,
+        memberRatingId: memberRatingId,
+      });
     }
   }
 
@@ -42,22 +48,29 @@ class Rating extends Component {
     const prevBookRatings = getBookRatings(this.props.bookId, prevProps.rtngs);
 
     if (!isEqual(prevBookRatings, newBookRatings)) {
-      this.setState({ bookRatings: newBookRatings });
       this.props.onUpdateBookRating(this.props.book, newBookRating);
+
+      this.setState({ bookRatings: newBookRatings });
     }
 
-    const currentMember = this.props.curMbr;
+    if (this.props.curMbr) {
+      const memberHasRated = checkForMemberRating(this.props.curMbr.id, this.state.bookRatings);
 
-    if (currentMember.id && this.state.bookRatings.length && this.state.memberRatingId === '') {
-      const { memberRatingId, memberRatingValue } = getMemberRating(currentMember.id, this.state.bookRatings);
+      if (memberHasRated && this.state.memberRatingId === '') {
+        const { memberRatingId, memberRatingValue } = getMemberRating(this.props.curMbr.id, this.state.bookRatings);
 
-      this.setState({ memberRating: memberRatingValue, memberRatingId: memberRatingId });
+        this.setState({
+          memberHasRated: memberHasRated,
+          memberRating: memberRatingValue,
+          memberRatingId: memberRatingId,
+        });
+      }
     }
   }
 
   handleRate(ratingValue) {
-    if (this.state.memberRating) {
-      this.props.onUpdateRating(ratingValue, this.state.memberRatingId, this.props.book);
+    if (this.state.memberHasRated) {
+      this.props.onUpdateRating(ratingValue, this.state.memberRatingId);
     } else {
       this.props.onAddRating(this.props.bookId, this.props.curMbr.id, ratingValue);
     }
@@ -81,33 +94,34 @@ class Rating extends Component {
       rateEncouragement = 'Sign in to rate this book!';
     } else if (rating <= 0) {
       rateEncouragement = 'No rating yet, be the first!';
-    } else if (this.state.memberRating) {
-      rateEncouragement = (
-        <div className="rate-info">
-          Your rating: {this.state.memberRating}
-          <img alt="star" className="star star-small" src={starYellow} />
-        </div>
-      );
     } else if (this.props.curMbr && !this.state.memberRating) {
       rateEncouragement = 'You have not rated this book yet';
     }
 
     return (
       <div className="Rating">
-        <ReactRating
-          id={`rating_${this.props.bookId}`}
-          fractions={2}
-          onClick={value => this.handleRate(value)}
-          placeholderRating={rating}
-          readonly={!signedIn}
-          emptySymbol={<img alt="star" src={starGrey} className="star" />}
-          fullSymbol={<img alt="star" src={starOrange} className="star" />}
-          placeholderSymbol={<img alt="star" src={starYellow} className="star" />}
-        />
-        {rating > 0 && (
-          <div className="book-rating">
-            <span className="book-rating-total">{Math.round(rating * 10) / 10}</span>
-            <span className="book-rating-max">/5</span>
+        <div className="rating-wrapper">
+          <ReactRating
+            id={`rating_${this.props.bookId}`}
+            fractions={2}
+            onClick={value => this.handleRate(value)}
+            placeholderRating={rating}
+            readonly={!signedIn}
+            emptySymbol={<img alt="star" src={starGrey} className="star" />}
+            fullSymbol={<img alt="star" src={starOrange} className="star" />}
+            placeholderSymbol={<img alt="star" src={starYellow} className="star" />}
+          />
+          {rating > 0 && (
+            <div className="book-rating">
+              <span className="book-rating-total">{Math.round(rating * 10) / 10}</span>
+              <span className="book-rating-max">/5</span>
+            </div>
+          )}
+        </div>
+        {this.state.memberHasRated && (
+          <div className="rate-info">
+            Your rating: {this.state.memberRating}
+            <img alt="star" className="star star-small" src={starYellow} />
           </div>
         )}
         <Tooltip
@@ -136,7 +150,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onAddRating: (bookId, memberId, ratingValue) => dispatch(ratingsActions.addRating(bookId, memberId, ratingValue)),
     onUpdateBookRating: (book, ratingValue) => dispatch(updateBookRating(book, ratingValue)),
-    onUpdateRating: (ratingValue, ratingId, book) => dispatch(ratingsActions.updateRating(ratingValue, ratingId, book)),
+    onUpdateRating: (ratingValue, ratingId) => dispatch(ratingsActions.updateRating(ratingValue, ratingId)),
   };
 };
 

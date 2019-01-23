@@ -1,6 +1,14 @@
 .Rating {
-  align-items: center;
-  display: flex;
+  grid-area: rating;
+
+  @media (max-width: 767px) {
+    justify-self: center;
+  }
+
+  .rating-wrapper {
+    align-items: center;
+    display: flex;
+  }
 
   .book-rating {
     align-items: baseline;
@@ -16,7 +24,11 @@
 
     &-total {
       color: #fff;
-      font-size: 36px;
+      font-size: 30px;
+
+      @media (min-width: 768px) {
+        font-size: 36px;
+      }
     }
   }
 
@@ -27,7 +39,11 @@
 }
 
 .star {
-  width: 32px;
+  width: 40px;
+
+  @media (min-width: 768px) {
+    width: 32px;
+  }
 
   &.star-small {
     margin: 2px 0 4px 4px;

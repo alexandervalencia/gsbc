@@ -1,3 +1,7 @@
+export const checkForMemberRating = (memberId, ratings) => {
+  return ratings.find(rating => rating.memberId === memberId) !== undefined ? true : false;
+};
+
 export const getBookRating = (bookId, ratings) => {
   const bookRatings = getBookRatings(bookId, ratings);
 

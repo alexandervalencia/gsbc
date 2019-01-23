@@ -9,9 +9,9 @@ export const addRating = (bookId, memberId, ratingValue) => dispatch => {
 
   data
     .create('ratings', {
-      bookId,
-      memberId,
-      ratingValue,
+      bookId: bookId,
+      memberId: memberId,
+      ratingValue: ratingValue,
     })
     .then(rating => {
       dispatch(addRatingSuccess(rating));
