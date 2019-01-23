@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { AmazonIcon, BookCover, BookInfo, UserPicked, Rating } from 'components';
 
-import './Book.css';
+import './Book.scss';
 
 const Book = ({ bookData, userPicked }) => {
   return (
@@ -11,15 +11,14 @@ const Book = ({ bookData, userPicked }) => {
 
       <BookCover coverImg={bookData.coverImg} title={bookData.title} />
 
-      <div className="book-info">
-        <BookInfo
-          author={bookData.author}
-          title={bookData.title}
-          subtitle={bookData.subtitle}
-          datePicked={bookData.datePicked}
-        />
-        <Rating book={bookData} bookId={bookData.id} />
-      </div>
+      <BookInfo
+        author={bookData.author}
+        title={bookData.title}
+        subtitle={bookData.subtitle}
+        datePicked={bookData.datePicked}
+      />
+
+      <Rating book={bookData} bookId={bookData.id} />
 
       <UserPicked userImg={userPicked.userImg} userNameFirst={userPicked.nameFirst} />
     </div>

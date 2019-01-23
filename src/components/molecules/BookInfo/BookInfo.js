@@ -7,7 +7,7 @@ const BookInfo = ({ author, datePicked, subtitle, title }) => {
   const date = format(datePicked, 'MMMM YYYY');
 
   return (
-    <div className="BookInfo">
+    <>
       <h1 className="title">{title}</h1>
       <h2 className="subtitle">{subtitle ? `${subtitle}` : null}</h2>
       <h3 className="author">
@@ -16,7 +16,7 @@ const BookInfo = ({ author, datePicked, subtitle, title }) => {
       <p className="date-read">
         read on <strong>{date}</strong>
       </p>
-    </div>
+    </>
   );
 };
 

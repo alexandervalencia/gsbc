@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './SiteHeader.css';
+import './SiteHeader.scss';
 
 const title = 'Good Stuff';
 
@@ -11,7 +11,7 @@ const siteHeader = () => (
     </div>
 
     <div className="title-front">
-      <h2 className="align-middle">{title}</h2>
+      <h2>{title}</h2>
     </div>
   </header>
 );

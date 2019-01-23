@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { sortingOptions } from 'utils';
-import './BookshelfSorter.css';
+import './BookshelfSorter.scss';
 
 import { Input, Label } from 'components';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, Transformation } from 'cloudinary-react';
 
-import './BookCover.css';
+import './BookCover.scss';
 
 const Cover = ({ coverImg, title }) => {
   coverImg = coverImg || 'cover_na_fmljuu.jpg';

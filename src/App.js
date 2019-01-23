@@ -5,7 +5,7 @@ import * as authActions from './store/actions/auth';
 import * as membersActions from './store/actions/members';
 import Bookcase from './containers/Bookcase/Bookcase';
 import { SiteFooter, SiteHeader } from 'components';
-import './App.css';
+import './App.scss';
 
 class App extends Component {
   componentDidMount() {

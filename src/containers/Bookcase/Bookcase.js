@@ -7,7 +7,7 @@ import * as ratingsActions from '../../store/actions/ratings';
 
 import { BookshelfSorter, Navbar, Shelf, Spinner } from 'components';
 
-import './Bookcase.css';
+import './Bookcase.scss';
 
 class Bookcase extends Component {
   componentDidMount() {
@@ -26,6 +26,8 @@ class Bookcase extends Component {
     return (
       <div className="Bookcase">
         <div className="control-box">
+          <div className="Meeting">Next Meeting: 2/17 @ 3pm</div>
+
           <BookshelfSorter
             books={this.props.books}
             onSorterChange={this.props.onSorterChange}
@@ -34,7 +36,6 @@ class Bookcase extends Component {
 
           <Navbar currentUser={this.props.curUser} handleSignOut={this.props.onSignOutCurrentUser} />
         </div>
-
         {shelf}
       </div>
     );

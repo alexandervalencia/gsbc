@@ -1,0 +1,34 @@
+.Book {
+  align-items: start;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-areas:
+    'cover title title'
+    'cover author author'
+    'cover date date'
+    'cover user user'
+    'cover amazon amazon'
+    'cover . .'
+    'rating rating rating';
+  justify-content: space-evenly;
+  margin: 0 auto 60px;
+
+  @media (min-width: 768px) {
+    margin: 32px auto;
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: 50px 155px 300px 100px;
+    grid-template-areas:
+      'amazon cover title user'
+      'amazon cover subtitle user'
+      'amazon cover author user'
+      'amazon cover date user'
+      'amazon cover rating user';
+    justify-content: space-evenly;
+  }
+
+  @media (min-width: 1200px) {
+    margin-bottom: 64px;
+  }
+}

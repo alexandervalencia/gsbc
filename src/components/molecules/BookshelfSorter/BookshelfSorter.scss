@@ -1,0 +1,35 @@
+.BookshelfSorter {
+  padding: 0;
+  padding-left: 20px;
+
+  @media (max-width: 767px) {
+    margin-bottom: 8px;
+  }
+
+  label {
+    color: #a5a5a5;
+    font-family: 'playfair Display', serif;
+    font-size: 0.8em;
+  }
+
+  select,
+  .custom-select {
+    background-color: #1a1a1a;
+    border: 1px solid rgba(129, 129, 129, 0.25);
+    border-radius: 2px;
+    color: #a5a5a5;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+
+    &.form-control:focus {
+      background-color: inherit;
+      color: #ccc;
+      outline: none;
+    }
+
+    &.active {
+      background-color: #323232;
+      color: #ccc;
+    }
+  }
+}

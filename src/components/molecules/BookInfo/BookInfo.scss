@@ -1,33 +1,41 @@
-.BookInfo {
-  display: flex;
-  flex-direction: column;
-  margin-top: 0.5rem;
-}
-
-.BookInfo .title {
-  font-size: 2rem;
+.title {
+  font-size: 1.5rem;
   font-weight: 800;
-  letter-spacing: 2;
+  grid-area: title;
   margin-bottom: 0;
+  margin-right: 8px;
+
+  @media (min-width: 768px) {
+    font-size: 2rem;
+    margin-right: 0;
+  }
 }
 
-.BookInfo .subtitle {
+.subtitle {
+  display: none;
   font-size: 1.25rem;
   font-weight: normal;
+  grid-area: subtitle;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
 }
 
-.BookInfo .author {
+.author {
   font-family: 'Playfair Display', serif;
   font-size: 1rem;
+  grid-area: author;
 
   &-name {
     color: lighten(#17a2b8, 10%);
   }
 }
 
-.BookInfo .date-read {
+.date-read {
   color: #929292;
   font-family: 'Raleway', sans-serif;
   font-size: 1rem;
+  grid-area: date;
   line-height: 1.5rem;
 }
