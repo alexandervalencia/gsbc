@@ -47,7 +47,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SIGN_OUT:
       return {
         ...state,
-        currentUser: {},
+        currentUser: null,
       };
     case actionTypes.SUBMIT_SIGN_IN_BEGIN:
       return {

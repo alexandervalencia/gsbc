@@ -3,14 +3,13 @@ import React from 'react';
 import { AddBookModal, AddMemberModal, SignInModal } from 'components';
 
 import './Navbar.css';
-
 const NavBar = ({ currentUser, handleSignOut }) => {
   if (currentUser) {
-    const isAdmin = currentUser.data_.supportedScopes;
+    const isAdmin = currentUser.data_.supportedScopes === 'admin' ? true : false;
 
     return (
       <div className="Navbar">
-        {isAdmin && isAdmin[0] === 'admin' && <AddMemberModal />}
+        {isAdmin && <AddMemberModal />}
 
         <AddBookModal />
 

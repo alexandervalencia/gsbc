@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-  currentMember: {},
+  currentMember: null,
   members: [],
   failedToGetMembers: false,
   getMembersError: [],
@@ -44,8 +44,13 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SET_CURRENT_MEMBER_FAILURE:
       return {
         ...state,
-        currentMember: action.payload,
+        currentMember: null,
         settingCurrentMember: false,
+      };
+    case actionTypes.SIGN_OUT:
+      return {
+        ...state,
+        currentMember: null,
       };
     default:
       return state;

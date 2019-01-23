@@ -1,6 +1,7 @@
+import WeDeploy from 'wedeploy';
+
 import * as actionTypes from './actionTypes';
 import { addMember, setCurrentMember } from './members';
-import WeDeploy from 'wedeploy';
 
 const auth = WeDeploy.auth('https://auth-gsbc.wedeploy.io');
 
