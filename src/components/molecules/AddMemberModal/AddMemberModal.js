@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
 
-import { AddMemberForm, TimesIcon } from 'components';
+import { AddMemberForm, Icon } from 'components';
 
 import './AddMemberModal.css';
 
@@ -24,10 +24,7 @@ class AddMemberModal extends Component {
   render() {
     return (
       <>
-        <button
-          className="btn btn-primary"
-          onClick={() => this.handleModalOpen()}
-        >
+        <button className="btn btn-primary" onClick={() => this.handleModalOpen()}>
           Sign Up
         </button>
 
@@ -57,12 +54,8 @@ class AddMemberModal extends Component {
                 Register as a Member of the Good Stuff Book Club
               </h3>
 
-              <button
-                aria-label="Close"
-                className="close"
-                onClick={() => this.handleModalClose()}
-              >
-                <TimesIcon />
+              <button aria-label="Close" className="close" onClick={() => this.handleModalClose()}>
+                <Icon name="times" />
               </button>
             </div>
 

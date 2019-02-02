@@ -1,0 +1,44 @@
+.Icon {
+  margin: 8px;
+}
+
+$fa-css-prefix: fa !default;
+$fa-base-height: 16px !default;
+$fa-base-width: 16px !default;
+
+svg:not(:root).fa {
+  display: inline-block;
+  overflow: visible;
+  vertical-align: -0.125em;
+}
+
+.fa {
+  height: 1em;
+  width: 1em;
+
+  &.#{$fa-css-prefix}-inverse {
+    color: #fff;
+  }
+
+  &.#{$fa-css-prefix}-lg {
+    height: (4em / 3);
+    width: (4em / 3);
+  }
+
+  &.#{$fa-css-prefix}-xs {
+    height: 0.75em;
+    width: 0.75em;
+  }
+
+  &.#{$fa-css-prefix}-sm {
+    height: 0.875em;
+    width: 0.875em;
+  }
+
+  @for $i from 1 through 10 {
+    &.#{$fa-css-prefix}-#{$i}x {
+      height: $i * $fa-base-height;
+      width: $i * $fa-base-width;
+    }
+  }
+}
