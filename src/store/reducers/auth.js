@@ -27,6 +27,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         addUserError: action.payload,
       };
+    case actionTypes.INIT_APP:
+      return {
+        ...state,
+        currentUser: action.payload.currentUser,
+      };
     case actionTypes.SET_CURRENT_USER_BEGIN:
       return {
         ...state,

@@ -1,3 +1,6 @@
+/* Init */
+export const INIT_APP = 'INIT_APP';
+
 /* Auth */
 export const ADD_USER_BEGIN = 'ADD_USER_BEGIN';
 export const ADD_USER_FAILURE = 'ADD_USER_FAILURE';

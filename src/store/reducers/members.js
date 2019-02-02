@@ -30,6 +30,16 @@ const reducer = (state = initialState, action) => {
         getMembersError: action.payload.error,
         gettingMembers: false,
       };
+    case actionTypes.INIT_APP:
+      let currentMember = null;
+      if (action.payload.currentUser !== null) {
+        currentMember = action.payload.members.find(member => member.userId === action.payload.currentUser.id);
+      }
+      return {
+        ...state,
+        currentMember,
+        members: action.payload.members,
+      };
     case actionTypes.SET_CURRENT_MEMBER_BEGIN:
       return {
         ...state,
