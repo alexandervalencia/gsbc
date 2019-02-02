@@ -12,10 +12,12 @@
 
   .book-rating {
     align-items: baseline;
+    cursor: default;
     display: flex;
     font-weight: bold;
     margin-left: 8px;
     position: relative;
+    user-select: none;
 
     &-max {
       color: #929292;

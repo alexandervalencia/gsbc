@@ -124,14 +124,16 @@ class Rating extends Component {
             <img alt="star" className="star star-small" src={starYellow} />
           </div>
         )}
-        <Tooltip
-          isOpen={this.state.tooltipOpen}
-          placement="bottom"
-          target={`rating_${this.props.bookId}`}
-          toggle={() => this.toggleTooltip()}
-        >
-          {rateEncouragement}
-        </Tooltip>
+        {!this.state.memberHasRated && (
+          <Tooltip
+            isOpen={this.state.tooltipOpen}
+            placement="bottom"
+            target={`rating_${this.props.bookId}`}
+            toggle={() => this.toggleTooltip()}
+          >
+            {rateEncouragement}
+          </Tooltip>
+        )}
       </div>
     );
   }
