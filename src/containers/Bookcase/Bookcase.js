@@ -46,7 +46,6 @@ const mapStateToProps = state => {
   return {
     books: state.books.books,
     curUser: state.auth.currentUser,
-    membersState: state.members,
     members: state.members.members,
     sortValue: state.books.sortValue,
   };
@@ -58,7 +57,7 @@ const mapDispatchToProps = dispatch => {
     getMembers: () => dispatch(membersActions.getMembers()),
     getRatings: () => dispatch(ratingsActions.getRatings()),
     onSorterChange: (books, sortValue) => dispatch(booksActions.sortBooks(books, sortValue)),
-    onSignOutCurrentUser: () => dispatch(authActions.signOutCurrentUser()),
+    onSignOutCurrentUser: () => dispatch(authActions.submitSignOut()),
     setCurrentMember: () => dispatch(membersActions.setCurrentMember()),
   };
 };

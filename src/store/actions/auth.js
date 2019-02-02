@@ -39,6 +39,33 @@ export const addUserSuccess = () => ({
   type: actionTypes.ADD_USER_SUCCESS,
 });
 
+export const resetPassword = email => dispatch => {
+  dispatch(resetPasswordBegin());
+  // console.log(email);
+  auth
+    .sendPasswordResetEmail(email)
+    .then(() => {
+      // Email sent.
+      dispatch(resetPasswordSuccess());
+    })
+    .catch(error => {
+      //An error happened.
+      dispatch(resetPasswordFailure(error));
+    });
+};
+
+export const resetPasswordBegin = () => ({
+  type: actionTypes.RESET_PASSWORD_BEGIN,
+});
+
+export const resetPasswordFailure = () => ({
+  type: actionTypes.RESET_PASSWORD_FAILURE,
+});
+
+export const resetPasswordSuccess = () => ({
+  type: actionTypes.RESET_PASSWORD_SUCCESS,
+});
+
 export const setCurrentUserSuccess = currentUser => ({
   type: actionTypes.SET_CURRENT_USER_SUCCESS,
   payload: currentUser,

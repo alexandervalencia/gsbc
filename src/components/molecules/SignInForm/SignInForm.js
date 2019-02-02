@@ -1,9 +1,10 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Button } from 'reactstrap';
 
 import * as formValidation from '../../../utils/formValidation';
 
-const SignInForm = ({ submitForm, handleModalClose }) => {
+const SignInForm = ({ submitForm, handleForgotPassword, handleModalClose }) => {
   return (
     <Formik
       initialValues={{
@@ -16,35 +17,37 @@ const SignInForm = ({ submitForm, handleModalClose }) => {
       }}
       render={({ errors, status, touched, isSubmitting }) => (
         <Form>
-          <Field
-            className="form-control"
-            name="email"
-            placeholder="email"
-            type="email"
-            validate={formValidation.email}
-          />
-          <ErrorMessage name="email" component="div" />
-          <Field
-            name="password"
-            placeholder="password"
-            type="password"
-            validate={formValidation.password}
-          />
-          <ErrorMessage name="password" component="div" />
-          <button
-            className="modal-btn modal-btn-primary"
-            disabled={isSubmitting}
-            type="submit"
-          >
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <Field
+              className="form-control"
+              name="email"
+              placeholder="email"
+              type="email"
+              validate={formValidation.email}
+            />
+            <ErrorMessage className="form-text" name="email" component="div" />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <Field
+              className="form-control"
+              name="password"
+              placeholder="password"
+              type="password"
+              validate={formValidation.password}
+            />
+            <ErrorMessage className="form-text" name="password" component="div" />
+            {/* <Button color="link" onClick={() => handleForgotPassword()} size="sm" type="button">
+              Forgot My Password
+            </Button> */}
+          </div>
+          <Button color="primary" disabled={isSubmitting} type="submit">
             Sign In
-          </button>
-          <button
-            className="modal-btn modal-btn-default"
-            onClick={() => handleModalClose()}
-            type="button"
-          >
+          </Button>{' '}
+          <Button className="secondary" onClick={() => handleModalClose()} type="button">
             Cancel
-          </button>
+          </Button>
         </Form>
       )}
     />
