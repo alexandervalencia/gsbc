@@ -70,7 +70,7 @@ const AddBookForm = ({ booksState, handleModalClose, members, submitForm }) => {
           </div>
 
           <div className="form-row">
-            <div className="form-group col-6">
+            <div className="form-group col">
               <label htmlFor="datePickedMonth">Date Picked</label>
               <Field
                 component="select"
@@ -83,7 +83,7 @@ const AddBookForm = ({ booksState, handleModalClose, members, submitForm }) => {
               <ErrorMessage className="error" name="datePickedMonth" component="div" />
             </div>
 
-            <div className="form-group col-6 d-flex align-items-end">
+            <div className="form-group col d-flex align-items-end">
               <Field component="select" className="form-control" name="datePickedYear">
                 {options.years}
               </Field>

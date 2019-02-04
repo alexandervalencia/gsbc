@@ -1,0 +1,11 @@
+.AllRatings {
+  list-style-type: none;
+  min-width: 130px;
+  padding: 16px;
+  padding-bottom: 0;
+
+  .all-ratings__item {
+    display: flex;
+    justify-content: space-between;
+  }
+}

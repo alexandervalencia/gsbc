@@ -5,6 +5,14 @@
     justify-self: center;
   }
 
+  .btn-link {
+    color: #fff;
+
+    &:hover {
+      color: darken(#fff, 30);
+    }
+  }
+
   .rating-wrapper {
     align-items: center;
     display: flex;
