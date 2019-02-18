@@ -156,6 +156,23 @@ class Rating extends Component {
             {rateEncouragement}
           </Tooltip>
         )}
+        {!this.state.memberHasRated && this.state.bookRatings.length > 0 && (
+          <>
+            <Button color="link" id={`info_${this.props.bookId}`} type="button">
+              View All Ratings
+            </Button>
+            <Tooltip
+              autohide={false}
+              hideArrow={true}
+              isOpen={this.state.allRatingsTooltipOpen}
+              placement="top"
+              target={`info_${this.props.bookId}`}
+              toggle={() => this.toggleAllRatingsTooltip()}
+            >
+              <AllRatings members={this.props.mbrs} ratings={this.state.bookRatings} />
+            </Tooltip>
+          </>
+        )}
       </div>
     );
   }
