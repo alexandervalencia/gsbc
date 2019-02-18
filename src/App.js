@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import wedeploy from 'wedeploy';
 
-import * as authActions from './store/actions/auth';
-import * as membersActions from './store/actions/members';
+import { initAppState } from './store/actions/init';
 import Bookcase from './containers/Bookcase/Bookcase';
 import { SiteFooter, SiteHeader } from 'components';
 import './App.scss';
 
+const auth = wedeploy.auth('auth-gsbc.wedeploy.io');
+const data = wedeploy.data(process.env.REACT_APP_DATABASE);
+
 class App extends Component {
   componentDidMount() {
-    this.props.initCurrentUser();
+    this.initApp();
   }
 
-  componentDidUpdate() {
-    if (this.props.currentUser && !this.props.currentMember) {
-      this.props.initCurrentMember(this.props.currentUser);
-    }
+  async initApp() {
+    const [currentUser, books, members, ratings] = await Promise.all([
+      auth.currentUser,
+      data.orderBy('datePicked', 'desc').get('books'),
+      data.get('members'),
+      data.get('ratings'),
+    ]);
+
+    this.props.onInitAppState(currentUser, books, members, ratings);
   }
 
   render() {
@@ -38,8 +46,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    initCurrentUser: () => dispatch(authActions.setCurrentUser()),
-    initCurrentMember: currentUser => dispatch(membersActions.setCurrentMember(currentUser)),
+    onInitAppState: (currentUser, books, members, ratings) =>
+      dispatch(initAppState(currentUser, books, members, ratings)),
   };
 };
 

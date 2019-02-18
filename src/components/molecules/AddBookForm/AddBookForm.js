@@ -69,22 +69,26 @@ const AddBookForm = ({ booksState, handleModalClose, members, submitForm }) => {
             <ErrorMessage className="error" name="userPicked" component="div" />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="datePickedMonth">Date Picked</label>
-            <Field
-              component="select"
-              className="form-control"
-              name="datePickedMonth"
-              validate={formValidation.required}
-            >
-              {options.months}
-            </Field>
-            <ErrorMessage className="error" name="datePickedMonth" component="div" />
+          <div className="form-row">
+            <div className="form-group col">
+              <label htmlFor="datePickedMonth">Date Picked</label>
+              <Field
+                component="select"
+                className="form-control"
+                name="datePickedMonth"
+                validate={formValidation.required}
+              >
+                {options.months}
+              </Field>
+              <ErrorMessage className="error" name="datePickedMonth" component="div" />
+            </div>
 
-            <Field component="select" className="form-control" name="datePickedYear">
-              {options.years}
-            </Field>
-            <ErrorMessage className="error" name="datePickedYear" component="div" />
+            <div className="form-group col d-flex align-items-end">
+              <Field component="select" className="form-control" name="datePickedYear">
+                {options.years}
+              </Field>
+              <ErrorMessage className="error" name="datePickedYear" component="div" />
+            </div>
           </div>
 
           <div className="form-group last">

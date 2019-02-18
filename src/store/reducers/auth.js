@@ -6,6 +6,8 @@ const initialState = {
   currentUser: null,
   signInError: false,
   signingIn: false,
+  resetPasswordEmailSending: false,
+  resetPasswordEmailSent: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -24,6 +26,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         addUserError: action.payload,
+      };
+    case actionTypes.INIT_APP:
+      return {
+        ...state,
+        currentUser: action.payload.currentUser,
       };
     case actionTypes.SET_CURRENT_USER_BEGIN:
       return {
@@ -60,6 +67,24 @@ const reducer = (state = initialState, action) => {
         ...state,
         signInError: true,
         signingIn: false,
+      };
+    case actionTypes.RESET_PASSWORD_BEGIN:
+      return {
+        ...state,
+        resetPasswordEmailSending: true,
+        resetPasswordEmailSent: false,
+      };
+    case actionTypes.RESET_PASSWORD_FAILURE:
+      return {
+        ...state,
+        resetPasswordEmailSending: false,
+        resetPasswordEmailSent: false,
+      };
+    case actionTypes.RESET_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        resetPasswordEmailSending: false,
+        resetPasswordEmailSent: true,
       };
     default:
       return state;

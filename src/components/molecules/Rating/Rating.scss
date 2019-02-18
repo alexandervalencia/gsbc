@@ -5,6 +5,14 @@
     justify-self: center;
   }
 
+  .btn-link {
+    color: #fff;
+
+    &:hover {
+      color: darken(#fff, 30);
+    }
+  }
+
   .rating-wrapper {
     align-items: center;
     display: flex;
@@ -12,10 +20,12 @@
 
   .book-rating {
     align-items: baseline;
+    cursor: default;
     display: flex;
     font-weight: bold;
     margin-left: 8px;
     position: relative;
+    user-select: none;
 
     &-max {
       color: #929292;

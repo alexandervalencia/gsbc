@@ -1,6 +1,7 @@
 import * as actionTypes from './actionTypes';
 import WeDeploy from 'wedeploy';
-import { bookSortUtil, newBookConfig, sortingOptions } from 'utils';
+import { sortingOptions } from 'utils';
+import { bookSorter, newBookConfig } from '../../utils/booksUtils';
 
 const data = WeDeploy.data(process.env.REACT_APP_DATABASE);
 
@@ -54,7 +55,7 @@ export const getBooks = (sortValue = '3') => {
       .get('books')
       .then(books => {
         const config = sortingOptions.find(opt => sortValue === opt.value);
-        const sortedBooks = bookSortUtil(books, config);
+        const sortedBooks = bookSorter(books, config);
 
         dispatch(getBooksSuccess(sortedBooks));
       })
@@ -63,9 +64,8 @@ export const getBooks = (sortValue = '3') => {
 };
 
 export const sortBooks = (books, sortValue) => {
-  const config = sortingOptions.filter(opt => sortValue === opt.value).pop();
-
-  const sortedBooks = bookSortUtil(books, config);
+  const config = sortingOptions.find(opt => sortValue === opt.value);
+  const sortedBooks = bookSorter(books, config);
 
   return {
     type: actionTypes.SORT_BOOKS,

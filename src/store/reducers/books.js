@@ -56,6 +56,11 @@ const reducer = (state = initialState, action) => {
         getBooksError: action.payload,
         gettingBooks: false,
       };
+    case actionTypes.INIT_APP:
+      return {
+        ...state,
+        books: action.payload.books,
+      };
     case actionTypes.UPDATE_BOOK_RATING_SUCCESS:
       const updatedBooks = updateObjectInArrayById(state.books, action.payload);
       return {

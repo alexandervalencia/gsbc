@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Tooltip } from 'reactstrap';
+import { Button, Tooltip } from 'reactstrap';
 import ReactRating from 'react-rating';
 import isEqual from 'react-fast-compare';
+
+import AllRatings from '../../atoms/AllRatings/AllRatings';
 
 import * as ratingsActions from '../../../store/actions/ratings';
 import { updateBookRating } from '../../../store/actions/books';
@@ -16,9 +18,10 @@ import starYellow from '../../../assets/star-yellow.png';
 
 class Rating extends Component {
   state = {
+    allRatingsTooltipOpen: false,
     bookRating: 0,
     bookRatings: [],
-    tooltipOpen: false,
+    encouragementTooltipOpen: false,
     memberHasRated: false,
     memberRating: 0,
     memberRatingId: '',
@@ -78,9 +81,15 @@ class Rating extends Component {
     this.setState({ memberRating: ratingValue });
   }
 
-  toggleTooltip() {
+  toggleAllRatingsTooltip() {
     this.setState({
-      tooltipOpen: !this.state.tooltipOpen,
+      allRatingsTooltipOpen: !this.state.allRatingsTooltipOpen,
+    });
+  }
+
+  toggleEncouragementTooltip() {
+    this.setState({
+      encouragementTooltipOpen: !this.state.encouragementTooltipOpen,
     });
   }
 
@@ -122,16 +131,31 @@ class Rating extends Component {
           <div className="rate-info">
             Your rating: {this.state.memberRating}
             <img alt="star" className="star star-small" src={starYellow} />
+            <Button color="link" id={`info_${this.props.bookId}`} type="button">
+              View All Ratings
+            </Button>
+            <Tooltip
+              autohide={false}
+              hideArrow={true}
+              isOpen={this.state.allRatingsTooltipOpen}
+              placement="top"
+              target={`info_${this.props.bookId}`}
+              toggle={() => this.toggleAllRatingsTooltip()}
+            >
+              <AllRatings members={this.props.mbrs} ratings={this.state.bookRatings} />
+            </Tooltip>
           </div>
         )}
-        <Tooltip
-          isOpen={this.state.tooltipOpen}
-          placement="bottom"
-          target={`rating_${this.props.bookId}`}
-          toggle={() => this.toggleTooltip()}
-        >
-          {rateEncouragement}
-        </Tooltip>
+        {!this.state.memberHasRated && (
+          <Tooltip
+            isOpen={this.state.encouragementTooltipOpen}
+            placement="bottom"
+            target={`rating_${this.props.bookId}`}
+            toggle={() => this.toggleEncouragementTooltip()}
+          >
+            {rateEncouragement}
+          </Tooltip>
+        )}
       </div>
     );
   }

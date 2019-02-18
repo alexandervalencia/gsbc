@@ -12,6 +12,7 @@
 }
 
 .subtitle {
+  color: darken(#fff, 30%);
   display: none;
   font-size: 1.25rem;
   font-weight: normal;
@@ -27,9 +28,9 @@
   font-size: 1rem;
   grid-area: author;
 
-  &-name {
-    color: lighten(#17a2b8, 10%);
-  }
+  // &-name {
+  //   color: lighten(#17a2b8, 10%);
+  // }
 }
 
 .date-read {

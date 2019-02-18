@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
 
 import * as booksActions from '../../../store/actions/books';
-import { AddBookForm, TimesIcon } from 'components';
+import { AddBookForm, Icon } from 'components';
 
 import './AddBookModal.css';
 
@@ -25,10 +25,7 @@ class AddBookModal extends Component {
   render() {
     return (
       <>
-        <button
-          className="btn btn-primary"
-          onClick={() => this.handleModalOpen()}
-        >
+        <button className="btn btn-primary" onClick={() => this.handleModalOpen()}>
           Add Book
         </button>
 
@@ -55,12 +52,8 @@ class AddBookModal extends Component {
                 Add a Book to the Bookcase
               </h3>
 
-              <button
-                aria-label="Close"
-                className="close"
-                onClick={() => this.handleModalClose()}
-              >
-                <TimesIcon />
+              <button aria-label="Close" className="close" onClick={() => this.handleModalClose()}>
+                <Icon name="times" />
               </button>
             </div>
 

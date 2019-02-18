@@ -3,15 +3,23 @@ import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
 
 import * as authActions from '../../../store/actions/auth';
-import { SignInForm, TimesIcon } from 'components';
-import './SignInModal.css';
+import { ForgotMyPasswordForm, SignInForm, Icon } from 'components';
 
 ReactModal.setAppElement('#root');
 
 class SignInModal extends Component {
   state = {
+    form: 'sign-in',
     showModal: false,
   };
+
+  handleForgotPasswordCancel() {
+    this.setState({ form: 'sign-in' });
+  }
+
+  handleForgotPassword() {
+    this.setState({ form: 'forgotPassword' });
+  }
 
   handleModalClose() {
     this.setState({ showModal: false });
@@ -22,12 +30,25 @@ class SignInModal extends Component {
   }
 
   render() {
+    let form =
+      this.state.form === 'sign-in' ? (
+        <SignInForm
+          handleForgotPassword={() => this.handleForgotPassword()}
+          handleModalClose={() => this.handleModalClose()}
+          submitForm={(email, password, setStatus, setSubmitting) =>
+            this.props.onSubmitSignIn(email, password, setStatus, setSubmitting)
+          }
+        />
+      ) : (
+        <ForgotMyPasswordForm
+          handleForgotPasswordCancel={() => this.handleForgotPasswordCancel()}
+          submitForm={email => this.props.onSubmitForgotMyPassword(email)}
+        />
+      );
+
     return (
       <>
-        <button
-          className="btn btn-primary"
-          onClick={() => this.handleModalOpen()}
-        >
+        <button className="btn btn-primary" onClick={() => this.handleModalOpen()}>
           Sign In
         </button>
 
@@ -37,14 +58,25 @@ class SignInModal extends Component {
           style={{
             /* stylelint-disable-next-line */
             overlay: {
+              alignItems: 'center',
               backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              bottom: 0,
+              display: 'flex',
+              justifyContent: 'center',
+              left: 0,
+              position: 'fixed',
+              right: 0,
+              top: 0,
             },
             /* stylelint-disable-next-line */
             content: {
-              bottom: '25%',
-              left: '25%',
-              right: '25%',
-              top: '25%',
+              bottom: null,
+              left: null,
+              maxWidth: '560px',
+              minWidth: '360px',
+              position: 'relative',
+              right: null,
+              top: null,
             },
           }}
         >
@@ -54,21 +86,12 @@ class SignInModal extends Component {
                 Sign-In to GSBC
               </h5>
 
-              <button
-                aria-label="Close"
-                className="close"
-                onClick={() => this.handleModalClose()}
-              >
-                <TimesIcon />
+              <button aria-label="Close" className="close" onClick={() => this.handleModalClose()}>
+                <Icon name="times" />
               </button>
             </div>
 
-            <SignInForm
-              handleModalClose={() => this.handleModalClose()}
-              submitForm={(email, password) =>
-                this.props.onSubmitSignIn(email, password)
-              }
-            />
+            <div className="modal-body">{form}</div>
           </div>
         </ReactModal>
       </>
@@ -82,8 +105,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSubmitSignIn: (email, password) =>
-      dispatch(authActions.submitSignIn(email, password)),
+    onSubmitForgotMyPassword: email => dispatch(authActions.resetPassword(email)),
+    onSubmitSignIn: (email, password, setStatus, setSubmitting) =>
+      dispatch(authActions.submitSignIn(email, password, setStatus, setSubmitting)),
   };
 };
 
