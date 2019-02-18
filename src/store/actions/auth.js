@@ -92,14 +92,19 @@ export const submitSignInBegin = () => ({
   type: actionTypes.SUBMIT_SIGN_IN_BEGIN,
 });
 
-export const submitSignIn = (email, password) => {
+export const submitSignIn = (email, password, setStatus, setSubmitting) => {
   return dispatch => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then(currentUser => {
         dispatch(submitSignInSuccess(currentUser));
+        setSubmitting(false);
       })
-      .catch(error => dispatch(submitSignInFailure(error)));
+      .catch(error => {
+        dispatch(submitSignInFailure(error));
+        setSubmitting(false);
+        setStatus({ password: 'Incorrect password, please try again' });
+      });
   };
 };
 
@@ -108,8 +113,9 @@ export const submitSignInSuccess = currentUser => ({
   payload: currentUser,
 });
 
-export const submitSignInFailure = () => ({
+export const submitSignInFailure = error => ({
   type: actionTypes.SUBMIT_SIGN_IN_FAILURE,
+  payload: error,
 });
 
 export const signOutCurrentUser = () => ({

@@ -7,7 +7,7 @@ import Bookcase from './containers/Bookcase/Bookcase';
 import { SiteFooter, SiteHeader } from 'components';
 import './App.scss';
 
-const auth = wedeploy.auth('https://auth-gsbc.wedeploy.io');
+const auth = wedeploy.auth('auth-gsbc.wedeploy.io');
 const data = wedeploy.data(process.env.REACT_APP_DATABASE);
 
 class App extends Component {
@@ -16,18 +16,14 @@ class App extends Component {
   }
 
   async initApp() {
-    try {
-      const [currentUser, books, members, ratings] = await Promise.all([
-        auth.currentUser,
-        data.orderBy('datePicked', 'desc').get('books'),
-        data.get('members'),
-        data.get('ratings'),
-      ]);
+    const [currentUser, books, members, ratings] = await Promise.all([
+      auth.currentUser,
+      data.orderBy('datePicked', 'desc').get('books'),
+      data.get('members'),
+      data.get('ratings'),
+    ]);
 
-      this.props.onInitAppState(currentUser, books, members, ratings);
-    } catch (error) {
-      throw error;
-    }
+    this.props.onInitAppState(currentUser, books, members, ratings);
   }
 
   render() {

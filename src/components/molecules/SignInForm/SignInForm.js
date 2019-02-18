@@ -12,8 +12,9 @@ const SignInForm = ({ submitForm, handleForgotPassword, handleModalClose }) => {
         email: '',
       }}
       onSubmit={(values, actions) => {
-        submitForm(values.email, values.password);
-        // actions.setSubmitting(false);
+        actions.setStatus(undefined);
+
+        submitForm(values.email, values.password, actions.setStatus, actions.setSubmitting);
       }}
       render={({ errors, status, touched, isSubmitting }) => (
         <Form>
@@ -38,10 +39,11 @@ const SignInForm = ({ submitForm, handleForgotPassword, handleModalClose }) => {
               validate={formValidation.password}
             />
             <ErrorMessage className="form-text" name="password" component="div" />
-            {/* <Button color="link" onClick={() => handleForgotPassword()} size="sm" type="button">
+            <Button color="link" onClick={() => handleForgotPassword()} size="sm" type="button">
               Forgot My Password
-            </Button> */}
+            </Button>
           </div>
+          {status && status.password && <div className="mb-3 text-danger">{status.password}</div>}
           <Button color="primary" disabled={isSubmitting} type="submit">
             Sign In
           </Button>{' '}

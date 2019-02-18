@@ -35,7 +35,9 @@ class SignInModal extends Component {
         <SignInForm
           handleForgotPassword={() => this.handleForgotPassword()}
           handleModalClose={() => this.handleModalClose()}
-          submitForm={(email, password) => this.props.onSubmitSignIn(email, password)}
+          submitForm={(email, password, setStatus, setSubmitting) =>
+            this.props.onSubmitSignIn(email, password, setStatus, setSubmitting)
+          }
         />
       ) : (
         <ForgotMyPasswordForm
@@ -104,7 +106,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onSubmitForgotMyPassword: email => dispatch(authActions.resetPassword(email)),
-    onSubmitSignIn: (email, password) => dispatch(authActions.submitSignIn(email, password)),
+    onSubmitSignIn: (email, password, setStatus, setSubmitting) =>
+      dispatch(authActions.submitSignIn(email, password, setStatus, setSubmitting)),
   };
 };
 
