@@ -1,4 +1,4 @@
 {
-	"id": "dev",
-	"image": "wedeploy/data:2.8.0"
+  "id": "dev",
+  "image": "wedeploy/data:2.10.1"
 }
