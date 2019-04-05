@@ -1,8 +1,0 @@
-{
-  "id": "auth",
-  "image": "wedeploy/auth:2.8.2",
-  "env": {
-    "WEDEPLOY_AUTH_PASSWORD": "true",
-    "WEDEPLOY_AUTH_SECURE_FIELDS": "password"
-  }
-}
