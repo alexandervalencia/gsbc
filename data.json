@@ -1,0 +1,2111 @@
+{
+  "books": {
+    "334585376524482809": {
+      "amazonUrl": "https://www.amazon.com/Count-Monte-Cristo-Penguin-Classics/dp/0140449264",
+      "author": "Alexandre Dumas",
+      "coverImg": "",
+      "datePicked": 1477983600000,
+      "ratingValue": 4,
+      "subtitle": "",
+      "title": "The Count of Monte Cristo",
+      "userPicked": "334551147724161583"
+    },
+    "334593209385463416": {
+      "amazonUrl": "https://www.amazon.com/Dispossessed-Hainish-Cycle-Ursula-Guin/dp/0061054887",
+      "coverImg": "",
+      "author": "Ursula K. Le Guin",
+      "ratingValue": 3,
+      "subtitle": "",
+      "datePicked": 1519891200000,
+      "title": "The Dispossessed",
+      "userPicked": "334541177123407109"
+    },
+    "245206058124841897": {
+      "amazonUrl": "https://www.amazon.com/Machine-Death-Collection-Stories-People/dp/0982167121",
+      "coverImg": "machine-of-death-cover_ltqqao.jpg",
+      "author": "Ryan North",
+      "ratingValue": 3.25,
+      "subtitle": "A Collection of Stories About People Who Know How They Will Die",
+      "datePicked": 1375397700000,
+      "title": "Machine of Death",
+      "userPicked": "238206042415950498"
+    },
+    "334552149980361433": {
+      "amazonUrl": "https://www.amazon.com/Man-Who-Mistook-His-Wife/dp/0684853949/",
+      "coverImg": "",
+      "author": "Oliver Sacks",
+      "ratingValue": 4.25,
+      "subtitle": "And Other Clinical Tales",
+      "datePicked": 1362124800000,
+      "title": "The Man Who Mistook His Wide for a Hat",
+      "userPicked": "332591858440313919"
+    },
+    "334593533317762650": {
+      "amazonUrl": "https://www.amazon.com/Stories-Your-Life-Others-Chiang/dp/1101972122",
+      "coverImg": "",
+      "author": "Ted Chiang",
+      "ratingValue": 4,
+      "subtitle": "",
+      "datePicked": 1527836400000,
+      "title": "Stories of Your Life and Others",
+      "userPicked": "334542611276993470"
+    },
+    "334593322419120721": {
+      "amazonUrl": "https://www.amazon.com/Four-Tendencies-Indispensable-Personality-Profiles/dp/1524760919",
+      "coverImg": "",
+      "author": "Gretchen Rubin",
+      "ratingValue": 3.9166666666666665,
+      "subtitle": "The Indispensable Personality Profiles That Reveal How to Make Your Life Better (and Other People's Lives Better, Too)",
+      "datePicked": 1522566000000,
+      "title": "The Four Tendencies",
+      "userPicked": "334542068579941771"
+    },
+    "334592607783361285": {
+      "amazonUrl": "https://www.amazon.com/Hot-Lights-Cold-Steel-Sleepless/dp/0312352697",
+      "coverImg": "",
+      "author": "Dr. Michael J. Collins",
+      "ratingValue": 3.5,
+      "subtitle": "Life, Death and Sleepless Nights in a Surgeon's First Years",
+      "datePicked": 1514793600000,
+      "title": "Hot Lights, Cold Steel",
+      "userPicked": "238206042415950498"
+    },
+    "334593107470234515": {
+      "amazonUrl": "https://www.amazon.com/Basketball-Other-Things-Collection-Illustrated/dp/1419726471",
+      "coverImg": "",
+      "author": "Shea Serrano",
+      "ratingValue": 3.375,
+      "subtitle": "A Collection of Questions Asked, Answered, Illustrated",
+      "datePicked": 1517472000000,
+      "title": "Basketball (and Other Things)",
+      "userPicked": "334539647160410109"
+    },
+    "334593429295014984": {
+      "amazonUrl": "https://www.amazon.com/All-Gods-Children-American-Tradition/dp/0307280330",
+      "coverImg": "",
+      "author": "Fox Butterfield",
+      "ratingValue": 4.125,
+      "subtitle": "The Bosket Family and the American Tradition of Violence",
+      "datePicked": 1525158000000,
+      "title": "All God's Children",
+      "userPicked": "332591858440313919"
+    },
+    "334585517253395019": {
+      "amazonUrl": "https://www.amazon.com/March-Book-One-John-Lewis/dp/1603093001",
+      "coverImg": "",
+      "author": "John Lewis",
+      "ratingValue": 4,
+      "subtitle": "Book One",
+      "datePicked": 1485936000000,
+      "title": "March",
+      "userPicked": "334542068579941771"
+    },
+    "334575674710956968": {
+      "amazonUrl": "https://www.amazon.com/Devil-White-City-Madness-Changed/dp/0375725601",
+      "coverImg": "",
+      "author": "Erik Larson",
+      "ratingValue": 4,
+      "subtitle": "Murder, Magic, and Madness at the Fair That Changed America",
+      "datePicked": 1441090800000,
+      "title": "The Devil and the White City",
+      "userPicked": "334541177123407109"
+    },
+    "334583141431925785": {
+      "amazonUrl": "https://www.amazon.com/Girl-Train-Novel-Paula-Hawkins-ebook/dp/B00L9B7IKE",
+      "coverImg": "",
+      "author": "Paula Hawkins",
+      "ratingValue": 2.6666666666666665,
+      "subtitle": "",
+      "datePicked": 1456819200000,
+      "title": "The Girl on the Train",
+      "userPicked": "334551331871014457"
+    },
+    "334583230930049055": {
+      "amazonUrl": "https://www.amazon.com/Emma-Penguin-Classics-Jane-Austen/dp/0141439580",
+      "coverImg": "",
+      "author": "Jane Austin",
+      "ratingValue": 2.3333333333333335,
+      "subtitle": "",
+      "datePicked": 1459494000000,
+      "title": "Emma",
+      "userPicked": "334542068579941771"
+    },
+    "334582923964390428": {
+      "amazonUrl": "https://www.amazon.com/Man-Who-Once-Whizzer-White/dp/0684827948",
+      "coverImg": "",
+      "author": "Dennis Hutchinson",
+      "ratingValue": 1.5,
+      "subtitle": "A Portrait of Justice Byron R. White",
+      "datePicked": 1451635200000,
+      "title": "The Man Who Once Was Wizzer White",
+      "userPicked": "334539647160410109"
+    },
+    "331153425793160768": {
+      "amazonUrl": "https://www.amazon.com/Kitchen-Confidential-Updated-Adventures-Underbelly/dp/0060899220",
+      "coverImg": "",
+      "author": "Anthony Bourdain",
+      "subtitle": "Adventures in the Culinary Underbelly",
+      "ratingValue": 2.5833333333333335,
+      "datePicked": 1541055600000,
+      "title": "Kitchen Confidential",
+      "userPicked": "238206042415950498"
+    },
+    "334593808828709340": {
+      "amazonUrl": "https://www.amazon.com/Big-Sleep-Philip-Marlowe-Novel/dp/0394758285",
+      "coverImg": "",
+      "author": "Raymond Chandler",
+      "ratingValue": 2.8,
+      "subtitle": "",
+      "datePicked": 1538377200000,
+      "title": "The Big Sleep",
+      "userPicked": "334541177123407109"
+    },
+    "334592067011887465": {
+      "amazonUrl": "https://www.amazon.com/Blood-Sweat-Pixels-Triumphant-Turbulent/dp/0062651234",
+      "coverImg": "",
+      "author": "Jason Schreier",
+      "ratingValue": 4.25,
+      "subtitle": "The Triumphant, Turbulent Stories Behind How Video Games Are Made",
+      "datePicked": 1504249200000,
+      "title": "Blood, Sweat, and Pixels",
+      "userPicked": "334539647160410109"
+    },
+    "334592434607020582": {
+      "amazonUrl": "https://www.amazon.com/Chains-America-Trilogy-Laurie-Anderson/dp/1416905863",
+      "coverImg": "",
+      "author": "Laurie Halse Anderson",
+      "ratingValue": 3.75,
+      "subtitle": "",
+      "datePicked": 1512115200000,
+      "title": "Chains",
+      "userPicked": "334542068579941771"
+    },
+    "334587472757564270": {
+      "amazonUrl": "https://www.amazon.com/Collapsing-Empire-Interdependency-John-Scalzi/dp/0765388901",
+      "coverImg": "",
+      "author": "John Scalzi",
+      "ratingValue": 3.1666666666666665,
+      "subtitle": "",
+      "datePicked": 1491030000000,
+      "title": "The Collapsing Empire",
+      "userPicked": "238206042415950498"
+    },
+    "334592159026590121": {
+      "amazonUrl": "https://www.amazon.com/Last-Duel-Scandal-Combat-Medieval/dp/0767914171",
+      "coverImg": "",
+      "author": "Eric Jager",
+      "ratingValue": 2.5,
+      "subtitle": "A True Story of Crime, Scandal, and Trial by Combat in Medieval France",
+      "datePicked": 1506841200000,
+      "title": "The Last Duel",
+      "userPicked": "334541177123407109"
+    },
+    "334592277641783563": {
+      "amazonUrl": "https://www.amazon.com/Eleanor-Oliphant-Completely-Fine-Novel/dp/0735220697",
+      "coverImg": "",
+      "author": "Gail Honeyman",
+      "ratingValue": 2.8,
+      "subtitle": "",
+      "datePicked": 1509519600000,
+      "title": "Eleanor Oliphant is Completely Fine",
+      "userPicked": "332591858440313919"
+    },
+    "245205427253053091": {
+      "amazonUrl": "https://www.amazon.com/American-Kingpin-Criminal-Mastermind-Behind/dp/1591848148/",
+      "coverImg": "american_kingpin_q13x9g.jpg",
+      "author": "Nick Bilton",
+      "subtitle": "The Epic Hunt for the Criminal Mastermind Behind the Silk Road",
+      "ratingValue": 4.25,
+      "datePicked": 1498892400000,
+      "title": "American Kingpin",
+      "userPicked": "238206042415950498"
+    },
+    "334591548243094740": {
+      "amazonUrl": "https://www.amazon.com/Killers-Flower-Moon-Osage-Murders/dp/0307742482",
+      "coverImg": "",
+      "author": "David Grann",
+      "ratingValue": 3.3,
+      "subtitle": "The Osage Murders and the Birth of the FBI",
+      "datePicked": 1493622000000,
+      "title": "Killers of the Flower Moon",
+      "userPicked": "334551331871014457"
+    },
+    "334593719173528048": {
+      "amazonUrl": "https://www.amazon.com/Tokyo-Vice-American-Reporter-Police/dp/0307475298",
+      "coverImg": "",
+      "author": "Jake Adelstein",
+      "ratingValue": 3.1,
+      "subtitle": "An American Reporter on the Police Beat in Japan",
+      "datePicked": 1535785200000,
+      "title": "Tokyo Vice",
+      "userPicked": "334542068579941771"
+    },
+    "334585701514112491": {
+      "amazonUrl": "https://www.amazon.com/Army-Dawn-1942-1943-Liberation-Trilogy/dp/0805087249",
+      "coverImg": "",
+      "author": "Rick Atkinson",
+      "ratingValue": 2.5,
+      "subtitle": "The War in North Africa, 1942-1943",
+      "datePicked": 1488355200000,
+      "title": "An Army at Dawn",
+      "userPicked": "334539647160410109"
+    },
+    "334591887014998777": {
+      "amazonUrl": "https://www.amazon.com/Beren-Luthien-J-R-R-Tolkien-ebook/dp/B01MG2HOWD",
+      "coverImg": "",
+      "author": "J.R.R. Tolkien",
+      "ratingValue": 1.375,
+      "subtitle": "",
+      "datePicked": 1496300400000,
+      "title": "Beren and Lúthien",
+      "userPicked": "334541177123407109"
+    },
+    "334551809071158940": {
+      "amazonUrl": "https://www.amazon.com/Little-Fires-Everywhere-Celeste-Ng/dp/0735224293",
+      "coverImg": "",
+      "author": "Celeste Ng",
+      "ratingValue": 3.75,
+      "subtitle": "",
+      "datePicked": 1543651200000,
+      "title": "Little Fires Everywhere",
+      "userPicked": "334542068579941771"
+    },
+    "334593630698885177": {
+      "amazonUrl": "https://www.amazon.com/Don-Quixote-Miguel-Cervantes/dp/0060934344",
+      "coverImg": "",
+      "author": "Miguel De Cervantes",
+      "ratingValue": 3.3333333333333335,
+      "subtitle": "",
+      "datePicked": 1530428400000,
+      "title": "Don Quixote",
+      "userPicked": "334539647160410109"
+    },
+    "334556522245876777": {
+      "amazonUrl": "https://www.amazon.com/Wild-Swans-Three-Daughters-China/dp/0743246985",
+      "coverImg": "",
+      "author": "Jung Chang",
+      "ratingValue": 3.5833333333333335,
+      "subtitle": "Three Daughters of China",
+      "datePicked": 1417420800000,
+      "title": "Wild Swans",
+      "userPicked": "332591858440313919"
+    },
+    "334574763792170905": {
+      "amazonUrl": "https://www.amazon.com/Traffic-Drive-What-Says-About/dp/0307277194/",
+      "coverImg": "",
+      "author": "Tom Vanderbilt",
+      "ratingValue": 4.25,
+      "subtitle": "Why We Drive the Way We Do (and What It Says About Us)",
+      "datePicked": 1425196800000,
+      "title": "Traffic",
+      "userPicked": "334539647160410109"
+    },
+    "334556238964968666": {
+      "amazonUrl": "https://www.amazon.com/Fabric-Cosmos-Space-Texture-Reality/dp/0375727205/",
+      "coverImg": "",
+      "author": "Brian Greene",
+      "ratingValue": 2,
+      "subtitle": "Space, Time, and the Texture of Reality",
+      "datePicked": 1409554800000,
+      "title": "The Fabric of the Cosmos",
+      "userPicked": "334551147724161583"
+    },
+    "334575115304165103": {
+      "amazonUrl": "https://www.amazon.com/War-Flowers-Tad-Williams-ebook/dp/B00AEDDS16",
+      "coverImg": "",
+      "author": "Tad Williams",
+      "ratingValue": 1.4166666666666667,
+      "subtitle": "",
+      "datePicked": 1427871600000,
+      "title": "War of the Flowers",
+      "userPicked": "334541177123407109"
+    },
+    "334555328878911117": {
+      "amazonUrl": "https://www.amazon.com/Shades-Grey-Novel-Jasper-Fforde-ebook/dp/B002UXRF6M",
+      "coverImg": "",
+      "author": "Jasper Fforde",
+      "ratingValue": 4.75,
+      "subtitle": "",
+      "datePicked": 1396335600000,
+      "title": "Shades of Grey",
+      "userPicked": "334542068579941771"
+    },
+    "334556710184925324": {
+      "amazonUrl": "https://www.amazon.com/Assassination-Jesse-James-Coward-Robert/dp/0061120197/",
+      "coverImg": "",
+      "author": "Ron Hansen",
+      "ratingValue": 2.2,
+      "subtitle": "",
+      "datePicked": 1420099200000,
+      "title": "The Assassination of Jesse James by the Coward Robert Ford",
+      "userPicked": "334541177123407109"
+    },
+    "334583557928537178": {
+      "amazonUrl": "https://www.amazon.com/All-Birds-Charlie-Jane-Anders/dp/0765379953",
+      "coverImg": "",
+      "author": "Charlie Jane Anders",
+      "ratingValue": 3.75,
+      "subtitle": "",
+      "datePicked": 1467356400000,
+      "title": "All the Birds in the Sky",
+      "userPicked": "334551147724161583"
+    },
+    "334575825743987950": {
+      "amazonUrl": "https://www.amazon.com/Three-Body-Problem-Cixin-Liu/dp/0765382032",
+      "coverImg": "",
+      "author": "Cixin Liu",
+      "ratingValue": 3.25,
+      "subtitle": "",
+      "datePicked": 1446361200000,
+      "title": "The Three Body Problem",
+      "userPicked": "334551147724161583"
+    },
+    "334575370114835906": {
+      "amazonUrl": "https://www.amazon.com/Smoke-Gets-Your-Eyes-Crematory-ebook/dp/B00J8R3MYW",
+      "coverImg": "",
+      "author": "Caitlin Doughty",
+      "ratingValue": 3.3,
+      "subtitle": "And Other Lessons from the Crematory",
+      "datePicked": 1433142000000,
+      "title": "Smoke Gets in Your Eyes",
+      "userPicked": "334542068579941771"
+    },
+    "334556401564104963": {
+      "amazonUrl": "https://www.amazon.com/As-You-Wish-Inconceivable-Princess/dp/1476764042/ref=sr_1_1?s=books&ie=UTF8&qid=1548030860&sr=1-1&keywords=as+you+wish",
+      "coverImg": "",
+      "author": "Cary Elwes",
+      "ratingValue": 2.8333333333333335,
+      "subtitle": "Inconceivable Tales from the Making of The Princess Bride",
+      "datePicked": 1414825200000,
+      "title": "As You Wish",
+      "userPicked": "334540261105845736"
+    },
+    "334583361717451094": {
+      "amazonUrl": "https://www.amazon.com/Big-Short-Inside-Doomsday-Machine/dp/0393338827",
+      "coverImg": "",
+      "author": "Michael Lewis",
+      "ratingValue": 4,
+      "subtitle": "Inside the Doomsday Machine",
+      "datePicked": 1464764400000,
+      "title": "The Big Short",
+      "userPicked": "334541177123407109"
+    },
+    "334584779135935044": {
+      "amazonUrl": "https://www.amazon.com/Brain-Fire-My-Month-Madness/dp/1451621388",
+      "coverImg": "",
+      "author": "Susannah Cahalan",
+      "ratingValue": 3.3333333333333335,
+      "subtitle": "My Month of Madness",
+      "datePicked": 1475305200000,
+      "title": "Brain on Fire",
+      "userPicked": "334540261105845736"
+    },
+    "334575461670336669": {
+      "amazonUrl": "https://www.amazon.com/Serafina-Black-Cloak-Robert-Beatty-ebook/dp/B00RY6YXPG",
+      "coverImg": "",
+      "author": "Robert Beatty",
+      "ratingValue": 2.8,
+      "subtitle": "",
+      "datePicked": 1438412400000,
+      "title": "Serafina and the Black Cloak",
+      "userPicked": "334551331871014457"
+    },
+    "334585010328125758": {
+      "amazonUrl": "https://www.amazon.com/Im-Thinking-Ending-Things-Recommendation/dp/1501126946",
+      "coverImg": "",
+      "author": "Iain Reid",
+      "ratingValue": 1.75,
+      "subtitle": "",
+      "datePicked": 1475305200000,
+      "title": "I'm Thinking of Ending Things",
+      "userPicked": "238206042415950498"
+    },
+    "334583006310241413": {
+      "amazonUrl": "https://www.amazon.com/Bone-Clocks-Novel-David-Mitchell/dp/0812976827",
+      "coverImg": "",
+      "author": "David Mitchell",
+      "ratingValue": 2.25,
+      "subtitle": "",
+      "datePicked": 1454313600000,
+      "title": "The Bone Clocks",
+      "userPicked": "238206042415950498"
+    },
+    "334584641403111371": {
+      "amazonUrl": "https://www.amazon.com/Hike-Novel-Drew-Magary/dp/0399563873/",
+      "coverImg": "",
+      "author": "Drew Magary",
+      "ratingValue": 3.3,
+      "subtitle": "",
+      "datePicked": 1472713200000,
+      "title": "The Hike",
+      "userPicked": "241622567832647293"
+    },
+    "334555803561077852": {
+      "amazonUrl": "https://www.amazon.com/Gone-Girl-Gillian-Flynn/dp/0307588378/",
+      "coverImg": "",
+      "author": "Gillian Flynn",
+      "ratingValue": 4.5,
+      "subtitle": "",
+      "datePicked": 1401606000000,
+      "title": "Gone Girl",
+      "userPicked": "334542068579941771"
+    },
+    "334556135944663782": {
+      "amazonUrl": "https://www.amazon.com/Year-Living-Biblically-Literally-Possible/dp/0743291484/",
+      "coverImg": "",
+      "author": "A.J. Jacobs",
+      "ratingValue": 2.75,
+      "subtitle": "One Man's Humble Quest to Follow the Bible as Literally as Possible",
+      "datePicked": 1404198000000,
+      "title": "A Year of Living Biblically",
+      "userPicked": "238206042415950498"
+    },
+    "334554259822288896": {
+      "amazonUrl": "https://www.amazon.com/Jonathan-Strange-Mr-Norrell-Novel/dp/0765356155/",
+      "coverImg": "",
+      "author": "Susanna Clarke",
+      "ratingValue": 3,
+      "subtitle": "",
+      "datePicked": 1385884800000,
+      "title": "Jonathan Strange and Mr. Norrell",
+      "userPicked": "334551147724161583"
+    },
+    "334555139592372903": {
+      "amazonUrl": "https://www.amazon.com/Good-Luck-Right-Now-Novel/dp/0062285610",
+      "coverImg": "",
+      "author": "Matthew Quick",
+      "ratingValue": 2.5,
+      "subtitle": "",
+      "datePicked": 1393660800000,
+      "title": "The Good Luck of Right Now",
+      "userPicked": "334551331871014457"
+    },
+    "334552602975276880": {
+      "amazonUrl": "https://www.amazon.com/Witch-Blackbird-Elizabeth-George-Speare/dp/0547550294/",
+      "coverImg": "",
+      "author": "Elizabeth George Speare",
+      "ratingValue": 1.8333333333333333,
+      "subtitle": "",
+      "datePicked": 1367391600000,
+      "title": "The Witch of Blackbird Pond",
+      "userPicked": "334551331871014457"
+    },
+    "334554102424220180": {
+      "amazonUrl": "https://www.amazon.com/Murder-Orient-Express-Hercule-Mysteries/dp/0062693662/",
+      "coverImg": "",
+      "author": "Agatha Christie",
+      "ratingValue": 3.375,
+      "subtitle": "",
+      "datePicked": 1380610800000,
+      "title": "Murder on the Orient Express",
+      "userPicked": "332591858440313919"
+    },
+    "334555600697154889": {
+      "amazonUrl": "https://www.amazon.com/Little-Book-Plagiarism-Richard-Posner-ebook/dp/B000S1LD8O/",
+      "coverImg": "",
+      "author": "Richard A. Posner",
+      "ratingValue": 3.375,
+      "subtitle": "",
+      "datePicked": 1398927600000,
+      "title": "The Little Book of Plaigarism",
+      "userPicked": "334539647160410109"
+    },
+    "334553285629615731": {
+      "amazonUrl": "https://www.amazon.com/P-S-Your-Cat-Dead-Novel/dp/0312321201/ref=sr_1_2?s=books&ie=UTF8&qid=1548029316&sr=1-2&keywords=ps+your+cat+is+dead",
+      "coverImg": "",
+      "author": "James Kirkwood",
+      "ratingValue": 2.375,
+      "subtitle": "A Novel",
+      "datePicked": 1372662000000,
+      "title": "P.S. Your Cat is Dead",
+      "userPicked": "334540261105845736"
+    },
+    "334554870405556608": {
+      "amazonUrl": "https://www.amazon.com/How-Be-Like-Walt-Capturing/dp/0757302319/",
+      "coverImg": "",
+      "author": "Pat Williams",
+      "ratingValue": 1.7,
+      "subtitle": "Capturing the Disney Magic Every Day of Your Life",
+      "datePicked": 1391241600000,
+      "title": "How to Be Like Walt",
+      "userPicked": "334540261105845736"
+    },
+    "334551978869415587": {
+      "amazonUrl": "https://www.amazon.com/Last-Unicorn-Peter-S-Beagle/dp/0451450523/",
+      "coverImg": "",
+      "author": "Peter S. Beagle",
+      "ratingValue": 3.125,
+      "subtitle": "",
+      "datePicked": 1359705600000,
+      "title": "The Last Unicorn",
+      "userPicked": "334551147724161583"
+    },
+    "334553566501422161": {
+      "amazonUrl": "https://www.amazon.com/Enders-Ender-Quintet-Orson-Scott/dp/0812550706/",
+      "coverImg": "",
+      "author": "Orson Scott Card",
+      "ratingValue": 4,
+      "subtitle": "",
+      "datePicked": 1378018800000,
+      "title": "Ender's Game",
+      "userPicked": "241622567832647293"
+    },
+    "334541916948038928": {
+      "amazonUrl": "https://www.amazon.com/Ubik-Philip-K-Dick/dp/0547572298/ref=sr_1_1?ie=UTF8&qid=1548023981&sr=8-1&keywords=ubik",
+      "coverImg": "",
+      "author": "Phillip K. Dick",
+      "ratingValue": 1.5,
+      "subtitle": "",
+      "datePicked": 1364799600000,
+      "title": "Ubik",
+      "userPicked": "334539434919794856"
+    },
+    "245206058124841896": {
+      "amazonUrl": "https://www.amazon.com/Casual-Vacancy-J-K-Rowling-2012-09-27/dp/B017MYOI3Q/",
+      "coverImg": "thecasualvacancy_cover_flglct.jpg",
+      "author": "J.K. Rowling",
+      "ratingValue": 3.75,
+      "subtitle": "",
+      "datePicked": 1357027200000,
+      "title": "The Casual Vacancy",
+      "userPicked": "238206042415950498"
+    },
+    "334552944751968491": {
+      "amazonUrl": "https://www.amazon.com/River-Darkness-Francisco-Orellanas-Legendary-ebook/dp/B004CFAWFW/",
+      "coverImg": "",
+      "author": "Buddy Levy",
+      "ratingValue": 1.75,
+      "subtitle": "Francisco Orellana's Legendary Voyage of Death and Discovery Down the Amazon",
+      "datePicked": 1370070000000,
+      "title": "River of Darkness",
+      "userPicked": "334539647160410109"
+    },
+    "334552374108514873": {
+      "amazonUrl": "https://www.amazon.com/Musicophilia-Tales-Music-Revised-Expanded/dp/B006NO1THK/",
+      "coverImg": "",
+      "author": "Oliver Sacks",
+      "ratingValue": 2.9,
+      "subtitle": "Tales of Music and the Brain",
+      "datePicked": 1546329600000,
+      "title": "Musicophilia",
+      "userPicked": "332591858440313919"
+    },
+    "345955915757132705": {
+      "amazonUrl": "https://www.amazon.com/Armada-novel-author-Ready-Player/dp/0804137277",
+      "coverImg": "",
+      "author": "Ernest Cline",
+      "ratingValue": 0,
+      "subtitle": "",
+      "datePicked": 1551427200000,
+      "title": "Armada",
+      "userPicked": "334543019725145024"
+    }
+  },
+  "members": {
+    "241622567832647293": {
+      "active": true,
+      "userImg": "",
+      "nameFirst": "Group",
+      "groupPick": true,
+      "userId": "241622562508170836",
+      "email": "ohalexanderjames@gmail.com",
+      "pickAvailable": true
+    },
+    "334542611276993470": {
+      "nameLast": "Lalor",
+      "userImg": "",
+      "active": true,
+      "nameFirst": "Jacqueline",
+      "userId": "334542610849854467",
+      "email": "playing.jax@gmail.com",
+      "pickAvailable": true
+    },
+    "334539434919794856": {
+      "nameLast": "Hamann",
+      "userImg": "",
+      "active": false,
+      "nameFirst": "Russell",
+      "userId": "334539434482285966",
+      "email": "lazywerebear@gmail.com",
+      "pickAvailable": false
+    },
+    "334542068579941771": {
+      "nameLast": "Harmon",
+      "userImg": "",
+      "active": true,
+      "nameFirst": "Kelly",
+      "userId": "334542068129688264",
+      "email": "kellybharmon@gmail.com",
+      "pickAvailable": true
+    },
+    "334543019725145024": {
+      "userImg": "",
+      "nameLast": "Dickey",
+      "active": true,
+      "nameFirst": "Levi",
+      "userId": "334543019280077509",
+      "email": "dickeylevi@outlook.com",
+      "pickAvailable": true
+    },
+    "334541177123407109": {
+      "nameLast": "Flude",
+      "userImg": "",
+      "active": true,
+      "nameFirst": "Dan",
+      "userId": "334541176380176345",
+      "email": "danielflude4@gmail.com",
+      "pickAvailable": true
+    },
+    "334540261105845736": {
+      "nameLast": "Laine",
+      "userImg": "kelsey_oxk2jm",
+      "nameFirst": "Kelsey",
+      "active": true,
+      "userId": "334540260642557894",
+      "email": "kelsweis@gmail.com",
+      "pickAvailable": true
+    },
+    "238206042415950498": {
+      "nameLast": "Valencia",
+      "userImg": "alex_valencia",
+      "nameFirst": "Alex",
+      "active": true,
+      "userId": "238110849916443898",
+      "email": "alex.valencia@me.com",
+      "pickAvailable": true
+    },
+    "332591858440313919": {
+      "nameLast": "Valencia",
+      "userImg": "leigh_mbsoea",
+      "nameFirst": "Leigh",
+      "active": true,
+      "userId": "332591857953978395",
+      "email": "leighvvalencia@gmail.com",
+      "pickAvailable": true
+    },
+    "334539647160410109": {
+      "nameLast": "Bishop",
+      "userImg": "john_i6k7m6",
+      "nameFirst": "John",
+      "active": true,
+      "userId": "334539646701468740",
+      "email": "jdbish@gmail.com",
+      "pickAvailable": true
+    },
+    "334551147724161583": {
+      "nameLast": "Zuniga",
+      "userImg": "brian_mpyddi",
+      "nameFirst": "Brian",
+      "active": false,
+      "userId": "334551147281486928",
+      "email": "brzuniga@me.com",
+      "pickAvailable": false
+    },
+    "334551331871014457": {
+      "nameLast": "Zuniga",
+      "userImg": "angela_htjutv",
+      "nameFirst": "Angela",
+      "active": false,
+      "userId": "334551331428081866",
+      "email": "arzuniga@att.net",
+      "pickAvailable": false
+    }
+  },
+  "ratings": {
+    "334966420853690945": {
+      "ratingValue": 3.5,
+      "bookId": "245206058124841897",
+      "memberId": "238206042415950498"
+    },
+    "334966258020505624": {
+      "ratingValue": 3.5,
+      "bookId": "334551809071158940",
+      "memberId": "238206042415950498"
+    },
+    "334966286591583704": {
+      "ratingValue": 0.5,
+      "bookId": "334593808828709340",
+      "memberId": "238206042415950498"
+    },
+    "334966389295177330": {
+      "ratingValue": 3.5,
+      "bookId": "334593322419120721",
+      "memberId": "238206042415950498"
+    },
+    "334966401695713273": {
+      "ratingValue": 3.5,
+      "bookId": "334592607783361285",
+      "memberId": "238206042415950498"
+    },
+    "334966412077373584": {
+      "ratingValue": 2.5,
+      "bookId": "334592277641783563",
+      "memberId": "238206042415950498"
+    },
+    "334966274514111777": {
+      "ratingValue": 4,
+      "bookId": "331153425793160768",
+      "memberId": "238206042415950498"
+    },
+    "334966314092199774": {
+      "ratingValue": 3,
+      "bookId": "334593719173528048",
+      "memberId": "238206042415950498"
+    },
+    "334967105296600578": {
+      "ratingValue": 5,
+      "bookId": "334551809071158940",
+      "memberId": "332591858440313919"
+    },
+    "334967135091261869": {
+      "ratingValue": 3,
+      "bookId": "331153425793160768",
+      "memberId": "332591858440313919"
+    },
+    "334967197839764343": {
+      "ratingValue": 5,
+      "bookId": "334593533317762650",
+      "memberId": "332591858440313919"
+    },
+    "334970167562391931": {
+      "ratingValue": 4.5,
+      "bookId": "245205427253053091",
+      "memberId": "334540261105845736"
+    },
+    "334970118954469794": {
+      "ratingValue": 2.5,
+      "bookId": "331153425793160768",
+      "memberId": "334540261105845736"
+    },
+    "334970100707106839": {
+      "ratingValue": 3.5,
+      "bookId": "334551809071158940",
+      "memberId": "334540261105845736"
+    },
+    "334970138080235136": {
+      "ratingValue": 5,
+      "bookId": "334593322419120721",
+      "memberId": "334540261105845736"
+    },
+    "334970157831996167": {
+      "ratingValue": 5,
+      "bookId": "334592067011887465",
+      "memberId": "334540261105845736"
+    },
+    "334970184333606773": {
+      "ratingValue": 2,
+      "bookId": "334591548243094740",
+      "memberId": "334540261105845736"
+    },
+    "334970196056491549": {
+      "ratingValue": 5,
+      "bookId": "334585517253395019",
+      "memberId": "334540261105845736"
+    },
+    "334970217348899327": {
+      "ratingValue": 2.5,
+      "bookId": "334584779135935044",
+      "memberId": "334540261105845736"
+    },
+    "334970246520385142": {
+      "ratingValue": 2.5,
+      "bookId": "334583361717451094",
+      "memberId": "334540261105845736"
+    },
+    "334970273573149562": {
+      "ratingValue": 0.5,
+      "bookId": "334575825743987950",
+      "memberId": "334540261105845736"
+    },
+    "334970282589293845": {
+      "ratingValue": 2.5,
+      "bookId": "334575674710956968",
+      "memberId": "334540261105845736"
+    },
+    "334970289365027090": {
+      "ratingValue": 2.5,
+      "bookId": "334575461670336669",
+      "memberId": "334540261105845736"
+    },
+    "334970208511816220": {
+      "ratingValue": 2,
+      "bookId": "334585010328125758",
+      "memberId": "334540261105845736"
+    },
+    "334970231705900428": {
+      "ratingValue": 2,
+      "bookId": "334584641403111371",
+      "memberId": "334540261105845736"
+    },
+    "334970261993335206": {
+      "ratingValue": 0.5,
+      "bookId": "334583006310241413",
+      "memberId": "334540261105845736"
+    },
+    "334970267705776007": {
+      "ratingValue": 2,
+      "bookId": "334582923964390428",
+      "memberId": "334540261105845736"
+    },
+    "334970295946018290": {
+      "ratingValue": 3.5,
+      "bookId": "334575370114835906",
+      "memberId": "334540261105845736"
+    },
+    "334970300427923768": {
+      "ratingValue": 0.5,
+      "bookId": "334575115304165103",
+      "memberId": "334540261105845736"
+    },
+    "334970321132349563": {
+      "ratingValue": 2.5,
+      "bookId": "334556710184925324",
+      "memberId": "334540261105845736"
+    },
+    "334970332723152122": {
+      "ratingValue": 2.5,
+      "bookId": "334556401564104963",
+      "memberId": "334540261105845736"
+    },
+    "334970342510613443": {
+      "ratingValue": 0.5,
+      "bookId": "334556238964968666",
+      "memberId": "334540261105845736"
+    },
+    "334970346712034734": {
+      "ratingValue": 2.5,
+      "bookId": "334556135944663782",
+      "memberId": "334540261105845736"
+    },
+    "334970313313902003": {
+      "ratingValue": 5,
+      "bookId": "334574763792170905",
+      "memberId": "334540261105845736"
+    },
+    "334970328337890926": {
+      "ratingValue": 1,
+      "bookId": "334556522245876777",
+      "memberId": "334540261105845736"
+    },
+    "334970349901149305": {
+      "ratingValue": 5,
+      "bookId": "334555803561077852",
+      "memberId": "334540261105845736"
+    },
+    "334970399674649506": {
+      "ratingValue": 4,
+      "bookId": "245206058124841897",
+      "memberId": "334540261105845736"
+    },
+    "334970372837556384": {
+      "ratingValue": 2.5,
+      "bookId": "334555139592372903",
+      "memberId": "334540261105845736"
+    },
+    "334970387258087885": {
+      "ratingValue": 0.5,
+      "bookId": "334554259822288896",
+      "memberId": "334540261105845736"
+    },
+    "334970392339305391": {
+      "ratingValue": 2.5,
+      "bookId": "334554102424220180",
+      "memberId": "334540261105845736"
+    },
+    "334970354104059125": {
+      "ratingValue": 5,
+      "bookId": "334555600697154889",
+      "memberId": "334540261105845736"
+    },
+    "334970366355482347": {
+      "ratingValue": 4.5,
+      "bookId": "334555328878911117",
+      "memberId": "334540261105845736"
+    },
+    "334970377946311134": {
+      "ratingValue": 3,
+      "bookId": "334554870405556608",
+      "memberId": "334540261105845736"
+    },
+    "334970407585713508": {
+      "ratingValue": 3,
+      "bookId": "334553285629615731",
+      "memberId": "334540261105845736"
+    },
+    "334970396112058171": {
+      "ratingValue": 3,
+      "bookId": "334553566501422161",
+      "memberId": "334540261105845736"
+    },
+    "334970438961077206": {
+      "ratingValue": 3,
+      "bookId": "245206058124841896",
+      "memberId": "334540261105845736"
+    },
+    "334970411524550717": {
+      "ratingValue": 0.5,
+      "bookId": "334552944751968491",
+      "memberId": "334540261105845736"
+    },
+    "334970421114399998": {
+      "ratingValue": 1.5,
+      "bookId": "334552602975276880",
+      "memberId": "334540261105845736"
+    },
+    "334970429155198254": {
+      "ratingValue": 5,
+      "bookId": "334552149980361433",
+      "memberId": "334540261105845736"
+    },
+    "334970434635098314": {
+      "ratingValue": 2,
+      "bookId": "334551978869415587",
+      "memberId": "334540261105845736"
+    },
+    "334970424765639454": {
+      "ratingValue": 2,
+      "bookId": "334541916948038928",
+      "memberId": "334540261105845736"
+    },
+    "335280416173440042": {
+      "ratingValue": 1,
+      "bookId": "331153425793160768",
+      "memberId": "334541177123407109"
+    },
+    "335280439764127981": {
+      "ratingValue": 3.5,
+      "bookId": "334593808828709340",
+      "memberId": "334541177123407109"
+    },
+    "335280485031447415": {
+      "ratingValue": 3.5,
+      "bookId": "334593533317762650",
+      "memberId": "334541177123407109"
+    },
+    "334967147323821659": {
+      "ratingValue": 4,
+      "bookId": "334593719173528048",
+      "memberId": "332591858440313919"
+    },
+    "335280398569716221": {
+      "ratingValue": 3,
+      "bookId": "334551809071158940",
+      "memberId": "334541177123407109"
+    },
+    "335280466747832287": {
+      "ratingValue": 4,
+      "bookId": "334593630698885177",
+      "memberId": "334541177123407109"
+    },
+    "335280458267602582": {
+      "ratingValue": 2.5,
+      "bookId": "334593719173528048",
+      "memberId": "334541177123407109"
+    },
+    "335280510194746410": {
+      "ratingValue": 4.5,
+      "bookId": "334593322419120721",
+      "memberId": "334541177123407109"
+    },
+    "335280523440885437": {
+      "ratingValue": 3.5,
+      "bookId": "334593209385463416",
+      "memberId": "334541177123407109"
+    },
+    "335280630468268581": {
+      "ratingValue": 2.5,
+      "bookId": "334592277641783563",
+      "memberId": "334541177123407109"
+    },
+    "335280656287009738": {
+      "ratingValue": 4.5,
+      "bookId": "334592067011887465",
+      "memberId": "334541177123407109"
+    },
+    "335280505826835179": {
+      "ratingValue": 4,
+      "bookId": "334593429295014984",
+      "memberId": "334541177123407109"
+    },
+    "335280611278190683": {
+      "ratingValue": 4,
+      "bookId": "334592607783361285",
+      "memberId": "334541177123407109"
+    },
+    "335280623990923677": {
+      "ratingValue": 4,
+      "bookId": "334592434607020582",
+      "memberId": "334541177123407109"
+    },
+    "335280645442573339": {
+      "ratingValue": 3,
+      "bookId": "334592159026590121",
+      "memberId": "334541177123407109"
+    },
+    "335280670369386012": {
+      "ratingValue": 4,
+      "bookId": "245205427253053091",
+      "memberId": "334541177123407109"
+    },
+    "335280682708590724": {
+      "ratingValue": 3.5,
+      "bookId": "334591887014998777",
+      "memberId": "334541177123407109"
+    },
+    "335280705133830859": {
+      "ratingValue": 4.5,
+      "bookId": "334587472757564270",
+      "memberId": "334541177123407109"
+    },
+    "335280804700335902": {
+      "ratingValue": 3.5,
+      "bookId": "334585517253395019",
+      "memberId": "334541177123407109"
+    },
+    "335280865125624476": {
+      "ratingValue": 2.5,
+      "bookId": "334585010328125758",
+      "memberId": "334541177123407109"
+    },
+    "335280690396540713": {
+      "ratingValue": 4.5,
+      "bookId": "334591548243094740",
+      "memberId": "334541177123407109"
+    },
+    "335280834183794464": {
+      "ratingValue": 4,
+      "bookId": "334585376524482809",
+      "memberId": "334541177123407109"
+    },
+    "335280718431715671": {
+      "ratingValue": 3,
+      "bookId": "334585701514112491",
+      "memberId": "334541177123407109"
+    },
+    "335280885971469113": {
+      "ratingValue": 3.5,
+      "bookId": "334584641403111371",
+      "memberId": "334541177123407109"
+    },
+    "335280897795049511": {
+      "ratingValue": 3.5,
+      "bookId": "334583557928537178",
+      "memberId": "334541177123407109"
+    },
+    "335280975338969675": {
+      "ratingValue": 3.5,
+      "bookId": "334583006310241413",
+      "memberId": "334541177123407109"
+    },
+    "335280907947046113": {
+      "ratingValue": 5,
+      "bookId": "334583361717451094",
+      "memberId": "334541177123407109"
+    },
+    "335280990001933132": {
+      "ratingValue": 4,
+      "bookId": "334575825743987950",
+      "memberId": "334541177123407109"
+    },
+    "335280918385086015": {
+      "ratingValue": 3,
+      "bookId": "334583230930049055",
+      "memberId": "334541177123407109"
+    },
+    "335281063352781038": {
+      "ratingValue": 3.5,
+      "bookId": "334556401564104963",
+      "memberId": "334541177123407109"
+    },
+    "335281007652365182": {
+      "ratingValue": 2.5,
+      "bookId": "334575461670336669",
+      "memberId": "334541177123407109"
+    },
+    "335281015763585899": {
+      "ratingValue": 3.5,
+      "bookId": "334575370114835906",
+      "memberId": "334541177123407109"
+    },
+    "335281035352807120": {
+      "ratingValue": 4.5,
+      "bookId": "334574763792170905",
+      "memberId": "334541177123407109"
+    },
+    "335281047990460431": {
+      "ratingValue": 2.5,
+      "bookId": "334556710184925324",
+      "memberId": "334541177123407109"
+    },
+    "335281080135605523": {
+      "ratingValue": 3.5,
+      "bookId": "334556238964968666",
+      "memberId": "334541177123407109"
+    },
+    "335281097227582356": {
+      "ratingValue": 4.5,
+      "bookId": "334555803561077852",
+      "memberId": "334541177123407109"
+    },
+    "335281029600917422": {
+      "ratingValue": 2,
+      "bookId": "334575115304165103",
+      "memberId": "334541177123407109"
+    },
+    "335281053308799946": {
+      "ratingValue": 3,
+      "bookId": "334556522245876777",
+      "memberId": "334541177123407109"
+    },
+    "335281129934553164": {
+      "ratingValue": 1.5,
+      "bookId": "334554259822288896",
+      "memberId": "334541177123407109"
+    },
+    "335281158560769284": {
+      "ratingValue": 3.5,
+      "bookId": "334554102424220180",
+      "memberId": "334541177123407109"
+    },
+    "335281205216114669": {
+      "ratingValue": 3.5,
+      "bookId": "334552149980361433",
+      "memberId": "334541177123407109"
+    },
+    "335280965855524957": {
+      "ratingValue": 3.5,
+      "bookId": "334583141431925785",
+      "memberId": "334541177123407109"
+    },
+    "335280849933251566": {
+      "ratingValue": 3.5,
+      "bookId": "334584779135935044",
+      "memberId": "334541177123407109"
+    },
+    "335281106352410747": {
+      "ratingValue": 4.5,
+      "bookId": "334555328878911117",
+      "memberId": "334541177123407109"
+    },
+    "335281161920174957": {
+      "ratingValue": 5,
+      "bookId": "334553566501422161",
+      "memberId": "334541177123407109"
+    },
+    "335280980844088921": {
+      "ratingValue": 3,
+      "bookId": "334582923964390428",
+      "memberId": "334541177123407109"
+    },
+    "335280999093729536": {
+      "ratingValue": 5,
+      "bookId": "334575674710956968",
+      "memberId": "334541177123407109"
+    },
+    "335642308584627069": {
+      "ratingValue": 3.5,
+      "bookId": "334551978869415587",
+      "memberId": "238206042415950498"
+    },
+    "335642396373625584": {
+      "ratingValue": 3,
+      "bookId": "334593630698885177",
+      "memberId": "238206042415950498"
+    },
+    "335800508285821462": {
+      "ratingValue": 2.5,
+      "bookId": "334551809071158940",
+      "memberId": "334539647160410109"
+    },
+    "335800534581844248": {
+      "ratingValue": 2,
+      "bookId": "331153425793160768",
+      "memberId": "334539647160410109"
+    },
+    "335280601593010586": {
+      "ratingValue": 3,
+      "bookId": "334593107470234515",
+      "memberId": "334541177123407109"
+    },
+    "335800542513910634": {
+      "ratingValue": 2,
+      "bookId": "334593808828709340",
+      "memberId": "334539647160410109"
+    },
+    "335800550436941513": {
+      "ratingValue": 3,
+      "bookId": "334593719173528048",
+      "memberId": "334539647160410109"
+    },
+    "335800574383902768": {
+      "ratingValue": 3,
+      "bookId": "334593533317762650",
+      "memberId": "334539647160410109"
+    },
+    "335800561949992537": {
+      "ratingValue": 4,
+      "bookId": "334593630698885177",
+      "memberId": "334539647160410109"
+    },
+    "335800671272815042": {
+      "ratingValue": 1.5,
+      "bookId": "334552944751968491",
+      "memberId": "238206042415950498"
+    },
+    "335800589609384446": {
+      "ratingValue": 3.5,
+      "bookId": "334593429295014984",
+      "memberId": "334539647160410109"
+    },
+    "335800606134723743": {
+      "ratingValue": 2.5,
+      "bookId": "334593322419120721",
+      "memberId": "334539647160410109"
+    },
+    "335800618717501223": {
+      "ratingValue": 2.5,
+      "bookId": "334593209385463416",
+      "memberId": "334539647160410109"
+    },
+    "335800631468806737": {
+      "ratingValue": 3.5,
+      "bookId": "334593107470234515",
+      "memberId": "334539647160410109"
+    },
+    "335800673403224196": {
+      "ratingValue": 3,
+      "bookId": "334592607783361285",
+      "memberId": "334539647160410109"
+    },
+    "335800707596904851": {
+      "ratingValue": 3,
+      "bookId": "334592434607020582",
+      "memberId": "334539647160410109"
+    },
+    "335800741069745821": {
+      "ratingValue": 3,
+      "bookId": "334592277641783563",
+      "memberId": "334539647160410109"
+    },
+    "335800748622117740": {
+      "ratingValue": 2,
+      "bookId": "334592159026590121",
+      "memberId": "334539647160410109"
+    },
+    "335800774435115235": {
+      "ratingValue": 3,
+      "bookId": "245205427253053091",
+      "memberId": "334539647160410109"
+    },
+    "335800768989054520": {
+      "ratingValue": 1,
+      "bookId": "334585010328125758",
+      "memberId": "238206042415950498"
+    },
+    "335800781165764629": {
+      "ratingValue": 0.5,
+      "bookId": "334591887014998777",
+      "memberId": "334539647160410109"
+    },
+    "335800822492186656": {
+      "ratingValue": 3.5,
+      "bookId": "334585701514112491",
+      "memberId": "334539647160410109"
+    },
+    "335800831798629820": {
+      "ratingValue": 2.5,
+      "bookId": "334585517253395019",
+      "memberId": "334539647160410109"
+    },
+    "335800767260736326": {
+      "ratingValue": 3,
+      "bookId": "334592067011887465",
+      "memberId": "334539647160410109"
+    },
+    "335800806529943962": {
+      "ratingValue": 3,
+      "bookId": "334591548243094740",
+      "memberId": "334539647160410109"
+    },
+    "335800812909731152": {
+      "ratingValue": 2,
+      "bookId": "334587472757564270",
+      "memberId": "334539647160410109"
+    },
+    "335800838427784583": {
+      "ratingValue": 4,
+      "bookId": "334585376524482809",
+      "memberId": "334539647160410109"
+    },
+    "335800965941055547": {
+      "ratingValue": 0.5,
+      "bookId": "334582923964390428",
+      "memberId": "238206042415950498"
+    },
+    "335800906562165762": {
+      "ratingValue": 2.5,
+      "bookId": "334583141431925785",
+      "memberId": "334539647160410109"
+    },
+    "335800856903965921": {
+      "ratingValue": 2.5,
+      "bookId": "334584779135935044",
+      "memberId": "334539647160410109"
+    },
+    "335800871059265665": {
+      "ratingValue": 2.5,
+      "bookId": "334583557928537178",
+      "memberId": "334539647160410109"
+    },
+    "335800878777401872": {
+      "ratingValue": 3.5,
+      "bookId": "334583361717451094",
+      "memberId": "334539647160410109"
+    },
+    "335800864248464214": {
+      "ratingValue": 2.5,
+      "bookId": "334584641403111371",
+      "memberId": "334539647160410109"
+    },
+    "335800848328765736": {
+      "ratingValue": 2,
+      "bookId": "334585010328125758",
+      "memberId": "334539647160410109"
+    },
+    "335800884481564881": {
+      "ratingValue": 1,
+      "bookId": "334583230930049055",
+      "memberId": "334539647160410109"
+    },
+    "335800914118005714": {
+      "ratingValue": 3,
+      "bookId": "334583006310241413",
+      "memberId": "334539647160410109"
+    },
+    "335801087541992678": {
+      "ratingValue": 3,
+      "bookId": "334593808828709340",
+      "memberId": "332591858440313919"
+    },
+    "335801122208397691": {
+      "ratingValue": 4,
+      "bookId": "334593429295014984",
+      "memberId": "332591858440313919"
+    },
+    "335801127320785064": {
+      "ratingValue": 3,
+      "bookId": "334593322419120721",
+      "memberId": "332591858440313919"
+    },
+    "334967160435171878": {
+      "ratingValue": 3,
+      "bookId": "334593630698885177",
+      "memberId": "332591858440313919"
+    },
+    "335801007441274449": {
+      "ratingValue": 3,
+      "bookId": "334575825743987950",
+      "memberId": "334539647160410109"
+    },
+    "335801039198754579": {
+      "ratingValue": 4,
+      "bookId": "334575674710956968",
+      "memberId": "334539647160410109"
+    },
+    "335801101001931565": {
+      "ratingValue": 2,
+      "bookId": "334575461670336669",
+      "memberId": "334539647160410109"
+    },
+    "335801157182039027": {
+      "ratingValue": 4.5,
+      "bookId": "334584641403111371",
+      "memberId": "238206042415950498"
+    },
+    "335801165967650125": {
+      "ratingValue": 5,
+      "bookId": "334553566501422161",
+      "memberId": "238206042415950498"
+    },
+    "335801137378985367": {
+      "ratingValue": 2.5,
+      "bookId": "334575370114835906",
+      "memberId": "334539647160410109"
+    },
+    "335801155870032954": {
+      "ratingValue": 3,
+      "bookId": "334593107470234515",
+      "memberId": "332591858440313919"
+    },
+    "335801167590848741": {
+      "ratingValue": 3,
+      "bookId": "334592607783361285",
+      "memberId": "332591858440313919"
+    },
+    "335801172244690813": {
+      "ratingValue": 3,
+      "bookId": "334592434607020582",
+      "memberId": "332591858440313919"
+    },
+    "335801183738471729": {
+      "ratingValue": 2,
+      "bookId": "334592159026590121",
+      "memberId": "332591858440313919"
+    },
+    "335801176436973033": {
+      "ratingValue": 5,
+      "bookId": "334592277641783563",
+      "memberId": "332591858440313919"
+    },
+    "335801207332082624": {
+      "ratingValue": 4,
+      "bookId": "245205427253053091",
+      "memberId": "332591858440313919"
+    },
+    "335801245454142665": {
+      "ratingValue": 1.5,
+      "bookId": "334554870405556608",
+      "memberId": "238206042415950498"
+    },
+    "335801187362605938": {
+      "ratingValue": 4,
+      "bookId": "334556522245876777",
+      "memberId": "238206042415950498"
+    },
+    "335801233066394050": {
+      "ratingValue": 4,
+      "bookId": "334584779135935044",
+      "memberId": "238206042415950498"
+    },
+    "335801236999966335": {
+      "ratingValue": 5,
+      "bookId": "334556401564104963",
+      "memberId": "238206042415950498"
+    },
+    "335801204061904785": {
+      "ratingValue": 4.5,
+      "bookId": "334556522245876777",
+      "memberId": "334539647160410109"
+    },
+    "335801187949864338": {
+      "ratingValue": 3,
+      "bookId": "334592067011887465",
+      "memberId": "332591858440313919"
+    },
+    "335801198603038073": {
+      "ratingValue": 1,
+      "bookId": "334556710184925324",
+      "memberId": "334539647160410109"
+    },
+    "335801216953519569": {
+      "ratingValue": 4,
+      "bookId": "334574763792170905",
+      "memberId": "334539647160410109"
+    },
+    "335801251263074626": {
+      "ratingValue": 3,
+      "bookId": "334553285629615731",
+      "memberId": "238206042415950498"
+    },
+    "335801408507167346": {
+      "ratingValue": 3.5,
+      "bookId": "334584779135935044",
+      "memberId": "332591858440313919"
+    },
+    "335801351175816166": {
+      "ratingValue": 2,
+      "bookId": "334591548243094740",
+      "memberId": "332591858440313919"
+    },
+    "335801374747568208": {
+      "ratingValue": 0.5,
+      "bookId": "334556238964968666",
+      "memberId": "334539647160410109"
+    },
+    "335801416851599132": {
+      "ratingValue": 1,
+      "bookId": "334585010328125758",
+      "memberId": "332591858440313919"
+    },
+    "335801419213188886": {
+      "ratingValue": 3.5,
+      "bookId": "334555600697154889",
+      "memberId": "334539647160410109"
+    },
+    "335801394255346762": {
+      "ratingValue": 2.5,
+      "bookId": "334556135944663782",
+      "memberId": "334539647160410109"
+    },
+    "335801367835025349": {
+      "ratingValue": 1,
+      "bookId": "334556401564104963",
+      "memberId": "334539647160410109"
+    },
+    "335801465813727609": {
+      "ratingValue": 2,
+      "bookId": "334583006310241413",
+      "memberId": "332591858440313919"
+    },
+    "335801467552959809": {
+      "ratingValue": 2.5,
+      "bookId": "334555139592372903",
+      "memberId": "334539647160410109"
+    },
+    "335801473833285691": {
+      "ratingValue": 1,
+      "bookId": "334582923964390428",
+      "memberId": "332591858440313919"
+    },
+    "335801476993770292": {
+      "ratingValue": 1.5,
+      "bookId": "334554870405556608",
+      "memberId": "334539647160410109"
+    },
+    "335801481176158724": {
+      "ratingValue": 4,
+      "bookId": "334575825743987950",
+      "memberId": "332591858440313919"
+    },
+    "335801490612803804": {
+      "ratingValue": 4,
+      "bookId": "334575674710956968",
+      "memberId": "332591858440313919"
+    },
+    "335801496531308182": {
+      "ratingValue": 3,
+      "bookId": "334575461670336669",
+      "memberId": "332591858440313919"
+    },
+    "335801443833649493": {
+      "ratingValue": 5,
+      "bookId": "334555328878911117",
+      "memberId": "334539647160410109"
+    },
+    "335801486573407366": {
+      "ratingValue": 5,
+      "bookId": "334554259822288896",
+      "memberId": "334539647160410109"
+    },
+    "335801518620782352": {
+      "ratingValue": 5,
+      "bookId": "334554259822288896",
+      "memberId": "238206042415950498"
+    },
+    "335801530270161748": {
+      "ratingValue": 3,
+      "bookId": "334556238964968666",
+      "memberId": "238206042415950498"
+    },
+    "335801539013493523": {
+      "ratingValue": 5,
+      "bookId": "334575825743987950",
+      "memberId": "238206042415950498"
+    },
+    "335801546755890474": {
+      "ratingValue": 4,
+      "bookId": "334583557928537178",
+      "memberId": "238206042415950498"
+    },
+    "335801500802521582": {
+      "ratingValue": 3,
+      "bookId": "334575370114835906",
+      "memberId": "332591858440313919"
+    },
+    "335801568752561619": {
+      "ratingValue": 2.5,
+      "bookId": "334554102424220180",
+      "memberId": "334539647160410109"
+    },
+    "335801575373351211": {
+      "ratingValue": 3,
+      "bookId": "334574763792170905",
+      "memberId": "332591858440313919"
+    },
+    "335801570317133963": {
+      "ratingValue": 2,
+      "bookId": "334575115304165103",
+      "memberId": "332591858440313919"
+    },
+    "335801578888275483": {
+      "ratingValue": 3,
+      "bookId": "334553566501422161",
+      "memberId": "334539647160410109"
+    },
+    "335801595176885928": {
+      "ratingValue": 0.5,
+      "bookId": "245206058124841897",
+      "memberId": "334539647160410109"
+    },
+    "335801584013811469": {
+      "ratingValue": 2,
+      "bookId": "334556710184925324",
+      "memberId": "332591858440313919"
+    },
+    "335801592798679844": {
+      "ratingValue": 4,
+      "bookId": "334556522245876777",
+      "memberId": "332591858440313919"
+    },
+    "335801598221503618": {
+      "ratingValue": 3,
+      "bookId": "334556401564104963",
+      "memberId": "332591858440313919"
+    },
+    "335801607732307868": {
+      "ratingValue": 4,
+      "bookId": "334556238964968666",
+      "memberId": "332591858440313919"
+    },
+    "335801622324707571": {
+      "ratingValue": 5,
+      "bookId": "334555803561077852",
+      "memberId": "332591858440313919"
+    },
+    "335801624062749233": {
+      "ratingValue": 2.5,
+      "bookId": "334553285629615731",
+      "memberId": "334539647160410109"
+    },
+    "335801618050064292": {
+      "ratingValue": 2,
+      "bookId": "334556135944663782",
+      "memberId": "332591858440313919"
+    },
+    "335801612073619151": {
+      "ratingValue": 4,
+      "bookId": "334552944751968491",
+      "memberId": "334539647160410109"
+    },
+    "335801674574730655": {
+      "ratingValue": 0.5,
+      "bookId": "334554870405556608",
+      "memberId": "332591858440313919"
+    },
+    "335801626603102628": {
+      "ratingValue": 1,
+      "bookId": "334555600697154889",
+      "memberId": "332591858440313919"
+    },
+    "335801631495420811": {
+      "ratingValue": 5,
+      "bookId": "334555328878911117",
+      "memberId": "332591858440313919"
+    },
+    "335801639246342726": {
+      "ratingValue": 0.5,
+      "bookId": "334541916948038928",
+      "memberId": "334539647160410109"
+    },
+    "335801667673715138": {
+      "ratingValue": 3,
+      "bookId": "334555139592372903",
+      "memberId": "332591858440313919"
+    },
+    "335801683095505787": {
+      "ratingValue": 3,
+      "bookId": "334554259822288896",
+      "memberId": "332591858440313919"
+    },
+    "335801633176874809": {
+      "ratingValue": 2,
+      "bookId": "334552602975276880",
+      "memberId": "334539647160410109"
+    },
+    "335801657026578910": {
+      "ratingValue": 5,
+      "bookId": "334551978869415587",
+      "memberId": "334539647160410109"
+    },
+    "335801695286964636": {
+      "ratingValue": 5,
+      "bookId": "245206058124841897",
+      "memberId": "332591858440313919"
+    },
+    "335801698581726990": {
+      "ratingValue": 3,
+      "bookId": "245206058124841896",
+      "memberId": "334539647160410109"
+    },
+    "335801687849622192": {
+      "ratingValue": 5,
+      "bookId": "334554102424220180",
+      "memberId": "332591858440313919"
+    },
+    "335801691818419794": {
+      "ratingValue": 5,
+      "bookId": "334553566501422161",
+      "memberId": "332591858440313919"
+    },
+    "335801701081126962": {
+      "ratingValue": 1,
+      "bookId": "334553285629615731",
+      "memberId": "332591858440313919"
+    },
+    "335801707416847395": {
+      "ratingValue": 1,
+      "bookId": "334552944751968491",
+      "memberId": "332591858440313919"
+    },
+    "335801744622399651": {
+      "ratingValue": 2,
+      "bookId": "334552602975276880",
+      "memberId": "332591858440313919"
+    },
+    "335801749296288140": {
+      "ratingValue": 2,
+      "bookId": "334541916948038928",
+      "memberId": "332591858440313919"
+    },
+    "335801753304125074": {
+      "ratingValue": 5,
+      "bookId": "334552149980361433",
+      "memberId": "332591858440313919"
+    },
+    "335801762193946614": {
+      "ratingValue": 5,
+      "bookId": "245206058124841896",
+      "memberId": "332591858440313919"
+    },
+    "335945337951650582": {
+      "ratingValue": 4.5,
+      "bookId": "334555328878911117",
+      "memberId": "238206042415950498"
+    },
+    "335801879640547778": {
+      "ratingValue": 5,
+      "bookId": "334555803561077852",
+      "memberId": "238206042415950498"
+    },
+    "335801891137484360": {
+      "ratingValue": 4,
+      "bookId": "334574763792170905",
+      "memberId": "238206042415950498"
+    },
+    "335945419417093248": {
+      "ratingValue": 1,
+      "bookId": "334575115304165103",
+      "memberId": "238206042415950498"
+    },
+    "335994767897535205": {
+      "ratingValue": 5,
+      "bookId": "245205427253053091",
+      "memberId": "238206042415950498"
+    },
+    "335801758745976533": {
+      "ratingValue": 2,
+      "bookId": "334551978869415587",
+      "memberId": "332591858440313919"
+    },
+    "335801665475579323": {
+      "ratingValue": 3.5,
+      "bookId": "334552149980361433",
+      "memberId": "334539647160410109"
+    },
+    "335994777961908502": {
+      "ratingValue": 3.5,
+      "bookId": "334575674710956968",
+      "memberId": "238206042415950498"
+    },
+    "335801013779582134": {
+      "ratingValue": 5,
+      "bookId": "334592067011887465",
+      "memberId": "238206042415950498"
+    },
+    "335994791565555806": {
+      "ratingValue": 4,
+      "bookId": "245206058124841896",
+      "memberId": "238206042415950498"
+    },
+    "339634565618937563": {
+      "ratingValue": 3,
+      "bookId": "334552374108514873",
+      "memberId": "238206042415950498"
+    },
+    "334966368634291250": {
+      "ratingValue": 4.5,
+      "bookId": "334593533317762650",
+      "memberId": "238206042415950498"
+    },
+    "335801431943473736": {
+      "ratingValue": 2.5,
+      "bookId": "334555803561077852",
+      "memberId": "334539647160410109"
+    },
+    "339634521712670065": {
+      "ratingValue": 2,
+      "bookId": "334552374108514873",
+      "memberId": "334542068579941771"
+    },
+    "339634545933351548": {
+      "ratingValue": 5,
+      "bookId": "334551809071158940",
+      "memberId": "334542068579941771"
+    },
+    "339599456020217923": {
+      "ratingValue": 3,
+      "bookId": "334552374108514873",
+      "memberId": "334539647160410109"
+    },
+    "339634588641393274": {
+      "ratingValue": 3.5,
+      "bookId": "334552374108514873",
+      "memberId": "332591858440313919"
+    },
+    "339634571331018436": {
+      "ratingValue": 3,
+      "bookId": "331153425793160768",
+      "memberId": "334542068579941771"
+    },
+    "339634638559711361": {
+      "ratingValue": 2.5,
+      "bookId": "334593630698885177",
+      "memberId": "334542068579941771"
+    },
+    "339634611024199978": {
+      "ratingValue": 5,
+      "bookId": "334593808828709340",
+      "memberId": "334542068579941771"
+    },
+    "339634619425372263": {
+      "ratingValue": 3,
+      "bookId": "334593719173528048",
+      "memberId": "334542068579941771"
+    },
+    "339634669828503037": {
+      "ratingValue": 4,
+      "bookId": "334593533317762650",
+      "memberId": "334542068579941771"
+    },
+    "339634680308171483": {
+      "ratingValue": 5,
+      "bookId": "334593429295014984",
+      "memberId": "334542068579941771"
+    },
+    "339634638235079277": {
+      "ratingValue": 3.5,
+      "bookId": "334593630698885177",
+      "memberId": "334542068579941771"
+    },
+    "339634940139133133": {
+      "ratingValue": 5,
+      "bookId": "245205427253053091",
+      "memberId": "334542068579941771"
+    },
+    "339634688402820390": {
+      "ratingValue": 5,
+      "bookId": "334593322419120721",
+      "memberId": "334542068579941771"
+    },
+    "339634770095144604": {
+      "ratingValue": 3,
+      "bookId": "334593209385463416",
+      "memberId": "334542068579941771"
+    },
+    "339634797987129251": {
+      "ratingValue": 4,
+      "bookId": "334592607783361285",
+      "memberId": "334542068579941771"
+    },
+    "339634863783060394": {
+      "ratingValue": 1,
+      "bookId": "334592277641783563",
+      "memberId": "334542068579941771"
+    },
+    "339634886923899461": {
+      "ratingValue": 5,
+      "bookId": "334592067011887465",
+      "memberId": "334542068579941771"
+    },
+    "339634929940529232": {
+      "ratingValue": 3,
+      "bookId": "334592159026590121",
+      "memberId": "334542068579941771"
+    },
+    "339634786097008485": {
+      "ratingValue": 4,
+      "bookId": "334593107470234515",
+      "memberId": "334542068579941771"
+    },
+    "339634805899799852": {
+      "ratingValue": 5,
+      "bookId": "334592434607020582",
+      "memberId": "334542068579941771"
+    },
+    "339634956303769653": {
+      "ratingValue": 0.5,
+      "bookId": "334591887014998777",
+      "memberId": "334542068579941771"
+    },
+    "339634966961460414": {
+      "ratingValue": 5,
+      "bookId": "334591548243094740",
+      "memberId": "334542068579941771"
+    },
+    "339634982115589739": {
+      "ratingValue": 1,
+      "bookId": "334585701514112491",
+      "memberId": "334542068579941771"
+    },
+    "339634991202174079": {
+      "ratingValue": 3,
+      "bookId": "334587472757564270",
+      "memberId": "334542068579941771"
+    },
+    "339635001430162448": {
+      "ratingValue": 5,
+      "bookId": "334585517253395019",
+      "memberId": "334542068579941771"
+    },
+    "339635027866409226": {
+      "ratingValue": 4,
+      "bookId": "334585376524482809",
+      "memberId": "334542068579941771"
+    },
+    "339635041016452687": {
+      "ratingValue": 2,
+      "bookId": "334585010328125758",
+      "memberId": "334542068579941771"
+    },
+    "339635052382192156": {
+      "ratingValue": 4,
+      "bookId": "334584779135935044",
+      "memberId": "334542068579941771"
+    },
+    "339634956436025467": {
+      "ratingValue": 1,
+      "bookId": "334591887014998777",
+      "memberId": "334542068579941771"
+    },
+    "339635152292531764": {
+      "ratingValue": 5,
+      "bookId": "334583557928537178",
+      "memberId": "334542068579941771"
+    },
+    "339635160675252145": {
+      "ratingValue": 5,
+      "bookId": "334583361717451094",
+      "memberId": "334542068579941771"
+    },
+    "339635181713737414": {
+      "ratingValue": 2,
+      "bookId": "334583141431925785",
+      "memberId": "334542068579941771"
+    },
+    "339635208158451141": {
+      "ratingValue": 1,
+      "bookId": "334582923964390428",
+      "memberId": "334542068579941771"
+    },
+    "339635642466580257": {
+      "ratingValue": 3,
+      "bookId": "334575825743987950",
+      "memberId": "334542068579941771"
+    },
+    "339635650965804106": {
+      "ratingValue": 5,
+      "bookId": "334575674710956968",
+      "memberId": "334542068579941771"
+    },
+    "339635658975419383": {
+      "ratingValue": 4,
+      "bookId": "334575461670336669",
+      "memberId": "334542068579941771"
+    },
+    "339635143323184601": {
+      "ratingValue": 4,
+      "bookId": "334584641403111371",
+      "memberId": "334542068579941771"
+    },
+    "339635173639929355": {
+      "ratingValue": 3,
+      "bookId": "334583230930049055",
+      "memberId": "334542068579941771"
+    },
+    "339635809819436743": {
+      "ratingValue": 0.5,
+      "bookId": "334556238964968666",
+      "memberId": "334542068579941771"
+    },
+    "339635669087530003": {
+      "ratingValue": 4,
+      "bookId": "334575370114835906",
+      "memberId": "334542068579941771"
+    },
+    "339635707725312143": {
+      "ratingValue": 5,
+      "bookId": "334574763792170905",
+      "memberId": "334542068579941771"
+    },
+    "339635767813122112": {
+      "ratingValue": 3,
+      "bookId": "334556710184925324",
+      "memberId": "334542068579941771"
+    },
+    "339635789563387581": {
+      "ratingValue": 2,
+      "bookId": "334575115304165103",
+      "memberId": "334542068579941771"
+    },
+    "339635800612371229": {
+      "ratingValue": 5,
+      "bookId": "334556522245876777",
+      "memberId": "334542068579941771"
+    },
+    "339635818564272732": {
+      "ratingValue": 2,
+      "bookId": "334556401564104963",
+      "memberId": "334542068579941771"
+    },
+    "339635829888722254": {
+      "ratingValue": 4,
+      "bookId": "334556135944663782",
+      "memberId": "334542068579941771"
+    },
+    "339635836058929200": {
+      "ratingValue": 5,
+      "bookId": "334555803561077852",
+      "memberId": "334542068579941771"
+    },
+    "339635848849237984": {
+      "ratingValue": 4,
+      "bookId": "334555600697154889",
+      "memberId": "334542068579941771"
+    },
+    "339635855746860335": {
+      "ratingValue": 5,
+      "bookId": "334555328878911117",
+      "memberId": "334542068579941771"
+    },
+    "339635869150107889": {
+      "ratingValue": 2,
+      "bookId": "334555139592372903",
+      "memberId": "334542068579941771"
+    },
+    "339635878219699545": {
+      "ratingValue": 2,
+      "bookId": "334554870405556608",
+      "memberId": "334542068579941771"
+    },
+    "339635892929203152": {
+      "ratingValue": 3,
+      "bookId": "334553566501422161",
+      "memberId": "334542068579941771"
+    },
+    "335801150820101113": {
+      "ratingValue": 1,
+      "bookId": "334575115304165103",
+      "memberId": "334539647160410109"
+    },
+    "335800998250130621": {
+      "ratingValue": 1.5,
+      "bookId": "334582923964390428",
+      "memberId": "334539647160410109"
+    },
+    "345284086160023536": {
+      "ratingValue": 3,
+      "bookId": "334552374108514873",
+      "memberId": "334541177123407109"
+    }
+  }
+}

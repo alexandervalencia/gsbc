@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
 
-import * as authActions from '../../../store/actions/auth';
 import { ForgotMyPasswordForm, SignInForm, Icon } from 'components';
+import { signInWithGoogle } from '../../../firebase';
 
 ReactModal.setAppElement('#root');
 
@@ -48,7 +47,7 @@ class SignInModal extends Component {
 
     return (
       <>
-        <button className="btn btn-primary" onClick={() => this.handleModalOpen()}>
+        <button className="btn btn-primary" onClick={signInWithGoogle}>
           Sign In
         </button>
 
@@ -99,19 +98,16 @@ class SignInModal extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {};
-};
+// const mapStateToProps = state => {
+//   return {};
+// };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onSubmitForgotMyPassword: email => dispatch(authActions.resetPassword(email)),
-    onSubmitSignIn: (email, password, setStatus, setSubmitting) =>
-      dispatch(authActions.submitSignIn(email, password, setStatus, setSubmitting)),
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     onSubmitForgotMyPassword: email => dispatch(authActions.resetPassword(email)),
+//     onSubmitSignIn: (email, password, setStatus, setSubmitting) =>
+//       dispatch(authActions.submitSignIn(email, password, setStatus, setSubmitting)),
+//   };
+// };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SignInModal);
+export default SignInModal;

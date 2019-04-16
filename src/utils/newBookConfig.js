@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 
-const newBookConfig = values => {
+export const newBookConfig = values => {
   let book = {};
 
   book.amazonUrl = values.amazonUrl || '';

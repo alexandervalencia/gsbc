@@ -1,9 +1,11 @@
 import { format } from 'date-fns';
 
-export const bookSorter = (array, config) => {
-  const ARTICLE_REGEX = /(^the|^a|^an) +/i;
-  const dir = config.dir;
+const ARTICLE_REGEX = /(^the|^a|^an) +/i;
+
+export const bookSorter = (books, config) => {
+  const dir = config.direction;
   const type = config.type;
+  const results = [...books];
 
   const sortBooks = (a, b) => {
     let aSort = a[type];
@@ -32,7 +34,7 @@ export const bookSorter = (array, config) => {
     return 0;
   };
 
-  return array.sort(sortBooks);
+  return results.sort(sortBooks);
 };
 
 export const newBookConfig = values => {
@@ -40,12 +42,14 @@ export const newBookConfig = values => {
 
   book.amazonUrl = values.amazonUrl || '';
   book.author = values.author;
+  book.authorSort = values.author.split(' ').splice(-1)[0];
   book.coverImg = values.coverImg || '';
   book.dateCreated = format(new Date(), 'x');
   book.datePicked = Number(format(`${values.datePickedMonth} ${values.datePickedYear}`, 'x'));
-  book.ratingValue = 0;
+  book.ratingValue = -1;
   book.subtitle = values.subtitle || '';
   book.title = values.title;
+  book.titleSort = values.title.replace(ARTICLE_REGEX, '');
   book.userImg = values.userImg || '';
   book.userPicked = values.userPicked;
 

@@ -1,0 +1,112 @@
+{
+  "members": {
+    "241622567832647293": {
+      "active": true,
+      "userImg": "",
+      "nameFirst": "Group",
+      "groupPick": true,
+      "userId": "241622562508170836",
+      "email": "ohalexanderjames@gmail.com",
+      "pickAvailable": true
+    },
+    "334542611276993470": {
+      "nameLast": "Lalor",
+      "userImg": "",
+      "active": true,
+      "nameFirst": "Jacqueline",
+      "userId": "334542610849854467",
+      "email": "playing.jax@gmail.com",
+      "pickAvailable": true
+    },
+    "334539434919794856": {
+      "nameLast": "Hamann",
+      "userImg": "",
+      "active": false,
+      "nameFirst": "Russell",
+      "userId": "334539434482285966",
+      "email": "lazywerebear@gmail.com",
+      "pickAvailable": false
+    },
+    "334542068579941771": {
+      "nameLast": "Harmon",
+      "userImg": "",
+      "active": true,
+      "nameFirst": "Kelly",
+      "userId": "334542068129688264",
+      "email": "kellybharmon@gmail.com",
+      "pickAvailable": true
+    },
+    "334543019725145024": {
+      "userImg": "",
+      "nameLast": "Dickey",
+      "active": true,
+      "nameFirst": "Levi",
+      "userId": "334543019280077509",
+      "email": "dickeylevi@outlook.com",
+      "pickAvailable": true
+    },
+    "334541177123407109": {
+      "nameLast": "Flude",
+      "userImg": "",
+      "active": true,
+      "nameFirst": "Dan",
+      "userId": "334541176380176345",
+      "email": "danielflude4@gmail.com",
+      "pickAvailable": true
+    },
+    "334540261105845736": {
+      "nameLast": "Laine",
+      "userImg": "kelsey_oxk2jm",
+      "nameFirst": "Kelsey",
+      "active": true,
+      "userId": "334540260642557894",
+      "email": "kelsweis@gmail.com",
+      "pickAvailable": true
+    },
+    "238206042415950498": {
+      "nameLast": "Valencia",
+      "userImg": "alex_valencia",
+      "nameFirst": "Alex",
+      "active": true,
+      "userId": "238110849916443898",
+      "email": "alex.valencia@me.com",
+      "pickAvailable": true
+    },
+    "332591858440313919": {
+      "nameLast": "Valencia",
+      "userImg": "leigh_mbsoea",
+      "nameFirst": "Leigh",
+      "active": true,
+      "userId": "332591857953978395",
+      "email": "leighvvalencia@gmail.com",
+      "pickAvailable": true
+    },
+    "334539647160410109": {
+      "nameLast": "Bishop",
+      "userImg": "john_i6k7m6",
+      "nameFirst": "John",
+      "active": true,
+      "userId": "334539646701468740",
+      "email": "jdbish@gmail.com",
+      "pickAvailable": true
+    },
+    "334551147724161583": {
+      "nameLast": "Zuniga",
+      "userImg": "brian_mpyddi",
+      "nameFirst": "Brian",
+      "active": false,
+      "userId": "334551147281486928",
+      "email": "brzuniga@me.com",
+      "pickAvailable": false
+    },
+    "334551331871014457": {
+      "nameLast": "Zuniga",
+      "userImg": "angela_htjutv",
+      "nameFirst": "Angela",
+      "active": false,
+      "userId": "334551331428081866",
+      "email": "arzuniga@att.net",
+      "pickAvailable": false
+    }
+  }
+}

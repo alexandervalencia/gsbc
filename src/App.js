@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Bookcase from './containers/Bookcase/Bookcase';
+import Home from './views/Home';
 import { SiteFooter, SiteHeader } from 'components';
 import './App.scss';
 
@@ -8,10 +8,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        Hello
-        {/* <SiteHeader />
-        <Bookcase />
-        <SiteFooter /> */}
+        <SiteHeader />
+        <Home />
+        <SiteFooter />
       </div>
     );
   }

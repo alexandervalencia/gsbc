@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+
 import ReactModal from 'react-modal';
 
-import * as booksActions from '../../../store/actions/books';
 import { AddBookForm, Icon } from 'components';
+import { newBookConfig } from '../../../utils/newBookConfig';
 
 import './AddBookModal.css';
 
@@ -20,6 +20,10 @@ class AddBookModal extends Component {
 
   handleModalOpen() {
     this.setState({ showModal: true });
+  }
+
+  handleSubmit(values) {
+    let newBook = newBookConfig(values);
   }
 
   render() {
@@ -57,12 +61,12 @@ class AddBookModal extends Component {
               </button>
             </div>
 
-            <AddBookForm
+            {/* <AddBookForm
               booksState={this.props.booksState}
               handleModalClose={() => this.handleModalClose()}
               members={this.props.membersState.members}
-              submitForm={values => this.props.onAddBookSubmission(values)}
-            />
+              submitForm={this.handleSubmit}
+            /> */}
           </div>
         </ReactModal>
       </>
@@ -70,20 +74,4 @@ class AddBookModal extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    booksState: state.books,
-    membersState: state.members,
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onAddBookSubmission: values => dispatch(booksActions.addBook(values)),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AddBookModal);
+export default AddBookModal;

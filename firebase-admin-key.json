@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "good-stuff-book-club",
+  "private_key_id": "c502101e1f879e77afc4956d68a1a58b0972b60c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDJbVjYtcJJ0w8R\n9f5QTXLwp7GIDmlFDAvGpie02aYgRTrrBxzXKQ63Gr7uhpHoJg1iGNhwxUgZlHOj\n5I4D8EXKlB2cG+JJ0d8nRMTCG39okojbaAe5MwMOsj0ukIIXCzUdouliyujfz6m3\nd/iH5b9TdO3a5C0Eye4+v52yrvJk0mCSzdN7ILrdBZDHReSmSO38hfAZzztvuL05\nsPdq6WXINEakaE15lT9j7hoYW8V9QtOLqMaYCavYgsphov00bWEjfTSPQnPeX5TW\np6DlwrEBX6W1wt4JV5hj9JkWfAQkXuukkTwaxZ5W4WQPi4h9D2tqxP95/MAqzhyh\nYxu7RuEVAgMBAAECggEAHdhYXj/MKmEd7gTbai2XlsXaHbU47tSimAv9fSP0o/pu\nCO30XYMFXacWXERPMS0WNY9F3qu0i6m92q5eRoIe7S22F2/gPxzcKjbbyoEFh0qT\nAaNv5YaD8PUC8LfTtrNf6uS9HPjAuYzM8lTR29z0VNrR9WlyrC95YA3HQXb/jmWE\nNwxpT2V66/kXsrWCp2UOU6HYJQm79iQaxNRnpm5H0YKJmKjIc27ZjTclLsF+Q/gB\nf2UIXilWurdwRmRwZ3BHx70umZwj/gl/K+z1tBAvC3bDTegrfoi/WhfnUqGtNoqy\nbZq5y8Bh8fWkHUHM05qGh8SgmKBeW9BFHYogibl5rwKBgQDr7aA2i1UtY5+pcoXT\niu7ONHmlxOvhL4oDMxKsmdviy3Xbe+A0S1DP7gJSPTh74E1ZLFYKpJcn8eZOsaE9\n499E8nVmWRyqz/5qD9yoQxfE/8UkjWAI7ZWwdbK0Vs4Dh3pAg3Ijj83PqxQzBnOf\neW5O7uTk9CY/mHEa9R2NQUkFxwKBgQDakE7wmv19RnbFhoS9chg8lArEZXlHuH1D\n2r7P0sgJvDXhdUPT8frbJxOeQekC15ICr5yOtOHIuHVBQgbrfU1Dl0E99R3LbJa7\nTT3l9NujZehO+Iz6BlS5yTyYxN+OYBNfJ+SLuW2va/KSmGSV3fyPzVIFy2yuQR8l\nqetCr6qyQwKBgQDizlc1+G6TKvHDuSf0PNzkeUf018GXgtcfykqKiYL8nXIY5Rad\nz0XKDtpGazpQxEo3jsrMgnwZ14/7WQJUeCscoiXAlaxcfYXsOoF7dLx2ExhX0l1f\nV9+Oeyen/MciV2xsdrEUhNtrZ+EMSIiA6ADmevyrKhdXDdq1+qxFLlzf4wKBgQCw\nRQhVRjrAaS7q+SVfAICJgr/4Svp4HFNygR240H8iUteFoKR2b8boLmjFDtUUxLTu\nU6FI+prJ3fI7EjwwehrxMzCb/m7sHASoxI/yQPtOmaa04gIYtzhnqeOkNcsysUuO\nR8cr5P2QJ9g34I3mzGSfuXC4WaqqEr1DC/pACxr4rwKBgAECyghXVSL7aju4+OoQ\n07T/yw9te7rxGsf9AFs9X5cXmhhEcoc1KoTDK96dl2d8xnowXSJduj0TpNSHBao/\nMtdcv3DGuog7eL67gtEhnSGCBO+hkSXKw0xaQA68lEuIZ5OVrFf4r/Kbn+ITJ6M5\nbamsYHpb1j7vsn+y5YYuBKEB\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-geutq@good-stuff-book-club.iam.gserviceaccount.com",
+  "client_id": "113559809206692940200",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-geutq%40good-stuff-book-club.iam.gserviceaccount.com"
+}

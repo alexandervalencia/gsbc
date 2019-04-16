@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { AmazonIcon, BookCover, BookInfo, UserPicked, Rating } from 'components';
 
 import './Book.scss';
 
-const Book = ({ bookData, userPicked }) => {
+const Book = ({ bookData, userPicked = null }) => {
   return (
     <div className="Book">
       <AmazonIcon amazonUrl={bookData.amazonUrl} />
@@ -18,16 +17,11 @@ const Book = ({ bookData, userPicked }) => {
         datePicked={bookData.datePicked}
       />
 
-      <Rating book={bookData} bookId={bookData.id} />
+      {/* <Rating book={bookData} bookId={bookData.id} /> */}
 
       <UserPicked userImg={userPicked.userImg} userNameFirst={userPicked.nameFirst} />
     </div>
   );
-};
-
-Book.propTypes = {
-  bookData: PropTypes.object,
-  userPicked: PropTypes.object,
 };
 
 export default Book;
