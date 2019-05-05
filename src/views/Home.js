@@ -12,7 +12,7 @@ const Home = () => {
     <div className="Home">
       <div className="control-box">
         <BookSorter />
-        <Navbar cuser={user} />
+        <Navbar user={user} />
       </div>
 
       {user && <div className="Meeting">Next Meeting: 5/9 @ 1pm</div>}
