@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AmazonIcon, BookCover, BookInfo, MemberPicked } from 'components';
+import { AmazonIcon, BookCover, BookInfo, UserPicked } from 'components';
 import RatingsContainer from '../../../containers/RatingsContainer';
 
 import './Book.scss';
@@ -21,7 +21,7 @@ const Book = ({ bookData }) => {
 
       <RatingsContainer bookId={bookData.id} rating={bookData.ratingValue} />
 
-      <MemberPicked memberId={bookData.userPicked} />
+      <UserPicked userId={bookData.userPicked} />
     </div>
   );
 };

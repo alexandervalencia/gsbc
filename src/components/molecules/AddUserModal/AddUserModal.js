@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactModal from 'react-modal';
 
-import { AddMemberForm, Icon } from 'components';
+import { AddUserForm, Icon } from 'components';
 
-import './AddMemberModal.css';
+import './AddUserModal.css';
 
 ReactModal.setAppElement('#root');
 
-class AddMemberModal extends Component {
+class AddUserModal extends Component {
   state = {
     showModal: false,
   };
@@ -59,10 +59,10 @@ class AddMemberModal extends Component {
               </button>
             </div>
 
-            <AddMemberForm
+            <AddUserForm
               booksState={this.props.booksState}
               handleModalClose={() => this.handleModalClose()}
-              members={this.props.membersState.members}
+              users={this.props.usersState.users}
             />
           </div>
         </ReactModal>
@@ -74,8 +74,8 @@ class AddMemberModal extends Component {
 const mapStateToProps = state => {
   return {
     booksState: state.books,
-    membersState: state.members,
+    usersState: state.users,
   };
 };
 
-export default connect(mapStateToProps)(AddMemberModal);
+export default connect(mapStateToProps)(AddUserModal);

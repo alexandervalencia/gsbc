@@ -1,15 +1,15 @@
 import React from 'react';
 import { format } from 'date-fns';
 
-export const members = memberList => {
+export const users = userList => {
   let defaultOption = {
     id: '',
     nameFirst: '',
   };
-  let groupPick = memberList.find(member => member.groupPick === true);
+  let groupPick = userList.find(user => user.groupPick === true);
 
-  let members = memberList
-    .filter(member => !member.groupPick)
+  let users = userList
+    .filter(user => !user.groupPick)
     .sort((a, b) => {
       if (a.nameFirst > b.nameFirst) {
         return 1;
@@ -20,15 +20,15 @@ export const members = memberList => {
       return 0;
     });
 
-  members.unshift(defaultOption);
+  users.unshift(defaultOption);
 
   if (groupPick) {
-    members.push(groupPick);
+    users.push(groupPick);
   }
 
-  return members.map(member => (
-    <option key={member.id} value={member.id}>
-      {member.nameFirst}
+  return users.map(user => (
+    <option key={user.id} value={user.id}>
+      {user.nameFirst}
     </option>
   ));
 };

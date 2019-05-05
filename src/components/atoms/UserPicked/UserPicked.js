@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
 import { Image, Transformation } from 'cloudinary-react';
 
-import { MembersContext } from '../../../providers/MembersProvider';
+import { UsersContext } from '../../../providers/UsersProvider';
 
-import './MemberPicked.scss';
+import './UserPicked.scss';
 
-const MemberPicked = ({ memberId }) => {
-  const members = useContext(MembersContext);
+const UserPicked = ({ userId }) => {
+  const users = useContext(UsersContext);
 
-  const memberPicked = members.find(member => memberId === member.id);
+  const userWhoPickedBook = users.find(user => userId === user.id);
 
-  const { userImg, nameFirst } = memberPicked;
+  const { userImg, nameFirst } = userWhoPickedBook;
 
   const imgFilename = userImg || 'defaultuser_tqu61h';
 
@@ -31,4 +31,4 @@ const MemberPicked = ({ memberId }) => {
   );
 };
 
-export default MemberPicked;
+export default UserPicked;

@@ -2,8 +2,8 @@ export const AUTHOR_ASCENDING = 'AUTHOR_ASCENDING';
 export const AUTHOR_DESCENDING = 'AUTHOR_DESCENDING';
 export const DATE_ASCENDING = 'DATE_ASCENDING';
 export const DATE_DESCENDING = 'DATE_DESCENDING';
-export const MEMBER_ASCENDING = 'MEMBER_ASCENDING';
-export const MEMBER_DESCENDING = 'MEMBER_DESCENDING';
+export const USER_ASCENDING = 'USER_ASCENDING';
+export const USER_DESCENDING = 'USER_DESCENDING';
 export const RATING_ASCENDING = 'RATING_ASCENDING';
 export const RATING_DESCENDING = 'RATING_DESCENDING';
 export const TITLE_ASCENDING = 'TITLE_ASCENDING';
@@ -43,14 +43,14 @@ export const sortingOptions = [
     direction: 'asc',
     name: 'Picked By: A-Z',
     type: 'userPicked',
-    value: MEMBER_ASCENDING,
+    value: USER_ASCENDING,
   },
   {
     selected: '',
     direction: 'desc',
     name: 'Picked By: Z-A',
     type: 'userPicked',
-    value: MEMBER_DESCENDING,
+    value: USER_DESCENDING,
   },
   {
     selected: '',

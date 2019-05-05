@@ -4,13 +4,13 @@
 
 // const data = WeDeploy.data(process.env.REACT_APP_DATABASE);
 
-// export const addRating = (bookId, memberId, ratingValue) => dispatch => {
+// export const addRating = (bookId, userId, ratingValue) => dispatch => {
 //   dispatch(addRatingBegin());
 
 //   data
 //     .create('ratings', {
 //       bookId: bookId,
-//       memberId: memberId,
+//       userId: userId,
 //       ratingValue: ratingValue,
 //     })
 //     .then(rating => {

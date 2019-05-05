@@ -64,7 +64,7 @@ class AddBookModal extends Component {
             {/* <AddBookForm
               booksState={this.props.booksState}
               handleModalClose={() => this.handleModalClose()}
-              members={this.props.membersState.members}
+              users={this.props.usersState.users}
               submitForm={this.handleSubmit}
             /> */}
           </div>

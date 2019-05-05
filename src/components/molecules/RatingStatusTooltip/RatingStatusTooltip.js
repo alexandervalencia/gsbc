@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Tooltip } from 'reactstrap';
 import { UserContext } from '../../../providers/UserProvider';
 
-export const RatingStatusTooltip = ({ bookId, isOpen, memberHasRated, rating, toggleTooltip }) => {
+export const RatingStatusTooltip = ({ bookId, isOpen, userHasRated, rating, toggleTooltip }) => {
   const user = useContext(UserContext);
 
   let ratingStatus = '';
@@ -11,7 +11,7 @@ export const RatingStatusTooltip = ({ bookId, isOpen, memberHasRated, rating, to
     ratingStatus = 'Sign in to rate this book!';
   } else if (rating <= 0) {
     ratingStatus = 'No rating yet, be the first!';
-  } else if (!memberHasRated) {
+  } else if (!userHasRated) {
     ratingStatus = 'You have not rated this book yet';
   }
 

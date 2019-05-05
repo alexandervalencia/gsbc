@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
 
 import { BooksContext } from '../../../providers/BooksProvider';
-import { MembersContext } from '../../../providers/MembersProvider';
+import { UsersContext } from '../../../providers/UsersProvider';
 import { Book, Spinner } from 'components';
 
 import './Bookcase.scss';
 
 const Bookcase = () => {
   const { books } = useContext(BooksContext);
-  const members = useContext(MembersContext);
+  const users = useContext(UsersContext);
 
-  if (books.length > 0 && members.length > 0) {
+  if (books.length > 0 && users.length > 0) {
     return (
       <div className="Bookcase">
         {books.map(book => (

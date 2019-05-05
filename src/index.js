@@ -10,15 +10,15 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import UserProvider from './providers/UserProvider';
 import BooksProvider from './providers/BooksProvider';
-import MembersProvider from './providers/MembersProvider';
+import UsersProvider from './providers/UsersProvider';
 
 const appRoot = document.getElementById('root');
 render(
   <UserProvider>
     <BooksProvider>
-      <MembersProvider>
+      <UsersProvider>
         <App />
-      </MembersProvider>
+      </UsersProvider>
     </BooksProvider>
   </UserProvider>,
   appRoot

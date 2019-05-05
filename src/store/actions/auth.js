@@ -1,5 +1,5 @@
 // import * as actionTypes from './actionTypes';
-// import { addMember, setCurrentMember } from './members';
+// import { addUser, setCurrentUser } from './users';
 
 // export const addUser = values => {
 //   return dispatch => {
@@ -15,7 +15,7 @@
 //       .createUser(newUser)
 //       .then(() => {
 //         dispatch(addUserSuccess());
-//         dispatch(addMember(values));
+//         dispatch(addUser(values));
 //         dispatch(submitSignIn(values.email, values.password));
 //       })
 //       .catch(error => dispatch(addUserFailure(error)));
@@ -77,7 +77,7 @@
 
 //     if (currentUser) {
 //       dispatch(setCurrentUserSuccess(currentUser));
-//       dispatch(setCurrentMember(currentUser));
+//       dispatch(setCurrentUser(currentUser));
 //     } else {
 //       dispatch(setCurrentUserFailure());
 //     }

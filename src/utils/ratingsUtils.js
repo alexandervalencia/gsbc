@@ -1,9 +1,9 @@
-export const checkForMemberRating = (memberId, ratings) => {
-  return ratings.find(rating => rating.memberId === memberId) !== undefined ? true : false;
+export const checkForUserRating = (userId, ratings) => {
+  return ratings.find(rating => rating.userId === userId) !== undefined ? true : false;
 };
 
-export const getMemberRating = (memberId, ratings) => {
-  const memberRating = ratings.find(rating => rating.memberId === memberId);
+export const getUserRating = (userId, ratings) => {
+  const userRating = ratings.find(rating => rating.userId === userId);
 
-  return memberRating ? memberRating.rating : null;
+  return userRating ? userRating.rating : null;
 };

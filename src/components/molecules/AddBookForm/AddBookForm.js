@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-import { MembersContext } from '../../../providers/MembersProvider';
+import { UsersContext } from '../../../providers/UsersProvider';
 import * as options from '../../../utils/formOptions';
 import * as formValidation from '../../../utils/formValidation';
 
 import './AddBookForm.scss';
 
 const AddBookForm = ({ booksState, handleModalClose, submitForm }) => {
-  const members = useContext(MembersContext);
+  const users = useContext(UsersContext);
   return (
     <Formik
       initialValues={{
@@ -66,7 +66,7 @@ const AddBookForm = ({ booksState, handleModalClose, submitForm }) => {
           <div className="form-group">
             <label htmlFor="userPicked">Picked By*</label>
             <Field component="select" className="form-control" name="userPicked" validate={formValidation.required}>
-              {options.members(members)}
+              {options.users(users)}
             </Field>
             <ErrorMessage className="error" name="userPicked" component="div" />
           </div>

@@ -5,12 +5,12 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as authActions from '../../../store/actions/auth';
 import * as formValidation from '../../../utils/formValidation';
 
-import './AddMemberForm.scss';
+import './AddUserForm.scss';
 
 const MED_PASSWORD = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})/;
 const STRONG_PASSWORD = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
 
-class AddMemberForm extends Component {
+class AddUserForm extends Component {
   state = {
     passwordBorder: 'border',
     passwordInputType: 'password',
@@ -69,19 +69,11 @@ class AddMemberForm extends Component {
     if (this.state.passwordStrength === 0) {
       passwordStrengthIndicator = null;
     } else if (this.state.passwordStrength === 1) {
-      passwordStrengthIndicator = (
-        <small className="form-text text-danger">Password Strength: Poor</small>
-      );
+      passwordStrengthIndicator = <small className="form-text text-danger">Password Strength: Poor</small>;
     } else if (this.state.passwordStrength === 2) {
-      passwordStrengthIndicator = (
-        <small className="form-text text-warning">Password Stength: Good</small>
-      );
+      passwordStrengthIndicator = <small className="form-text text-warning">Password Stength: Good</small>;
     } else if (this.state.passwordStrength === 3) {
-      passwordStrengthIndicator = (
-        <small className="form-text text-success">
-          Password Strength: Great
-        </small>
-      );
+      passwordStrengthIndicator = <small className="form-text text-success">Password Strength: Great</small>;
     }
 
     return (
@@ -93,36 +85,23 @@ class AddMemberForm extends Component {
           nameLast: '',
         }}
         onSubmit={(values, actions) => {
-          this.props.onAddMemberSubmission(values);
+          this.props.onAddUserSubmission(values);
         }}
         render={({ errors, status, touched, isSubmitting }) => (
-          <Form className="AddMemberForm">
+          <Form className="AddUserForm">
             <div className="form-group">
               <em>All fields are required</em>
             </div>
             <div className="form-group">
               <label htmlFor="email">Email Address</label>
-              <Field
-                className="form-control"
-                name="email"
-                type="text"
-                validate={formValidation.email}
-              />
-              <ErrorMessage
-                className="error form-text"
-                name="email"
-                component="small"
-              />
+              <Field className="form-control" name="email" type="text" validate={formValidation.email} />
+              <ErrorMessage className="error form-text" name="email" component="small" />
             </div>
 
             <div className="form-group">
               <div className="password-group">
                 <label htmlFor="password">Password</label>
-                <button
-                  className="btn btn-link"
-                  onClick={() => this.handlePasswordToggle()}
-                  type="button"
-                >
+                <button className="btn btn-link" onClick={() => this.handlePasswordToggle()} type="button">
                   {`${this.state.passwordShowHide} Password`}
                 </button>
               </div>
@@ -143,11 +122,7 @@ class AddMemberForm extends Component {
                       }
                       type={this.state.passwordInputType}
                     />
-                    <ErrorMessage
-                      className="error form-text"
-                      name="password"
-                      component="small"
-                    />
+                    <ErrorMessage className="error form-text" name="password" component="small" />
                     {passwordStrengthIndicator}
                   </>
                 )}
@@ -157,40 +132,18 @@ class AddMemberForm extends Component {
 
             <div className="form-group">
               <label htmlFor="nameFirst">First Name</label>
-              <Field
-                className="form-control"
-                name="nameFirst"
-                type="text"
-                validate={formValidation.required}
-              />
-              <ErrorMessage
-                className="error form-text"
-                name="nameFirst"
-                component="small"
-              />
+              <Field className="form-control" name="nameFirst" type="text" validate={formValidation.required} />
+              <ErrorMessage className="error form-text" name="nameFirst" component="small" />
             </div>
 
             <div className="form-group">
               <label htmlFor="nameLast">Last Name</label>
-              <Field
-                className="form-control"
-                name="nameLast"
-                type="text"
-                validate={formValidation.required}
-              />
-              <ErrorMessage
-                className="error form-text"
-                name="nameLast"
-                component="small"
-              />
+              <Field className="form-control" name="nameLast" type="text" validate={formValidation.required} />
+              <ErrorMessage className="error form-text" name="nameLast" component="small" />
             </div>
 
             <div className="form-group last">
-              <button
-                className="modal-btn modal-btn-primary"
-                disabled={isSubmitting}
-                type="submit"
-              >
+              <button className="modal-btn modal-btn-primary" disabled={isSubmitting} type="submit">
                 Register
               </button>
 
@@ -211,17 +164,17 @@ class AddMemberForm extends Component {
 const mapStateToProps = state => {
   return {
     booksState: state.books,
-    membersState: state.members,
+    usersState: state.users,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddMemberSubmission: values => dispatch(authActions.addUser(values)),
+    onAddUserSubmission: values => dispatch(authActions.addUser(values)),
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AddMemberForm);
+)(AddUserForm);
