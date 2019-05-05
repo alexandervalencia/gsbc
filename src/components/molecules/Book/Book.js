@@ -1,9 +1,11 @@
 import React from 'react';
-import { AmazonIcon, BookCover, BookInfo, UserPicked, Rating } from 'components';
+
+import { AmazonIcon, BookCover, BookInfo, MemberPicked } from 'components';
+import RatingsContainer from '../../../containers/RatingsContainer';
 
 import './Book.scss';
 
-const Book = ({ bookData, userPicked = null }) => {
+const Book = ({ bookData }) => {
   return (
     <div className="Book">
       <AmazonIcon amazonUrl={bookData.amazonUrl} />
@@ -17,9 +19,9 @@ const Book = ({ bookData, userPicked = null }) => {
         datePicked={bookData.datePicked}
       />
 
-      {/* <Rating book={bookData} bookId={bookData.id} /> */}
+      <RatingsContainer bookId={bookData.id} rating={bookData.ratingValue} />
 
-      <UserPicked userImg={userPicked.userImg} userNameFirst={userPicked.nameFirst} />
+      <MemberPicked memberId={bookData.userPicked} />
     </div>
   );
 };

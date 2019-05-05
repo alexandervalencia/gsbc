@@ -1,3 +1,16 @@
+export function authentication(error) {
+  let errorMessage = { email: '', password: '' };
+
+  switch (error) {
+    case `auth/user-not-found`:
+      return (errorMessage.email = `Incorrect email address or unregistered user.`);
+    case `auth/incorrect-password`:
+      return (errorMessage.password = `Incorrect password, please try again`);
+    default:
+      return;
+  }
+}
+
 export function email(value) {
   let error;
 
@@ -32,8 +45,7 @@ export function password(value) {
   if (!value) {
     error = '*Required';
   } else if (/[^a-zA-Z0-9!@#$%^&]/.test(value)) {
-    error =
-      'Passwords may only contain alphanumeric or any of the following special characters: !@#$%^&';
+    error = 'Passwords may only contain alphanumeric or any of the following special characters: !@#$%^&';
   } else if (passwordLength < minLength || passwordLength > maxLength) {
     error = 'Passwords must be between 4 and 32 characters in length. ';
   }

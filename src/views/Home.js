@@ -11,10 +11,11 @@ const Home = () => {
   return (
     <div className="Home">
       <div className="control-box">
-        <div className="Meeting">Next Meeting: 5/9 @ 1pm</div>
         <BookSorter />
-        <Navbar currentUser={user} />
+        <Navbar cuser={user} />
       </div>
+
+      {user && <div className="Meeting">Next Meeting: 5/9 @ 1pm</div>}
 
       <Bookcase />
     </div>

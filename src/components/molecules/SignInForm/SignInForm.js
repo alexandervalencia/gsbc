@@ -1,10 +1,11 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Button } from 'reactstrap';
+import { auth } from '../../../firebase';
 
 import * as formValidation from '../../../utils/formValidation';
 
-const SignInForm = ({ submitForm, handleForgotPassword, handleModalClose }) => {
+const SignInForm = ({ handleForgotPassword, handleModalClose }) => {
   return (
     <Formik
       initialValues={{
@@ -13,8 +14,24 @@ const SignInForm = ({ submitForm, handleForgotPassword, handleModalClose }) => {
       }}
       onSubmit={(values, actions) => {
         actions.setStatus(undefined);
+        actions.setSubmitting(true);
 
-        submitForm(values.email, values.password, actions.setStatus, actions.setSubmitting);
+        auth
+          .signInWithEmailAndPassword(values.email, values.password)
+          .then(() => {
+            actions.resetForm();
+            actions.setSubmitting(false);
+            handleModalClose();
+          })
+          .catch(error => {
+            if (error.code === `auth/user-not-found`) {
+              actions.setStatus({ email: `Incorrect email address or unregistered user.` });
+            } else if (error.code === `auth/wrong-password`) {
+              actions.setStatus({ password: `Incorrect password, please try again` });
+            }
+
+            actions.setSubmitting(false);
+          });
       }}
       render={({ errors, status, touched, isSubmitting }) => (
         <Form>
@@ -29,6 +46,7 @@ const SignInForm = ({ submitForm, handleForgotPassword, handleModalClose }) => {
             />
             <ErrorMessage className="form-text" name="email" component="div" />
           </div>
+          {status && status.email && <div className="mb-3 text-danger">{status.email}</div>}
           <div className="form-group">
             <label htmlFor="password">Password</label>
             <Field

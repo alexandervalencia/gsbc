@@ -12,9 +12,9 @@ const Bookcase = () => {
 
   if (books.length > 0 && members.length > 0) {
     return (
-      <div className="Shelf">
+      <div className="Bookcase">
         {books.map(book => (
-          <Book bookData={book} key={book.id} userPicked={members.find(member => book.userPicked === member.id)} />
+          <Book bookData={book} key={book.id} />
         ))}
       </div>
     );

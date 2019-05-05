@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
+import { MembersContext } from '../../../providers/MembersProvider';
 import * as options from '../../../utils/formOptions';
 import * as formValidation from '../../../utils/formValidation';
 
 import './AddBookForm.scss';
 
-const AddBookForm = ({ booksState, handleModalClose, members, submitForm }) => {
+const AddBookForm = ({ booksState, handleModalClose, submitForm }) => {
+  const members = useContext(MembersContext);
   return (
     <Formik
       initialValues={{
