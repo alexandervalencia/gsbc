@@ -5,25 +5,26 @@ admin.initializeApp(functions.config().firebase);
 
 const firestore = admin.firestore();
 
-exports.mv = functions.https.onRequest(request => {
-  const mv = async (collRefSource, collRefDest) => {
-    const querySnapshot = await collRefSource.get();
-    querySnapshot.forEach(async docSnapshot => {
-      (async () => {
-        await collRefDest.doc(docSnapshot.id).set(docSnapshot.data());
-        docSnapshot.ref.delete();
-      })();
-      const collRefs = await docSnapshot.ref.getCollections();
-      for (const collRef of collRefs) {
-        mv(collRef, collRefDest.doc(docSnapshot.id).collection(collRef.id));
-      }
-    });
-  };
+exports.updateBookRating = functions.firestore
+  .document('books/{bookId}/ratings/{ratingId}')
+  .onWrite(async (change, context) => {
+    const { bookId } = context.params;
+    const bookRef = firestore.doc(`books/${bookId}`);
+    const ratingsRef = bookRef.collection('ratings');
+    const ratings = await ratingsRef.get().then(v => v);
 
-  const collRefSource = firestore.collection(request.query.collPathSource);
-  const collRefDest = firestore.collection(request.query.collPathDest);
+    let ratingValue;
 
-  mv(collRefSource, collRefDest);
-});
+    if (ratings.docs.length > 0) {
+      const bookRatings = [];
+      ratings.docs.forEach(doc => {
+        bookRatings.push(doc.get('rating'));
+      });
 
-// Example: https://us-central1-good-stuff-book-club.cloudfunctions.net/mv?collPathSource=collection1%2Fdocument1%2Fcollection2&collPathDest=collection3
+      ratingValue = bookRatings.reduce((a, b) => a + b, 0) / bookRatings.length;
+    } else {
+      ratingValue = -1;
+    }
+
+    return bookRef.update({ ratingValue });
+  });

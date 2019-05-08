@@ -7,3 +7,9 @@ export const getUserRating = (userId, ratings) => {
 
   return userRating ? userRating.rating : null;
 };
+
+export const getUserRatingId = (userId, ratings) => {
+  const userRating = ratings.find(rating => rating.userId === userId);
+
+  return userRating ? userRating.id : null;
+};

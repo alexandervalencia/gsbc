@@ -5,7 +5,7 @@ import Ratings from '../components/molecules/Ratings/Ratings';
 import RatingStatusTooltip from '../components/molecules/RatingStatusTooltip/RatingStatusTooltip';
 import withUser from '../hoc/withUser';
 
-import { checkForUserRating, getUserRating } from '../utils/ratingsUtils';
+import { checkForUserRating, getUserRating, getUserRatingId } from '../utils/ratingsUtils';
 import { collectIdsAndDocs } from '../utils/firebaseUtil';
 import { firestore } from '../firebase';
 
@@ -13,12 +13,15 @@ import starYellow from '../assets/star-yellow.png';
 import './RatingsContainer.scss';
 
 class RatingsContainer extends Component {
+  displayName = `RatingsContainer`;
+
   state = {
     ratings: [],
     allRatingsTooltipOpen: false,
     ratingStatusTooltipOpen: false,
-    userHasRated: false,
-    userRating: 0,
+    userHasRated: null,
+    userRating: null,
+    userRatingId: null,
   };
 
   get bookId() {
@@ -35,7 +38,7 @@ class RatingsContainer extends Component {
 
   unsubscribeFromRatings = null;
 
-  componentDidMount() {
+  async componentDidMount() {
     this.unsubscribeFromRatings = firestore
       .collection('books')
       .doc(this.props.bookId)
@@ -44,23 +47,30 @@ class RatingsContainer extends Component {
         const ratings = snapshot.docs.map(collectIdsAndDocs);
 
         this.setState({ ratings });
-
-        ratings.forEach(rating => {
-          if (this.props.user && this.props.user.id === rating.userId) {
-            this.setState({ userHasRated: true });
-          }
-        });
-
-        if (this.props.user) {
-          const userHasRated = checkForUserRating(this.props.user.id, ratings);
-          const userRating = getUserRating(this.props.user.id, ratings);
-
-          this.setState({
-            userHasRated,
-            userRating,
-          });
-        }
       });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { user } = this.props;
+    const { ratings, userHasRated } = this.state;
+
+    if (user !== null && ratings.length > 0 && userHasRated === null) {
+      const { uid } = this.props.user;
+
+      const userHasRated = checkForUserRating(uid, ratings);
+      const userRating = getUserRating(uid, ratings);
+
+      if (userHasRated) {
+        const userRatingId = getUserRatingId(uid, ratings);
+
+        this.setState({ userRatingId });
+      }
+
+      this.setState({
+        userHasRated,
+        userRating,
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -68,18 +78,17 @@ class RatingsContainer extends Component {
   }
 
   handleRate = rating => {
-    const { user } = this.props;
-    const userId = 238206042415950498;
+    const userId = this.props.user.uid;
 
     if (!this.state.userHasRated) {
-      console.log('add a new rating: ', rating);
-      // this.ratingsRef.add({
-      //   rating,
-      //   userId,
-      // });
+      this.ratingsRef.add({ rating, userId });
+
+      this.setState({ userHasRated: true });
     } else {
-      console.log(`update current rating from ${this.bookRef.collection('ratings')[0].rating} to ${rating}`);
+      this.ratingsRef.doc(this.state.userRatingId).update({ rating });
     }
+
+    this.setState({ userRating: rating });
   };
 
   toggleAllRatingsTooltip = () => {
