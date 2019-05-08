@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../providers/UserProvider';
+import SiteSettingsProvider from '../providers/SiteSettingsProvider';
 
-import { Bookcase, BookSorter, Navbar } from 'components';
+import { Bookcase, BookSorter, MeetingInfo, Navbar } from 'components';
 
 import './Home.scss';
 
@@ -15,7 +16,11 @@ const Home = () => {
         <Navbar user={user} />
       </div>
 
-      {user && <div className="Meeting">Next Meeting: 5/9 @ 1pm</div>}
+      {user && (
+        <SiteSettingsProvider>
+          <MeetingInfo />
+        </SiteSettingsProvider>
+      )}
 
       <Bookcase />
     </div>

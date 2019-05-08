@@ -22,6 +22,7 @@ class BooksProvider extends Component {
     this.unsubscribeFromFirestore = firestore
       .collection('books')
       .orderBy(sortConfig.type, sortConfig.direction)
+      .limit(2)
       .onSnapshot(snapshot => {
         let books = snapshot.docs.map(collectIdsAndDocs);
 
