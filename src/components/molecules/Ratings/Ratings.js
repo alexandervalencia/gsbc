@@ -22,7 +22,7 @@ const Ratings = ({ bookId, handleRate, rating, user }) => {
         placeholderSymbol={<img alt="star" src={starYellow} className="star" />}
       />
 
-      {rating > 0 && (
+      {rating > -1 && (
         <div className="book-rating">
           <span className="book-rating-total">{Math.round(rating * 10) / 10}</span>
           <span className="book-rating-max">/5</span>

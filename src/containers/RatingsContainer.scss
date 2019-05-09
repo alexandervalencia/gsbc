@@ -59,4 +59,13 @@
     margin: 2px 0 4px 4px;
     width: 14px;
   }
+
+  &.star-zero {
+    align-self: flex-end;
+    cursor: pointer;
+
+    @media (min-width: 768px) {
+      margin-bottom: 12px;
+    }
+  }
 }

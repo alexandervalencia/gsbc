@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import AllRatingsTooltip from '../components/molecules/AllRatingsTooltip/AllRatingsTooltip';
+import RateZeroTooltip from '../components/molecules/RateZeroTooltip/RateZeroTooltip';
 import Ratings from '../components/molecules/Ratings/Ratings';
 import RatingStatusTooltip from '../components/molecules/RatingStatusTooltip/RatingStatusTooltip';
 import withUser from '../hoc/withUser';
@@ -9,6 +10,7 @@ import { checkForUserRating, getUserRating, getUserRatingId } from '../utils/rat
 import { collectIdsAndDocs } from '../utils/firebaseUtil';
 import { firestore } from '../firebase';
 
+import starRed from '../assets/star-red.png';
 import starYellow from '../assets/star-yellow.png';
 import './RatingsContainer.scss';
 
@@ -17,8 +19,11 @@ class RatingsContainer extends Component {
 
   state = {
     ratings: [],
-    allRatingsTooltipOpen: false,
-    ratingStatusTooltipOpen: false,
+    tooltips: {
+      allRatingsOpen: false,
+      rateZeroOpen: false,
+      ratingStatusOpen: false,
+    },
     userHasRated: null,
     userRating: null,
     userRatingId: null,
@@ -50,7 +55,7 @@ class RatingsContainer extends Component {
       });
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate() {
     const { user } = this.props;
     const { ratings, userHasRated } = this.state;
 
@@ -91,48 +96,62 @@ class RatingsContainer extends Component {
     this.setState({ userRating: rating });
   };
 
-  toggleAllRatingsTooltip = () => {
+  toggleTooltip = tooltipName => {
     this.setState({
-      allRatingsTooltipOpen: !this.state.allRatingsTooltipOpen,
-    });
-  };
-
-  toggleRatingStatusTooltip = () => {
-    this.setState({
-      ratingStatusTooltipOpen: !this.state.ratingStatusTooltipOpen,
+      tooltips: {
+        ...this.state.tooltips,
+        [tooltipName]: !this.state.tooltips[tooltipName],
+      },
     });
   };
 
   render() {
     const { bookId, rating, user } = this.props;
-    const { allRatingsTooltipOpen, userHasRated, userRating, ratings, ratingStatusTooltipOpen } = this.state;
+    const { ratings, tooltips, userHasRated, userRating } = this.state;
+    const { allRatingsOpen, rateZeroOpen, ratingStatusOpen } = tooltips;
 
     return (
       <div className="Rating">
         <div className="rating-wrapper">
+          {userRating === Number(0.5) && (
+            <>
+              <img
+                alt="star"
+                className="star star-small star-zero"
+                id={`zero_${bookId}`}
+                onClick={() => this.handleRate(0)}
+                src={starRed}
+              />
+              <RateZeroTooltip
+                bookId={bookId}
+                isOpen={rateZeroOpen}
+                toggleTooltip={() => this.toggleTooltip('rateZeroOpen')}
+              />
+            </>
+          )}
           <Ratings bookId={bookId} handleRate={this.handleRate} rating={rating} user={user} />
         </div>
 
-        {this.state.userHasRated && (
+        {userHasRated && (
           <div className="rate-info">
             Your rating: {userRating}
             <img alt="star" className="star star-small" src={starYellow} />
             <AllRatingsTooltip
               bookId={bookId}
-              isOpen={allRatingsTooltipOpen}
+              isOpen={allRatingsOpen}
               ratings={ratings}
-              toggleTooltip={this.toggleAllRatingsTooltip}
+              toggleTooltip={() => this.toggleTooltip('allRatingsOpen')}
             />
           </div>
         )}
 
-        {!this.state.userHasRated && (
+        {!userHasRated && (
           <RatingStatusTooltip
             bookId={bookId}
-            isOpen={ratingStatusTooltipOpen}
+            isOpen={ratingStatusOpen}
             userHasRated={userHasRated}
             rating={rating}
-            toggleTooltip={this.toggleRatingStatusTooltip}
+            toggleTooltip={() => this.toggleTooltip('ratingStatusOpen')}
           />
         )}
       </div>
