@@ -6,6 +6,10 @@
   justify-content: center;
   justify-self: start;
 
+  @media (min-width: 768px) {
+    justify-self: center;
+  }
+
   .amazon-link {
     align-items: center;
     display: flex;

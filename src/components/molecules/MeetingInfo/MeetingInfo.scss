@@ -1,4 +1,9 @@
 .MeetingInfo {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+  }
 }
