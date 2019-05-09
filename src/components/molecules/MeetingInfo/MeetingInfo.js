@@ -10,9 +10,9 @@ const MeetingInfo = () => {
   let meetingTime;
 
   if (siteSettings.length > 0) {
-    let timestamp = siteSettings[0]['datetime-meeting'];
+    const timestamp = siteSettings[0].datetimeMeeting.toMillis();
 
-    meetingTime = format(timestamp.toMillis(), 'M/D @ ha');
+    meetingTime = format(timestamp, 'M/D @ ha');
   }
 
   return meetingTime ? <div className="MeetingInfo">Next Meeting: {meetingTime}</div> : null;
