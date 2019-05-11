@@ -4,13 +4,18 @@ import { Image, Transformation } from 'cloudinary-react';
 
 import './BookCover.scss';
 
-const Cover = ({ coverImg, title }) => {
-  coverImg = coverImg || 'cover_na_fmljuu.jpg';
+const Cover = ({ coverImg, size = 'small', title }) => {
+  let height = 250;
+  const publicId = coverImg || 'cover_na_fmljuu.jpg';
+
+  if (size === 'large') {
+    height = 500;
+  }
 
   return (
     <div className="BookCover">
-      <Image alt={title} className="cover-img" cloudName="gsbc" publicId={coverImg}>
-        <Transformation height="250" quality="auto:eco" crop="scale" />
+      <Image alt={title} className={`cover-img ${size}`} cloudName="gsbc" publicId={publicId}>
+        <Transformation height={height} quality="auto:eco" crop="scale" />
       </Image>
     </div>
   );

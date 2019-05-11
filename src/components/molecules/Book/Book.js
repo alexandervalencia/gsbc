@@ -1,27 +1,31 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { AmazonIcon, BookCover, BookInfo, UserPicked } from 'components';
 import RatingsContainer from '../../../containers/RatingsContainer';
 
 import './Book.scss';
 
-const Book = ({ bookData }) => {
+const Book = ({ book }) => {
   return (
     <div className="Book">
-      <AmazonIcon amazonUrl={bookData.amazonUrl} />
+      <AmazonIcon amazonUrl={book.amazonUrl} />
 
-      <BookCover coverImg={bookData.coverImg} title={bookData.title} />
+      <Link to={`/books/${book.id}`}>
+        <BookCover bookId={book.id} coverImg={book.coverImg} title={book.title} />
+      </Link>
 
       <BookInfo
-        author={bookData.author}
-        title={bookData.title}
-        subtitle={bookData.subtitle}
-        datePicked={bookData.datePicked}
+        author={book.author}
+        bookId={book.id}
+        title={book.title}
+        subtitle={book.subtitle}
+        datePicked={book.datePicked}
       />
 
-      <RatingsContainer bookId={bookData.id} rating={bookData.ratingValue} />
+      <RatingsContainer bookId={book.id} rating={book.ratingValue} />
 
-      <UserPicked userId={bookData.userPicked} />
+      <UserPicked userId={book.userPicked} />
     </div>
   );
 };

@@ -12,15 +12,20 @@ import UserProvider from './providers/UserProvider';
 import BooksProvider from './providers/BooksProvider';
 import UsersProvider from './providers/UsersProvider';
 
+import { BrowserRouter as Router } from 'react-router-dom';
+
 const appRoot = document.getElementById('root');
+
 render(
-  <UserProvider>
-    <BooksProvider>
-      <UsersProvider>
-        <App />
-      </UsersProvider>
-    </BooksProvider>
-  </UserProvider>,
+  <Router>
+    <UserProvider>
+      <BooksProvider>
+        <UsersProvider>
+          <App />
+        </UsersProvider>
+      </BooksProvider>
+    </UserProvider>
+  </Router>,
   appRoot
 );
 

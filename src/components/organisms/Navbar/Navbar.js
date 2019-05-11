@@ -4,7 +4,7 @@ import { AddBookModal, SignInModal } from 'components';
 
 import { signOut } from '../../../firebase';
 
-import './Navbar.css';
+import './Navbar.scss';
 
 const NavBar = ({ user = null }) => {
   if (user) {

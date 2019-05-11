@@ -1,14 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
+import { Link } from 'react-router-dom';
+
 import './BookInfo.scss';
 
-const BookInfo = ({ author, datePicked, subtitle, title }) => {
+const BookInfo = ({ author, bookId, datePicked, subtitle, title }) => {
   const date = format(datePicked, 'MMMM YYYY');
+
+  const bookTitle = bookId ? (
+    <Link to={`/books/${bookId}`}>
+      <h1 className="title">{title}</h1>
+    </Link>
+  ) : (
+    <h1 className="title">{title}</h1>
+  );
 
   return (
     <div className="BookInfo">
-      <h1 className="title">{title}</h1>
+      {bookTitle}
       {subtitle ? <h2 className="subtitle">{subtitle}</h2> : null}
       <h3 className="author">
         by <span className="author-name">{author}</span>

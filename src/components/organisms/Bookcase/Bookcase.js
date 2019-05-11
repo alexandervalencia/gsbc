@@ -14,7 +14,7 @@ const Bookcase = () => {
     return (
       <div className="Bookcase">
         {books.map(book => (
-          <Book bookData={book} key={book.id} />
+          <Book book={book} key={book.id} />
         ))}
       </div>
     );
