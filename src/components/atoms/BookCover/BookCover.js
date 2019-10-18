@@ -1,29 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, Transformation } from 'cloudinary-react';
+import { Link } from 'react-router-dom';
 
 import './BookCover.scss';
 
-const Cover = ({ coverImg, size = 'small', title }) => {
-  let height = 250;
+const BookCover = ({ bookId, coverImg, link = false, shadow = true, size = 'small', title }) => {
   const publicId = coverImg || 'cover_na_fmljuu.jpg';
+
+  let height = 250;
 
   if (size === 'large') {
     height = 500;
   }
 
-  return (
-    <div className="BookCover">
-      <Image alt={title} className={`cover-img ${size}`} cloudName="gsbc" publicId={publicId}>
-        <Transformation height={height} quality="auto:eco" crop="scale" />
-      </Image>
-    </div>
+  const bookCover = (
+    <Image alt={title} className={`cover-img ${size} ${shadow ? 'shadow' : null}`} cloudName="gsbc" publicId={publicId}>
+      <Transformation height={height} quality="auto:eco" crop="scale" />
+    </Image>
   );
+
+  return <div className="BookCover">{link ? <Link to={`/books/${bookId}`}>{bookCover}</Link> : bookCover}</div>;
 };
 
-Cover.propTypes = {
+BookCover.propTypes = {
   coverImg: PropTypes.string,
   title: PropTypes.string,
 };
 
-export default Cover;
+export default BookCover;

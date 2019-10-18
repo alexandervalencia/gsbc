@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import { AmazonIcon, BookCover, BookInfo, UserPicked } from 'components';
 import RatingsContainer from '../../../containers/RatingsContainer';
@@ -11,9 +10,7 @@ const Book = ({ book }) => {
     <div className="Book">
       <AmazonIcon amazonUrl={book.amazonUrl} />
 
-      <Link to={`/books/${book.id}`}>
-        <BookCover bookId={book.id} coverImg={book.coverImg} title={book.title} />
-      </Link>
+      <BookCover bookId={book.id} coverImg={book.coverImg} link title={book.title} />
 
       <BookInfo
         author={book.author}

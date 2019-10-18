@@ -8,8 +8,12 @@
 
   img {
     border: 2px solid #929292;
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22), 0 20px 90px 20px rgba(50, 50, 50, 0.8);
     margin: 0 auto;
+
+    &.shadow {
+      box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22),
+        0 20px 90px 20px rgba(50, 50, 50, 0.8);
+    }
 
     &.small {
       max-width: 155px;

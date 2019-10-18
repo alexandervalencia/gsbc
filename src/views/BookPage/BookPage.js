@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
-import { BookCover, BookInfo, Spinner } from 'components';
+import { BookCover, BookInfo, EditBookModal, Spinner } from 'components';
 import { BooksContext } from '../../providers/BooksProvider';
 
 import './BookPage.scss';
@@ -22,6 +22,8 @@ export const BookPage = ({ match }) => {
           </Col>
           <Col>
             <BookInfo author={book.author} title={book.title} subtitle={book.subtitle} datePicked={book.datePicked} />
+
+            <EditBookModal book={book} />
           </Col>
         </Row>
       </Container>

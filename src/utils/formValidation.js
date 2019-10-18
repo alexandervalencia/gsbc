@@ -23,6 +23,14 @@ export function email(value) {
   return error;
 }
 
+export function file(value) {
+  let error;
+
+  console.log(value);
+
+  return error;
+}
+
 const AMAZON_URL = /^https?:\/\/(www|smile)\.amazon\.com\/([A-Za-z0-9-_]+)\/(?:gp|dp|asin)\/(\w{6,12})/i;
 
 export function link(value) {
