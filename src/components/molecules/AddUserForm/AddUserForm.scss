@@ -1,0 +1,46 @@
+.AddUserForm {
+  // input {
+  //   min-width: 280px;
+  //   width: 100%;
+  // }
+
+  // label {
+  //   display: block;
+  //   font-weight: bold;
+  //   margin-bottom: 4px;
+  // }
+
+  // select:not(:first-of-type) {
+  //   margin-left: 8px;
+  // }
+
+  .error {
+    color: #aa1212;
+    margin-top: 4px;
+  }
+
+  // .form-group {
+  //   display: block;
+  //   margin: 0 8px 16px;
+  // }
+
+  .modal-btn {
+    margin: 8px 16px 8px 0;
+    padding: 8px 16px;
+  }
+
+  .modal-btn-primary {
+    background: #4712aa;
+    color: #fff;
+  }
+
+  .modal-btn-secondary {
+    background: #dadada;
+    color: #222;
+  }
+
+  .password-group {
+    display: flex;
+    justify-content: space-between;
+  }
+}

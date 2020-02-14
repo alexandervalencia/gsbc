@@ -1,73 +1,84 @@
-const sortingOptions = [
+export const AUTHOR_ASCENDING = 'AUTHOR_ASCENDING';
+export const AUTHOR_DESCENDING = 'AUTHOR_DESCENDING';
+export const DATE_ASCENDING = 'DATE_ASCENDING';
+export const DATE_DESCENDING = 'DATE_DESCENDING';
+export const USER_ASCENDING = 'USER_ASCENDING';
+export const USER_DESCENDING = 'USER_DESCENDING';
+export const RATING_ASCENDING = 'RATING_ASCENDING';
+export const RATING_DESCENDING = 'RATING_DESCENDING';
+export const TITLE_ASCENDING = 'TITLE_ASCENDING';
+export const TITLE_DESCENDING = 'TITLE_DESCENDING';
+
+export const sortingOptions = [
   {
     selected: '',
-    dir: 'asc',
+    direction: 'asc',
     name: 'Author: A-Z',
     type: 'author',
-    value: '0',
+    value: AUTHOR_ASCENDING,
   },
   {
     selected: '',
-    dir: 'desc',
+    direction: 'desc',
     name: 'Author: Z-A',
     type: 'author',
-    value: '1',
+    value: AUTHOR_DESCENDING,
   },
   {
     selected: '',
-    dir: 'asc',
+    direction: 'asc',
     name: 'Date Read: Oldest to Newest',
     type: 'datePicked',
-    value: '2',
+    value: DATE_ASCENDING,
   },
   {
     selected: 'selected',
-    dir: 'desc',
+    direction: 'desc',
     name: 'Date Read: Newest to Oldest',
     type: 'datePicked',
-    value: '3',
+    value: DATE_DESCENDING,
   },
   {
     selected: '',
-    dir: 'asc',
+    direction: 'asc',
     name: 'Picked By: A-Z',
     type: 'userPicked',
-    value: '4',
+    value: USER_ASCENDING,
   },
   {
     selected: '',
-    dir: 'desc',
+    direction: 'desc',
     name: 'Picked By: Z-A',
     type: 'userPicked',
-    value: '5',
+    value: USER_DESCENDING,
   },
   {
     selected: '',
-    dir: 'asc',
+    direction: 'asc',
     name: 'Rating: Low to High',
     type: 'ratingValue',
-    value: '6',
+    value: RATING_ASCENDING,
   },
   {
     selected: '',
-    dir: 'desc',
+    direction: 'desc',
     name: 'Rating: High to Low',
     type: 'ratingValue',
-    value: '7',
+    value: RATING_DESCENDING,
   },
   {
     selected: '',
-    dir: 'asc',
+    direction: 'asc',
     name: 'Title: A-Z',
     type: 'title',
-    value: '8',
+    value: TITLE_ASCENDING,
   },
   {
     selected: '',
-    dir: 'desc',
+    direction: 'desc',
     name: 'Title: Z-A',
     type: 'title',
-    value: '9',
+    value: TITLE_DESCENDING,
   },
 ];
 

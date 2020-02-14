@@ -1,33 +1,30 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { AmazonIcon, BookCover, BookInfo, UserPicked, Rating } from 'components';
+
+import { AmazonIcon, BookCover, BookInfo, UserPicked } from 'components';
+import RatingsContainer from '../../../containers/RatingsContainer';
 
 import './Book.scss';
 
-const Book = ({ bookData, userPicked }) => {
+const Book = ({ book }) => {
   return (
     <div className="Book">
-      <AmazonIcon amazonUrl={bookData.amazonUrl} />
+      <AmazonIcon amazonUrl={book.amazonUrl} />
 
-      <BookCover coverImg={bookData.coverImg} title={bookData.title} />
+      <BookCover bookId={book.id} coverImg={book.coverImg} link title={book.title} />
 
       <BookInfo
-        author={bookData.author}
-        title={bookData.title}
-        subtitle={bookData.subtitle}
-        datePicked={bookData.datePicked}
+        author={book.author}
+        bookId={book.id}
+        title={book.title}
+        subtitle={book.subtitle}
+        datePicked={book.datePicked}
       />
 
-      <Rating book={bookData} bookId={bookData.id} />
+      <RatingsContainer bookId={book.id} rating={book.ratingValue} />
 
-      <UserPicked userImg={userPicked.userImg} userNameFirst={userPicked.nameFirst} />
+      <UserPicked userId={book.userPicked} />
     </div>
   );
-};
-
-Book.propTypes = {
-  bookData: PropTypes.object,
-  userPicked: PropTypes.object,
 };
 
 export default Book;

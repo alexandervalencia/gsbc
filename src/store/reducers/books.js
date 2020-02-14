@@ -1,5 +1,4 @@
 import * as actionTypes from '../actions/actionTypes';
-// import { getBookRatingData } from '../../utils/ratingsUtils';
 import { updateObjectInArrayById } from '../../utils/updateObjectInArrayById';
 
 const initialState = {

@@ -1,42 +1,39 @@
-.title {
-  font-size: 1.5rem;
-  font-weight: 800;
-  grid-area: title;
-  margin-bottom: 0;
-  margin-right: 8px;
+.BookInfo {
+  grid-area: info;
 
-  @media (min-width: 768px) {
-    font-size: 2rem;
-    margin-right: 0;
+  .title {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0;
+    margin-right: 8px;
+
+    @media (min-width: 768px) {
+      font-size: 2rem;
+      margin-right: 0;
+    }
   }
-}
 
-.subtitle {
-  color: darken(#fff, 30%);
-  display: none;
-  font-size: 1.25rem;
-  font-weight: normal;
-  grid-area: subtitle;
+  .subtitle {
+    color: darken(#fff, 30%);
+    display: none;
+    font-size: 1.25rem;
+    font-weight: normal;
 
-  @media (min-width: 768px) {
-    display: block;
+    @media (min-width: 768px) {
+      display: block;
+    }
   }
-}
 
-.author {
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  grid-area: author;
+  .author {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+  }
 
-  // &-name {
-  //   color: lighten(#17a2b8, 10%);
-  // }
-}
-
-.date-read {
-  color: #929292;
-  font-family: 'Raleway', sans-serif;
-  font-size: 1rem;
-  grid-area: date;
-  line-height: 1.5rem;
+  .date-read {
+    color: #929292;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
 }

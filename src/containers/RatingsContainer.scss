@@ -1,0 +1,71 @@
+.Rating {
+  grid-area: rating;
+
+  @media (max-width: 767px) {
+    justify-self: center;
+  }
+
+  .btn-link {
+    color: #fff;
+
+    &:hover {
+      color: darken(#fff, 30);
+    }
+  }
+
+  .rating-wrapper {
+    align-items: center;
+    display: flex;
+  }
+
+  .book-rating {
+    align-items: baseline;
+    cursor: default;
+    display: flex;
+    font-weight: bold;
+    margin-left: 8px;
+    position: relative;
+    user-select: none;
+
+    &-max {
+      color: #929292;
+      font-size: 16px;
+    }
+
+    &-total {
+      color: #fff;
+      font-size: 30px;
+
+      @media (min-width: 768px) {
+        font-size: 36px;
+      }
+    }
+  }
+
+  .rate-info {
+    align-items: center;
+    display: flex;
+  }
+}
+
+.star {
+  width: 40px;
+
+  @media (min-width: 768px) {
+    width: 32px;
+  }
+
+  &.star-small {
+    margin: 2px 0 4px 4px;
+    width: 14px;
+  }
+
+  &.star-zero {
+    align-self: flex-end;
+    cursor: pointer;
+
+    @media (min-width: 768px) {
+      margin-bottom: 12px;
+    }
+  }
+}

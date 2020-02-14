@@ -1,66 +1,66 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-  currentMember: null,
-  members: [],
-  failedToGetMembers: false,
-  getMembersError: [],
-  gettingMembers: true,
-  settingCurrentMember: false,
+  currentUser: null,
+  users: [],
+  failedToGetUsers: false,
+  getUsersError: [],
+  gettingUsers: true,
+  settingCurrentUser: false,
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.GET_MEMBERS_BEGIN:
+    case actionTypes.GET_USERS_BEGIN:
       return {
         ...state,
-        gettingMembers: true,
+        gettingUsers: true,
       };
-    case actionTypes.GET_MEMBERS_SUCCESS:
+    case actionTypes.GET_USERS_SUCCESS:
       return {
         ...state,
-        members: action.payload,
-        failedToGetMembers: false,
-        gettingMembers: false,
+        users: action.payload,
+        failedToGetUsers: false,
+        gettingUsers: false,
       };
-    case actionTypes.GET_MEMBERS_FAILURE:
+    case actionTypes.GET_USERS_FAILURE:
       return {
         ...state,
-        failedToGetMembers: true,
-        getMembersError: action.payload.error,
-        gettingMembers: false,
+        failedToGetUsers: true,
+        getUsersError: action.payload.error,
+        gettingUsers: false,
       };
     case actionTypes.INIT_APP:
-      let currentMember = null;
+      let currentUser = null;
       if (action.payload.currentUser !== null) {
-        currentMember = action.payload.members.find(member => member.userId === action.payload.currentUser.id);
+        currentUser = action.payload.users.find(user => user.userId === action.payload.currentUser.id);
       }
       return {
         ...state,
-        currentMember,
-        members: action.payload.members,
+        currentUser,
+        users: action.payload.users,
       };
-    case actionTypes.SET_CURRENT_MEMBER_BEGIN:
+    case actionTypes.SET_CURRENT_USER_BEGIN:
       return {
         ...state,
-        settingCurrentMember: true,
+        settingCurrentUser: true,
       };
-    case actionTypes.SET_CURRENT_MEMBER_SUCCESS:
+    case actionTypes.SET_CURRENT_USER_SUCCESS:
       return {
         ...state,
-        currentMember: action.payload,
-        settingCurrentMember: false,
+        currentUser: action.payload,
+        settingCurrentUser: false,
       };
-    case actionTypes.SET_CURRENT_MEMBER_FAILURE:
+    case actionTypes.SET_CURRENT_USER_FAILURE:
       return {
         ...state,
-        currentMember: null,
-        settingCurrentMember: false,
+        currentUser: null,
+        settingCurrentUser: false,
       };
     case actionTypes.SIGN_OUT:
       return {
         ...state,
-        currentMember: null,
+        currentUser: null,
       };
     default:
       return state;

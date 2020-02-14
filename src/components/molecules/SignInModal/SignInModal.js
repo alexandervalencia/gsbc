@@ -1,117 +1,88 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { useState } from 'react';
 import ReactModal from 'react-modal';
 
-import * as authActions from '../../../store/actions/auth';
 import { ForgotMyPasswordForm, SignInForm, Icon } from 'components';
+// import { signInWithGoogle } from '../../../firebase';
 
 ReactModal.setAppElement('#root');
 
-class SignInModal extends Component {
-  state = {
-    form: 'sign-in',
-    showModal: false,
+const SignInModal = () => {
+  const [formType, setFormType] = useState('sign-in');
+  const [showModal, setShowModal] = useState(false);
+
+  const handleForgotPasswordCancel = () => {
+    setFormType('sign-in');
   };
 
-  handleForgotPasswordCancel() {
-    this.setState({ form: 'sign-in' });
-  }
+  const handleForgotPassword = () => {
+    setFormType('forgotPassword');
+  };
 
-  handleForgotPassword() {
-    this.setState({ form: 'forgotPassword' });
-  }
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
 
-  handleModalClose() {
-    this.setState({ showModal: false });
-  }
+  const handleModalOpen = () => {
+    setShowModal(true);
+  };
 
-  handleModalOpen() {
-    this.setState({ showModal: true });
-  }
-
-  render() {
-    let form =
-      this.state.form === 'sign-in' ? (
-        <SignInForm
-          handleForgotPassword={() => this.handleForgotPassword()}
-          handleModalClose={() => this.handleModalClose()}
-          submitForm={(email, password, setStatus, setSubmitting) =>
-            this.props.onSubmitSignIn(email, password, setStatus, setSubmitting)
-          }
-        />
-      ) : (
-        <ForgotMyPasswordForm
-          handleForgotPasswordCancel={() => this.handleForgotPasswordCancel()}
-          submitForm={email => this.props.onSubmitForgotMyPassword(email)}
-        />
-      );
-
-    return (
-      <>
-        <button className="btn btn-primary" onClick={() => this.handleModalOpen()}>
-          Sign In
-        </button>
-
-        <ReactModal
-          contentLabel="Sign In Modal"
-          isOpen={this.state.showModal}
-          style={{
-            /* stylelint-disable-next-line */
-            overlay: {
-              alignItems: 'center',
-              backgroundColor: 'rgba(0, 0, 0, 0.5)',
-              bottom: 0,
-              display: 'flex',
-              justifyContent: 'center',
-              left: 0,
-              position: 'fixed',
-              right: 0,
-              top: 0,
-            },
-            /* stylelint-disable-next-line */
-            content: {
-              bottom: null,
-              left: null,
-              maxWidth: '560px',
-              minWidth: '360px',
-              position: 'relative',
-              right: null,
-              top: null,
-            },
-          }}
-        >
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="signInModalLabel">
-                Sign-In to GSBC
-              </h5>
-
-              <button aria-label="Close" className="close" onClick={() => this.handleModalClose()}>
-                <Icon name="times" />
-              </button>
-            </div>
-
-            <div className="modal-body">{form}</div>
-          </div>
-        </ReactModal>
-      </>
+  let form =
+    formType === 'sign-in' ? (
+      <SignInForm handleModalClose={handleModalClose} handleForgotPassword={handleForgotPassword} />
+    ) : (
+      <ForgotMyPasswordForm handleForgotPasswordCancel={handleForgotPasswordCancel} />
     );
-  }
-}
 
-const mapStateToProps = state => {
-  return {};
+  return (
+    <>
+      <button className="btn btn-primary" onClick={handleModalOpen}>
+        Sign In
+      </button>
+
+      <ReactModal
+        contentLabel="Sign In Modal"
+        isOpen={showModal}
+        style={{
+          /* stylelint-disable-next-line */
+          overlay: {
+            alignItems: 'center',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            bottom: 0,
+            display: 'flex',
+            justifyContent: 'center',
+            left: 0,
+            position: 'fixed',
+            right: 0,
+            top: 0,
+          },
+          /* stylelint-disable-next-line */
+          content: {
+            bottom: null,
+            left: null,
+            maxWidth: '560px',
+            minWidth: '360px',
+            position: 'relative',
+            right: null,
+            top: null,
+          },
+        }}
+      >
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title" id="signInModalLabel">
+              Sign-In to GSBC
+            </h5>
+
+            <button aria-label="Close" className="close" onClick={handleModalClose}>
+              <Icon name="times" />
+            </button>
+          </div>
+
+          <div className="modal-body">{form}</div>
+        </div>
+      </ReactModal>
+    </>
+  );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onSubmitForgotMyPassword: email => dispatch(authActions.resetPassword(email)),
-    onSubmitSignIn: (email, password, setStatus, setSubmitting) =>
-      dispatch(authActions.submitSignIn(email, password, setStatus, setSubmitting)),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SignInModal);
+export default SignInModal;

@@ -1,19 +1,17 @@
 import React from 'react';
 
-import { AddBookModal, AddMemberModal, SignInModal } from 'components';
+import { AddBookModal, SignInModal } from 'components';
 
-import './Navbar.css';
-const NavBar = ({ currentUser, handleSignOut }) => {
-  if (currentUser) {
-    const isAdmin = currentUser.data_.supportedScopes === 'admin' ? true : false;
+import { signOut } from '../../../firebase';
 
+import './Navbar.scss';
+
+const NavBar = ({ user = null }) => {
+  if (user) {
     return (
       <div className="Navbar">
-        {isAdmin && <AddMemberModal />}
-
         <AddBookModal />
-
-        <button className="btn btn-primary" onClick={() => handleSignOut()}>
+        <button className="btn btn-primary" onClick={signOut}>
           Sign Out
         </button>
       </div>

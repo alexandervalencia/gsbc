@@ -1,0 +1,19 @@
+.Home {
+  align-content: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  padding-bottom: 1rem;
+
+  .control-box {
+    align-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 10px;
+
+    @media (min-width: 768px) {
+      margin-bottom: 2rem;
+    }
+  }
+}

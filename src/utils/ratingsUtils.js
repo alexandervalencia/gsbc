@@ -1,29 +1,15 @@
-export const checkForMemberRating = (memberId, ratings) => {
-  return ratings.find(rating => rating.memberId === memberId) !== undefined ? true : false;
+export const checkForUserRating = (userId, ratings) => {
+  return ratings.find(rating => rating.userId === userId) !== undefined ? true : false;
 };
 
-export const getBookRating = (bookId, ratings) => {
-  const bookRatings = getBookRatings(bookId, ratings);
+export const getUserRating = (userId, ratings) => {
+  const userRating = ratings.find(rating => rating.userId === userId);
 
-  return bookRatings.map(rating => rating.ratingValue).reduce((a, b) => a + b, 0) / (bookRatings.length || 1);
+  return userRating ? userRating.rating : null;
 };
 
-export const getBookRatings = (bookId, ratings) => {
-  return ratings.filter(rating => rating.bookId === bookId);
-};
+export const getUserRatingId = (userId, ratings) => {
+  const userRating = ratings.find(rating => rating.userId === userId);
 
-export const getMemberRating = (memberId, ratings) => {
-  const memberRating = ratings.find(rating => rating.memberId === memberId);
-
-  if (memberRating) {
-    return {
-      memberRatingId: memberRating.id,
-      memberRatingValue: memberRating.ratingValue,
-    };
-  }
-
-  return {
-    memberRatingId: '',
-    memberRatingValue: null,
-  };
+  return userRating ? userRating.id : null;
 };
