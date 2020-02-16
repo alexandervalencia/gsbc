@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Home from './views/Home/Home';
+import AddBook from './views/AddBook/AddBook';
 import BookPage from './views/BookPage/BookPage';
 
 import { SiteFooter, SiteHeader } from 'components';
@@ -17,6 +18,7 @@ class App extends Component {
         <main className="main">
           <Switch>
             <Route exact path="/books/:id" component={BookPage} />
+            <Route path={['/add', '/new']} component={AddBook} />
             <Route path="/" component={Home} />
           </Switch>
         </main>
