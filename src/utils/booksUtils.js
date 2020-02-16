@@ -42,15 +42,11 @@ export const newBookConfig = values => {
 
   book.amazonUrl = values.amazonUrl || '';
   book.author = values.author;
-  book.authorSort = values.author.split(' ').splice(-1)[0];
   book.coverImg = values.coverImg || '';
-  book.dateCreated = format(new Date(), 'x');
   book.datePicked = Number(format(`${values.datePickedMonth} ${values.datePickedYear}`, 'x'));
   book.ratingValue = -1;
   book.subtitle = values.subtitle || '';
   book.title = values.title;
-  book.titleSort = values.title.replace(ARTICLE_REGEX, '');
-  book.userImg = values.userImg || '';
   book.userPicked = values.userPicked;
 
   return book;

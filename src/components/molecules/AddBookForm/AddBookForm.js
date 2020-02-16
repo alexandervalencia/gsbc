@@ -1,35 +1,38 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { format } from 'date-fns';
+import { Redirect } from 'react-router-dom';
 
+import { firestore } from '../../../firebase';
 import { UsersContext } from '../../../providers/UsersProvider';
 import * as options from '../../../utils/formOptions';
+import { newBookConfig } from '../../../utils/booksUtils';
 import * as formValidation from '../../../utils/formValidation';
 
 import './AddBookForm.scss';
 
-const AddBookForm = ({ booksState, handleModalClose, submitForm }) => {
+const AddBookForm = () => {
   const users = useContext(UsersContext);
+  const [redirectOnSubmit, setRedirectOnSubmit] = useState(false);
+
   return (
     <Formik
       initialValues={{
         author: '',
         amazonUrl: '',
-        datePickedMonth: 'January',
+        datePickedMonth: format(new Date(), 'MMMM'),
         datePickedYear: new Date().getFullYear(),
         subtitle: '',
         title: '',
         userPicked: '',
       }}
-      onSubmit={(values, actions) => {
-        submitForm(values);
+      onSubmit={values => {
+        const book = newBookConfig(values);
 
-        // actions.setSubmitting(false);
-
-        if (!booksState.addingBook && !booksState.failedToAddBook) {
-          actions.resetForm();
-
-          handleModalClose();
-        }
+        firestore
+          .collection('books')
+          .add(book)
+          .then(() => setRedirectOnSubmit(true));
       }}
       render={({ errors, status, touched, isSubmitting }) => (
         <Form className="AddBookForm">
@@ -94,14 +97,11 @@ const AddBookForm = ({ booksState, handleModalClose, submitForm }) => {
           </div>
 
           <div className="form-group last">
-            <button className="modal-btn modal-btn-primary" disabled={isSubmitting} type="submit">
+            <button className="btn btn-primary" disabled={isSubmitting} type="submit">
               Add Book
             </button>
-
-            <button className="modal-btn modal-btn-secondary" onClick={() => handleModalClose()} type="button">
-              Cancel
-            </button>
           </div>
+          {redirectOnSubmit && <Redirect to="/" />}
         </Form>
       )}
     />
