@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { SignInModal } from 'components';
-
 import { signOut } from '../../../firebase';
 
 import './Navbar.scss';
@@ -24,7 +22,9 @@ const NavBar = ({ user = null }) => {
 
   return (
     <div className="Navbar">
-      <SignInModal />
+      <Link className="btn btn-primary" to="/login">
+        Sign In
+      </Link>
     </div>
   );
 };
