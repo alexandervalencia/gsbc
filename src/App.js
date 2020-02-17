@@ -4,6 +4,7 @@ import Home from './views/Home/Home';
 import AddBook from './views/AddBook/AddBook';
 import BookPage from './views/BookPage/BookPage';
 import Login from './views/Login/Login';
+import ResetPassword from './views/ResetPassword/ResetPassword';
 
 import { SiteFooter, SiteHeader } from 'components';
 import './App.scss';
@@ -20,6 +21,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/books/:id" component={BookPage} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/reset_password" component={ResetPassword} />
             <Route path={['/add', '/new']} component={AddBook} />
             <Route path="/" component={Home} />
           </Switch>

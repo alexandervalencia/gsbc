@@ -1,11 +1,13 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
+
 import { auth } from '../../../firebase';
 
 import * as formValidation from '../../../utils/formValidation';
 
-const SignInForm = ({ handleForgotPassword, handleModalClose }) => {
+const SignInForm = () => {
   return (
     <Formik
       initialValues={{
@@ -21,7 +23,6 @@ const SignInForm = ({ handleForgotPassword, handleModalClose }) => {
           .then(() => {
             actions.resetForm();
             actions.setSubmitting(false);
-            handleModalClose();
           })
           .catch(error => {
             if (error.code === `auth/user-not-found`) {
@@ -48,7 +49,12 @@ const SignInForm = ({ handleForgotPassword, handleModalClose }) => {
           </div>
           {status && status.email && <div className="mb-3 text-danger">{status.email}</div>}
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label className="d-flex" htmlFor="password">
+              Password
+              <Link className="ml-auto" to="/reset_password">
+                Forgot My Password
+              </Link>
+            </label>
             <Field
               className="form-control"
               name="password"
@@ -57,16 +63,10 @@ const SignInForm = ({ handleForgotPassword, handleModalClose }) => {
               validate={formValidation.password}
             />
             <ErrorMessage className="form-text" name="password" component="div" />
-            <Button color="link" onClick={() => handleForgotPassword()} size="sm" type="button">
-              Forgot My Password
-            </Button>
           </div>
           {status && status.password && <div className="mb-3 text-danger">{status.password}</div>}
           <Button color="primary" disabled={isSubmitting} type="submit">
             Sign In
-          </Button>{' '}
-          <Button className="secondary" onClick={() => handleModalClose()} type="button">
-            Cancel
           </Button>
         </Form>
       )}
