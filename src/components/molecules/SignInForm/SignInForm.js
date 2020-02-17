@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
+import { UserContext } from '../../../providers/UserProvider';
 import { auth } from '../../../firebase';
 
 import * as formValidation from '../../../utils/formValidation';
 
 const SignInForm = () => {
+  const user = useContext(UserContext);
+
   return (
     <Formik
       initialValues={{
@@ -68,6 +71,7 @@ const SignInForm = () => {
           <Button color="primary" disabled={isSubmitting} type="submit">
             Sign In
           </Button>
+          {user && <Redirect to="/" />}
         </Form>
       )}
     />

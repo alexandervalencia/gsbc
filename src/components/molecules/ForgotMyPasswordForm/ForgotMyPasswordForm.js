@@ -1,30 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Button } from 'reactstrap';
+import { Redirect } from 'react-router-dom';
+
 import { Icon } from 'components';
 
 import * as formValidation from '../../../utils/formValidation';
 import { auth } from '../../../firebase';
 
 const ForgotMyPasswordForm = ({ handleForgotPasswordCancel }) => {
+  const [redirectOnSubmit, setRedirectOnSubmit] = useState(false);
   return (
     <Formik
       initialValues={{
         email: '',
       }}
       onSubmit={(values, actions) => {
-        // submitForm(values.email);
         var emailAddress = values.email;
 
         auth
           .sendPasswordResetEmail(emailAddress)
           .then(() => {
             actions.resetForm();
-            handleForgotPasswordCancel();
+            setRedirectOnSubmit(true);
           })
           .catch(error => {
-            actions.setFieldError(`email`, `Invalid email or server error.\nPlease try again.`);
-            actions.resetForm({ email: emailAddress });
+            actions.setFieldError(`email`, `Invalid email address. Please try again.`);
+            actions.setSubmitting(false);
           });
       }}
       render={({ isSubmitting }) => (
@@ -46,11 +48,9 @@ const ForgotMyPasswordForm = ({ handleForgotPasswordCancel }) => {
             <ErrorMessage className="form-text" name="email" component="div" />
           </div>
           <Button block color="primary" disabled={isSubmitting} size="lg" type="submit">
-            Reset Password
+            Send password reset email
           </Button>
-          <Button block className="secondary" onClick={() => handleForgotPasswordCancel()} size="lg" type="button">
-            Cancel
-          </Button>
+          {redirectOnSubmit && <Redirect to="/login" />}
         </Form>
       )}
     />
