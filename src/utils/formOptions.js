@@ -35,7 +35,7 @@ export const users = userList => {
 
 export const months = new Array(12)
   .fill('')
-  .map((el, i) => format(new Date(2019, i, 1), 'MMMM'))
+  .map((_, i) => format(new Date(2019, i, 1), 'MMMM'))
   .map(month => (
     <option key={month} value={month}>
       {month}

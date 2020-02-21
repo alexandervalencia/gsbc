@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import './BookInfo.scss';
 
 const BookInfo = ({ author, bookId, datePicked, subtitle, title }) => {
-  const date = format(datePicked, 'MMMM YYYY');
+  const date = format(datePicked, 'MMMM yyyy');
 
   const bookTitle = bookId ? (
     <Link to={`/books/${bookId}`}>
